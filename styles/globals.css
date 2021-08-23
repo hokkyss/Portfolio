@@ -20,25 +20,41 @@ a {
 }
 
 .nav {
+  z-index: 1000;
   height: 10vh;
 }
 
 .customscroll,
 html {
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: overlay;
 }
 
 .customscroll::-webkit-scrollbar,
 html::-webkit-scrollbar {
-  width: 0px;
+  width: 0.73vw;
 }
 
 .customscroll::-webkit-scrollbar-thumb,
 html::-webkit-scrollbar-thumb {
   background: gray;
+  border-radius: 20px;
 }
 
 .customscroll::-webkit-scrollbar-thumb:hover,
 html::-webkit-scrollbar-thumb:hover {
-  background: darkgray;
+  background: black;
+  border-radius: 20px;
+}
+
+.content {
+  top: 10vh;
+}
+
+.linebreak {
+  border-top: 0.08vh solid grey;
+}
+
+.circle {
+  border-radius: 100vw;
 }

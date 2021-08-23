@@ -13,7 +13,7 @@ export const Navbar = () => {
   const [linkedinColor, setLinkedinColor] = useState<string>("black");
 
   return (
-    <div className="nav w-screen flex flex-row justify-between items-center">
+    <div className="nav w-screen flex flex-row justify-between items-center fixed">
       <div className={`nav flex flex-row ${styles.left}`}>
         <NavbarItem href="/">A</NavbarItem>
       </div>
