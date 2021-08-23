@@ -9,10 +9,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <meta name="viewport" content="user-scalable=0"></meta>
+        <link rel="icon" href="/images/favicon.ico" />
       </Head>
       <Navbar />
-      <Component {...pageProps} />
+      <div className="content w-content h-content absolute">
+        <Component {...pageProps} />
+      </div>
     </>
   );
 }
