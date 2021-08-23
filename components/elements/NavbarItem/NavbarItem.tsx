@@ -7,28 +7,32 @@ import styles from "./NavbarItem.module.css";
 interface Props {
   children: ReactNode;
   href: string;
-  isA?: boolean;
+  component?: "a" | "Link" | "button";
   onMouseEnter?: React.MouseEventHandler<HTMLDivElement>;
   onMouseLeave?: React.MouseEventHandler<HTMLDivElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export const NavbarItem = ({
   children,
   href,
-  isA = false,
+  component = "Link",
   onMouseEnter,
   onMouseLeave,
+  onClick,
 }: Props): JSX.Element => {
   return (
     <div
-      className={`nav ${styles.item}`}
+      className={`nav ${styles.item} text-small`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      {isA ? (
+      {component === "a" ? (
         <a href={href}>{children}</a>
-      ) : (
+      ) : component === "Link" ? (
         <Link href={href}>{children}</Link>
+      ) : (
+        <button onClick={onClick}>{children}</button>
       )}
     </div>
   );
