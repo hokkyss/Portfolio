@@ -4,8 +4,6 @@ import Head from "next/head";
 
 import "@styles/globals.css";
 
-import { Navbar } from "@components/layouts";
-
 import ChevronUp from "@icons/chevron-up.svg";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -20,6 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <link rel="icon" href="/images/favicon.ico" />
+        <meta name="description" content="Hello, I'm Hokki Suwanda!" />
       </Head>
       <div ref={topRef}></div>
 

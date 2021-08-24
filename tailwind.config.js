@@ -10,9 +10,9 @@ module.exports = {
       content: "90vh",
     },
     fontSize: {
-      small: "1.025vw",
-      normal: "1.46vw",
-      big: "2.21vw",
+      small: "1.025vw", // 14px in 1366px width
+      normal: "1.46vw", // 20px in 1366px width
+      big: "2.21vw", // 30px in 1366px width
       heading: "2.93vw", // 40px in 1366px width
     },
     fontWeight: {

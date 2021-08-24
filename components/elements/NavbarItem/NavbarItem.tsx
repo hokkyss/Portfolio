@@ -4,7 +4,7 @@ import Link from "next/link";
 import "tailwindcss/tailwind.css";
 import styles from "./NavbarItem.module.css";
 
-interface Props {
+interface NavbarItemProps {
   children: ReactNode;
   href: string;
   component?: "a" | "Link" | "button";
@@ -20,7 +20,7 @@ export const NavbarItem = ({
   onMouseEnter,
   onMouseLeave,
   onClick,
-}: Props): JSX.Element => {
+}: NavbarItemProps): JSX.Element => {
   return (
     <div
       className={`nav ${styles.item} text-small`}
