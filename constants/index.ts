@@ -1,1 +1,2 @@
-export const a = 5;
+export * from "./sizes";
+export * from "./programmingLanguages";

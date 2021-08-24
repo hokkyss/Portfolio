@@ -7,5 +7,7 @@ interface BoxProps {
 }
 
 export const Box = ({ children }: BoxProps): JSX.Element => {
-  return <div className={styles.box}>{children}</div>;
+  return (
+    <div className={`flex flex-row flex-wrap ${styles.box}`}>{children}</div>
+  );
 };

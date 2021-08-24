@@ -5,7 +5,7 @@ interface BigTextProps {
 }
 
 /**
- * Renders a 30px text
+ * Renders a 30px (2.21vw) text
  */
 export const BigText = ({ children }: BigTextProps): JSX.Element => {
   return <div className="text-big cursor-default">{children}</div>;
