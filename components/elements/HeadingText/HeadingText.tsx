@@ -5,7 +5,7 @@ interface HeadingTextProps {
 }
 
 /**
- * Renders 40px text and letter spacing of 0.8px
+ * Renders 40px (2.93vw) text and letter spacing of 0.8px
  */
 export const HeadingText = ({ children }: HeadingTextProps): JSX.Element => {
   return (

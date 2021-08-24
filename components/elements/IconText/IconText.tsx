@@ -1,15 +1,27 @@
-import React, { ReactNode } from "react";
+import React, { FunctionComponent, SVGAttributes } from "react";
+
+import "tailwindcss/tailwind.css";
+import styles from "./IconText.module.css";
+
+import { NormalText } from "@components/elements";
+import { SIZES } from "@constants";
 
 interface IconTextProps {
-  icon: ReactNode;
+  Icon: FunctionComponent<SVGAttributes<SVGElement>>;
   text: string;
 }
 
-export const IconText = ({ icon, text }: IconTextProps): JSX.Element => {
+export const IconText = ({ Icon, text }: IconTextProps): JSX.Element => {
+  const size = SIZES.normal;
+  console.log(Icon);
   return (
-    <>
-      <div></div>
-      <div></div>
-    </>
+    <div
+      className={`flex flex-row justify-center items-center ${styles.container}`}
+    >
+      <Icon width={size} height={size} />
+      <NormalText>
+        <div className={styles.text}>{text}</div>
+      </NormalText>
+    </div>
   );
 };

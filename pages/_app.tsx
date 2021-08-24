@@ -5,9 +5,11 @@ import Head from "next/head";
 import "@styles/globals.css";
 
 import ChevronUp from "@icons/chevron-up.svg";
+import { SIZES } from "@constants";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const topRef = useRef<HTMLDivElement>(null);
+  const size = SIZES.big;
 
   const scrollToTop = (): void | null => {
     if (topRef.current) return topRef.current.scrollIntoView();
@@ -28,7 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         className="fixed cursor-pointer bottom-right-button circle flex justify-center items-center"
         onClick={scrollToTop}
       >
-        <ChevronUp width="2.21vw" height="2.21vw" color="black" />
+        <ChevronUp width={size} height={size} color="black" />
       </button>
     </>
   );
