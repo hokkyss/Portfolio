@@ -13,7 +13,6 @@ interface IconTextProps {
 
 export const IconText = ({ Icon, text }: IconTextProps): JSX.Element => {
   const size = SIZES.normal;
-  console.log(Icon);
   return (
     <div
       className={`flex flex-row justify-center items-center ${styles.container}`}
