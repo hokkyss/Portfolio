@@ -65,7 +65,7 @@ export const Navbar = ({
           ) : (
             <Gmail width="4vw" height="6vh" />
           )}
-        </NavbarItem>{" "}
+        </NavbarItem>
         <NavbarItem
           component="a"
           href="https://github.com/hokkyss"

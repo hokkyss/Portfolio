@@ -1,12 +1,26 @@
-/* eslint-disable @next/next/no-img-element */
+import React, { useRef } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 
 import "tailwindcss/tailwind.css";
 import styles from "@styles/Home.module.css";
 
-import { Navbar, Section } from "@components/layouts";
-import { useRef } from "react";
+import {
+  ContentContainer,
+  Navbar,
+  Section,
+  Subsection,
+} from "@components/layouts";
+import {
+  BigBreak,
+  BigText,
+  CircleImage,
+  HeadingText,
+  NormalBreak,
+  NormalText,
+  SmallText,
+} from "@components/elements";
+import { TechStacks } from "@components/modules";
 
 const Home: NextPage = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -18,7 +32,6 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>Hokki Suwanda</title>
-        <meta name="description" content="Hello, I'm Hokki Suwanda!" />
       </Head>
       <Navbar
         aboutRef={aboutRef}
@@ -26,40 +39,49 @@ const Home: NextPage = () => {
         expRef={expRef}
         interestRef={interestRef}
       />
-      <div className="content w-content h-content absolute">
+      <ContentContainer>
         <div className="h-content w-content flex justify-center items-center flex-row">
-          <img
+          <CircleImage
             src="/images/photo2.jpg"
             alt="nah"
-            className={`circle ${styles.myPhoto}`}
+            className={styles.myPhoto}
           />
           <div className={`flex flex-col ${styles.bio}`}>
-            <div
-              className={`${styles.name} text-heading font-heading tracking-default`}
-            >
-              Hokki Suwanda
+            <HeadingText>Hokki Suwanda</HeadingText>
+            <div className={styles.description}>
+              <NormalText>
+                Informatics Engineering, Bandung Institute of Technology.
+              </NormalText>
             </div>
-            <div className={`text-normal ${styles.description}`}>
-              Informatics Engineering, Bandung Institute of Technology.
-            </div>
-            <div className={`text-big ${styles.description}`}>
-              Software Engineer
+            <div className={styles.description}>
+              <BigText>Software Engineer</BigText>
             </div>
           </div>
         </div>
         <Section sectionRef={aboutRef} title="AboutMe">
-          AAAAAAAAAAAAAAA
+          <NormalText>
+            Hi! I&apos;m Hokki Suwanda. I&apos;m currently an undergraduate
+            student in Bandung Institute of Technology. I&apos;m very passionate
+            in modern technology, especially in Software Engineering fields.
+          </NormalText>
+          <NormalBreak />
+          <NormalText>
+            I&apos;m currently exploring Web Development. However, I&apos;m
+            willing to learn other things too!
+          </NormalText>
+          <BigBreak />
+          <TechStacks />
         </Section>
         <Section sectionRef={projectRef} title="MyProjects">
-          A
+          <NormalText>A</NormalText>
         </Section>
         <Section sectionRef={expRef} title="MyExperiences">
-          A
+          <SmallText>A</SmallText>
         </Section>
         <Section sectionRef={interestRef} title="Interests">
-          A
+          <SmallText>A</SmallText>
         </Section>
-      </div>
+      </ContentContainer>
     </>
   );
 };

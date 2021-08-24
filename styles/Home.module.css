@@ -1,6 +1,4 @@
 .myPhoto {
-  border-radius: 100%;
-  object-fit: cover;
   width: 17vw;
   height: 17vw;
 }
@@ -10,9 +8,6 @@
   width: 35vw;
   max-width: 35vw;
   margin-left: 4vw;
-}
-
-.name {
 }
 
 .description {

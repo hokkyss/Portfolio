@@ -1,0 +1,7 @@
+.box {
+  border-radius: 1vw;
+  border: 0.1vw solid black;
+
+  overflow: hidden;
+  padding: 1vw 1vw;
+}
