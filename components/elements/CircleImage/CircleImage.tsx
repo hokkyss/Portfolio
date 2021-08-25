@@ -1,17 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 
-interface CircleImageProps {
-  src: string;
-  className?: string;
-  alt?: string;
-}
+import Props from "@types";
 
 export const CircleImage = ({
   src,
   className = "",
   alt = "",
-}: CircleImageProps): JSX.Element => {
+}: Props.CircleImageProps): JSX.Element => {
   return (
     <img
       src={src}

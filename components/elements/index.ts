@@ -7,4 +7,5 @@ export * from "./IconText";
 export * from "./NavbarItem";
 export * from "./NormalBreak";
 export * from "./NormalText";
+export * from "./ProjectCard";
 export * from "./SmallText";

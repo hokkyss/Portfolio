@@ -1,15 +1,15 @@
 import { HeadingText } from "@components/elements";
-import React, { ReactNode, RefObject } from "react";
+import React from "react";
 
 import styles from "./Section.module.css";
 
-interface SectionProps {
-  children: ReactNode;
-  title: string;
-  sectionRef: RefObject<HTMLDivElement>;
-}
+import Props from "@types";
 
-export const Section = ({ children, title, sectionRef }: SectionProps) => {
+export const Section = ({
+  children,
+  title,
+  sectionRef,
+}: Props.SectionProps) => {
   return (
     <>
       <div className="linebreak" />

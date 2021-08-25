@@ -1,17 +1,12 @@
-import React, { FunctionComponent, SVGAttributes } from "react";
+import React from "react";
 
-import "tailwindcss/tailwind.css";
 import styles from "./IconText.module.css";
 
 import { NormalText } from "@components/elements";
 import { SIZES } from "@constants";
+import Props from "@types";
 
-interface IconTextProps {
-  Icon: FunctionComponent<SVGAttributes<SVGElement>>;
-  text: string;
-}
-
-export const IconText = ({ Icon, text }: IconTextProps): JSX.Element => {
+export const IconText = ({ Icon, text }: Props.IconTextProps): JSX.Element => {
   const size = SIZES.normal;
   return (
     <div

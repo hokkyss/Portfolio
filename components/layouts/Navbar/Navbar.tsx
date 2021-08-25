@@ -1,21 +1,14 @@
-import React, { useState, MutableRefObject, RefObject } from "react";
+import React, { useState } from "react";
 
-import "tailwindcss/tailwind.css";
 import styles from "./Navbar.module.css";
 
 import { NavbarItem } from "@components/elements";
+import Props from "@types";
 
 import LinkedIn from "@icons/linkedin.svg";
 import Github from "@icons/github.svg";
 import Email from "@icons/email.svg";
 import Gmail from "@icons/gmail.svg";
-
-interface NavbarProps {
-  aboutRef: RefObject<HTMLDivElement>;
-  projectRef: RefObject<HTMLDivElement>;
-  expRef: RefObject<HTMLDivElement>;
-  interestRef: RefObject<HTMLDivElement>;
-}
 
 type GithubColor = "black" | "aqua";
 type LinkedInColor = "black" | "#0A66C2";
@@ -26,7 +19,7 @@ export const Navbar = ({
   projectRef,
   expRef,
   interestRef,
-}: NavbarProps) => {
+}: Props.NavbarProps) => {
   const [githubColor, setGithubColor] = useState<GithubColor>("black");
   const [linkedinColor, setLinkedinColor] = useState<LinkedInColor>("black");
   const [mailIcon, setMailIcon] = useState<MailIcon>("email");

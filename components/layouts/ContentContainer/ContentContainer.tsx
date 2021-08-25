@@ -1,9 +1,7 @@
-import React, { ReactNode } from "react";
+import React from "react";
 
-interface ContentContainerProps {
-  children: ReactNode;
-}
+import Props from "@types";
 
-export const ContentContainer = ({ children }: ContentContainerProps) => (
+export const ContentContainer = ({ children }: Props.ContentContainerProps) => (
   <div className="content w-content h-content absolute">{children}</div>
 );
