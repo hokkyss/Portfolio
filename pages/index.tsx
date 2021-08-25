@@ -2,15 +2,9 @@ import React, { useRef } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 
-import "tailwindcss/tailwind.css";
 import styles from "@styles/Home.module.css";
 
-import {
-  ContentContainer,
-  Navbar,
-  Section,
-  Subsection,
-} from "@components/layouts";
+import { ContentContainer, Navbar, Section } from "@components/layouts";
 import {
   BigBreak,
   BigText,
@@ -20,7 +14,7 @@ import {
   NormalText,
   SmallText,
 } from "@components/elements";
-import { TechStacks } from "@components/modules";
+import { ProjectList, TechStacks } from "@components/modules";
 
 const Home: NextPage = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -67,13 +61,15 @@ const Home: NextPage = () => {
           <NormalBreak />
           <NormalText>
             I&apos;m currently exploring Web Development. However, I&apos;m
-            willing to learn other things too!
+            willing to learn other things too! And importantly, I&apos;m open to
+            work!
           </NormalText>
           <BigBreak />
           <TechStacks />
+          <NormalBreak />
         </Section>
         <Section sectionRef={projectRef} title="MyProjects">
-          <NormalText>A</NormalText>
+          <ProjectList />
         </Section>
         <Section sectionRef={expRef} title="MyExperiences">
           <SmallText>A</SmallText>

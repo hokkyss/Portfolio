@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
 import Link from "next/link";
 
-import "tailwindcss/tailwind.css";
 import styles from "./NavbarItem.module.css";
 
 interface NavbarItemProps {

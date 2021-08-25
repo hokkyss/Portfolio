@@ -1,17 +1,14 @@
 import { BigText } from "@components/elements";
-import React, { ReactNode, MouseEventHandler } from "react";
+import React from "react";
 
 import styles from "./Subsection.module.css";
 
-interface SubsectionProps {
-  children: ReactNode;
-  title: string;
-}
+import Props from "@types";
 
 export const Subsection = ({
   children,
   title,
-}: SubsectionProps): JSX.Element => {
+}: Props.SubsectionProps): JSX.Element => {
   return (
     <div>
       <BigText>
