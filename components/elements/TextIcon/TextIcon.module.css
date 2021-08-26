@@ -3,17 +3,17 @@
   padding: 1vh;
   border-radius: 1vw;
   margin: 0.5vw 0.5vw;
-
-  transition-property: all;
-  transition-duration: 0.2s;
-  transition-timing-function: ease;
-  transition-delay: 0s;
-}
-
-.container:hover {
-  transform: scale(1.1);
 }
 
 .text {
-  margin-left: 1vh;
+  margin-right: 1vh;
+
+  transition-property: all;
+  transition-delay: 0s;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
+}
+
+.container:hover .text {
+  margin-right: 2vh;
 }
