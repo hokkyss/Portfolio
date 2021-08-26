@@ -7,6 +7,7 @@
 
 .text {
   margin-right: 1vh;
+  cursor: pointer;
 
   transition-property: all;
   transition-delay: 0s;
@@ -15,5 +16,5 @@
 }
 
 .container:hover .text {
-  margin-right: 2vh;
+  padding-right: 2vh;
 }
