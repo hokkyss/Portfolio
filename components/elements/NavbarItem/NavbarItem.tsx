@@ -27,7 +27,9 @@ export const NavbarItem = ({
       onMouseLeave={onMouseLeave}
     >
       {component === "a" ? (
-        <a href={href}>{children}</a>
+        <a style={{ color: "red" }} href={href}>
+          {children}
+        </a>
       ) : component === "Link" ? (
         <Link href={href}>{children}</Link>
       ) : (
