@@ -13,7 +13,7 @@ export const TextIcon = ({ Icon, text }: Props.IconTextProps): JSX.Element => {
       className={`flex flex-row justify-center items-center ${styles.container}`}
     >
       <NormalText>
-        <div className={`cursor-pointer ${styles.text}`}>{text}</div>
+        <div className={styles.text}>{text}</div>
       </NormalText>
       <Icon width={size} height={size} />
     </div>
