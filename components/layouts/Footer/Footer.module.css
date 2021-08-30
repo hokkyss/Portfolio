@@ -1,0 +1,7 @@
+.footer {
+  height: 12vh;
+  width: 100vw;
+  border-top: 0.1vh solid gray;
+
+  background-color: lightgrey;
+}

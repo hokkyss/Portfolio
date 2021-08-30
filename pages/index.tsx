@@ -74,9 +74,11 @@ const Home: NextPage = () => {
         <Section sectionRef={expRef} title="MyExperiences">
           <SmallText>A</SmallText>
         </Section>
-        <Section sectionRef={interestRef} title="Interests">
-          <SmallText>A</SmallText>
-        </Section>
+        {null && (
+          <Section sectionRef={interestRef} title="Interests">
+            <SmallText>A</SmallText>
+          </Section>
+        )}
       </ContentContainer>
     </>
   );

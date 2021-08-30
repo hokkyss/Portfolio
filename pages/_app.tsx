@@ -6,6 +6,7 @@ import "@styles/globals.css";
 
 import ChevronUp from "@icons/chevron-up.svg";
 import { SIZES } from "@constants";
+import { Footer } from "@components/layouts";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const topRef = useRef<HTMLDivElement>(null);
@@ -25,6 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <div ref={topRef}></div>
 
       <Component {...pageProps} />
+      <Footer />
 
       <button
         className="fixed cursor-pointer bottom-right-button circle flex justify-center items-center"

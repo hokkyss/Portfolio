@@ -1,6 +1,7 @@
 export * from "./BoxProps";
 export * from "./CircleImageProps";
 export * from "./ContentContainerProps";
+export * from "./ExperienceCardProps";
 export * from "./IconTextProps";
 export * from "./NavbarProps";
 export * from "./ProjectCardProps";

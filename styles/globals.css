@@ -39,17 +39,17 @@ html::-webkit-scrollbar {
 .customscroll::-webkit-scrollbar-thumb,
 html::-webkit-scrollbar-thumb {
   background: gray;
-  border-radius: 20px;
+  border-radius: 1.5vw;
 }
 
 .customscroll::-webkit-scrollbar-thumb:hover,
 html::-webkit-scrollbar-thumb:hover {
   background: black;
-  border-radius: 20px;
+  border-radius: 1.5vw;
 }
 
 .content {
-  top: 10vh;
+  padding-top: 10vh;
 }
 
 .linebreak {

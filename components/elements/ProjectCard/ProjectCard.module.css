@@ -27,6 +27,11 @@
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.hoverContent {
+  opacity: 0;
+  z-index: 0;
 
   transition-property: all;
   transition-duration: 1.5s;
@@ -34,11 +39,7 @@
   transition-delay: 0s;
 }
 
-.hoverContent {
-  opacity: 0;
-
-  z-index: 0;
-
+.hovering:hover {
   transition-property: all;
   transition-duration: 1.5s;
   transition-timing-function: ease;
