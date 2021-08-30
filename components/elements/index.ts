@@ -2,6 +2,7 @@ export * from "./BigBreak";
 export * from "./BigText";
 export * from "./Box";
 export * from "./CircleImage";
+export * from "./ExperienceCard";
 export * from "./HeadingText";
 export * from "./IconText";
 export * from "./NavbarItem";

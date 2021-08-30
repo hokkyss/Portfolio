@@ -18,7 +18,7 @@ export const ProjectCard = ({ item }: Props.ProjectCardProps): JSX.Element => {
           style={{
             backgroundImage: `url(${item.preview})`,
           }}
-          className={`absolute ${styles.preview}`}
+          className={`absolute ${styles.preview} ${styles.hover}`}
         />
         <div className={`${styles.hoverContent}`}>
           <a href={item.links.page}>
