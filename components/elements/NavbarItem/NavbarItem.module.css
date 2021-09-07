@@ -3,6 +3,10 @@
   padding: 2vh 1.5vw;
   cursor: pointer;
 
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
   line-height: 6vh;
 }
 

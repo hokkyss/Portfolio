@@ -8,4 +8,11 @@ export const experiences: Experience[] = [
     timeEnd: "Present",
     description: "",
   },
+  {
+    where: "Anmategra KM ITB",
+    role: "Software Engineer",
+    timeStart: new Date("2021-09-02"),
+    timeEnd: "Present",
+    description: "",
+  },
 ];
