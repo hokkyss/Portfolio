@@ -17,6 +17,7 @@ a {
 
 * {
   box-sizing: border-box;
+  outline: none;
 }
 
 .nav {
@@ -53,7 +54,8 @@ html::-webkit-scrollbar-thumb:hover {
 }
 
 .linebreak {
-  border-top: 0.08vh solid grey;
+  padding-top: 10vh;
+  border-bottom: 0.08vh solid grey;
 }
 
 .circle {

@@ -12,9 +12,9 @@ export const Section = ({
 }: Props.SectionProps) => {
   return (
     <>
-      <div className="linebreak" />
+      <div className="linebreak" ref={sectionRef} />
       <HeadingText>
-        <div id={title} className="section-heading" ref={sectionRef}>
+        <div id={title} className="section-heading">
           {title}
         </div>
       </HeadingText>

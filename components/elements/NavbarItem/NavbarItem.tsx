@@ -27,13 +27,22 @@ export const NavbarItem = ({
       onMouseLeave={onMouseLeave}
     >
       {component === "a" ? (
-        <a style={{ color: "red" }} href={href}>
+        <a
+          className="overflow-ellipsis whitespace-nowrap break-words"
+          style={{ color: "red" }}
+          href={href}
+        >
           {children}
         </a>
       ) : component === "Link" ? (
         <Link href={href}>{children}</Link>
       ) : (
-        <button onClick={onClick}>{children}</button>
+        <button
+          className="overflow-ellipsis whitespace-nowrap break-words"
+          onClick={onClick}
+        >
+          {children}
+        </button>
       )}
     </div>
   );

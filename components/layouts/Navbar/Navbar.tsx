@@ -39,11 +39,13 @@ export const Navbar = ({
           Projects
         </NavbarItem>
         <NavbarItem component="button" onClick={scrollToExperiences} href="/">
-          Exp.
+          Experiences
         </NavbarItem>
-        <NavbarItem component="button" onClick={scrollToInterests} href="/">
-          Interest
-        </NavbarItem>
+        {null && (
+          <NavbarItem component="button" onClick={scrollToInterests} href="/">
+            Interest
+          </NavbarItem>
+        )}
       </div>
       <div className={`nav flex flex-row-reverse ${styles.right}`}>
         <NavbarItem
