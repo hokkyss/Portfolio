@@ -9,7 +9,12 @@ export const Footer = () => {
     <div
       className={`flex flex-row justify-center items-center ${styles.footer}`}
     >
-      <NormalText>&copy; 2021 Hokki Suwanda</NormalText>
+      <NormalText>
+        &copy;{" "}
+        <a href="mailto:hokkyss2@gmail.com" target="_blank" rel="noreferrer">
+          Hokki Suwanda
+        </a>
+      </NormalText>
     </div>
   );
 };
