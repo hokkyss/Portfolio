@@ -5,6 +5,7 @@ import Head from "next/head";
 import "@styles/globals.css";
 
 import ChevronUp from "@icons/chevron-up.svg";
+
 import { SIZES } from "@constants";
 import { Footer } from "@components/layouts";
 
