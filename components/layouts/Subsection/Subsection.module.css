@@ -1,7 +1,0 @@
-.subsection::before {
-  content: "{ ";
-}
-
-.subsection::after {
-  content: " }";
-}
