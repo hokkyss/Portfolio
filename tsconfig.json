@@ -1,34 +1,26 @@
 {
-  "compilerOptions": {
-    "target": "ES5",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-    "strictNullChecks": true,
-    "charset": "utf-8",
-    "sourceMap": false,
-    "baseUrl": "src"
-  },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    ".prettierrc",
-    ".eslintrc"
-  ]
+	"compilerOptions": {
+		"target": "ES5",
+		"lib": ["DOM", "DOM.Iterable", "ESNext"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"noFallthroughCasesInSwitch": true,
+		"module": "ESNext",
+		"moduleResolution": "Node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"jsx": "react-jsx",
+		"strictNullChecks": true,
+		"charset": "utf-8",
+		"sourceMap": false,
+		"baseUrl": "src",
+		"typeRoots": ["src/types"]
+	},
+	"include": ["src"],
+	"exclude": [".prettierrc", ".eslintrc"]
 }
