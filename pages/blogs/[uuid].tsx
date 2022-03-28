@@ -1,17 +1,14 @@
 import * as React from 'react'
-import { NextPage } from 'next'
 import { useSafeLayoutEffect } from '@chakra-ui/react'
+import { NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { getAuth } from 'firebase/auth'
 import { onSnapshot } from 'firebase/firestore'
 
 import { getSpecificBlogs } from '~/api/firebase'
 import { Loading } from '~/elements'
 import Error from '~/pages/_error'
-import { app, convertFirestoreError } from '~/utils/firebase'
-
-const auth = getAuth(app)
+import { convertFirestoreError } from '~/utils/firebase'
 
 const BlogContent: NextPage = () => {
 	const router = useRouter()
