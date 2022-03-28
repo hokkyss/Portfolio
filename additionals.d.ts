@@ -22,5 +22,6 @@ declare type Blog = {
 	title: string
 	subtitle: string
 	createdAt: string
+	tags: string[]
 	contents: BlogContent[]
 }
