@@ -4,7 +4,7 @@ export const Card = forwardRef<BoxProps, 'div'>(function Card(props, ref) {
 	return (
 		<LinkBox
 			{...props}
-			w={{ sm: 'xs', md: 'sm', lg: 'xl' }}
+			w={{ base: 'xs', sm: 'sm', md: 'md', lg: 'xl', xl: '2xl' }}
 			padding="4"
 			rounded="sm"
 			shadow="md"
