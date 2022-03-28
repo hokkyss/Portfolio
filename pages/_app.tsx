@@ -1,11 +1,9 @@
 import * as React from 'react'
 import type { AppProps } from 'next/app'
+import Head from 'next/head'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 
 import '~/styles/globals.css'
-
-import '~/utils/firebase'
-import Head from 'next/head'
 
 const activeLabelStyles = {
 	transform: 'scale(0.85) translateY(-24px)',

@@ -1,5 +1,4 @@
 import {
-	Button,
 	Flex,
 	Heading,
 	LinkOverlay,
@@ -22,9 +21,9 @@ export const BlogCardSkeleton = React.memo(function BlogCardSkeleton() {
 		<React.Fragment>
 			<Card>
 				<SkeletonText noOfLines={1} skeletonHeight="4" w="36" />
-				<Spacer height="2" />
+				<Spacer height="4" />
 				<SkeletonText noOfLines={1} skeletonHeight="7" />
-				<Spacer height="2" />
+				<Spacer height="4" />
 				<SkeletonText noOfLines={2} skeletonHeight="4" />
 			</Card>
 		</React.Fragment>
