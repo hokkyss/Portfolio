@@ -6,12 +6,15 @@ export const Card = forwardRef<BoxProps, 'div'>(function Card(props, ref) {
 			{...props}
 			ref={ref}
 			w="96"
-			rounded="sm"
+			rounded="md"
 			shadow="md"
 			px="6"
 			py="12"
 			bgColor="blackAlpha.900"
 			color="white"
+			transitionDelay="0s"
+			transitionDuration="0.15s"
+			transitionTimingFunction="linear"
 		/>
 	)
 })

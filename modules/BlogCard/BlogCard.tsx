@@ -19,23 +19,28 @@ type BlogCardProps = {
 
 export const BlogCardSkeleton = React.memo(function BlogCardSkeleton() {
 	return (
-		<React.Fragment>
-			<Card>
-				<SkeletonText noOfLines={1} skeletonHeight="4" w="36" />
-				<Spacer height="4" />
-				<SkeletonText noOfLines={2} skeletonHeight="7" />
-				<Spacer height="4" />
-				<SkeletonText noOfLines={2} skeletonHeight="4" />
-			</Card>
-		</React.Fragment>
+		<Card margin="2">
+			<SkeletonText noOfLines={1} skeletonHeight="4" w="36" />
+			<Spacer height="4" />
+			<SkeletonText noOfLines={2} skeletonHeight="6" />
+			<Spacer height="4" />
+			<SkeletonText noOfLines={2} skeletonHeight="4" />
+		</Card>
 	)
 })
 
-export const BlogCard: React.FC<BlogCardProps> = (props) => {
+export const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 	const { blog } = props
 
 	return (
-		<Card textAlign="justify" as="article" px="6" py="12">
+		<Card
+			textAlign="justify"
+			as="article"
+			px="6"
+			py="12"
+			margin="2"
+			_hover={{ textColor: 'teal.300' }}
+		>
 			<Flex align="center">
 				<Text fontSize="sm" color="gray.500">
 					{formatDate(blog.createdAt)}
@@ -57,4 +62,4 @@ export const BlogCard: React.FC<BlogCardProps> = (props) => {
 			</Text>
 		</Card>
 	)
-}
+})

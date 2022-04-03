@@ -1,10 +1,8 @@
 import {
-	Button,
 	Flex,
 	HStack,
 	LinkBox,
 	LinkOverlay,
-	Spacer,
 	StackDivider,
 	StackItem,
 	Text,
