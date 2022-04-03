@@ -5,7 +5,6 @@ export const Card = forwardRef<BoxProps, 'div'>(function Card(props, ref) {
 		<LinkBox
 			{...props}
 			ref={ref}
-			w="96"
 			rounded="md"
 			shadow="md"
 			px="6"
@@ -15,6 +14,7 @@ export const Card = forwardRef<BoxProps, 'div'>(function Card(props, ref) {
 			transitionDelay="0s"
 			transitionDuration="0.15s"
 			transitionTimingFunction="linear"
+			style={{ width: '22rem' }}
 		/>
 	)
 })

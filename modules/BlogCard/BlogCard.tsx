@@ -19,11 +19,11 @@ type BlogCardProps = {
 
 export const BlogCardSkeleton = React.memo(function BlogCardSkeleton() {
 	return (
-		<Card margin="2">
+		<Card margin="2" borderTopWidth="thick" borderTopColor="transparent">
 			<SkeletonText noOfLines={1} skeletonHeight="4" w="36" />
-			<Spacer height="4" />
-			<SkeletonText noOfLines={2} skeletonHeight="6" />
-			<Spacer height="4" />
+			<Spacer height="6" />
+			<SkeletonText noOfLines={2} skeletonHeight="5" />
+			<Spacer height="5" />
 			<SkeletonText noOfLines={2} skeletonHeight="4" />
 		</Card>
 	)
@@ -36,10 +36,10 @@ export const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 		<Card
 			textAlign="justify"
 			as="article"
-			px="6"
-			py="12"
 			margin="2"
 			_hover={{ textColor: 'teal.300' }}
+			borderTopColor="#f1e05a"
+			borderTopWidth="thick"
 		>
 			<Flex align="center">
 				<Text fontSize="sm" color="gray.500">
