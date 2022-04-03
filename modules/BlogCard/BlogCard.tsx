@@ -38,7 +38,7 @@ export const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 			as="article"
 			margin="2"
 			_hover={{ textColor: 'teal.300' }}
-			borderTopColor="#f1e05a"
+			borderTopColor={blog.tags[0]}
 			borderTopWidth="thick"
 		>
 			<Flex align="center">
