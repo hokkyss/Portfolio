@@ -5,6 +5,7 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 
 import '~/styles/globals.css'
 import { Layout } from '~/layouts'
+import { getAuth } from 'firebase/auth'
 
 const activeLabelStyles = {
 	transform: 'scale(0.85) translateY(-24px)',
