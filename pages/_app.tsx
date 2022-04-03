@@ -4,8 +4,8 @@ import Head from 'next/head'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 
 import '~/styles/globals.css'
+
 import { Layout } from '~/layouts'
-import { getAuth } from 'firebase/auth'
 
 const activeLabelStyles = {
 	transform: 'scale(0.85) translateY(-24px)',
@@ -42,6 +42,55 @@ export const theme = extendTheme({
 				},
 			},
 		},
+	},
+	colors: {
+		angular: '#b52e31',
+		c: '#555555',
+		'c#': '#178600',
+		'c++': '#f34b7d',
+		css: '#563d7c',
+		cuda: '#3a4e3a',
+		dart: '#00b4ab',
+		django: '#0C4B33',
+		docker: '#384d54',
+		fastapi: '#009485',
+		firebase: '#F57C00',
+		github: '#4183c4',
+		haskell: '#5e5086',
+		html: '#e34c26',
+		http: '#005c9c',
+		java: '#b07219',
+		javascript: '#f1e05a',
+		jinja: '#a52a22',
+		jquery: '#0868ac',
+		json: '#292929',
+		jupyter: '#DA5B0B',
+		kotlin: '#A97BFF',
+		laravel: '#f05340',
+		less: '#1d365d',
+		makefile: '#427819',
+		markdown: '#083fa1',
+		matlab: '#e16737',
+		mysql: '#00758F',
+		nginx: '#009639',
+		numpy: '#9C8AF9',
+		php: '#4f5d95',
+		prisma: '#0c344b',
+		procfile: '#3B2F63',
+		prolog: '#74283c',
+		python: '#3572A5',
+		react: '#282c34',
+		regex: '#009a00',
+		sass: '#a53b70',
+		scss: '#c6538c',
+		svelte: '#ff3e00',
+		svg: '#ff9900',
+		swift: '#F05138',
+		tex: '#3D6117',
+		typescript: '#2b7489',
+		vue: '#41b883',
+		xml: '#0060ac',
+		yaml: '#cb171e',
 	},
 })
 

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import { onSnapshot } from 'firebase/firestore'
-import { useSafeLayoutEffect } from '@chakra-ui/react'
+import { Flex, useSafeLayoutEffect, useTheme } from '@chakra-ui/react'
 
 import { getBlogs } from '~/api/firebase'
 import { BlogCardSkeleton, BlogCard } from '~/modules'
@@ -35,16 +35,17 @@ const Blog: NextPage = () => {
 				<title>hokkyss - Blogs</title>
 				<meta name="description" content="See my content to the end!" />
 			</Head>
-			<BlogCardSkeleton />
-			{loaded ? (
-				blogs.map((blog) => <BlogCard blog={blog} key={blog.uuid} />)
-			) : (
-				<React.Fragment>
-					<BlogCardSkeleton />
-					<BlogCardSkeleton />
-					<BlogCardSkeleton />
-				</React.Fragment>
-			)}
+			<Flex direction="row" wrap="wrap" justifyContent="center">
+				{loaded ? (
+					blogs.map((blog) => <BlogCard blog={blog} key={blog.uuid} />)
+				) : (
+					<React.Fragment>
+						<BlogCardSkeleton />
+						<BlogCardSkeleton />
+						<BlogCardSkeleton />
+					</React.Fragment>
+				)}
+			</Flex>
 		</React.Fragment>
 	)
 }
