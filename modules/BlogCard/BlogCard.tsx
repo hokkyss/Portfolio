@@ -4,13 +4,17 @@ import {
 	LinkOverlay,
 	SkeletonText,
 	Spacer,
+	Tag,
+	TagLabel,
+	TagLeftIcon,
 	Text,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import * as React from 'react'
 
 import { specificBlogPath } from '~/constants/paths'
-import { Card } from '~/elements'
+import { Tags } from '~/constants/tags'
+import { Card, Icons } from '~/elements'
 import { formatDate } from '~/utils/date'
 
 type BlogCardProps = {
@@ -57,9 +61,16 @@ export const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 				</NextLink>
 			</Heading>
 			<Spacer height="4" />
-			<Text fontSize="md" noOfLines={2} color="gray.400">
+			<Text fontSize="md" noOfLines={2} color="gray.400" mb="4">
 				{blog.subtitle}
 			</Text>
+
+			{blog.tags.map((tag) => (
+				<Tag variant="subtle" bgColor={tag} m="0.5" key={tag}>
+					<TagLeftIcon as={Icons[tag]} />
+					<TagLabel>{Tags[tag]}</TagLabel>
+				</Tag>
+			))}
 		</Card>
 	)
 })

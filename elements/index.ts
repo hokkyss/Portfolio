@@ -1,4 +1,5 @@
 export * from './Card/Card'
 export * from './ErrorBoundary/ErrorBoundary'
 export * from './FormControl/FormControl'
+export * from './Icons/Icons'
 export * from './Loading/Loading'

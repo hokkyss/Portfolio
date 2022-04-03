@@ -1,5 +1,5 @@
 export const loginPath = {
-	path: '/adf2932abd4a194e17c4d28ada106fc5c1eeb85e1633e904066d992fe8ff2f2d',
+	path: '/login',
 	name: 'Login',
 }
 

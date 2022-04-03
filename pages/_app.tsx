@@ -47,7 +47,7 @@ export const theme = extendTheme({
 		angular: '#b52e31',
 		c: '#555555',
 		'c#': '#178600',
-		'c++': '#f34b7d',
+		'c++': '#F34B7D',
 		css: '#563d7c',
 		cuda: '#3a4e3a',
 		dart: '#00b4ab',
