@@ -7,13 +7,15 @@ import {
 	signOut,
 	signInWithCredential,
 } from 'firebase/auth'
-import Head from 'next/head'
 import { NextPage } from 'next'
-import { Button, Text, Box } from '@chakra-ui/react'
+import Head from 'next/head'
+import NextLink from 'next/link'
+import { Button, Text, Box, LinkOverlay } from '@chakra-ui/react'
 import { FcGoogle } from 'react-icons/fc'
 import { GoSignOut } from 'react-icons/go'
 
 import { app } from '~/utils/firebase'
+import { paths } from '~/constants/paths'
 
 const auth = getAuth(app)
 
@@ -21,6 +23,8 @@ const provider = new GoogleAuthProvider()
 provider.addScope('https://www.googleapis.com/auth/user.birthday.read')
 provider.addScope('https://www.googleapis.com/auth/userinfo.profile')
 provider.addScope('https://www.googleapis.com/auth/userinfo.email')
+// provider.addScope('https://www.googleapis.com/auth/calendar.events')
+// provider.addScope('https://www.googleapis.com/auth/youtube.readonly')
 
 const Login: NextPage = () => {
 	const loginWithGoogle = React.useCallback(() => {
@@ -41,6 +45,24 @@ const Login: NextPage = () => {
 				<title>hokkyss - Login</title>
 			</Head>
 			<Box>
+				<Box m="2">
+					<Button colorScheme="teal">
+						<NextLink href={paths.home.path} passHref>
+							<LinkOverlay>
+								<Text>{paths.home.name}</Text>
+							</LinkOverlay>
+						</NextLink>
+					</Button>
+				</Box>
+				<Box m="2">
+					<Button colorScheme="green">
+						<NextLink href={paths.blogs.path} passHref>
+							<LinkOverlay>
+								<Text>{paths.blogs.name}</Text>
+							</LinkOverlay>
+						</NextLink>
+					</Button>
+				</Box>
 				<Box m="2">
 					<Button leftIcon={<FcGoogle />} onClick={loginWithGoogle}>
 						<Text>Sign in with Google</Text>
