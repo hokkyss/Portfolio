@@ -4,6 +4,7 @@ import Head from 'next/head'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 
 import '~/styles/globals.css'
+import { Layout } from '~/layouts'
 
 const activeLabelStyles = {
 	transform: 'scale(0.85) translateY(-24px)',
@@ -50,7 +51,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<ChakraProvider theme={theme}>
-				<Component {...pageProps} />
+				<Layout>
+					<Component {...pageProps} />
+				</Layout>
 			</ChakraProvider>
 		</React.Fragment>
 	)
