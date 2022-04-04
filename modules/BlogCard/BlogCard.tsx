@@ -8,6 +8,7 @@ import {
 	TagLabel,
 	TagLeftIcon,
 	Text,
+	useColorModeValue,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import * as React from 'react'
@@ -35,13 +36,14 @@ export const BlogCardSkeleton = React.memo(function BlogCardSkeleton() {
 
 export const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 	const { blog } = props
+	const textColor = useColorModeValue('blue.400', 'teal.300')
 
 	return (
 		<Card
 			textAlign="justify"
 			as="article"
 			margin="2"
-			_hover={{ textColor: 'teal.300' }}
+			_hover={{ textColor: textColor }}
 			borderTopColor={blog.tags[0]}
 			borderTopWidth="thick"
 		>
@@ -61,10 +63,9 @@ export const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 				</NextLink>
 			</Heading>
 			<Spacer height="4" />
-			<Text fontSize="md" noOfLines={2} color="gray.400" mb="4">
+			<Text fontSize="md" noOfLines={2} color="gray.500" mb="4">
 				{blog.subtitle}
 			</Text>
-
 			{blog.tags.map((tag) => (
 				<Tag variant="subtle" bgColor={tag} m="0.5" key={tag}>
 					<TagLeftIcon as={Icons[tag]} />
