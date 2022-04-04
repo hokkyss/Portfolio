@@ -1,6 +1,13 @@
-import { LinkBox, BoxProps, forwardRef } from '@chakra-ui/react'
+import {
+	LinkBox,
+	BoxProps,
+	forwardRef,
+	useColorModeValue,
+} from '@chakra-ui/react'
 
 export const Card = forwardRef<BoxProps, 'div'>(function Card(props, ref) {
+	const bgColor = useColorModeValue('gray.200', 'blackAlpha.900')
+
 	return (
 		<LinkBox
 			{...props}
@@ -9,8 +16,7 @@ export const Card = forwardRef<BoxProps, 'div'>(function Card(props, ref) {
 			shadow="md"
 			px="6"
 			py="12"
-			bgColor="blackAlpha.900"
-			color="white"
+			bgColor={bgColor}
 			transitionDelay="0s"
 			transitionDuration="0.15s"
 			transitionTimingFunction="linear"

@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react'
 import * as React from 'react'
 
 import { Drawer } from './Drawer/Drawer'
