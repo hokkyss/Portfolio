@@ -2,7 +2,7 @@ import * as React from 'react'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import { onSnapshot } from 'firebase/firestore'
-import { Flex, useSafeLayoutEffect, useTheme } from '@chakra-ui/react'
+import { Flex, useSafeLayoutEffect } from '@chakra-ui/react'
 
 import { getBlogs } from '~/api/firebase'
 import { BlogCardSkeleton, BlogCard } from '~/modules'

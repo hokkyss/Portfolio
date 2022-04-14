@@ -42,3 +42,8 @@ export const blogConverter: FirestoreDataConverter<Blog> = {
 	toFirestore: (blog: Blog): DocumentData => ({ blog }),
 	fromFirestore: (snapshot): Blog => snapshot.data() as Blog,
 }
+
+export const skillConverter: FirestoreDataConverter<Skill> = {
+	toFirestore: (skill: Skill): DocumentData => ({ skill }),
+	fromFirestore: (snapshot) => snapshot.data() as Skill,
+}

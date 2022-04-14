@@ -4,9 +4,6 @@ import {
 	LinkOverlay,
 	SkeletonText,
 	Spacer,
-	Tag,
-	TagLabel,
-	TagLeftIcon,
 	Text,
 	useColorModeValue,
 } from '@chakra-ui/react'
@@ -15,7 +12,7 @@ import * as React from 'react'
 
 import { specificBlogPath } from '~/constants/paths'
 import { Tags } from '~/constants/tags'
-import { Card, Icons } from '~/elements'
+import { Card, Icons, Tag } from '~/elements'
 import { formatDate } from '~/utils/date'
 
 type BlogCardProps = {
@@ -67,10 +64,7 @@ export const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 				{blog.subtitle}
 			</Text>
 			{blog.tags.map((tag) => (
-				<Tag variant="subtle" bgColor={tag} m="0.5" key={tag}>
-					<TagLeftIcon as={Icons[tag]} />
-					<TagLabel>{Tags[tag]}</TagLabel>
-				</Tag>
+				<Tag tag={tag} key={tag} />
 			))}
 		</Card>
 	)
