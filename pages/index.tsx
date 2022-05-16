@@ -1,45 +1,12 @@
 import * as React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useSafeLayoutEffect } from '@chakra-ui/react'
-import { onSnapshot } from 'firebase/firestore'
 
 import { Collapse, Loading, Tag } from '~/elements'
-import { getSkills } from '~/api/firebase'
+import { useSkills } from '~/api/firebase'
 
 const Home: NextPage = () => {
-	const [loaded, setLoaded] = React.useState(false)
-	const [skills, setSkills] = React.useState<Skill>({
-		databases: [],
-		frameworks: [],
-		languages: [],
-	})
-
-	useSafeLayoutEffect(() => {
-		const unsubscribe = onSnapshot(
-			getSkills(),
-			(snapshot) => {
-				setLoaded(true)
-				setSkills(
-					snapshot.data() ?? {
-						databases: [],
-						frameworks: [],
-						languages: [],
-					}
-				)
-			},
-			() => {
-				setLoaded(true)
-				setSkills({
-					databases: [],
-					frameworks: [],
-					languages: [],
-				})
-			}
-		)
-
-		return () => unsubscribe()
-	}, [])
+	const { data: skills, loaded, error } = useSkills()
 
 	return (
 		<React.Fragment>

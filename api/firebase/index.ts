@@ -1,3 +1,3 @@
-export * from './getBlogs'
-export * from './getSkills'
-export * from './getSpecificBlog'
+export * from './useBlogs'
+export * from './useSkills'
+export * from './useBlog'

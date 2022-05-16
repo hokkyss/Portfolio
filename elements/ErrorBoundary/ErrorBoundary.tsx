@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-export default class ErrorBoundary extends React.Component<{
+export class ErrorBoundary extends React.Component<{
 	fallback: React.ReactNode
 }> {
 	state: Readonly<{ hasError: boolean; error: unknown }> = {

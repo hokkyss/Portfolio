@@ -2,10 +2,7 @@ import * as React from 'react'
 import {
 	getAuth,
 	GoogleAuthProvider,
-	signInWithPopup,
-	browserPopupRedirectResolver,
 	signOut,
-	signInWithCredential,
 	signInWithEmailAndPassword,
 } from 'firebase/auth'
 import { NextPage } from 'next'
@@ -28,6 +25,7 @@ import { app } from '~/utils/firebase'
 import { paths } from '~/constants/paths'
 import { FormControl } from '~/elements'
 import { useRouter } from 'next/router'
+import Error from './_error'
 
 const auth = getAuth(app)
 
@@ -76,6 +74,8 @@ const Login: NextPage = () => {
 	// }, [])
 	const logoutFromGoogle = React.useCallback(() => signOut(auth), [])
 
+	return <Error statusCode={404} />
+
 	return (
 		<React.Fragment>
 			<Head>
@@ -100,7 +100,12 @@ const Login: NextPage = () => {
 						</NextLink>
 					</Button>
 				</Box>
-				<FormControl aria-required aria-autocomplete="none" isRequired>
+				<FormControl
+					aria-required
+					aria-autocomplete="none"
+					aria-valuetext={email}
+					isRequired
+				>
 					<Input
 						name="email"
 						id="login-email"
@@ -112,7 +117,12 @@ const Login: NextPage = () => {
 					/>
 					<FormLabel>Email</FormLabel>
 				</FormControl>
-				<FormControl isRequired>
+				<FormControl
+					aria-required
+					aria-autocomplete="none"
+					aria-valuetext={password}
+					isRequired
+				>
 					<Input
 						name="password"
 						id="login-password"
@@ -124,11 +134,11 @@ const Login: NextPage = () => {
 					/>
 					<FormLabel>Password</FormLabel>
 				</FormControl>
-				<Box m="2">
+				{/* <Box m="2">
 					<Button onClick={toggleColorMode}>
 						<Text>Toggle Dark Mode</Text>
 					</Button>
-				</Box>
+				</Box> */}
 				<Box m="2">
 					<Button leftIcon={<FcGoogle />} onClick={loginWithFirebase}>
 						<Text>Sign in with Google</Text>
