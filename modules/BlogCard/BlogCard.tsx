@@ -5,14 +5,12 @@ import {
 	SkeletonText,
 	Spacer,
 	Text,
-	useColorModeValue,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import * as React from 'react'
 
 import { specificBlogPath } from '~/constants/paths'
-import { Tags } from '~/constants/tags'
-import { Card, Icons, Tag } from '~/elements'
+import { Card, Tag } from '~/elements'
 import { formatDate } from '~/utils/date'
 
 type BlogCardProps = {
@@ -33,14 +31,13 @@ export const BlogCardSkeleton = React.memo(function BlogCardSkeleton() {
 
 export const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 	const { blog } = props
-	const textColor = useColorModeValue('blue.400', 'teal.300')
 
 	return (
 		<Card
 			textAlign="justify"
 			as="article"
 			margin="2"
-			_hover={{ textColor: textColor }}
+			_hover={{ textColor: 'teal.300' }}
 			borderTopColor={blog.tags[0]}
 			borderTopWidth="thick"
 		>

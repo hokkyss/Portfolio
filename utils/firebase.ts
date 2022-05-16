@@ -9,7 +9,7 @@ import firebaseConfig from 'firebase-config.json'
 
 export const app = initializeApp(firebaseConfig)
 
-export const convertFirestoreError = (error: FirestoreErrorCode) => {
+export const convertFirestoreError = (error?: FirestoreErrorCode) => {
 	if (
 		error === 'cancelled' ||
 		error === 'aborted' ||
@@ -38,12 +38,7 @@ export const convertFirestoreError = (error: FirestoreErrorCode) => {
 	if (error === 'data-loss') return 410
 }
 
-export const blogConverter: FirestoreDataConverter<Blog> = {
-	toFirestore: (blog: Blog): DocumentData => ({ blog }),
-	fromFirestore: (snapshot): Blog => snapshot.data() as Blog,
-}
-
-export const skillConverter: FirestoreDataConverter<Skill> = {
-	toFirestore: (skill: Skill): DocumentData => ({ skill }),
-	fromFirestore: (snapshot) => snapshot.data() as Skill,
-}
+export const makeConverter = <T>(): FirestoreDataConverter<T> => ({
+	toFirestore: (data: T): DocumentData => ({ ...data }),
+	fromFirestore: (snapshot): T => snapshot.data() as T,
+})
