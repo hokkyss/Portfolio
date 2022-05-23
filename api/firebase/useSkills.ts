@@ -56,7 +56,7 @@ export const useSkills = () => {
 	}, [])
 
 	return {
-		data,
+		skills: data,
 		loaded,
 		error,
 	}

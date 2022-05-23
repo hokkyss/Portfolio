@@ -13,11 +13,7 @@ const BlogContent: NextPage = () => {
 	const { query } = router
 	const { uuid } = query
 
-	const {
-		data: blog,
-		loaded,
-		error,
-	} = useBlog(typeof uuid === 'string' ? uuid : '')
+	const { blog, loaded, error } = useBlog(typeof uuid === 'string' ? uuid : '')
 
 	if (!uuid || typeof uuid !== 'string' || error) {
 		return <Error statusCode={convertFirestoreError(error?.code) ?? 404} />

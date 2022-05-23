@@ -16,7 +16,6 @@ import {
 	Input,
 	FormLabel,
 	useToast,
-	useColorMode,
 } from '@chakra-ui/react'
 import { FcGoogle } from 'react-icons/fc'
 import { GoSignOut } from 'react-icons/go'
@@ -44,7 +43,6 @@ const Login: NextPage = () => {
 		isClosable: true,
 		variant: 'subtle',
 	})
-	const { toggleColorMode } = useColorMode()
 
 	const [email, setEmail] = React.useState('')
 	const [password, setPassword] = React.useState('')
@@ -53,6 +51,7 @@ const Login: NextPage = () => {
 		signInWithEmailAndPassword(auth, email, password)
 			.then(() => toast({ title: 'Logged in successfully' }))
 			.then(() => router.replace('/'))
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [email, password, toast])
 
 	const onChangeEmail: React.ChangeEventHandler<HTMLInputElement> =
