@@ -3,6 +3,6 @@ export const underDevelopment: Blog = {
 	createdAt: '2022-04-20T09:09:27.107Z',
 	title: 'Under Development',
 	subtitle: 'Sorry! This section is under development',
-	tags: ['php', 'react', 'nextjs'],
+	tags: ['nginx', 'php', 'react', 'nextjs'],
 	contents: [],
 }
