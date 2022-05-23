@@ -6,7 +6,7 @@ import { useSkills } from '~/api/firebase'
 import { Collapse, Loading, Tag } from '~/elements'
 
 const Skills: NextPage = () => {
-	const { skills, loaded, error } = useSkills()
+	const { skills, loaded } = useSkills()
 
 	return (
 		<React.Fragment>
