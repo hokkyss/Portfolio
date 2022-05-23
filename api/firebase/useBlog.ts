@@ -42,5 +42,5 @@ export const useBlog = (uuid: string) => {
 		}
 	}, [uuid])
 
-	return { data, loaded, error }
+	return { blog: data, loaded, error }
 }

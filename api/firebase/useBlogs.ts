@@ -43,7 +43,7 @@ export const useBlogs = () => {
 	}, [])
 
 	return {
-		data,
+		blogs: data,
 		loaded,
 		error,
 	}

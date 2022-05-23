@@ -14,9 +14,12 @@ import {
 	LinkOverlay,
 	Spacer,
 	Divider,
+	Avatar,
+	Center,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { GiHamburgerMenu } from 'react-icons/gi'
+import { useRouter } from 'next/router'
 
 import { useBreakpoint } from '~/hooks'
 import { paths } from '~/constants/paths'
@@ -24,6 +27,7 @@ import { paths } from '~/constants/paths'
 export const Drawer = React.memo(function Drawer({ children }) {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const breakpoint = useBreakpoint()
+	const { pathname } = useRouter()
 
 	return (
 		<Box width="100vw" height="100vh">
@@ -51,15 +55,31 @@ export const Drawer = React.memo(function Drawer({ children }) {
 					>
 						<DrawerOverlay />
 						<DrawerContent>
-							<DrawerBody p="0" my="4">
+							<Center marginTop="8" marginBottom="8">
+								<Avatar
+									src="me.png"
+									size="2xl"
+									aria-details="My photo"
+									aria-readonly
+								/>
+							</Center>
+							<DrawerBody p="0">
 								<Box>
+									<Divider />
 									{Object.values(paths).map(({ path, name }) => (
 										<React.Fragment key={path}>
 											<Box textAlign="center">
 												<LinkBox>
 													<NextLink href={path} passHref>
 														<LinkOverlay>
-															<Text p="2">{name}</Text>
+															<Text
+																color={
+																	path === pathname ? 'teal.300' : 'current'
+																}
+																p="2"
+															>
+																{name}
+															</Text>
 															<Divider />
 														</LinkOverlay>
 													</NextLink>

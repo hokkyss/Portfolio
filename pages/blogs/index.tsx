@@ -7,7 +7,7 @@ import { useBlogs } from '~/api/firebase'
 import { BlogCardSkeleton, BlogCard } from '~/modules'
 
 const Blog: NextPage = () => {
-	const { data: blogs, loaded, error } = useBlogs()
+	const { blogs, loaded } = useBlogs()
 
 	return (
 		<React.Fragment>

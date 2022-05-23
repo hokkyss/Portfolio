@@ -4,6 +4,6 @@ import {
 } from '@chakra-ui/react'
 
 export const useBreakpoint = () => useChakraBreakpoint('sm')
-export const useBreakpointValue = (
-	values: any[] | Partial<Record<string, any>>
+export const useBreakpointValue = <T>(
+	values: T[] | Partial<Record<string, T>>
 ) => useChakraBreakpointValue(values, 'sm')
