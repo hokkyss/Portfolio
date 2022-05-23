@@ -8,6 +8,7 @@ const socialMedias = [
 	{ href: 'https://github.com/hokkyss', as: FaGithub },
 	{ href: 'https://www.instagram.com/hokkyss/', as: FaInstagram },
 ]
+
 export const SocialMedia = React.memo(function SocialMedia() {
 	return (
 		<HStack spacing="6" alignItems="center" justifyContent="center">
