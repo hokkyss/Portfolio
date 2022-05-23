@@ -5,9 +5,16 @@ import { Flex } from '@chakra-ui/react'
 
 import { useBlogs } from '~/api/firebase'
 import { BlogCardSkeleton, BlogCard } from '~/modules'
+import { underDevelopment } from '~/constants/underDevelopment'
 
 const Blog: NextPage = () => {
 	const { blogs, loaded } = useBlogs()
+
+	return (
+		<Flex direction="row" wrap="wrap" justifyContent="center">
+			<BlogCard blog={underDevelopment} />
+		</Flex>
+	)
 
 	return (
 		<React.Fragment>
