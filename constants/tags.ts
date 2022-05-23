@@ -53,6 +53,7 @@ export const Tags: Record<TagType, string> = {
 	tailwindcss: 'Tailwindcss',
 	tex: 'TeX',
 	typescript: 'Typescript',
+	ubiquity: 'Ubiquity',
 	unity: 'Unity',
 	vue: 'Vue',
 	xml: 'XML',

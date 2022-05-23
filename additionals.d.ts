@@ -53,6 +53,7 @@ declare type TagType =
 	| 'tailwindcss'
 	| 'tex'
 	| 'typescript'
+	| 'ubiquity'
 	| 'unity'
 	| 'vue'
 	| 'xml'
