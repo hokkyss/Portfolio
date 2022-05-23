@@ -1,10 +1,32 @@
-/** @type {import('next').NextConfig} */
-const withReactSvg = require("next-react-svg");
-const path = require("path");
+/* eslint-disable @typescript-eslint/no-var-requires */
 
-module.exports = withReactSvg({
-  include: path.resolve(__dirname, "public/icons"),
-  webpack(config, options) {
-    return config;
-  },
-});
+/**
+ * @see https://github.com/shadowwalker/next-pwa
+ */
+const withPWA = require('next-pwa')
+
+/** @type {import('next').NextConfig} */
+const nextConfig = withPWA({
+	reactStrictMode: true,
+	webpack: (
+		config,
+		{
+			dir,
+			dev,
+			isServer,
+			buildId,
+			defaultLoaders,
+			config: nextConfig,
+			webpack,
+			totalPages,
+		}
+	) => {
+		return config
+	},
+	pwa: {
+		dest: 'public',
+		disable: process.env.NODE_ENV === 'development',
+	},
+})
+
+module.exports = nextConfig

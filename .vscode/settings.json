@@ -1,0 +1,7 @@
+{
+	"editor.formatOnSave": true,
+	"files.autoSave": "onFocusChange",
+	"editorconfig.generateAuto": true,
+	"prettier.endOfLine": "auto",
+	"editor.tabSize": 2
+}
