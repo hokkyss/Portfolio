@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 /**
@@ -6,27 +8,18 @@
 const withPWA = require('next-pwa')
 
 /** @type {import('next').NextConfig} */
-const nextConfig = withPWA({
+const nextConfig = {
 	reactStrictMode: true,
-	webpack: (
-		config,
-		{
-			dir,
-			dev,
-			isServer,
-			buildId,
-			defaultLoaders,
-			config: nextConfig,
-			webpack,
-			totalPages,
-		}
-	) => {
+	webpack: (config, _) => {
 		return config
 	},
 	pwa: {
 		dest: 'public',
 		disable: process.env.NODE_ENV === 'development',
 	},
-})
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
+}
 
-module.exports = nextConfig
+module.exports = withPWA(nextConfig)

@@ -9,6 +9,7 @@ import {
 } from '@chakra-ui/react'
 
 import { useBreakpointValue } from '~/hooks'
+import { UnderDevelopment } from '~/modules'
 
 const Home: NextPage = () => {
 	const value = useBreakpointValue<ImageProps['boxSize']>({
@@ -17,6 +18,8 @@ const Home: NextPage = () => {
 		md: '48',
 		lg: '3xs',
 	})
+
+	return <UnderDevelopment />
 
 	return (
 		<React.Fragment>
