@@ -4,9 +4,12 @@ import Head from 'next/head'
 
 import { useSkills } from '~/api/firebase'
 import { Collapse, Loading, Tag } from '~/elements'
+import { UnderDevelopment } from '~/modules'
 
 const Skills: NextPage = () => {
 	const { skills, loaded } = useSkills()
+
+	return <UnderDevelopment />
 
 	return (
 		<React.Fragment>
