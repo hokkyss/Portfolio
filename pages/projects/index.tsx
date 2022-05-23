@@ -1,16 +1,10 @@
 import * as React from 'react'
 import { NextPage } from 'next'
-import { BlogCard } from '~/modules'
 
-import { underDevelopment } from '~/constants/underDevelopment'
-import { Flex } from '@chakra-ui/react'
+import { UnderDevelopment } from '~/modules'
 
 const ProjectList: NextPage = () => {
-	return (
-		<Flex direction="row" wrap="wrap" justifyContent="center">
-			<BlogCard blog={underDevelopment} />
-		</Flex>
-	)
+	return <UnderDevelopment />
 
 	return <React.Fragment></React.Fragment>
 }
