@@ -4,17 +4,12 @@ import Head from 'next/head'
 import { Flex } from '@chakra-ui/react'
 
 import { useBlogs } from '~/api/firebase'
-import { BlogCardSkeleton, BlogCard } from '~/modules'
-import { underDevelopment } from '~/constants/underDevelopment'
+import { BlogCardSkeleton, BlogCard, UnderDevelopment } from '~/modules'
 
 const Blog: NextPage = () => {
 	const { blogs, loaded } = useBlogs()
 
-	return (
-		<Flex direction="row" wrap="wrap" justifyContent="center">
-			<BlogCard blog={underDevelopment} />
-		</Flex>
-	)
+	return <UnderDevelopment />
 
 	return (
 		<React.Fragment>
