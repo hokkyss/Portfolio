@@ -16,22 +16,24 @@ import {
 	Divider,
 	Avatar,
 	Center,
+	Flex,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { useRouter } from 'next/router'
 
-import { useBreakpoint } from '~/hooks'
+import { useDrawer } from '~/hooks'
 import { paths } from '~/constants/paths'
+import { SocialMedia } from '~/layouts'
 
 export const Drawer = React.memo(function Drawer({ children }) {
 	const { isOpen, onOpen, onClose } = useDisclosure()
-	const breakpoint = useBreakpoint()
+	const drawer = useDrawer()
 	const { pathname } = useRouter()
 
 	return (
-		<Box width="100vw" height="100vh">
-			{breakpoint === 'base' && (
+		<React.Fragment>
+			{drawer && (
 				<React.Fragment>
 					<Portal>
 						<IconButton
@@ -64,7 +66,7 @@ export const Drawer = React.memo(function Drawer({ children }) {
 								/>
 							</Center>
 							<DrawerBody p="0">
-								<Box>
+								<Flex flexDirection="column">
 									<Divider />
 									{Object.values(paths).map(({ path, name }) => (
 										<React.Fragment key={path}>
@@ -88,13 +90,16 @@ export const Drawer = React.memo(function Drawer({ children }) {
 											<Spacer />
 										</React.Fragment>
 									))}
-								</Box>
+									<Center marginTop="4">
+										<SocialMedia />
+									</Center>
+								</Flex>
 							</DrawerBody>
 						</DrawerContent>
 					</ChakraDrawer>
 				</React.Fragment>
 			)}
 			{children}
-		</Box>
+		</React.Fragment>
 	)
 })

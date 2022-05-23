@@ -1,7 +1,11 @@
 import * as React from 'react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import {
+	ChakraProvider,
+	extendTheme,
+	theme as baseTheme,
+} from '@chakra-ui/react'
 
 import '~/styles/globals.css'
 
@@ -12,6 +16,9 @@ const activeLabelStyles = {
 }
 
 export const theme = extendTheme({
+	breakpoints: {
+		xs: '20em',
+	},
 	config: {
 		initialColorMode: 'dark',
 		useSystemColorMode: false,
