@@ -14,7 +14,7 @@ const Blog: NextPage = () => {
 	return (
 		<React.Fragment>
 			<Head>
-				<title>hokkyss - Blogs</title>
+				<title>hokkyss · Blogs</title>
 				<meta name="description" content="See my content to the end!" />
 			</Head>
 			<Flex direction="row" wrap="wrap" justifyContent="center">

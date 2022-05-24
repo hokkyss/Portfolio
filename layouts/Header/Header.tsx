@@ -56,7 +56,7 @@ export const Header = React.memo(function Header({ children }) {
 						))}
 					</HStack>
 					<Spacer />
-					<SocialMedia />
+					{/* <SocialMedia /> */}
 				</Flex>
 			)}
 			<Box height={drawer ? '100vh' : `calc(100vh - ${navHeight})`}>

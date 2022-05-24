@@ -13,7 +13,7 @@ const activeLabelStyles = {
 
 export const theme = extendTheme({
 	breakpoints: {
-		xs: '20em',
+		xs: '25em',
 	},
 	config: {
 		initialColorMode: 'dark',
@@ -91,9 +91,12 @@ export const theme = extendTheme({
 		flask: '#000000',
 		flutter: '#31B9F6',
 		github: '#4183c4',
+		gmail: '#ea4335',
+		go: '#29beb0',
 		haskell: '#5e5086',
 		html: '#e34c26',
 		http: '#005c9c',
+		instagram: '#e1306c',
 		java: '#b07219',
 		javascript: '#efd81d',
 		jinja: '#a52a22',
@@ -103,6 +106,7 @@ export const theme = extendTheme({
 		kotlin: '#A97BFF',
 		laravel: '#f05340',
 		less: '#1d365d',
+		linkedin: '#008cc9',
 		makefile: '#427819',
 		mariadb: '#003545',
 		markdown: '#083fa1',
@@ -126,10 +130,12 @@ export const theme = extendTheme({
 		svg: '#ff9900',
 		swift: '#F05138',
 		tailwincss: '#38BDF8',
+		telegram: '#0088cc',
 		tex: '#3D6117',
 		typescript: '#2b7489',
 		unity: '#222c37',
 		vue: '#41b883',
+		whatsapp: '#25d366',
 		xml: '#0060ac',
 		yaml: '#cb171e',
 	},
