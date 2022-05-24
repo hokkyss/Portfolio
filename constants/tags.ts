@@ -15,6 +15,7 @@ export const Tags: Record<TagType, string> = {
 	flask: 'Flask',
 	flutter: 'Flutter',
 	github: 'Github',
+	go: 'Go',
 	haskell: 'Haskell',
 	html: 'HTML5',
 	http: 'HTTP',

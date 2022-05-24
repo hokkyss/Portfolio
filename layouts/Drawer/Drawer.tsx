@@ -24,7 +24,7 @@ import { useRouter } from 'next/router'
 
 import { useDrawer } from '~/hooks'
 import { paths } from '~/constants/paths'
-import { SocialMedia } from '~/layouts'
+// import { SocialMedia } from '~/layouts'
 
 export const Drawer = React.memo(function Drawer({ children }) {
 	const { isOpen, onOpen, onClose } = useDisclosure()
@@ -37,7 +37,7 @@ export const Drawer = React.memo(function Drawer({ children }) {
 				<React.Fragment>
 					<Portal>
 						<IconButton
-							position="absolute"
+							position="fixed"
 							width="16"
 							height="16"
 							right="8"
@@ -90,9 +90,9 @@ export const Drawer = React.memo(function Drawer({ children }) {
 											<Spacer />
 										</React.Fragment>
 									))}
-									<Center marginTop="4">
+									{/* <Center marginTop="4">
 										<SocialMedia />
-									</Center>
+									</Center> */}
 								</Flex>
 							</DrawerBody>
 						</DrawerContent>

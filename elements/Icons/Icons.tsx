@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Image as ChakraImage } from '@chakra-ui/react'
+import * as React from 'react'
 import { IconBaseProps, IconType } from 'react-icons'
 import {
 	FaAngular,
@@ -31,6 +32,7 @@ import {
 	SiFirebase,
 	SiFlask,
 	SiFlutter,
+	SiGo,
 	SiHaskell,
 	SiHeroku,
 	SiJinja,
@@ -81,6 +83,7 @@ export const Icons: Record<TagType, IconType> = {
 	flask: SiFlask,
 	flutter: SiFlutter,
 	github: FaGithub,
+	go: SiGo,
 	haskell: SiHaskell,
 	html: FaHtml5,
 	http: VscCode,
@@ -120,7 +123,7 @@ export const Icons: Record<TagType, IconType> = {
 	tex: SiLatex,
 	typescript: SiTypescript,
 	unity: FaUnity,
-	ubiquity: (props: IconBaseProps) => {
+	ubiquity: function (props: IconBaseProps) {
 		const { children, size, color, display, ...rest } = props
 		return (
 			<ChakraImage

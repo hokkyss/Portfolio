@@ -15,6 +15,7 @@ declare type TagType =
 	| 'flask'
 	| 'flutter'
 	| 'github'
+	| 'go'
 	| 'haskell'
 	| 'html'
 	| 'http'
