@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
-		"build": "next build",
+		"build": "cross-env CI=false next build",
 		"start": "next start",
 		"lint": "next lint",
 		"prepare": "husky install"
@@ -14,6 +14,7 @@
 		"@emotion/react": "^11",
 		"@emotion/styled": "^11",
 		"axios": "^0.26.1",
+		"cross-env": "^7.0.3",
 		"firebase": "^9.6.10",
 		"framer-motion": "^6",
 		"next": "12.1.1",
