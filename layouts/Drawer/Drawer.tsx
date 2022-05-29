@@ -38,12 +38,13 @@ export const Drawer = React.memo(function Drawer({ children }) {
 					<Portal>
 						<IconButton
 							position="fixed"
-							width="16"
-							height="16"
+							width="14"
+							height="14"
 							right="8"
 							bottom="8"
 							colorScheme="blue"
 							borderRadius="full"
+							zIndex="docked"
 							onClick={onOpen}
 							icon={<Icon as={GiHamburgerMenu} width="6" height="6" />}
 							aria-label="floating-action-menu"
