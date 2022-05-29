@@ -6,6 +6,7 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import '~/styles/globals.css'
 
 import { Layout } from '~/layouts'
+import axios from 'axios'
 
 const activeLabelStyles = {
 	transform: 'scale(0.85) translateY(-24px)',
@@ -140,6 +141,8 @@ export const theme = extendTheme({
 		yaml: '#cb171e',
 	},
 })
+
+axios.defaults.baseURL = 'http://103.161.184.2/api'
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (

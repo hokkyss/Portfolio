@@ -9,7 +9,7 @@ const ContactPage: NextPage = () => {
 	return (
 		<React.Fragment>
 			<Head>
-				<title>hokkyss · Contact</title>
+				<title>Contact · hokkyss</title>
 				<meta
 					name="description"
 					content="Contact hokkyss (Hokki Suwanda) through github, linkedin, instagram, whatsapp, and email"

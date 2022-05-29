@@ -29,7 +29,7 @@ const slide = keyframes`
   100% { transform: translate(-400px); }
 `
 
-const slideAnimation = `${slide} 2s ease-in-out infinite`
+const slideAnimation = `${slide} 2.5s ease-in-out infinite`
 
 const wave = keyframes`
 	0% { transform: rotate(-36deg); }
@@ -64,7 +64,7 @@ const Home: NextPage = () => {
 	useSafeLayoutEffect(() => {
 		const interval = setInterval(function () {
 			setNum((n) => (n + 1) % texts.length)
-		}, 2000)
+		}, 2500)
 
 		return () => clearInterval(interval)
 	}, [])
