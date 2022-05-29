@@ -35,7 +35,7 @@ const icon: Record<Socials, IconType> = {
 
 const href: Record<Socials, string> = {
 	whatsapp: 'https://wa.me/6289675463323',
-	gmail: 'mailto://hokkyss2@gmail.com',
+	gmail: 'mailto:hokkyss2@gmail.com',
 	telegram: '',
 	github: 'https://github.com/hokkyss',
 	linkedin: 'https://www.linkedin.com/in/hokkyss',
