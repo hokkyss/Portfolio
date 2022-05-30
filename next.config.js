@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-var-requires */
 
+const cache = require('./cache')
 /**
  * @see https://github.com/shadowwalker/next-pwa
  */
@@ -16,6 +17,7 @@ const nextConfig = {
 	pwa: {
 		dest: 'public',
 		disable: process.env.NODE_ENV === 'development',
+		defaultCache: cache,
 	},
 	eslint: {
 		ignoreDuringBuilds: true,
