@@ -143,6 +143,7 @@ export const theme = extendTheme({
 })
 
 axios.defaults.baseURL = 'http://103.161.184.2/api'
+// axios.defaults.baseURL = 'http://localhost:8080/api'
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
