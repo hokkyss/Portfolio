@@ -24,7 +24,7 @@ const spinAnimation = `${spin} 0.25s ease-in-out 1`
 
 export const Collapse = React.memo(function Collapse(props: CollapseProps) {
 	const { title, children } = props
-	const { isOpen, onToggle } = useDisclosure()
+	const { isOpen, onToggle } = useDisclosure({ defaultIsOpen: true })
 
 	return (
 		<React.Fragment>

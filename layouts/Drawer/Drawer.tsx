@@ -71,7 +71,7 @@ export const Drawer = React.memo(function Drawer({ children }) {
 									<Divider />
 									{Object.values(paths).map(({ path, name }) => (
 										<React.Fragment key={path}>
-											<Box textAlign="center">
+											<Box textAlign="center" onClick={onClose}>
 												<LinkBox>
 													<NextLink href={path} passHref>
 														<LinkOverlay>

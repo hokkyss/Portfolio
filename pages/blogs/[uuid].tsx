@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { NextPage } from 'next'
-import Head from 'next/head'
-import { useRouter } from 'next/router'
+// import Head from 'next/head'
+// import { useRouter } from 'next/router'
 
-import { Loading } from '~/elements'
-import Error from '~/pages/_error'
-import { FetchBlog } from '~/api/swr'
+// import { Loading } from '~/elements'
+// import Error from '~/pages/_error'
+// import { FetchBlog } from '~/api/swr'
 import { UnderDevelopment } from '~/modules'
 
 const BlogContent: NextPage = () => {
