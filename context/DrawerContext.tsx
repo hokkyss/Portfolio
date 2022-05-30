@@ -7,7 +7,7 @@ export const DrawerContext = React.createContext<boolean>(false)
 export const DrawerProvider = React.memo(function DrawerProvider({ children }) {
 	const breakpoint = useBreakpointValue({
 		base: true,
-		xs: true,
+		xs: false,
 		sm: false,
 		md: false,
 		lg: false,

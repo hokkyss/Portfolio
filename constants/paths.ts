@@ -5,8 +5,9 @@ export const specificProjectPath = {
 }
 
 export const paths = {
-	home: { path: '/', name: 'About' },
-	skills: { path: '/skills', name: 'Skills' },
+	home: { path: '/', name: 'Home' },
+	skills: { path: '/about', name: 'About' },
 	projects: { path: '/projects', name: 'Projects' },
 	blogs: { path: '/blogs', name: 'Blogs' },
+	contacts: { path: '/contact', name: 'Contact' },
 }
