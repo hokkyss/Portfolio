@@ -5,6 +5,7 @@ import Head from 'next/head'
 import { Collapse, Tag } from '~/elements'
 import { Box, Container, ContainerProps, Heading } from '@chakra-ui/react'
 import { useBreakpointValue } from '~/hooks'
+import { UnderDevelopment } from '~/modules'
 
 const skills: {
 	databases: TagType[]
@@ -63,6 +64,7 @@ const Skills: NextPage = () => {
 					<Heading marginBottom="4" className="tagged" textAlign="center">
 						About Me
 					</Heading>
+					<UnderDevelopment />
 				</Box>
 				<Box width="full" flexDirection="column">
 					<Heading marginBottom="4" textAlign="center" className="tagged">
