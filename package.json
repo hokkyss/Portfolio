@@ -3,10 +3,10 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev",
-		"build": "cross-env CI=false next build",
-		"start": "next start",
-		"lint": "next lint",
+		"dev": "cross-env next dev",
+		"build": "cross-env next build",
+		"start": "cross-env next start",
+		"lint": "cross-env next lint --no-cache",
 		"prepare": "husky install"
 	},
 	"dependencies": {
