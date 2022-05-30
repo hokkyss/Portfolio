@@ -14,8 +14,8 @@ type Breakpoints = 'base' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
  * @description `xl` 80em
  * @description `2xl` 96em
  */
-export const useBreakpoint = () => useChakraBreakpoint('sm') as Breakpoints
+export const useBreakpoint = () => useChakraBreakpoint('md') as Breakpoints
 
 export const useBreakpointValue = <T>(
 	values: T[] | Partial<Record<Breakpoints, T>>
-) => useChakraBreakpointValue(values, 'sm') as T
+) => useChakraBreakpointValue(values, 'md') as T
