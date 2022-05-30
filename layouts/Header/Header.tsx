@@ -15,7 +15,6 @@ import * as React from 'react'
 
 import { paths } from '~/constants/paths'
 import { useDrawer } from '~/hooks'
-import { SocialMedia } from '~/layouts'
 
 const navHeight = '72px'
 
@@ -56,7 +55,6 @@ export const Header = React.memo(function Header({ children }) {
 						))}
 					</HStack>
 					<Spacer />
-					<SocialMedia />
 				</Flex>
 			)}
 			<Box height={drawer ? '100vh' : `calc(100vh - ${navHeight})`}>

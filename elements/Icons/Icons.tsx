@@ -1,4 +1,8 @@
-import { IconType } from 'react-icons'
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Image as ChakraImage } from '@chakra-ui/react'
+import * as React from 'react'
+import { IconBaseProps, IconType } from 'react-icons'
 import {
 	FaAngular,
 	FaCss3,
@@ -28,6 +32,7 @@ import {
 	SiFirebase,
 	SiFlask,
 	SiFlutter,
+	SiGo,
 	SiHaskell,
 	SiHeroku,
 	SiJinja,
@@ -78,6 +83,7 @@ export const Icons: Record<TagType, IconType> = {
 	flask: SiFlask,
 	flutter: SiFlutter,
 	github: FaGithub,
+	go: SiGo,
 	haskell: SiHaskell,
 	html: FaHtml5,
 	http: VscCode,
@@ -117,6 +123,23 @@ export const Icons: Record<TagType, IconType> = {
 	tex: SiLatex,
 	typescript: SiTypescript,
 	unity: FaUnity,
+	ubiquity: function (props: IconBaseProps) {
+		const { children, size, color, display, ...rest } = props
+		return (
+			<ChakraImage
+				boxSize={size ?? '1em'}
+				display="inline-block"
+				lineHeight="1em"
+				flexShrink={0}
+				color={color ?? 'currentcolor'}
+				verticalAlign="top"
+				marginInlineEnd="0.5em"
+				src="icons/Ubiquity.png"
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				{...(rest as any)}
+			/>
+		)
+	},
 	vue: FaVuejs,
 	xml: VscCode,
 	yaml: VscCode,

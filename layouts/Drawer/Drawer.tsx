@@ -24,7 +24,7 @@ import { useRouter } from 'next/router'
 
 import { useDrawer } from '~/hooks'
 import { paths } from '~/constants/paths'
-import { SocialMedia } from '~/layouts'
+// import { SocialMedia } from '~/layouts'
 
 export const Drawer = React.memo(function Drawer({ children }) {
 	const { isOpen, onOpen, onClose } = useDisclosure()
@@ -37,13 +37,14 @@ export const Drawer = React.memo(function Drawer({ children }) {
 				<React.Fragment>
 					<Portal>
 						<IconButton
-							position="absolute"
-							width="16"
-							height="16"
+							position="fixed"
+							width="14"
+							height="14"
 							right="8"
 							bottom="8"
 							colorScheme="blue"
 							borderRadius="full"
+							zIndex="docked"
 							onClick={onOpen}
 							icon={<Icon as={GiHamburgerMenu} width="6" height="6" />}
 							aria-label="floating-action-menu"
@@ -70,7 +71,7 @@ export const Drawer = React.memo(function Drawer({ children }) {
 									<Divider />
 									{Object.values(paths).map(({ path, name }) => (
 										<React.Fragment key={path}>
-											<Box textAlign="center">
+											<Box textAlign="center" onClick={onClose}>
 												<LinkBox>
 													<NextLink href={path} passHref>
 														<LinkOverlay>
@@ -90,9 +91,9 @@ export const Drawer = React.memo(function Drawer({ children }) {
 											<Spacer />
 										</React.Fragment>
 									))}
-									<Center marginTop="4">
+									{/* <Center marginTop="4">
 										<SocialMedia />
-									</Center>
+									</Center> */}
 								</Flex>
 							</DrawerBody>
 						</DrawerContent>
