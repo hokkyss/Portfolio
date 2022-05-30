@@ -15,7 +15,7 @@ const nextConfig = {
 	},
 	pwa: {
 		dest: 'public',
-		disable: true /* process.env.NODE_ENV === 'development' */,
+		disable: process.env.NODE_ENV === 'development',
 	},
 	eslint: {
 		ignoreDuringBuilds: true,
