@@ -25,7 +25,8 @@ const texts = ['software engineer', 'student', 'weeb']
 
 const slide = keyframes`
   0% { transform: translate(-400px); }
-  50% { transform: translate(0px); }
+	30% { transform: translate(0px); }
+	70% { transform: translate(0px); }
   100% { transform: translate(-400px); }
 `
 
