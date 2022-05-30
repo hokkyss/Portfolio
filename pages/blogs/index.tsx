@@ -11,8 +11,8 @@ const Blog: NextPage = () => {
 	const { blogs, blogsError, blogsLoaded, blogsLoading, blogsMutate } =
 		FetchBlogs()
 
+	return <UnderDevelopment />
 	if (blogsError) return <Error statusCode={500} />
-	// return <UnderDevelopment />
 
 	return (
 		<React.Fragment>
