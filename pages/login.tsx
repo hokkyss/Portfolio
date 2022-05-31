@@ -20,13 +20,13 @@ import {
 import { FcGoogle } from 'react-icons/fc'
 import { GoSignOut } from 'react-icons/go'
 
-import { app } from '~/utils/firebase'
+import { firebaseApp } from '~/utils/firebase'
 import { paths } from '~/constants/paths'
 import { FormControl } from '~/elements'
 import { useRouter } from 'next/router'
 import Error from './_error'
 
-const auth = getAuth(app)
+const auth = getAuth(firebaseApp)
 
 const provider = new GoogleAuthProvider()
 provider.addScope('https://www.googleapis.com/auth/user.birthday.read')

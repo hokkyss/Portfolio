@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { Flex } from '@chakra-ui/react'
 
 import { /* BlogCardSkeleton, BlogCard, */ UnderDevelopment } from '~/modules'
-// import { FetchBlogs } from '~/api/swr'
+import { FetchBlogs } from '~/api/swr'
 // import Error from '../_error'
 
 const Blog: NextPage = () => {
