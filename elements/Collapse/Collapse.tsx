@@ -2,6 +2,7 @@ import * as React from 'react'
 import {
 	Button,
 	Collapse as ChakraCollapse,
+	forwardRef,
 	Icon,
 	keyframes,
 	useDisclosure,
@@ -22,14 +23,16 @@ const spin = keyframes`
 `
 const spinAnimation = `${spin} 0.25s ease-in-out 1`
 
-export const Collapse = React.memo(function Collapse(props: CollapseProps) {
+export const Collapse = forwardRef<CollapseProps, 'div'>(function Collapse(
+	props,
+	ref
+) {
 	const { title, children } = props
 	const { isOpen, onToggle } = useDisclosure({ defaultIsOpen: true })
 
 	return (
 		<React.Fragment>
 			<Button
-				as="div"
 				onClick={onToggle}
 				py="2"
 				px="2"
@@ -47,7 +50,7 @@ export const Collapse = React.memo(function Collapse(props: CollapseProps) {
 			>
 				{title}
 			</Button>
-			<ChakraCollapse in={isOpen} animateOpacity>
+			<ChakraCollapse in={isOpen} animateOpacity aria-expanded={isOpen}>
 				<Card
 					px="2"
 					py="2"
