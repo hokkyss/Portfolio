@@ -3,28 +3,23 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 
 import { Collapse, Tag } from '~/elements'
-import { Box, Container, ContainerProps, Heading } from '@chakra-ui/react'
+import { Box, Container, ContainerProps, Heading, Text } from '@chakra-ui/react'
 import { useBreakpointValue } from '~/hooks'
 import { UnderDevelopment } from '~/modules'
 
-const skills: {
-	databases: TagType[]
-	frameworks: TagType[]
-	languages: TagType[]
-} = {
+const skills: Skill = {
 	databases: ['mysql', 'postgresql', 'mariadb'],
 	frameworks: [
-		'react',
-		'express',
 		'nodejs',
-		'flask',
-		'django',
-		'firebase',
+		'express',
+		'react',
 		'nextjs',
-		'prisma',
-		'flutter',
 		'tailwindcss',
 		'chakra',
+		'flask',
+		'django',
+		'prisma',
+		'flutter',
 	],
 	languages: [
 		'c++',
@@ -38,6 +33,7 @@ const skills: {
 		'php',
 		'go',
 	],
+	others: ['firebase'],
 }
 
 const Skills: NextPage = () => {
@@ -55,16 +51,26 @@ const Skills: NextPage = () => {
 				/>
 			</Head>
 			<Container
-				gap="4"
-				maxWidth="container.xl"
+				gap="8"
+				maxWidth="container.lg"
 				centerContent
 				flexDirection={flexDirection}
+				padding="8"
 			>
 				<Box width="full">
 					<Heading marginBottom="4" className="tagged" textAlign="center">
-						About Me
+						Me &amp; Myself
 					</Heading>
-					<UnderDevelopment />
+					<Text fontSize="lg" fontFamily="body">
+						Hi! I&apos;m Hokki Suwanda. I&apos;m a Fullstack Software Engineer
+						from Indonesia. I currently am a penultimate student majoring in
+						Informatics/Computer Science in Bandung Institute of Technology.
+					</Text>
+					<Text fontSize="lg" fontFamily="body" marginTop="6">
+						Very excited to learn new technologies and frameworks. An organized
+						and well managed person. Confident in my time management, teamwork,
+						and professional capabilities. Have used quite lot of tech stacks.
+					</Text>
 				</Box>
 				<Box width="full" flexDirection="column">
 					<Heading marginBottom="4" textAlign="center" className="tagged">
@@ -82,6 +88,11 @@ const Skills: NextPage = () => {
 					</Collapse>
 					<Collapse title="Databases">
 						{skills.databases.map((d) => (
+							<Tag key={d} tag={d} />
+						))}
+					</Collapse>
+					<Collapse title="Others">
+						{skills.others.map((d) => (
 							<Tag key={d} tag={d} />
 						))}
 					</Collapse>
