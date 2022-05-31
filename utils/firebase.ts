@@ -3,7 +3,7 @@ import { DocumentData, FirestoreDataConverter } from 'firebase/firestore'
 
 import firebaseConfig from 'firebase-config.json'
 
-export const app = initializeApp(firebaseConfig)
+export const firebaseApp = initializeApp(firebaseConfig)
 
 export const makeConverter = <
 	T extends Record<string, unknown>

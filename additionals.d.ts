@@ -92,4 +92,11 @@ declare type Skill = {
 	databases: TagType[]
 	frameworks: TagType[]
 	languages: TagType[]
+	others: TagType[]
+}
+
+declare namespace NodeJS {
+	interface ProcessEnv {
+		NEXT_PUBLIC_API_URL: string
+	}
 }
