@@ -18,16 +18,13 @@ class MyDocument extends Document {
 		return (
 			<Html>
 				<Head>
-					<meta name="application-name" content="hokkyss - Portfolio" />
+					<meta name="application-name" content="hokkyss" />
 					<meta name="apple-mobile-web-app-capable" content="yes" />
 					<meta
 						name="apple-mobile-web-app-status-bar-style"
 						content="default"
 					/>
-					<meta
-						name="apple-mobile-web-app-title"
-						content="hokkyss - Portfolio"
-					/>
+					<meta name="apple-mobile-web-app-title" content="hokkyss" />
 					<meta name="description" content="Created by Hokki Suwanda" />
 					{/* <meta name="format-detection" content="telephone=no" /> */}
 					<meta name="mobile-web-app-capable" content="yes" />
@@ -82,10 +79,10 @@ class MyDocument extends Document {
 
 					{/* <meta name="twitter:card" content="summary" />
 					<meta name="twitter:url" content="https://twitter.com/hokkisuwanda" />
-					<meta name="twitter:title" content="hokkyss - Portfolio" />
+					<meta name="twitter:title" content="hokkyss" />
 					<meta
 						name="twitter:description"
-						content="Best Hokki Suwanda - Portfolio in the world"
+						content="Best Hokki Suwanda in the world"
 					/>
 					<meta
 						name="twitter:image"
@@ -93,9 +90,9 @@ class MyDocument extends Document {
 					/>
 					<meta name="twitter:creator" content="@DavidWShadow" />
 					<meta property="og:type" content="website" />
-					<meta property="og:title" content="hokkyss - Portfolio" />
-					<meta property="og:description" content="Best Hokki Suwanda - Portfolio in the world" />
-					<meta property="og:site_name" content="hokkyss - Portfolio" />
+					<meta property="og:title" content="hokkyss" />
+					<meta property="og:description" content="Best Hokki Suwanda in the world" />
+					<meta property="og:site_name" content="hokkyss" />
 					<meta property="og:url" content="https://yourdomain.com" />
 					<meta
 						property="og:image"

@@ -2,11 +2,12 @@ import * as React from 'react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import axios from 'axios'
 
 import '~/styles/globals.css'
 
 import { Layout } from '~/layouts'
-import axios from 'axios'
+import '~/utils/firebase'
 
 const activeLabelStyles = {
 	transform: 'scale(0.85) translateY(-24px)',
@@ -147,7 +148,6 @@ axios.defaults.baseURL = 'http://103.161.184.2/api'
 // axios.defaults.baseURL = 'http://localhost:8080/api'
 
 function MyApp({ Component, pageProps }: AppProps) {
-	process.env
 	return (
 		<React.Fragment>
 			<Head>
