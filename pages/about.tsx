@@ -44,7 +44,7 @@ const Skills: NextPage = () => {
 	return (
 		<React.Fragment>
 			<Head>
-				<title>About · hokkyss</title>
+				<title>About · Hokki Suwanda</title>
 				<meta
 					name="description"
 					content="An undergraduate student full of enthusiasm and motivation with problem solving capabilities. Very excited to learn something new. Always fulfilling all responsibilities heartfully. Currently a penultimate Informatics/Computer Science student in Bandung Institute of Technology. Pursuing career as a software engineer. Used quite lot of tech stacks."
@@ -52,7 +52,7 @@ const Skills: NextPage = () => {
 			</Head>
 			<Container
 				gap="8"
-				maxWidth="container.lg"
+				maxWidth="container.xl"
 				centerContent
 				flexDirection={flexDirection}
 				padding="8"
