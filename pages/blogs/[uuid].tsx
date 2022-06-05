@@ -28,7 +28,7 @@ const BlogContent: NextPage = () => {
 	// return (
 	// 	<React.Fragment>
 	// 		<Head>
-	// 			<title>{blog.title} · hokkyss</title>
+	// 			<title>{blog.title} · Hokki Suwanda</title>
 	// 			<meta name="description" content={blog.subtitle} />
 	// 		</Head>
 	// 		{blog.uuid}

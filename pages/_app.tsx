@@ -1,18 +1,12 @@
 import * as React from 'react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import {
-	ChakraProvider,
-	extendTheme,
-	useSafeLayoutEffect,
-} from '@chakra-ui/react'
+import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 
 import '~/styles/globals.css'
 
 import { Layout } from '~/layouts'
 import axios from 'axios'
-import { getAuth, signInAnonymously } from 'firebase/auth'
-import { firebaseApp } from '~/utils/firebase'
 
 const activeLabelStyles = {
 	transform: 'scale(0.85) translateY(-24px)',
@@ -148,8 +142,8 @@ export const theme = extendTheme({
 	},
 })
 
-axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL
-// axios.defaults.baseURL = 'http://103.161.184.2/api'
+// axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL
+axios.defaults.baseURL = 'http://103.161.184.2/api'
 // axios.defaults.baseURL = 'http://localhost:8080/api'
 
 function MyApp({ Component, pageProps }: AppProps) {

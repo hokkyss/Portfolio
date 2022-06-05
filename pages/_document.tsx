@@ -28,7 +28,7 @@ class MyDocument extends Document {
 						name="apple-mobile-web-app-title"
 						content="hokkyss - Portfolio"
 					/>
-					<meta name="description" content="Created by hokkyss" />
+					<meta name="description" content="Created by Hokki Suwanda" />
 					{/* <meta name="format-detection" content="telephone=no" /> */}
 					<meta name="mobile-web-app-capable" content="yes" />
 					{/* <meta
@@ -85,7 +85,7 @@ class MyDocument extends Document {
 					<meta name="twitter:title" content="hokkyss - Portfolio" />
 					<meta
 						name="twitter:description"
-						content="Best hokkyss - Portfolio in the world"
+						content="Best Hokki Suwanda - Portfolio in the world"
 					/>
 					<meta
 						name="twitter:image"
@@ -94,7 +94,7 @@ class MyDocument extends Document {
 					<meta name="twitter:creator" content="@DavidWShadow" />
 					<meta property="og:type" content="website" />
 					<meta property="og:title" content="hokkyss - Portfolio" />
-					<meta property="og:description" content="Best hokkyss - Portfolio in the world" />
+					<meta property="og:description" content="Best Hokki Suwanda - Portfolio in the world" />
 					<meta property="og:site_name" content="hokkyss - Portfolio" />
 					<meta property="og:url" content="https://yourdomain.com" />
 					<meta
