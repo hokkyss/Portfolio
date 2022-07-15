@@ -143,9 +143,7 @@ export const theme = extendTheme({
 	},
 })
 
-// axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL
-axios.defaults.baseURL = 'http://103.161.184.2/api'
-// axios.defaults.baseURL = 'http://localhost:8080/api'
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
