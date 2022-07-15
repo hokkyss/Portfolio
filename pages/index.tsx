@@ -6,7 +6,7 @@ import {
 	Center,
 	CenterProps,
 	Flex,
-	Image as ChakraImage,
+	Img as ChakraImage,
 	ImageProps,
 	Text,
 	keyframes,
@@ -92,7 +92,7 @@ const Home: NextPage = () => {
 					src="me.png"
 					title="Hokki Suwanda"
 					boxSize={boxSize}
-					fallback={<Avatar margin="4" width={boxSize} height={boxSize} />}
+					// fallback={<Avatar margin="4" width={boxSize} height={boxSize} />}
 					margin="4"
 				/>
 				<Flex

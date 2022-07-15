@@ -60,6 +60,11 @@ declare type TagType =
 	| 'xml'
 	| 'yaml'
 
+type Tags = {
+	id: string
+	name: TagType
+}
+
 type BlogContent = { text: string } & (
 	| {
 			type: 'text'
@@ -80,12 +85,34 @@ type BlogContent = { text: string } & (
 )
 
 declare type Blog = {
-	uuid: string
+	id: string
+	slug: string
 	title: string
 	subtitle: string
-	createdAt: string
-	tags: TagType[]
+	tags: Tags[]
 	contents: BlogContent[]
+	createdAt: Date
+	updatedAt: Date
+}
+
+declare type ProjectThumbnail = {
+	link: string
+	sequence: number
+}
+
+declare type Project = {
+	id: string
+	slug: string
+	title: string
+	description: string
+	type: 'WEB' | 'MOBILE' | 'BACKEND'
+	link: string
+	role: string
+	tags: Tags[]
+	thumbnails: ProjectThumbnail[]
+
+	createdAt: Date
+	updatedAt: Date
 }
 
 declare type Skill = {
@@ -98,5 +125,6 @@ declare type Skill = {
 declare namespace NodeJS {
 	interface ProcessEnv {
 		NEXT_PUBLIC_API_URL: string
+		NEXT_PUBLIC_ALLOW_LOGIN?: string
 	}
 }
