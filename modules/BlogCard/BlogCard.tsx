@@ -35,10 +35,8 @@ export const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 	return (
 		<Card
 			textAlign="justify"
-			as="article"
-			margin="2"
 			_hover={{ textColor: 'teal.300' }}
-			borderTopColor={blog.tags[0]}
+			borderTopColor={blog.tags[0].name}
 			borderTopWidth="thick"
 		>
 			<Flex align="center">
@@ -50,7 +48,7 @@ export const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 			<Spacer height="4" />
 			<Heading as="h3" size="md" noOfLines={2}>
 				<NextLink
-					href={{ pathname: specificBlogPath.path, query: { uuid: blog.uuid } }}
+					href={{ pathname: specificBlogPath.path, query: { uuid: blog.id } }}
 					passHref
 				>
 					<LinkOverlay>{blog.title}</LinkOverlay>
@@ -61,7 +59,7 @@ export const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 				{blog.subtitle}
 			</Text>
 			{blog.tags.map((tag) => (
-				<Tag tag={tag} key={tag} />
+				<Tag tag={tag.name} key={tag.id} />
 			))}
 		</Card>
 	)

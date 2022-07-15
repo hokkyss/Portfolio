@@ -23,8 +23,11 @@ const months = [
 	'Dec',
 ]
 
-export const formatDate = (isostring: string): string => {
-	const date = new Date(isostring)
+export const formatDate = (isostringOrDate: string | Date): string => {
+	const date =
+		typeof isostringOrDate === 'string'
+			? new Date(isostringOrDate)
+			: isostringOrDate
 
 	return `${days[date.getDay()]}, ${
 		months[date.getMonth()]

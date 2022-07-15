@@ -12,7 +12,10 @@ export const Card = forwardRef<BoxProps, 'div'>(function Card(props, ref) {
 			transitionDelay="0s"
 			transitionDuration="0.15s"
 			transitionTimingFunction="linear"
+			overflow="hidden"
+			as="article"
 			// width="sm"
+			m="2"
 			style={{ width: '22rem' }}
 			{...props}
 		/>
