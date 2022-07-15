@@ -4,8 +4,11 @@ import {
 	GoogleAuthProvider,
 	signOut,
 	signInWithEmailAndPassword,
+	signInWithPopup,
+	browserPopupRedirectResolver,
+	signInWithCredential,
 } from 'firebase/auth'
-import { NextPage } from 'next'
+import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next'
 import Head from 'next/head'
 import NextLink from 'next/link'
 import {
@@ -18,13 +21,14 @@ import {
 	useToast,
 } from '@chakra-ui/react'
 import { FcGoogle } from 'react-icons/fc'
-import { GoSignOut } from 'react-icons/go'
+import { GoMail, GoSignOut } from 'react-icons/go'
 
 import { firebaseApp } from '~/utils/firebase'
 import { paths } from '~/constants/paths'
 import { FormControl } from '~/elements'
 import { useRouter } from 'next/router'
-import Error from './_error'
+import Error from '../_error'
+import { canLogin } from '~/utils/canLogin'
 
 const auth = getAuth(firebaseApp)
 
@@ -35,7 +39,9 @@ provider.addScope('https://www.googleapis.com/auth/userinfo.email')
 // provider.addScope('https://www.googleapis.com/auth/calendar.events')
 // provider.addScope('https://www.googleapis.com/auth/youtube.readonly')
 
-const Login: NextPage = () => {
+const Login: NextPage<
+	InferGetServerSidePropsType<typeof getServerSideProps>
+> = () => {
 	const router = useRouter()
 	const toast = useToast({
 		position: 'bottom-right',
@@ -47,9 +53,12 @@ const Login: NextPage = () => {
 	const [email, setEmail] = React.useState('')
 	const [password, setPassword] = React.useState('')
 
-	const loginWithFirebase = React.useCallback(() => {
+	const loginWithEmail = React.useCallback(() => {
 		signInWithEmailAndPassword(auth, email, password)
-			.then(() => toast({ title: 'Logged in successfully' }))
+			.then((credential) => credential.user.getIdToken())
+			.then((token) =>
+				toast({ title: 'Logged in successfully', description: token })
+			)
 			.then(() => router.replace('/'))
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [email, password, toast])
@@ -61,19 +70,19 @@ const Login: NextPage = () => {
 
 	const onChangePassword: React.ChangeEventHandler<HTMLInputElement> =
 		React.useCallback((e) => setPassword(e.target.value), [])
-	// const loginWithGoogle = React.useCallback(() => {
-	// 	signInWithPopup(auth, provider, browserPopupRedirectResolver).then(
-	// 		(result) => {
-	// 			const credential = GoogleAuthProvider.credentialFromResult(result)
 
-	// 			if (!credential) return
-	// 			signInWithCredential(auth, credential)
-	// 		}
-	// 	)
-	// }, [])
+	const loginWithGoogle = React.useCallback(() => {
+		signInWithPopup(auth, provider, browserPopupRedirectResolver).then(
+			(result) => {
+				const credential = GoogleAuthProvider.credentialFromResult(result)
+
+				if (!credential) return
+				signInWithCredential(auth, credential)
+			}
+		)
+	}, [])
+
 	const logoutFromGoogle = React.useCallback(() => signOut(auth), [])
-
-	return <Error statusCode={404} />
 
 	return (
 		<React.Fragment>
@@ -139,7 +148,12 @@ const Login: NextPage = () => {
 					</Button>
 				</Box> */}
 				<Box m="2">
-					<Button leftIcon={<FcGoogle />} onClick={loginWithFirebase}>
+					<Button leftIcon={<GoMail />} onClick={loginWithEmail}>
+						<Text>Sign in</Text>
+					</Button>
+				</Box>
+				<Box m="2">
+					<Button leftIcon={<FcGoogle />} onClick={loginWithGoogle}>
 						<Text>Sign in with Google</Text>
 					</Button>
 				</Box>
@@ -155,6 +169,18 @@ const Login: NextPage = () => {
 			</Box>
 		</React.Fragment>
 	)
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	if (!canLogin()) {
+		return {
+			notFound: true,
+		}
+	}
+
+	return {
+		props: {},
+	}
 }
 
 export default Login
