@@ -13,7 +13,7 @@
 		"@chakra-ui/react": "^1.8.8",
 		"@emotion/react": "^11",
 		"@emotion/styled": "^11",
-		"axios": "^0.26.1",
+		"axios": "^0.27.2",
 		"cross-env": "^7.0.3",
 		"firebase": "^9.9.0",
 		"framer-motion": "^6",
