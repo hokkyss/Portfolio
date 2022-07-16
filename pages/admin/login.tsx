@@ -171,7 +171,9 @@ const Login: NextPage<
 	)
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps<
+	Record<string, unknown>
+> = async (context) => {
 	if (!canLogin()) {
 		return {
 			notFound: true,
