@@ -62,7 +62,7 @@ export const ProjectCard = React.memo(function ProjectCard({
 					<NextLink
 						href={{
 							pathname: specificProjectPath.path,
-							query: { id: project.id },
+							query: { id: project.slug },
 						}}
 						passHref
 					>

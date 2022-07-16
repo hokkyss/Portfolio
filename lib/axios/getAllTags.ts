@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-export const getAllProjects = async () =>
+export const getAllTags = () =>
 	axios
-		.get<Project[]>('/api/projects', {
+		.get<Tags[]>('/api/tags', {
 			headers: {
 				'Content-Type': 'application/json',
 			},

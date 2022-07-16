@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-export const getOneProject = async (id: string) =>
+export const getOneBlog = (id: string) =>
 	axios
-		.get<Project>(`/api/projects/${id}`, {
+		.get<Blog>(`/api/blogs/${id}`, {
 			headers: {
 				'Content-Type': 'application/json',
 			},
