@@ -11,24 +11,20 @@ export const underDevelopment: Blog = {
 			name: 'nginx',
 		},
 		{
-			id: '607049df-7248-47d7-8580-9d0789bda411',
-			name: 'go',
-		},
-		{
-			id: '3ec6e945-1d4a-4cd2-8cbc-1b3d38485539',
-			name: 'firebase',
-		},
-		{
-			id: 'c9e32a65-65df-4f16-b4b6-c2252e1cd59b',
-			name: 'postgresql',
+			id: '607049df-7248-47d7-8580-9d0789bda410',
+			name: 'nextjs',
 		},
 		{
 			id: '91e29011-663d-489b-af4d-ebd774afb911',
 			name: 'react',
 		},
 		{
-			id: '607049df-7248-47d7-8580-9d0789bda410',
-			name: 'nextjs',
+			id: '607049df-7248-47d7-8580-9d0789bda411',
+			name: 'go',
+		},
+		{
+			id: 'c9e32a65-65df-4f16-b4b6-c2252e1cd59b',
+			name: 'postgresql',
 		},
 	],
 	contents: [],
