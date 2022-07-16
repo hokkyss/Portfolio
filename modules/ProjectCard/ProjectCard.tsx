@@ -11,8 +11,8 @@ import {
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import * as React from 'react'
-import { specificProjectPath } from '~/constants/paths'
 
+import { specificProjectPath } from '~/constants/paths'
 import { Card } from '~/elements'
 
 type ProjectCardProps = {
@@ -62,7 +62,7 @@ export const ProjectCard = React.memo(function ProjectCard({
 					<NextLink
 						href={{
 							pathname: specificProjectPath.path,
-							query: { uuid: project.id },
+							query: { id: project.id },
 						}}
 						passHref
 					>

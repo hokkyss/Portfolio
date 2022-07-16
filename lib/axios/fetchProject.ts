@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-export const getAllTags = async () =>
+export const getOneProject = async (id: string) =>
 	axios
-		.get<Tags[]>('/api/tags', {
+		.get<Project>(`/api/projects/${id}`, {
 			headers: {
 				'Content-Type': 'application/json',
 			},

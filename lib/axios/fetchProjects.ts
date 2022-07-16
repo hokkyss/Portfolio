@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const fetchProjects = async () =>
+export const getAllProjects = async () =>
 	axios
 		.get<Project[]>('/api/projects', {
 			headers: {

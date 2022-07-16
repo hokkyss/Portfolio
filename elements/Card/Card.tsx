@@ -5,10 +5,16 @@ const defaultColor: BoxProps['bgColor'][] = ['whiteAlpha.500', 'whiteAlpha.900']
 export const Card = forwardRef<
 	Omit<BoxProps, 'borderTopColor' | 'borderTopWidth'> & {
 		borderTopColor?: BoxProps['bgColor'][]
+		noBorderTop?: boolean
 	},
 	'div'
 >(function Card(props, ref) {
-	const { children, borderTopColor = defaultColor, ...rest } = props
+	const {
+		children,
+		borderTopColor = defaultColor,
+		noBorderTop = false,
+		...rest
+	} = props
 
 	return (
 		<LinkBox
@@ -19,16 +25,18 @@ export const Card = forwardRef<
 			as="article"
 			overflow="hidden"
 		>
-			<Box
-				height="2"
-				width="full"
-				bgGradient={`linear(to-r, ${(borderTopColor.length === 0
-					? defaultColor
-					: borderTopColor.length === 1
-					? borderTopColor.concat(borderTopColor)
-					: borderTopColor
-				).join(', ')})`}
-			/>
+			{!noBorderTop && (
+				<Box
+					height="2"
+					width="full"
+					bgGradient={`linear(to-r, ${(borderTopColor.length === 0
+						? defaultColor
+						: borderTopColor.length === 1
+						? borderTopColor.concat(borderTopColor)
+						: borderTopColor
+					).join(', ')})`}
+				/>
+			)}
 			<Box
 				px="6"
 				py="12"

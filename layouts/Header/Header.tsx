@@ -42,7 +42,15 @@ export const Header = React.memo(function Header({ children }) {
 										<NextLink href={path} passHref>
 											<LinkOverlay>
 												<Text
-													color={pathname === path ? 'teal.300' : 'current'}
+													color={
+														(
+															path === '/'
+																? pathname === path
+																: pathname.startsWith(path)
+														)
+															? 'teal.300'
+															: 'current'
+													}
 												>
 													{name}
 												</Text>

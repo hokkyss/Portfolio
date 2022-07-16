@@ -69,10 +69,8 @@ export const ContactCard = React.memo(function ContactCard(
 		<Card
 			textAlign="justify"
 			as="article"
-			margin="2"
 			_hover={{ textColor: 'teal.300' }}
-			borderTopColor={contact}
-			borderTopWidth="thick"
+			borderTopColor={[contact]}
 		>
 			<Heading
 				size="md"

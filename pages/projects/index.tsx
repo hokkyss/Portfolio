@@ -1,10 +1,10 @@
 import * as React from 'react'
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
-
-import { ProjectCard, UnderDevelopment } from '~/modules'
-import { fetchProjects } from '~/lib/axios'
 import Head from 'next/head'
 import { Flex } from '@chakra-ui/react'
+
+import { ProjectCard, UnderDevelopment } from '~/modules'
+import { getAllProjects } from '~/lib/axios'
 
 const ProjectList: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 	projects,
@@ -39,13 +39,13 @@ export const getStaticProps: GetStaticProps<{
 		}
 	}
 
-	const projects = await fetchProjects()
+	const projects = await getAllProjects()
 
 	return {
 		props: {
 			projects: projects,
 		},
-		revalidate: process.env.NODE_ENV === 'development' ? 10 : 12 * 60 * 60, // 10 seconds or 12 hours
+		revalidate: 12 * 60 * 60, // 10 seconds or 12 hours
 	}
 }
 
