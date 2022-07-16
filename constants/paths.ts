@@ -1,6 +1,6 @@
-export const specificBlogPath = { path: '/blogs/[uuid]', name: 'Blog Detail' }
+export const specificBlogPath = { path: '/blogs/[id]', name: 'Blog Detail' }
 export const specificProjectPath = {
-	path: '/projects/[uuid]',
+	path: '/projects/[id]',
 	name: 'Project Detail',
 }
 
