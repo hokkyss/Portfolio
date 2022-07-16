@@ -4,7 +4,7 @@ export const underDevelopment: Blog = {
 	updatedAt: new Date('2022-07-15T00:00:00.000Z'),
 	slug: 'under-development',
 	title: 'Under Development',
-	subtitle: 'Sorry! This section is under development',
+	subtitle: 'Sorry! This section is under development.',
 	tags: [
 		{
 			id: '92072422-6c18-4c03-9f2a-092d7e3bb874',
