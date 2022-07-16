@@ -1,12 +1,14 @@
 import { LinkBox, BoxProps, forwardRef, Box } from '@chakra-ui/react'
 
+const defaultColor: BoxProps['bgColor'][] = ['whiteAlpha.500', 'whiteAlpha.900']
+
 export const Card = forwardRef<
 	Omit<BoxProps, 'borderTopColor' | 'borderTopWidth'> & {
-		borderTopColor: BoxProps['bgColor'][]
+		borderTopColor?: BoxProps['bgColor'][]
 	},
 	'div'
 >(function Card(props, ref) {
-	const { children, borderTopColor, ...rest } = props
+	const { children, borderTopColor = defaultColor, ...rest } = props
 
 	return (
 		<LinkBox
@@ -20,7 +22,12 @@ export const Card = forwardRef<
 			<Box
 				height="2"
 				width="full"
-				bgGradient={`linear(to-r, ${borderTopColor.join(', ')})`}
+				bgGradient={`linear(to-r, ${(borderTopColor.length === 0
+					? defaultColor
+					: borderTopColor.length === 1
+					? borderTopColor.concat(borderTopColor)
+					: borderTopColor
+				).join(', ')})`}
 			/>
 			<Box
 				px="6"

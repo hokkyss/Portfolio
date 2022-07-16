@@ -20,7 +20,7 @@ type BlogCardProps = {
 
 export const BlogCardSkeleton = React.memo(function BlogCardSkeleton() {
 	return (
-		<Card borderTopColor={['whiteAlpha.500', 'whiteAlpha.900']}>
+		<Card>
 			<SkeletonText noOfLines={1} skeletonHeight="4" w="36" />
 			<Spacer height="6" />
 			<SkeletonText noOfLines={2} skeletonHeight="5" />
