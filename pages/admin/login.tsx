@@ -11,6 +11,7 @@ import {
 import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next'
 import Head from 'next/head'
 import NextLink from 'next/link'
+import { useRouter } from 'next/router'
 import {
 	Button,
 	Text,
@@ -26,8 +27,6 @@ import { GoMail, GoSignOut } from 'react-icons/go'
 import { firebaseApp } from '~/utils/firebase'
 import { paths } from '~/constants/paths'
 import { FormControl } from '~/elements'
-import { useRouter } from 'next/router'
-import Error from '../_error'
 import { canLogin } from '~/utils/canLogin'
 
 const auth = getAuth(firebaseApp)
@@ -171,7 +170,9 @@ const Login: NextPage<
 	)
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps<
+	Record<string, unknown>
+> = async (context) => {
 	if (!canLogin()) {
 		return {
 			notFound: true,

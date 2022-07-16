@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-export const fetchTags = async () =>
+export const getOneBlog = (id: string) =>
 	axios
-		.get<Tags[]>('/api/tags', {
+		.get<Blog>(`/api/blogs/${id}`, {
 			headers: {
 				'Content-Type': 'application/json',
 			},
