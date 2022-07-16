@@ -46,7 +46,11 @@ export const getStaticProps: GetStaticProps<
 	},
 	{ id: string }
 > = async (context) => {
-	if (!context.params || !context.params.id) {
+	if (
+		!context.params ||
+		!context.params.id ||
+		process.env.NODE_ENV !== 'development'
+	) {
 		return {
 			notFound: true,
 		}
