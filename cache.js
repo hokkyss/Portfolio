@@ -110,7 +110,7 @@ module.exports = [
 			cacheName: 'next-data',
 			expiration: {
 				maxEntries: 32,
-				maxAgeSeconds: 12 * 60 * 60, // 12 hours
+				maxAgeSeconds: 24 * 60 * 60, // 24 hours
 			},
 		},
 	},

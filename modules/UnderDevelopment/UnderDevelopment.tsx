@@ -11,12 +11,7 @@ export const UnderDevelopment = React.memo(function UnderDevelopment() {
 			<Head>
 				<title>Under Development · Hokki Suwanda</title>
 			</Head>
-			<Flex
-				direction="row"
-				wrap="wrap"
-				justifyContent="center"
-				alignItems="flex-start"
-			>
+			<Flex direction="row" wrap="wrap" justifyContent="center">
 				<BlogCard blog={underDevelopment} />
 			</Flex>
 		</React.Fragment>

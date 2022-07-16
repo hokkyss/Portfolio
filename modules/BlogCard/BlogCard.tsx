@@ -1,7 +1,6 @@
 import {
 	Flex,
 	Heading,
-	HStack,
 	LinkOverlay,
 	SkeletonText,
 	Spacer,
@@ -11,7 +10,7 @@ import NextLink from 'next/link'
 import * as React from 'react'
 
 import { specificBlogPath } from '~/constants/paths'
-import { Card, Tag, TagSkeleton } from '~/elements'
+import { Card, Tag } from '~/elements'
 import { formatDate } from '~/utils/date'
 
 type BlogCardProps = {
@@ -20,17 +19,12 @@ type BlogCardProps = {
 
 export const BlogCardSkeleton = React.memo(function BlogCardSkeleton() {
 	return (
-		<Card>
+		<Card margin="2" borderTopWidth="thick" borderTopColor="transparent">
 			<SkeletonText noOfLines={1} skeletonHeight="4" w="36" />
 			<Spacer height="6" />
 			<SkeletonText noOfLines={2} skeletonHeight="5" />
 			<Spacer height="5" />
-			<SkeletonText noOfLines={1} skeletonHeight="4" />
-			<Spacer height="5" />
-			<HStack>
-				<TagSkeleton />
-				<TagSkeleton />
-			</HStack>
+			<SkeletonText noOfLines={2} skeletonHeight="4" />
 		</Card>
 	)
 })
@@ -42,7 +36,8 @@ export const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 		<Card
 			textAlign="justify"
 			_hover={{ textColor: 'teal.300' }}
-			borderTopColor={blog.tags.map((t) => t.name)}
+			borderTopColor={blog.tags[0].name}
+			borderTopWidth="thick"
 		>
 			<Flex align="center">
 				<Text fontSize="sm" color="gray.500">
@@ -53,7 +48,7 @@ export const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 			<Spacer height="4" />
 			<Heading as="h3" size="md" noOfLines={2}>
 				<NextLink
-					href={{ pathname: specificBlogPath.path, query: { id: blog.id } }}
+					href={{ pathname: specificBlogPath.path, query: { uuid: blog.id } }}
 					passHref
 				>
 					<LinkOverlay>{blog.title}</LinkOverlay>

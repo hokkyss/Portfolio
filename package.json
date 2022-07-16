@@ -1,6 +1,6 @@
 {
 	"name": "hokkkyss-portfolio",
-	"version": "1.0.0",
+	"version": "0.1.0",
 	"private": true,
 	"scripts": {
 		"dev": "cross-env next dev",
@@ -68,7 +68,7 @@
 			"prettier/prettier": "error",
 			"camelcase": "error",
 			"no-console": "error",
-			"no-unused-vars": "off",
+			"no-unused-vars": "warn",
 			"no-unused-labels": "warn",
 			"no-else-return": "warn",
 			"no-alert": "error",

@@ -1,12 +1,5 @@
 import * as React from 'react'
-import {
-	Skeleton,
-	SkeletonCircle,
-	SkeletonText,
-	Tag as ChakraTag,
-	TagLabel,
-	TagLeftIcon,
-} from '@chakra-ui/react'
+import { Tag as ChakraTag, TagLabel, TagLeftIcon } from '@chakra-ui/react'
 
 import { Icons } from '~/elements'
 import { Tags } from '~/constants/tags'
@@ -14,10 +7,6 @@ import { Tags } from '~/constants/tags'
 type TagProps = {
 	tag: TagType
 }
-
-export const TagSkeleton = React.memo(function TagSkeleton() {
-	return <Skeleton m="0.5" height="6" w="20" rounded="6px" />
-})
 
 export const Tag = React.memo(function Tag(props: TagProps) {
 	const { tag } = props

@@ -1,5 +1,1 @@
-export * from './getAllBlogs'
-export * from './getAllProjects'
-export * from './getAllTags'
-export * from './getOneBlog'
-export * from './getOneProject'
+export * from './fetchProjects'

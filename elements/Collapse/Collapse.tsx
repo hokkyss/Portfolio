@@ -57,7 +57,6 @@ export const Collapse = forwardRef<CollapseProps, 'div'>(function Collapse(
 					width="full"
 					backgroundColor="blackAlpha.500"
 					style={{}}
-					noBorderTop
 				>
 					{children}
 				</Card>

@@ -11,8 +11,8 @@ import {
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import * as React from 'react'
-
 import { specificProjectPath } from '~/constants/paths'
+
 import { Card } from '~/elements'
 
 type ProjectCardProps = {
@@ -42,11 +42,7 @@ export const ProjectCard = React.memo(function ProjectCard({
 	}, [project, off, on])
 
 	return (
-		<Card
-			p={0}
-			_hover={{ textColor: 'teal.300' }}
-			borderTopColor={project.tags.map((t) => t.name)}
-		>
+		<Card p={0} _hover={{ textColor: 'teal.300' }}>
 			<Fade in={fade}>
 				<ChakraImage
 					src={project.thumbnails[thumbnailIndex].link}
@@ -62,7 +58,7 @@ export const ProjectCard = React.memo(function ProjectCard({
 					<NextLink
 						href={{
 							pathname: specificProjectPath.path,
-							query: { id: project.slug },
+							query: { uuid: project.id },
 						}}
 						passHref
 					>
