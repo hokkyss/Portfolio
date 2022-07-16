@@ -53,7 +53,7 @@ export const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 			<Spacer height="4" />
 			<Heading as="h3" size="md" noOfLines={2}>
 				<NextLink
-					href={{ pathname: specificBlogPath.path, query: { uuid: blog.id } }}
+					href={{ pathname: specificBlogPath.path, query: { id: blog.id } }}
 					passHref
 				>
 					<LinkOverlay>{blog.title}</LinkOverlay>
