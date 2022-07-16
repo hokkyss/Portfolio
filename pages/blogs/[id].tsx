@@ -5,6 +5,7 @@ import {
 	InferGetStaticPropsType,
 	NextPage,
 } from 'next'
+
 import { UnderDevelopment } from '~/modules'
 import { getAllBlogs, getOneBlog } from '~/lib/axios'
 
