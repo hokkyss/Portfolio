@@ -2,6 +2,7 @@ import { NextApiHandler } from 'next'
 import admin from 'firebase-admin'
 
 import { canLogin } from '~/utils/canLogin'
+import { getServiceAccount } from '~/lib/axios'
 
 type ApiResponse = {
 	detail: string
@@ -37,13 +38,15 @@ const handler: NextApiHandler<ApiResponse> = async (req, res) => {
 		return res.status(401).json({ detail: 'Unauthorized' })
 	}
 
-	const app = admin.initializeApp({
-		credential: admin.credential.cert({
-			clientEmail: process.env.NEXT_PUBLIC_FIREBASE_ADMIN_CLIENT_EMAIL,
-			privateKey: process.env.NEXT_PUBLIC_FIREBASE_ADMIN_PRIVATE_KEY,
-			projectId: process.env.NEXT_PUBLIC_FIREBASE_ADMIN_PROJECT_ID,
-		}),
-	})
+	const credential = await getServiceAccount(idToken)
+	let app: admin.app.App
+	if (admin.apps.length === 0) {
+		app = admin.initializeApp({
+			credential: admin.credential.cert(credential as admin.ServiceAccount),
+		})
+	} else {
+		app = admin.app()
+	}
 
 	try {
 		const decodedIdToken = await app.auth().verifyIdToken(idToken)
@@ -68,7 +71,7 @@ const handler: NextApiHandler<ApiResponse> = async (req, res) => {
 	try {
 		await res.revalidate(revalidating)
 		return res.status(200).json({ detail: 'OK' })
-	} catch {
+	} catch (e) {
 		return res.status(500).json({ detail: 'Internal Server Error' })
 	}
 }
