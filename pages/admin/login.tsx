@@ -28,6 +28,7 @@ import { firebaseApp } from '~/utils/firebase'
 import { paths } from '~/constants/paths'
 import { FormControl } from '~/elements'
 import { canLogin } from '~/utils/canLogin'
+import axios from 'axios'
 
 const auth = getAuth(firebaseApp)
 
@@ -55,8 +56,8 @@ const Login: NextPage<
 	const loginWithEmail = React.useCallback(() => {
 		signInWithEmailAndPassword(auth, email, password)
 			.then((credential) => credential.user.getIdToken())
-			.then((token) =>
-				toast({ title: 'Logged in successfully', description: token })
+			.then((idToken) =>
+				toast({ title: 'Logged in successfully', description: idToken })
 			)
 			.then(() => router.replace('/'))
 		// eslint-disable-next-line react-hooks/exhaustive-deps
