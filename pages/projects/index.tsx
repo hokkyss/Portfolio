@@ -31,21 +31,19 @@ const ProjectList: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 export const getStaticProps: GetStaticProps<{
 	projects: Project[]
 }> = async (context) => {
-	if (process.env.NODE_ENV !== 'development') {
+	try {
+		const projects = await getAllProjects()
+
 		return {
 			props: {
-				projects: [],
+				projects: projects,
 			},
+			revalidate: 12 * 60 * 60, // 10 seconds or 12 hours
 		}
-	}
-
-	const projects = await getAllProjects()
-
-	return {
-		props: {
-			projects: projects,
-		},
-		revalidate: 12 * 60 * 60, // 10 seconds or 12 hours
+	} catch {
+		return {
+			notFound: true,
+		}
 	}
 }
 

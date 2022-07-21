@@ -24,11 +24,10 @@ import {
 import { FcGoogle } from 'react-icons/fc'
 import { GoMail, GoSignOut } from 'react-icons/go'
 
-import { firebaseApp } from '~/utils/firebase'
 import { paths } from '~/constants/paths'
 import { FormControl } from '~/elements'
 import { canLogin } from '~/utils/canLogin'
-import axios from 'axios'
+import { firebaseApp } from '~/utils/firebase'
 
 const auth = getAuth(firebaseApp)
 

@@ -1,3 +1,10 @@
+declare namespace NodeJS {
+	interface ProcessEnv {
+		NEXT_PUBLIC_API_URL: string
+		NEXT_PUBLIC_ALLOW_LOGIN?: string
+	}
+}
+
 declare type TagType =
 	| 'angular'
 	| 'c'
@@ -120,11 +127,4 @@ declare type Skill = {
 	frameworks: TagType[]
 	languages: TagType[]
 	others: TagType[]
-}
-
-declare namespace NodeJS {
-	interface ProcessEnv {
-		NEXT_PUBLIC_API_URL: string
-		NEXT_PUBLIC_ALLOW_LOGIN?: string
-	}
 }
