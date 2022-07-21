@@ -6,30 +6,55 @@ import {
 	NextPage,
 } from 'next'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
+import { useSafeLayoutEffect } from '@chakra-ui/react'
 
-import { UnderDevelopment } from '~/modules'
 import { getAllProjects, getOneProject } from '~/lib/axios'
+import { Loading } from '~/elements'
+import { DEFAULT_TIMEOUT } from '~/constants/time'
+import { HttpError, HttpStatus } from '~/utils/error'
 
 const ProjectDetail: NextPage<
 	InferGetStaticPropsType<typeof getStaticProps>
 > = ({ project }) => {
 	const router = useRouter()
+	const [loading, setLoading] = React.useState(true)
 
-	if (router.isFallback) {
-		return <UnderDevelopment />
+	useSafeLayoutEffect(() => {
+		if (router.isFallback) {
+			const timeout = setTimeout(function () {
+				setLoading(false)
+			}, DEFAULT_TIMEOUT)
+
+			return () => clearTimeout(timeout)
+		}
+	}, [router.isFallback])
+
+	if (router.isFallback && !loading) {
+		throw new HttpError(HttpStatus.REQUEST_TIMEOUT)
 	}
 
-	return <UnderDevelopment />
+	if (router.isFallback && loading) {
+		return (
+			<React.Fragment>
+				<Head>
+					<title>Loading · Hokki Suwanda</title>
+				</Head>
+				<Loading />
+			</React.Fragment>
+		)
+	}
+
+	return (
+		<React.Fragment>
+			<Head>
+				<title>{project.title} · Hokki Suwanda</title>
+			</Head>
+		</React.Fragment>
+	)
 }
 
 export const getStaticPaths: GetStaticPaths = async (context) => {
-	if (process.env.NODE_ENV !== 'development') {
-		return {
-			fallback: true,
-			paths: [],
-		}
-	}
-
 	const projects = await getAllProjects()
 
 	return {

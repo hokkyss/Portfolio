@@ -8,6 +8,9 @@ import '~/styles/globals.css'
 
 import { Layout } from '~/layouts'
 import '~/utils/firebase'
+import { DEFAULT_TIMEOUT } from '~/constants/time'
+import { ErrorBoundary } from '~/elements'
+import Error from './_error'
 
 const activeLabelStyles = {
 	transform: 'scale(0.85) translateY(-24px)',
@@ -144,6 +147,7 @@ export const theme = extendTheme({
 })
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL
+axios.defaults.timeout = DEFAULT_TIMEOUT
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
@@ -153,7 +157,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 			</Head>
 			<ChakraProvider theme={theme}>
 				<Layout>
-					<Component {...pageProps} />
+					<ErrorBoundary>
+						<Component {...pageProps} />
+					</ErrorBoundary>
 				</Layout>
 			</ChakraProvider>
 		</React.Fragment>
