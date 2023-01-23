@@ -34,12 +34,12 @@ const icon: Record<Socials, IconType> = {
 }
 
 const href: Record<Socials, string> = {
-	whatsapp: 'https://wa.me/6289675463323',
-	gmail: 'mailto:hokkyss2@gmail.com',
+	whatsapp: 'https://link.hokkyss.com/whatsapp',
+	gmail: 'https://link.hokkyss.com/mail-me',
 	telegram: '',
-	github: 'https://github.com/hokkyss',
-	linkedin: 'https://www.linkedin.com/in/hokkyss',
-	instagram: 'https://www.instagram.com/hokkyss/',
+	github: 'https://link.hokkyss.com/github',
+	linkedin: 'https://link.hokkyss.com/linkedin',
+	instagram: 'https://link.hokkyss.com/ig',
 }
 
 const title: Record<Socials, string> = {
