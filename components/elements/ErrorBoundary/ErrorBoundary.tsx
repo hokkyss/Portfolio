@@ -2,7 +2,9 @@ import * as React from 'react'
 
 import Error from '~/pages/_error'
 
-export class ErrorBoundary extends React.Component {
+export class ErrorBoundary extends React.Component<{
+	children: React.ReactNode
+}> {
 	state: Readonly<{ hasError: boolean; error: unknown }> = {
 		hasError: false,
 		error: null,
