@@ -26,7 +26,9 @@ import { useDrawer } from '~/hooks'
 import { paths } from '~/constants/paths'
 // import { SocialMedia } from '~/layouts'
 
-export const Drawer = React.memo(function Drawer({ children }) {
+export const Drawer = React.memo<React.PropsWithChildren>(function Drawer({
+	children,
+}) {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const drawer = useDrawer()
 	const { pathname } = useRouter()
