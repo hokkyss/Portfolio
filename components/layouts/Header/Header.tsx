@@ -18,7 +18,9 @@ import { useDrawer } from '~/hooks'
 
 const navHeight = '72px'
 
-export const Header = React.memo(function Header({ children }) {
+export const Header = React.memo<React.PropsWithChildren>(function Header({
+	children,
+}) {
 	const drawer = useDrawer()
 	const { pathname } = useRouter()
 

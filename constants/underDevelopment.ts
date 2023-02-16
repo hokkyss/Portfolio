@@ -27,5 +27,5 @@ export const underDevelopment: Blog = {
 			name: 'postgresql',
 		},
 	],
-	contents: [],
+	markdown: '',
 }
