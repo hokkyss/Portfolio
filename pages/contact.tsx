@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 import * as React from 'react'
 
-import { ContactCard } from '~/modules'
+import { ContactCard } from '~/components/modules'
 
 const ContactPage: NextPage = () => {
 	return (

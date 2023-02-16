@@ -7,34 +7,17 @@ import {
 } from 'next'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import { useSafeLayoutEffect } from '@chakra-ui/react'
 
-import { getAllProjects, getOneProject } from '~/lib/axios'
-import { Loading } from '~/elements'
-import { DEFAULT_TIMEOUT } from '~/constants/time'
-import { HttpError, HttpStatus } from '~/utils/error'
+import { getAllProjects, getOneProject } from '~/lib'
+import { Loading } from '~/components/elements'
+import { Time } from '~/constants/time'
 
 const ProjectDetail: NextPage<
 	InferGetStaticPropsType<typeof getStaticProps>
 > = ({ project }) => {
 	const router = useRouter()
-	const [loading, setLoading] = React.useState(true)
 
-	useSafeLayoutEffect(() => {
-		if (router.isFallback) {
-			const timeout = setTimeout(function () {
-				setLoading(false)
-			}, DEFAULT_TIMEOUT)
-
-			return () => clearTimeout(timeout)
-		}
-	}, [router.isFallback])
-
-	if (router.isFallback && !loading) {
-		throw new HttpError(HttpStatus.REQUEST_TIMEOUT)
-	}
-
-	if (router.isFallback && loading) {
+	if (router.isFallback) {
 		return (
 			<React.Fragment>
 				<Head>
@@ -83,7 +66,7 @@ export const getStaticProps: GetStaticProps<
 		props: {
 			project: project,
 		},
-		revalidate: 12 * 60 * 60, // 12 hours
+		revalidate: 12 * Time.HOUR, // 12 hours
 	}
 }
 

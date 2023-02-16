@@ -2,10 +2,9 @@ import * as React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import { Collapse, Tag } from '~/elements'
+import { Collapse, Tag } from '~/components/elements'
 import { Box, Container, ContainerProps, Heading, Text } from '@chakra-ui/react'
 import { useBreakpointValue } from '~/hooks'
-import { UnderDevelopment } from '~/modules'
 
 const skills: Skill = {
 	databases: ['mysql', 'postgresql', 'mariadb'],
@@ -41,6 +40,7 @@ const Skills: NextPage = () => {
 		base: 'column',
 		md: 'row',
 	})
+
 	return (
 		<React.Fragment>
 			<Head>
@@ -77,24 +77,24 @@ const Skills: NextPage = () => {
 						My Skills
 					</Heading>
 					<Collapse title="Programming Languages">
-						{skills.languages.map((l) => (
+						{/* {skills.languages.map((l) => (
 							<Tag key={l} tag={l} />
-						))}
+						))} */}
 					</Collapse>
 					<Collapse title="Frameworks and Libraries">
-						{skills.frameworks.map((f) => (
+						{/* {skills.frameworks.map((f) => (
 							<Tag key={f} tag={f} />
-						))}
+						))} */}
 					</Collapse>
 					<Collapse title="Databases">
-						{skills.databases.map((d) => (
+						{/* {skills.databases.map((d) => (
 							<Tag key={d} tag={d} />
-						))}
+						))} */}
 					</Collapse>
 					<Collapse title="Others">
-						{skills.others.map((d) => (
+						{/* {skills.others.map((d) => (
 							<Tag key={d} tag={d} />
-						))}
+						))} */}
 					</Collapse>
 				</Box>
 			</Container>

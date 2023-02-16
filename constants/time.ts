@@ -5,5 +5,3 @@ export enum Time {
 	HOUR = 60 * MINUTE,
 	DAY = 24 * HOUR,
 }
-
-export const DEFAULT_TIMEOUT = 3 * Time.SECOND

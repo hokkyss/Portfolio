@@ -74,10 +74,6 @@ const Home: NextPage = () => {
 		<React.Fragment>
 			<Head>
 				<title>hokkyss · Hokki Suwanda</title>
-				<meta
-					name="description"
-					content="I'm Hokki Suwanda, a fullstack software engineer. I am an informatics penultimate student in Bandung Institute of Technology. An undergraduate student full of enthusiasm and motivation with problem solving capabilities. Very excited to learn something new. Always fulfilling all responsibilities heartfully. Currently a penultimate Informatics/Computer Science student in Bandung Institute of Technology. Pursuing career as a software engineer. Used quite lot of tech stacks."
-				/>
 			</Head>
 			<Center
 				width="full"

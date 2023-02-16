@@ -3,8 +3,9 @@ import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import Head from 'next/head'
 import { Flex } from '@chakra-ui/react'
 
-import { ProjectCard, UnderDevelopment } from '~/modules'
-import { getAllProjects } from '~/lib/axios'
+import { ProjectCard, UnderDevelopment } from '~/components/modules'
+import { getAllProjects } from '~/lib'
+import { Time } from '~/constants/time'
 
 const ProjectList: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 	projects,
@@ -38,7 +39,7 @@ export const getStaticProps: GetStaticProps<{
 			props: {
 				projects: projects,
 			},
-			revalidate: 12 * 60 * 60, // 10 seconds or 12 hours
+			revalidate: 12 * Time.HOUR, // 10 seconds or 12 hours
 		}
 	} catch {
 		return {

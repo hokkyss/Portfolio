@@ -13,19 +13,20 @@
 		"@chakra-ui/react": "^1.8.8",
 		"@emotion/react": "^11",
 		"@emotion/styled": "^11",
+		"@next/font": "^13.1.6",
 		"axios": "^0.27.2",
 		"cross-env": "^7.0.3",
-		"firebase": "^9.9.0",
-		"firebase-admin": "^11.0.0",
 		"framer-motion": "^6",
-		"next": "^12.2.2",
-		"next-pwa": "^5.5.4",
+		"next": "12.3.4",
+		"next-pwa": "^5.6.0",
 		"react": "17.0.2",
 		"react-dom": "17.0.2",
 		"react-icons": "^4.3.1",
+		"react-query": "^3.39.3",
 		"uuid": "^8.3.2"
 	},
 	"devDependencies": {
+		"@types/next-pwa": "^5.6.2",
 		"@types/node": "18.0.4",
 		"@types/react": "17.0.43",
 		"@types/react-dom": "17.0.14",
@@ -83,6 +84,6 @@
 		}
 	},
 	"lint-staged": {
-		"*.ts(x)?": "eslint --ext .ts --ext .tsx"
+		"*.ts(x)?": "lint"
 	}
 }
