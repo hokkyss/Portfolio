@@ -2,15 +2,11 @@ import * as React from 'react'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
-import axios from 'axios'
 
 import '~/styles/globals.css'
 
-import { Layout } from '~/layouts'
-import '~/utils/firebase'
-import { DEFAULT_TIMEOUT } from '~/constants/time'
-import { ErrorBoundary } from '~/elements'
-import Error from './_error'
+import { Layout } from '~/components/layouts'
+import { ErrorBoundary } from '~/components/elements'
 
 const activeLabelStyles = {
 	transform: 'scale(0.85) translateY(-24px)',
@@ -145,9 +141,6 @@ export const theme = extendTheme({
 		yaml: '#cb171e',
 	},
 })
-
-axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL
-axios.defaults.timeout = DEFAULT_TIMEOUT
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (

@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/google-font-display */
 import Document, {
 	DocumentContext,
 	Html,
@@ -18,6 +17,10 @@ class MyDocument extends Document {
 		return (
 			<Html>
 				<Head>
+					<meta
+						name="description"
+						content="I'm Hokki Suwanda (hokkyss), a fullstack software engineer. I am an informatics penultimate student in Bandung Institute of Technology. An undergraduate student full of enthusiasm and motivation with problem solving capabilities. Very excited to learn something new. Always fulfilling all responsibilities heartfully. Currently a penultimate Informatics/Computer Science student in Bandung Institute of Technology. Pursuing career as a software engineer. Used quite lot of tech stacks."
+					/>
 					<meta name="application-name" content="hokkyss" />
 					<meta name="apple-mobile-web-app-capable" content="yes" />
 					<meta
@@ -25,18 +28,16 @@ class MyDocument extends Document {
 						content="default"
 					/>
 					<meta name="apple-mobile-web-app-title" content="hokkyss" />
-					<meta name="description" content="Created by Hokki Suwanda" />
 					{/* <meta name="format-detection" content="telephone=no" /> */}
 					<meta name="mobile-web-app-capable" content="yes" />
 					{/* <meta
 						name="msapplication-config"
-						content="/icons/browserconfig.xml"
+						content="/browserconfig.xml"
 					/> */}
 					<meta name="msapplication-TileColor" content="#2B5797" />
 					<meta name="msapplication-tap-highlight" content="no" />
 					<meta name="theme-color" content="#000000" />
-
-					<link rel="apple-touch-icon" href="/icons/touch-icon-iphone.png" />
+					<link rel="apple-touch-icon" href="/touch-icon-iphone.png" />
 					<link
 						rel="apple-touch-icon"
 						sizes="152x152"
@@ -52,7 +53,6 @@ class MyDocument extends Document {
 						sizes="167x167"
 						href="/apple-touch-icon.png"
 					/>
-
 					<link
 						rel="icon"
 						type="image/png"
@@ -68,36 +68,34 @@ class MyDocument extends Document {
 					<link rel="manifest" href="/manifest.json" />
 					{/* <link
 						rel="mask-icon"
-						href="/icons/safari-pinned-tab.svg"
+						href="/safari-pinned-tab.svg"
 						color="#5bbad5"
 					/> */}
 					<link rel="shortcut icon" href="/favicon.ico" />
-					<link
-						rel="stylesheet"
-						href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
-					/>
-
-					{/* <meta name="twitter:card" content="summary" />
+					<meta name="twitter:card" content="summary" />
 					<meta name="twitter:url" content="https://twitter.com/hokkisuwanda" />
 					<meta name="twitter:title" content="hokkyss" />
 					<meta
 						name="twitter:description"
-						content="Best Hokki Suwanda in the world"
+						content="I'm Hokki Suwanda (hokkyss), a fullstack software engineer. I am an informatics penultimate student in Bandung Institute of Technology. An undergraduate student full of enthusiasm and motivation with problem solving capabilities. Very excited to learn something new. Always fulfilling all responsibilities heartfully. Currently a penultimate Informatics/Computer Science student in Bandung Institute of Technology. Pursuing career as a software engineer. Used quite lot of tech stacks."
 					/>
 					<meta
 						name="twitter:image"
-						content="https://yourdomain.com/icons/android-chrome-192x192.png"
+						content="https://i-am.hokkyss.com/android-chrome-192x192.png"
 					/>
-					<meta name="twitter:creator" content="@DavidWShadow" />
+					<meta name="twitter:creator" content="@hokkyss" />
 					<meta property="og:type" content="website" />
-					<meta property="og:title" content="hokkyss" />
-					<meta property="og:description" content="Best Hokki Suwanda in the world" />
+					<meta property="og:title" content="hokkyss | Hokki Suwanda" />
+					<meta
+						property="og:description"
+						content="I'm Hokki Suwanda (hokkyss), a fullstack software engineer. I am an informatics penultimate student in Bandung Institute of Technology. An undergraduate student full of enthusiasm and motivation with problem solving capabilities. Very excited to learn something new. Always fulfilling all responsibilities heartfully. Currently a penultimate Informatics/Computer Science student in Bandung Institute of Technology. Pursuing career as a software engineer. Used quite lot of tech stacks."
+					/>
 					<meta property="og:site_name" content="hokkyss" />
-					<meta property="og:url" content="https://yourdomain.com" />
+					<meta property="og:url" content="https://i-am.hokkyss.com" />
 					<meta
 						property="og:image"
-						content="https://yourdomain.com/icons/apple-touch-icon.png"
-					/> */}
+						content="https://i-am.hokkyss.com/apple-touch-icon.png"
+					/>
 				</Head>
 				<body>
 					<Main />

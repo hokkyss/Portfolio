@@ -3,5 +3,6 @@
 	"files.autoSave": "onFocusChange",
 	"editorconfig.generateAuto": true,
 	"prettier.endOfLine": "auto",
-	"editor.tabSize": 2
+	"editor.tabSize": 2,
+	"dotenv.enableAutocloaking": false
 }
