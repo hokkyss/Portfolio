@@ -22,9 +22,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 	return (
 		<ErrorBoundary>
-			<Head>
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
 			<FirebaseAppProvider firebaseApp={firebaseApp}>
 				<FirestoreProvider sdk={getFirestore(firebaseApp)}>
 					<StorageProvider sdk={getStorage(firebaseApp)}>

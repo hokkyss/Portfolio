@@ -5,7 +5,11 @@ export const TagSkeleton = React.memo(function TagSkeleton() {
 	return <Skeleton m="0.5" height="6" w="20" rounded="6px" />
 })
 
-export const Tag = React.memo(function Tag() {
+type TagProps = {
+	tag: string
+}
+
+export const Tag = React.memo<TagProps>(function Tag({ tag }) {
 	return (
 		<ChakraTag
 			variant="subtle"

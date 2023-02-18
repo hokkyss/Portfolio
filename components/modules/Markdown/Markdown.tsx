@@ -13,12 +13,19 @@ import {
 	Text,
 	UnorderedList,
 } from '@chakra-ui/react'
+import remarkGemoji from 'remark-gemoji'
+import remarkEmoji from 'remark-emoji'
 
 export const Markdown = React.memo<{ children: string }>(function Markdown({
 	children,
 }) {
 	return (
 		<ReactMarkdown
+			skipHtml
+			linkTarget="_blank"
+			remarkPlugins={[remarkGfm, remarkGemoji, remarkEmoji]}
+			rehypePlugins={[]}
+			remarkRehypeOptions={{}}
 			components={{
 				a: ({ children, href, className }) =>
 					href ? (
@@ -39,12 +46,14 @@ export const Markdown = React.memo<{ children: string }>(function Markdown({
 					</Text>
 				),
 				blockquote: ({ children, className }) => (
-					<Text className={className} as="blockquote">
+					<Text className={className} as="blockquote" p="2">
 						{children}
 					</Text>
 				),
 				code: ({ children, className }) => (
-					<Code className={className}>{children}</Code>
+					<Code className={className} p="2">
+						{children}
+					</Code>
 				),
 				cite: ({ children, className }) => (
 					<Text className={className} as="cite">
@@ -73,37 +82,37 @@ export const Markdown = React.memo<{ children: string }>(function Markdown({
 						<React.Fragment />
 					),
 				h1: ({ children, className }) => (
-					<Heading className={className} as="h1" size="2xl">
+					<Heading className={className} my="4" as="h1" size="2xl">
 						{children}
 					</Heading>
 				),
 				h2: ({ children, className }) => (
-					<Heading className={className} as="h2" size="xl">
+					<Heading className={className} my="4" as="h2" size="xl">
 						{children}
 					</Heading>
 				),
 				h3: ({ children, className }) => (
-					<Heading className={className} as="h3" size="lg">
+					<Heading className={className} my="4" as="h3" size="lg">
 						{children}
 					</Heading>
 				),
 				h4: ({ children, className }) => (
-					<Heading className={className} as="h4" size="md">
+					<Heading className={className} my="4" as="h4" size="md">
 						{children}
 					</Heading>
 				),
 				h5: ({ children, className }) => (
-					<Heading className={className} as="h5" size="sm">
+					<Heading className={className} my="4" as="h5" size="sm">
 						{children}
 					</Heading>
 				),
 				h6: ({ children, className }) => (
-					<Heading className={className} as="h6" size="xs">
+					<Heading className={className} my="4" as="h6" size="xs">
 						{children}
 					</Heading>
 				),
 				p: ({ children, className }) => (
-					<Text className={className} my="1" as="p">
+					<Text className={className} mb="2" as="p">
 						{children}
 					</Text>
 				),
@@ -121,10 +130,14 @@ export const Markdown = React.memo<{ children: string }>(function Markdown({
 					</Text>
 				),
 				ol: ({ children, className }) => (
-					<OrderedList className={className}>{children}</OrderedList>
+					<OrderedList spacing="2" pl="4" className={className}>
+						{children}
+					</OrderedList>
 				),
 				ul: ({ children, className }) => (
-					<UnorderedList className={className}>{children}</UnorderedList>
+					<UnorderedList spacing="2" pl="4" className={className}>
+						{children}
+					</UnorderedList>
 				),
 				li: ({ children, className }) => (
 					<ListItem className={className}>{children}</ListItem>
@@ -163,9 +176,6 @@ export const Markdown = React.memo<{ children: string }>(function Markdown({
 					</Text>
 				),
 			}}
-			remarkPlugins={[remarkGfm]}
-			linkTarget="_blank"
-			skipHtml
 		>
 			{children}
 		</ReactMarkdown>

@@ -7,8 +7,7 @@ import {
 } from 'next'
 
 import { UnderDevelopment } from '~/components/modules'
-import { getBlogs, getOneBlog } from '~/lib/common'
-import { Time } from '~/constants/time'
+import { getBlogs, getOneBlog, TimeSec } from '~/lib/common'
 
 const BlogContent: NextPage<
 	InferGetStaticPropsType<typeof getStaticProps>
@@ -57,7 +56,7 @@ export const getStaticProps: GetStaticProps<
 		props: {
 			blog: blog,
 		},
-		revalidate: 12 * Time.HOUR, // 12 hours
+		revalidate: 12 * TimeSec.HOUR, // 12 hours
 	}
 }
 
