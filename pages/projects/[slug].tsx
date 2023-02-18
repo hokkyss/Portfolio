@@ -58,6 +58,11 @@ export const getStaticProps: GetStaticProps<
 	}
 
 	const project = await getOneProject(context.params.slug)
+	if (!project) {
+		return {
+			notFound: true,
+		}
+	}
 
 	return {
 		props: {
