@@ -65,6 +65,7 @@ class MyDocument extends Document {
 						sizes="16x16"
 						href="/favicon-16x16.png"
 					/>
+					<link rel="icon" href="/favicon.ico" />
 					<link rel="manifest" href="/manifest.json" />
 					{/* <link
 						rel="mask-icon"

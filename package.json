@@ -7,7 +7,8 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint --no-cache",
-		"postinstall": "husky install"
+		"theme": "chakra-cli tokens ./utils/client/ui/theme.ts",
+		"postinstall": "yarn theme && husky install"
 	},
 	"dependencies": {
 		"@chakra-ui/react": "^2.5.1",
@@ -25,6 +26,8 @@
 		"react-icons": "^4.3.1",
 		"react-markdown": "^8.0.5",
 		"reactfire": "^4.2.2",
+		"remark-emoji": "^3.1.0",
+		"remark-gemoji": "^7.0.1",
 		"remark-gfm": "^3.0.1"
 	},
 	"devDependencies": {

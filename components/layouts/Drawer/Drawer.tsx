@@ -23,7 +23,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { useRouter } from 'next/router'
 
 import { useDrawer } from '~/hooks'
-import { paths } from '~/constants/paths'
+import { paths } from '~/lib/common'
 // import { SocialMedia } from '~/layouts'
 
 export const Drawer = React.memo<React.PropsWithChildren>(function Drawer({

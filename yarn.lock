@@ -4222,6 +4222,11 @@ emojis-list@^3.0.0:
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-3.0.0.tgz#5570662046ad29e2e916e71aae260abdff4f6a78"
   integrity sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==
 
+emoticon@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/emoticon/-/emoticon-4.0.1.tgz#2d2bbbf231ce3a5909e185bbb64a9da703a1e749"
+  integrity sha512-dqx7eA9YaqyvYtUhJwT4rC1HIp82j5ybS1/vQ42ur+jBe17dJMwZE4+gvL1XadSFfxaPFFGt3Xsw+Y8akThDlw==
+
 end-of-stream@^1.1.0, end-of-stream@^1.4.1:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/end-of-stream/-/end-of-stream-1.4.4.tgz#5ae64a5f45057baf3626ec14da0ca5e4b2431eb0"
@@ -4979,6 +4984,11 @@ gcp-metadata@^5.0.0:
   dependencies:
     gaxios "^5.0.0"
     json-bigint "^1.0.0"
+
+gemoji@^7.0.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/gemoji/-/gemoji-7.1.0.tgz#165403777681a9690d649aabd104da037bdd7739"
+  integrity sha512-wI0YWDIfQraQMDs0yXAVQiVBZeMm/rIYssf8LZlMDdssKF19YqJKOHkv4zvwtVQTBJ0LNmErv1S+DqlVUudz8g==
 
 gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"
@@ -6303,7 +6313,7 @@ mdast-util-definitions@^5.0.0:
     "@types/unist" "^2.0.0"
     unist-util-visit "^4.0.0"
 
-mdast-util-find-and-replace@^2.0.0:
+mdast-util-find-and-replace@^2.0.0, mdast-util-find-and-replace@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/mdast-util-find-and-replace/-/mdast-util-find-and-replace-2.2.2.tgz#cc2b774f7f3630da4bd592f61966fecade8b99b1"
   integrity sha512-MTtdFRz/eMDHXzeK6W3dO7mXUlF82Gom4y0oOgvHhh/HXZAGvIQDUvQ0SuUx+j2tv44b8xTHOm8K/9OoRFnXKw==
@@ -6852,6 +6862,13 @@ next-pwa@^5.6.0:
     "@next/swc-win32-arm64-msvc" "13.1.6"
     "@next/swc-win32-ia32-msvc" "13.1.6"
     "@next/swc-win32-x64-msvc" "13.1.6"
+
+node-emoji@^1.11.0:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/node-emoji/-/node-emoji-1.11.0.tgz#69a0150e6946e2f115e9d7ea4df7971e2628301c"
+  integrity sha512-wo2DpQkQp7Sjm2A0cq+sN7EHKO6Sl0ctXeBdFZrL9T9+UywORbufTcTZxom8YqpLQt/FqNMUkOpkZrJVYSKD3A==
+  dependencies:
+    lodash "^4.17.21"
 
 node-fetch@2.6.7:
   version "2.6.7"
@@ -7614,6 +7631,25 @@ regjsparser@^0.8.2:
   integrity sha512-J3LABycON/VNEu3abOviqGHuB/LOtOQj8SKmfP9anY5GfAVw/SPjwzSjxGjbZXIxbGfqTHtJw58C2Li/WkStmA==
   dependencies:
     jsesc "~0.5.0"
+
+remark-emoji@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/remark-emoji/-/remark-emoji-3.1.0.tgz#aef28ee28d078ed1d5a9ab811ad44b695797183d"
+  integrity sha512-KmjkU04niXFMn/H+SsPAGnXhsuq0gT/neIg1KRw8vUKZ/PNxpLDGmwVzx4a14OOd5GJ8rnCdh6DKXqHySkUHAQ==
+  dependencies:
+    emoticon "^4.0.1"
+    mdast-util-find-and-replace "^2.2.2"
+    node-emoji "^1.11.0"
+
+remark-gemoji@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/remark-gemoji/-/remark-gemoji-7.0.1.tgz#42488adb9a0731dc82cdcde45f8e7bd61d795303"
+  integrity sha512-vhjuntkvYxRgM4Um6L5N7B3SrNu3eX6jNqpqAywpAvSYPbmDPNL3I5E6zWm+KPCyh3OpKRc5OPnz7SifggzePw==
+  dependencies:
+    "@types/mdast" "^3.0.0"
+    gemoji "^7.0.0"
+    unified "^10.0.0"
+    unist-util-visit "^4.0.0"
 
 remark-gfm@^3.0.1:
   version "3.0.1"

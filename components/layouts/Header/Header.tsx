@@ -12,7 +12,7 @@ import {
 import { useRouter } from 'next/router'
 import * as React from 'react'
 
-import { paths } from '~/constants/paths'
+import { paths } from '~/lib/common/constants/paths'
 import { useDrawer } from '~/hooks'
 
 const navHeight = '72px'

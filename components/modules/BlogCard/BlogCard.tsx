@@ -10,7 +10,6 @@ import {
 import NextLink from 'next/link'
 import * as React from 'react'
 
-import { specificBlogPath } from '~/constants/paths'
 import { Card, Tag, TagSkeleton } from '~/components/elements'
 import { formatDate } from '~/utils/common/date'
 
@@ -42,7 +41,7 @@ export const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 		<Card
 			textAlign="justify"
 			_hover={{ textColor: 'teal.300' }}
-			borderTopColor={blog.tags.map((t) => t.name)}
+			borderTopColor={blog.tags}
 		>
 			<Flex align="center">
 				<Text fontSize="sm" color="gray.500">
@@ -52,10 +51,7 @@ export const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 			</Flex>
 			<Spacer height="4" />
 			<Heading as="h3" size="md" noOfLines={2}>
-				<NextLink
-					href={{ pathname: specificBlogPath.path, query: { id: blog.id } }}
-					passHref
-				>
+				<NextLink href={`/blogs/${blog.slug}`} passHref>
 					<LinkOverlay>{blog.title}</LinkOverlay>
 				</NextLink>
 			</Heading>

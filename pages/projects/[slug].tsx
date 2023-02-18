@@ -8,9 +8,8 @@ import {
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
-import { getProjects, getOneProject } from '~/lib/common'
+import { getProjects, getOneProject, TimeSec } from '~/lib/common'
 import { Loading } from '~/components/elements'
-import { Time } from '~/constants/time'
 
 const ProjectDetail: NextPage<
 	InferGetStaticPropsType<typeof getStaticProps>
@@ -64,7 +63,7 @@ export const getStaticProps: GetStaticProps<
 		props: {
 			project: project,
 		},
-		revalidate: 12 * Time.HOUR, // 12 hours
+		revalidate: 12 * TimeSec.HOUR, // 12 hours
 	}
 }
 

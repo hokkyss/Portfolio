@@ -4,8 +4,7 @@ import Head from 'next/head'
 import { Flex } from '@chakra-ui/react'
 
 import { UnderDevelopment } from '~/components/modules'
-import { getBlogs } from '~/lib/common'
-import { Time } from '~/constants/time'
+import { getBlogs, TimeSec } from '~/lib/common'
 
 const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 	blogs,
@@ -16,7 +15,6 @@ const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 		<React.Fragment>
 			<Head>
 				<title>Blogs · Hokki Suwanda</title>
-				<meta name="description" content="See my content to the end!" />
 			</Head>
 			<Flex direction="row" wrap="wrap" justifyContent="center"></Flex>
 		</React.Fragment>
@@ -40,7 +38,7 @@ export const getStaticProps: GetStaticProps<{
 		props: {
 			blogs: blogs,
 		},
-		revalidate: 12 * Time.HOUR, // 10 seconds or 12 hours
+		revalidate: 12 * TimeSec.HOUR, // 10 seconds or 12 hours
 	}
 }
 
