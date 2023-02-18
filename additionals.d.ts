@@ -11,8 +11,14 @@ declare type Blog = {
 	subtitle: string
 	tags: string[]
 	markdown: string
-	createdAt: Date
-	updatedAt: Date
+	/**
+	 * ISOString format
+	 */
+	createdAt: string
+	/**
+	 * ISOString format
+	 */
+	updatedAt: string
 	writerUid: string
 }
 
@@ -25,8 +31,14 @@ declare type Project = {
 	tags: string[]
 	thumbnails: string[]
 
-	createdAt: Date
-	updatedAt: Date
+	/**
+	 * ISOString format
+	 */
+	createdAt: string
+	/**
+	 * ISOString format
+	 */
+	updatedAt: string
 }
 
 declare type Skill = {

@@ -1,7 +1,9 @@
 import { getApp, getApps, initializeApp } from 'firebase/app'
 
 export function initializeFirebaseClient() {
-	if (getApps().length > 0) return getApp()
+	if (getApps().length > 0) {
+		return getApp()
+	}
 
 	return initializeApp({
 		apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,

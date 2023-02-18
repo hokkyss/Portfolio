@@ -11,8 +11,9 @@ import {
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import * as React from 'react'
+import Link from 'next/link'
 
-import { paths } from '~/lib/common/constants/paths'
+import { paths } from '~/lib/common'
 import { useDrawer } from '~/hooks'
 
 const navHeight = '72px'
@@ -40,7 +41,7 @@ export const Header = React.memo<React.PropsWithChildren>(function Header({
 							<React.Fragment key={path}>
 								<StackItem>
 									<LinkBox _hover={{ textDecoration: 'underline' }}>
-										<LinkOverlay href={path}>
+										<LinkOverlay as={Link} href={path}>
 											<Text
 												color={
 													(

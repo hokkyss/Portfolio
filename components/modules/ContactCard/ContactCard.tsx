@@ -79,9 +79,9 @@ export const ContactCard = React.memo(function ContactCard(
 				justifyContent="center"
 			>
 				<Icon as={icon[contact]} marginRight="2" alignItems="center" />
-				<NextLink href={href[contact]} passHref>
-					<LinkOverlay target="_blank">{title[contact]}</LinkOverlay>
-				</NextLink>
+				<LinkOverlay href={href[contact]} target="_blank" as={NextLink}>
+					{title[contact]}
+				</LinkOverlay>
 			</Heading>
 			<Spacer height="4" />
 			<Text fontSize="md" noOfLines={2} color="gray.500">

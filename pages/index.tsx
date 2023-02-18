@@ -2,26 +2,31 @@ import * as React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import {
-	Avatar,
-	Center,
 	CenterProps,
-	Flex,
-	Img as ChakraImage,
 	ImageProps,
-	Text,
 	keyframes,
-	Box,
 	useSafeLayoutEffect,
 	FlexProps,
 	TextProps,
-	Icon,
 } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import { IoIosHand } from 'react-icons/io'
+import dynamic from 'next/dynamic'
 
 import { useBreakpointValue } from '~/hooks'
 
-const texts = ['software engineer', 'student', 'weeb']
+const Box = dynamic(() => import('@chakra-ui/react').then((mod) => mod.Box))
+const Center = dynamic(() =>
+	import('@chakra-ui/react').then((mod) => mod.Center)
+)
+const Flex = dynamic(() => import('@chakra-ui/react').then((mod) => mod.Flex))
+const Icon = dynamic(() => import('@chakra-ui/react').then((mod) => mod.Icon))
+const ChakraImage = dynamic(() =>
+	import('@chakra-ui/react').then((mod) => mod.Img)
+)
+const Text = dynamic(() => import('@chakra-ui/react').then((mod) => mod.Text))
+
+const texts = ['software engineer', 'student', 'motivated learner']
 
 const slide = keyframes`
   0% { transform: translate(-400px); }
@@ -30,12 +35,12 @@ const slide = keyframes`
   100% { transform: translate(-400px); }
 `
 
-const slideAnimation = `${slide} 2.5s ease-in-out infinite`
+const slideAnimation = `${slide} 2.5s ease-in-out 0.25s infinite`
 
 const wave = keyframes`
-	0% { transform: rotate(-36deg); }
-	50% { transform: rotate(36deg); }
-	100% { transform: rotate(-36deg); }
+	0% { transform: rotate(-15deg); }
+	50% { transform: rotate(15deg); }
+	100% { transform: rotate(-15deg); }
 `
 
 const waveAnimation = `${wave} 1s ease-in-out infinite`
@@ -108,7 +113,7 @@ const Home: NextPage = () => {
 					<Text as="h2" fontSize="3xl" fontWeight="600">
 						I&apos;m Hokki Suwanda, a
 					</Text>
-					<Box overflow="hidden" width="full" height="full">
+					<Box as="div" overflow="hidden" width="full" height="full">
 						<Text
 							as={motion.p}
 							animation={slideAnimation}
