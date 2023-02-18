@@ -15,11 +15,9 @@ export const SocialMedia = React.memo(function SocialMedia() {
 			{socialMedias.map(({ href, as }) => (
 				<StackItem key={href}>
 					<LinkBox height="5" width="5" _hover={{ color: 'teal.300' }}>
-						<NextLink href={href} passHref>
-							<LinkOverlay target="_blank">
-								<Icon height="5" width="5" as={as} />
-							</LinkOverlay>
-						</NextLink>
+						<LinkOverlay href={href} target="_blank" as={NextLink}>
+							<Icon height="5" width="5" as={as} />
+						</LinkOverlay>
 					</LinkBox>
 				</StackItem>
 			))}

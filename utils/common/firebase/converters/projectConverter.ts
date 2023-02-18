@@ -4,8 +4,12 @@ export const projectConverter: FirestoreDataConverter<Project> = {
 	fromFirestore(snapshot, options) {
 		const data = snapshot.data(options)
 		return {
-			createdAt: (data.createdAt as Timestamp)?.toDate() || new Date(),
-			updatedAt: (data.updatedAt as Timestamp)?.toDate() || new Date(),
+			createdAt: (
+				(data.createdAt as Timestamp)?.toDate() || new Date()
+			).toISOString(),
+			updatedAt: (
+				(data.updatedAt as Timestamp)?.toDate() || new Date()
+			).toISOString(),
 			markdown: data.markdown || '',
 			slug: data.slug || '',
 			subtitle: data.subtitle || '',
@@ -19,10 +23,10 @@ export const projectConverter: FirestoreDataConverter<Project> = {
 	toFirestore(modelObject) {
 		return {
 			createdAt: Timestamp.fromDate(
-				(modelObject.createdAt as Date) || new Date()
+				new Date((modelObject.createdAt as any) || Date.now())
 			),
 			updatedAt: Timestamp.fromDate(
-				(modelObject.updatedAt as Date) || new Date()
+				new Date((modelObject.updatedAt as any) || Date.now())
 			),
 			markdown: modelObject.markdown || '',
 			slug: modelObject.slug || '',

@@ -8,6 +8,7 @@ import {
 	Heading,
 	Img as Image,
 	Kbd,
+	LinkOverlay,
 	ListItem,
 	OrderedList,
 	Text,
@@ -29,9 +30,9 @@ export const Markdown = React.memo<{ children: string }>(function Markdown({
 			components={{
 				a: ({ children, href, className }) =>
 					href ? (
-						<Link className={className} href={href}>
+						<LinkOverlay as={Link} className={className} href={href}>
 							{children}
-						</Link>
+						</LinkOverlay>
 					) : (
 						<Text className={className}>{children}</Text>
 					),

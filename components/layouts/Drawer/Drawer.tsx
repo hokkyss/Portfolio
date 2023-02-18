@@ -75,19 +75,15 @@ export const Drawer = React.memo<React.PropsWithChildren>(function Drawer({
 										<React.Fragment key={path}>
 											<Box textAlign="center" onClick={onClose}>
 												<LinkBox>
-													<NextLink href={path} passHref>
-														<LinkOverlay>
-															<Text
-																color={
-																	path === pathname ? 'teal.300' : 'current'
-																}
-																p="2"
-															>
-																{name}
-															</Text>
-															<Divider />
-														</LinkOverlay>
-													</NextLink>
+													<LinkOverlay href={path} as={NextLink}>
+														<Text
+															color={path === pathname ? 'teal.300' : 'current'}
+															p="2"
+														>
+															{name}
+														</Text>
+														<Divider />
+													</LinkOverlay>
 												</LinkBox>
 											</Box>
 											<Spacer />

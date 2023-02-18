@@ -59,15 +59,9 @@ export const ProjectCard = React.memo(function ProjectCard({
 			</Fade>
 			<Box p="4">
 				<Heading as="h6" size="sm" noOfLines={1}>
-					<NextLink
-						href={{
-							pathname: specificProjectPath.path,
-							query: { id: project.slug },
-						}}
-						passHref
-					>
-						<LinkOverlay>{project.title}</LinkOverlay>
-					</NextLink>
+					<LinkOverlay href={`/projects/${project.slug}`} as={NextLink}>
+						{project.title}
+					</LinkOverlay>
 				</Heading>
 				<Spacer height="4" />
 				<Text fontSize="md" noOfLines={2} color="gray.500">

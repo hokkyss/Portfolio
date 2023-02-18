@@ -51,9 +51,9 @@ export const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 			</Flex>
 			<Spacer height="4" />
 			<Heading as="h3" size="md" noOfLines={2}>
-				<NextLink href={`/blogs/${blog.slug}`} passHref>
-					<LinkOverlay>{blog.title}</LinkOverlay>
-				</NextLink>
+				<LinkOverlay as={NextLink} href={`/blogs/${blog.slug}`}>
+					{blog.title}
+				</LinkOverlay>
 			</Heading>
 			<Spacer height="4" />
 			<Text fontSize="md" noOfLines={2} color="gray.500" mb="4">

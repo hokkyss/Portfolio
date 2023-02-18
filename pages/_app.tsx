@@ -1,6 +1,5 @@
 import * as React from 'react'
 import type { AppProps } from 'next/app'
-import Head from 'next/head'
 import { ChakraProvider } from '@chakra-ui/react'
 import {
 	FirebaseAppProvider,
@@ -13,7 +12,7 @@ import { getStorage } from 'firebase/storage'
 import '~/styles/globals.css'
 
 import { Layout } from '~/components/layouts'
-import { ErrorBoundary } from '~/components/elements'
+import { ErrorBoundary, Loading } from '~/components/elements'
 import { initializeFirebaseClient } from '~/utils/common'
 import { theme } from '~/utils/client'
 
@@ -27,7 +26,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 					<StorageProvider sdk={getStorage(firebaseApp)}>
 						<ChakraProvider theme={theme}>
 							<Layout>
-								<Component {...pageProps} />
+								<React.Suspense fallback={<Loading />}>
+									<Component {...pageProps} />
+								</React.Suspense>
 							</Layout>
 						</ChakraProvider>
 					</StorageProvider>
