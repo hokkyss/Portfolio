@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { Flex } from '@chakra-ui/react'
 
 import { UnderDevelopment } from '~/components/modules'
-import { getAllBlogs } from '~/lib'
+import { getBlogs } from '~/lib/common'
 import { Time } from '~/constants/time'
 
 const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
@@ -34,19 +34,13 @@ export const getStaticProps: GetStaticProps<{
 		}
 	}
 
-	try {
-		const blogs = await getAllBlogs()
+	const blogs = await getBlogs()
 
-		return {
-			props: {
-				blogs: blogs,
-			},
-			revalidate: 12 * Time.HOUR, // 10 seconds or 12 hours
-		}
-	} catch {
-		return {
-			notFound: true,
-		}
+	return {
+		props: {
+			blogs: blogs,
+		},
+		revalidate: 12 * Time.HOUR, // 10 seconds or 12 hours
 	}
 }
 

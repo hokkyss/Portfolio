@@ -9,7 +9,6 @@ import {
 	StackItem,
 	Text,
 } from '@chakra-ui/react'
-import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import * as React from 'react'
 
@@ -41,23 +40,21 @@ export const Header = React.memo<React.PropsWithChildren>(function Header({
 							<React.Fragment key={path}>
 								<StackItem>
 									<LinkBox _hover={{ textDecoration: 'underline' }}>
-										<NextLink href={path} passHref>
-											<LinkOverlay>
-												<Text
-													color={
-														(
-															path === '/'
-																? pathname === path
-																: pathname.startsWith(path)
-														)
-															? 'teal.300'
-															: 'current'
-													}
-												>
-													{name}
-												</Text>
-											</LinkOverlay>
-										</NextLink>
+										<LinkOverlay href={path}>
+											<Text
+												color={
+													(
+														path === '/'
+															? pathname === path
+															: pathname.startsWith(path)
+													)
+														? 'teal.300'
+														: 'current'
+												}
+											>
+												{name}
+											</Text>
+										</LinkOverlay>
 									</LinkBox>
 								</StackItem>
 								<StackDivider />

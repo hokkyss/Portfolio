@@ -5,31 +5,24 @@ declare namespace NodeJS {
 	}
 }
 
-type Tags = {
-	id: string
-	name: string
-}
-
 declare type Blog = {
-	id: string
 	slug: string
 	title: string
 	subtitle: string
-	tags: Tags[]
+	tags: string[]
 	markdown: string
 	createdAt: Date
 	updatedAt: Date
+	writerUid: string
 }
 
 declare type Project = {
-	id: string
 	slug: string
 	title: string
+	subtitle: string
 	markdown: string
-	type: 'WEB' | 'MOBILE' | 'BACKEND'
 	link: string
-	role: string
-	tags: Tags[]
+	tags: string[]
 	thumbnails: string[]
 
 	createdAt: Date

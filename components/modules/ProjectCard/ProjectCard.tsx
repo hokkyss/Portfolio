@@ -45,7 +45,7 @@ export const ProjectCard = React.memo(function ProjectCard({
 		<Card
 			p={0}
 			_hover={{ textColor: 'teal.300' }}
-			borderTopColor={project.tags.map((t) => t.name)}
+			borderTopColor={project.tags}
 		>
 			<Fade in={fade}>
 				<ChakraImage
