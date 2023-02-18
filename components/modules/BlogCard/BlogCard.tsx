@@ -12,7 +12,7 @@ import * as React from 'react'
 
 import { specificBlogPath } from '~/constants/paths'
 import { Card, Tag, TagSkeleton } from '~/components/elements'
-import { formatDate } from '~/utils/date'
+import { formatDate } from '~/utils/common/date'
 
 type BlogCardProps = {
 	blog: Blog

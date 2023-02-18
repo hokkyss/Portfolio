@@ -8,7 +8,7 @@ import {
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
-import { getAllProjects, getOneProject } from '~/lib'
+import { getProjects, getOneProject } from '~/lib/common'
 import { Loading } from '~/components/elements'
 import { Time } from '~/constants/time'
 
@@ -38,13 +38,11 @@ const ProjectDetail: NextPage<
 }
 
 export const getStaticPaths: GetStaticPaths = async (context) => {
-	const projects = await getAllProjects()
+	const projects = await getProjects()
 
 	return {
 		fallback: true,
-		paths: projects
-			.map((p) => ({ params: { id: p.id } }))
-			.concat(projects.map((p) => ({ params: { id: p.slug } }))),
+		paths: projects.map((p) => ({ params: { slug: p.slug } })),
 	}
 }
 
@@ -52,15 +50,15 @@ export const getStaticProps: GetStaticProps<
 	{
 		project: Project
 	},
-	{ id: string }
+	{ slug: string }
 > = async (context) => {
-	if (!context.params || !context.params.id) {
+	if (!context.params || !context.params.slug) {
 		return {
 			notFound: true,
 		}
 	}
 
-	const project = await getOneProject(context.params.id)
+	const project = await getOneProject(context.params.slug)
 
 	return {
 		props: {

@@ -1,4 +1,5 @@
 export * from './BlogCard/BlogCard'
 export * from './ContactCard/ContactCard'
+export * from './Markdown/Markdown'
 export * from './ProjectCard/ProjectCard'
 export * from './UnderDevelopment/UnderDevelopment'

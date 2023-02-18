@@ -7,7 +7,7 @@ import {
 } from 'next'
 
 import { UnderDevelopment } from '~/components/modules'
-import { getAllBlogs, getOneBlog } from '~/lib'
+import { getBlogs, getOneBlog } from '~/lib/common'
 import { Time } from '~/constants/time'
 
 const BlogContent: NextPage<
@@ -16,7 +16,7 @@ const BlogContent: NextPage<
 	return <UnderDevelopment />
 }
 
-export const getStaticPaths: GetStaticPaths<{ id: string }> = async (
+export const getStaticPaths: GetStaticPaths<{ slug: string }> = async (
 	context
 ) => {
 	if (process.env.NODE_ENV !== 'development') {
@@ -26,13 +26,11 @@ export const getStaticPaths: GetStaticPaths<{ id: string }> = async (
 		}
 	}
 
-	const blogs = await getAllBlogs()
+	const blogs = await getBlogs()
 
 	return {
 		fallback: true,
-		paths: blogs
-			.map((blog) => ({ params: { id: blog.id } }))
-			.concat(blogs.map((blog) => ({ params: { id: blog.slug } }))),
+		paths: blogs.map((blog) => ({ params: { slug: blog.slug } })),
 	}
 }
 
@@ -40,15 +38,20 @@ export const getStaticProps: GetStaticProps<
 	{
 		blog: Blog
 	},
-	{ id: string }
+	{ slug: string }
 > = async (context) => {
-	if (!context.params || !context.params.id) {
+	if (!context.params || !context.params.slug) {
 		return {
 			notFound: true,
 		}
 	}
 
-	const blog = await getOneBlog(context.params.id)
+	const blog = await getOneBlog(context.params.slug)
+	if (!blog) {
+		return {
+			notFound: true,
+		}
+	}
 
 	return {
 		props: {
