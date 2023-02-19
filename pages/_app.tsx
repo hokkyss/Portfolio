@@ -26,9 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 					<StorageProvider sdk={getStorage(firebaseApp)}>
 						<ChakraProvider theme={theme}>
 							<Layout>
-								<React.Suspense fallback={<Loading />}>
-									<Component {...pageProps} />
-								</React.Suspense>
+								<Component {...pageProps} />
 							</Layout>
 						</ChakraProvider>
 					</StorageProvider>
