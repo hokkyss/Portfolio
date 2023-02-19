@@ -12,7 +12,6 @@ import {
 import NextLink from 'next/link'
 import * as React from 'react'
 
-import { specificProjectPath } from '~/lib/common'
 import { Card } from '~/components/elements'
 
 type ProjectCardProps = {
