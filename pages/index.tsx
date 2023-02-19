@@ -8,23 +8,17 @@ import {
 	useSafeLayoutEffect,
 	FlexProps,
 	TextProps,
+	Box,
+	Center,
+	Flex,
+	Icon,
+	Img as ChakraImage,
+	Text,
 } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import { IoIosHand } from 'react-icons/io'
-import dynamic from 'next/dynamic'
 
 import { useBreakpointValue } from '~/hooks'
-
-const Box = dynamic(() => import('@chakra-ui/react').then((mod) => mod.Box))
-const Center = dynamic(() =>
-	import('@chakra-ui/react').then((mod) => mod.Center)
-)
-const Flex = dynamic(() => import('@chakra-ui/react').then((mod) => mod.Flex))
-const Icon = dynamic(() => import('@chakra-ui/react').then((mod) => mod.Icon))
-const ChakraImage = dynamic(() =>
-	import('@chakra-ui/react').then((mod) => mod.Img)
-)
-const Text = dynamic(() => import('@chakra-ui/react').then((mod) => mod.Text))
 
 const texts = ['software engineer', 'student', 'motivated learner']
 
