@@ -1,5 +1,6 @@
 import { doc, getDoc, getFirestore } from 'firebase/firestore'
-import { blogConverter, initializeFirebaseClient } from '~/utils/common'
+
+import { blogConverter, initializeFirebaseClient } from '~/lib/common'
 
 export const getOneBlog = async function (slug: string) {
 	const firebaseApp = initializeFirebaseClient()

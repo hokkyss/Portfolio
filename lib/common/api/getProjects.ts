@@ -6,7 +6,7 @@ import {
 	query,
 } from 'firebase/firestore'
 
-import { initializeFirebaseClient, projectConverter } from '~/utils/common'
+import { initializeFirebaseClient, projectConverter } from '~/lib/common'
 
 export const getProjects = async function () {
 	const firebaseApp = initializeFirebaseClient()

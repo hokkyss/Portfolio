@@ -4,8 +4,8 @@ import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next'
 import * as React from 'react'
 
 import { Loading } from '~/components/elements'
-import { initializeFirebaseClient } from '~/utils/common'
-import { accessTokenConverter } from '~/utils/server'
+import { initializeFirebaseClient } from '~/lib/common'
+import { accessTokenConverter } from '~/lib/server'
 
 const AuthPage: NextPage<
 	InferGetServerSidePropsType<typeof getServerSideProps>

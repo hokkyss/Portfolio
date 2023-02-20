@@ -11,7 +11,7 @@ import NextLink from 'next/link'
 import * as React from 'react'
 
 import { Card, Tag, TagSkeleton } from '~/components/elements'
-import { formatDate } from '~/utils/common/date'
+import { formatDate } from '~/lib/common'
 
 type BlogCardProps = {
 	blog: Blog
