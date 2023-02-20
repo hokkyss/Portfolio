@@ -7,24 +7,17 @@ import {
 } from 'next'
 
 import { UnderDevelopment } from '~/components/modules'
-import { getBlogs, getOneBlog, TimeSec } from '~/lib/common'
+import { getBlogs, getOneBlog, REVALIDATE_TIME_IN_SEC } from '~/lib/common'
 
-const BlogContent: NextPage<
-	InferGetStaticPropsType<typeof getStaticProps>
-> = () => {
+const BlogContent: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
+	blog,
+}) => {
 	return <UnderDevelopment />
 }
 
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async (
 	context
 ) => {
-	if (process.env.NODE_ENV !== 'development') {
-		return {
-			fallback: true,
-			paths: [],
-		}
-	}
-
 	const blogs = await getBlogs()
 
 	return {
@@ -37,9 +30,11 @@ export const getStaticProps: GetStaticProps<
 	{
 		blog: Blog
 	},
-	{ slug: string }
+	{
+		slug: string
+	}
 > = async (context) => {
-	if (!context.params || !context.params.slug) {
+	if (!context.params) {
 		return {
 			notFound: true,
 		}
@@ -49,6 +44,7 @@ export const getStaticProps: GetStaticProps<
 	if (!blog) {
 		return {
 			notFound: true,
+			revalidate: REVALIDATE_TIME_IN_SEC,
 		}
 	}
 
@@ -56,7 +52,7 @@ export const getStaticProps: GetStaticProps<
 		props: {
 			blog: blog,
 		},
-		revalidate: 12 * TimeSec.HOUR, // 12 hours
+		revalidate: REVALIDATE_TIME_IN_SEC,
 	}
 }
 

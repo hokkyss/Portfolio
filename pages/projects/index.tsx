@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { Flex } from '@chakra-ui/react'
 
 import { ProjectCard, UnderDevelopment } from '~/components/modules'
-import { getProjects, TimeSec } from '~/lib/common'
+import { getProjects, REVALIDATE_TIME_IN_SEC } from '~/lib/common'
 
 const ProjectList: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
 	projects,
@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps<{
 			props: {
 				projects: projects,
 			},
-			revalidate: 12 * TimeSec.HOUR, // 10 seconds or 12 hours
+			revalidate: REVALIDATE_TIME_IN_SEC,
 		}
 	} catch {
 		return {

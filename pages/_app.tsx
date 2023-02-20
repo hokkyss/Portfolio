@@ -12,7 +12,7 @@ import { getStorage } from 'firebase/storage'
 import '~/styles/globals.css'
 
 import { Layout } from '~/components/layouts'
-import { ErrorBoundary, Loading } from '~/components/elements'
+import { ErrorBoundary } from '~/components/elements'
 import { initializeFirebaseClient } from '~/utils/common'
 import { theme } from '~/utils/client'
 
