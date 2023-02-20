@@ -6,7 +6,7 @@ const Error: NextPage<{ statusCode?: number }> = ({ statusCode = 404 }) => {
 	return (
 		<React.Fragment>
 			<Head>
-				<title>Error {statusCode}</title>
+				<title>{`Error ${statusCode}`}</title>
 			</Head>
 			<h1>Error {statusCode}</h1>
 		</React.Fragment>

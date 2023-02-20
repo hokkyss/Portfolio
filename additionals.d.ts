@@ -47,3 +47,8 @@ declare type Skill = {
 	languages: TagType[]
 	others: TagType[]
 }
+
+declare type AccessToken = {
+	customToken: string
+	used: boolean
+}

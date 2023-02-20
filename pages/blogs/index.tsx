@@ -4,11 +4,9 @@ import Head from 'next/head'
 import { Flex } from '@chakra-ui/react'
 
 import { UnderDevelopment } from '~/components/modules'
-import { getBlogs, TimeSec } from '~/lib/common'
+import { getBlogs, REVALIDATE_TIME_IN_SEC } from '~/lib/common'
 
-const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
-	blogs,
-}) => {
+const Blog: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = () => {
 	return <UnderDevelopment />
 
 	return (
@@ -38,7 +36,7 @@ export const getStaticProps: GetStaticProps<{
 		props: {
 			blogs: blogs,
 		},
-		revalidate: 12 * TimeSec.HOUR, // 10 seconds or 12 hours
+		revalidate: REVALIDATE_TIME_IN_SEC,
 	}
 }
 

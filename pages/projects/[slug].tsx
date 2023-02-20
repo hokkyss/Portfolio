@@ -8,7 +8,11 @@ import {
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
-import { getProjects, getOneProject, TimeSec } from '~/lib/common'
+import {
+	getProjects,
+	getOneProject,
+	REVALIDATE_TIME_IN_SEC,
+} from '~/lib/common'
 import { Loading } from '~/components/elements'
 
 const ProjectDetail: NextPage<
@@ -68,7 +72,7 @@ export const getStaticProps: GetStaticProps<
 		props: {
 			project: project,
 		},
-		revalidate: 12 * TimeSec.HOUR, // 12 hours
+		revalidate: REVALIDATE_TIME_IN_SEC,
 	}
 }
 
