@@ -5,7 +5,7 @@ import {
 	orderBy,
 	query,
 } from 'firebase/firestore'
-import { blogConverter, initializeFirebaseClient } from '~/utils/common'
+import { blogConverter, initializeFirebaseClient } from '~/lib/common'
 
 export const getBlogs = async function () {
 	const firebaseApp = initializeFirebaseClient()

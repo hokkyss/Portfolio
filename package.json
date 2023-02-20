@@ -7,7 +7,7 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint --no-cache",
-		"theme": "chakra-cli tokens ./utils/client/ui/theme.ts",
+		"theme": "chakra-cli tokens ./lib/client/ui/theme.ts",
 		"postinstall": "yarn theme && husky install"
 	},
 	"dependencies": {

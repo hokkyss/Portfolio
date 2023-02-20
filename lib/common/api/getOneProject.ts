@@ -1,6 +1,6 @@
 import { doc, getDoc, getFirestore } from 'firebase/firestore'
 
-import { initializeFirebaseClient, projectConverter } from '~/utils/common'
+import { initializeFirebaseClient, projectConverter } from '~/lib/common'
 
 export const getOneProject = async function (slug: string) {
 	const firebaseApp = initializeFirebaseClient()

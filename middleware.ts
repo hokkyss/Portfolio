@@ -1,7 +1,7 @@
 import { getAuth } from 'firebase/auth'
 import { NextMiddleware, NextResponse } from 'next/server'
 
-import { initializeFirebaseClient } from './utils/common'
+import { initializeFirebaseClient } from './lib/common'
 
 export const middleware: NextMiddleware = async function (req, event) {
 	const firebaseApp = initializeFirebaseClient()
