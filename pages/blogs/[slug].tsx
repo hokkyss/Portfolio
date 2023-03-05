@@ -1,18 +1,33 @@
 import * as React from 'react'
-import {
-	GetStaticPaths,
-	GetStaticProps,
-	InferGetStaticPropsType,
-	NextPage,
-} from 'next'
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 
-import { UnderDevelopment } from '~/components/modules'
 import { getBlogs, getOneBlog, REVALIDATE_TIME_IN_SEC } from '~/lib/common'
+import { Flex } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
+import dynamic from 'next/dynamic'
 
-const BlogContent: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
-	blog,
-}) => {
-	return <UnderDevelopment />
+import { Loading } from '~/components/elements'
+import { MainLayout } from '~/components/layouts'
+import BlogCardSkeleton from '~/components/modules/BlogCard/BlogCardSkeleton'
+const Markdown = dynamic(
+	() => import('~/components/modules/Markdown/Markdown'),
+	{ loading: () => <BlogCardSkeleton /> }
+)
+
+const BlogContent: NextPageWithLayout<
+	InferGetStaticPropsType<typeof getStaticProps>
+> = ({ blog }) => {
+	const router = useRouter()
+
+	if (router.isFallback) {
+		return <Loading />
+	}
+
+	return (
+		<Flex>
+			<Markdown>{blog.markdown}</Markdown>
+		</Flex>
+	)
 }
 
 export const getStaticPaths: GetStaticPaths<{ slug: string }> = async (
@@ -54,6 +69,10 @@ export const getStaticProps: GetStaticProps<
 		},
 		revalidate: REVALIDATE_TIME_IN_SEC,
 	}
+}
+
+BlogContent.getLayout = function getBlogContentLayout(page) {
+	return <MainLayout>{page}</MainLayout>
 }
 
 export default BlogContent

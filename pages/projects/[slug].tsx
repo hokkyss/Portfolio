@@ -1,10 +1,5 @@
 import * as React from 'react'
-import {
-	GetStaticPaths,
-	GetStaticProps,
-	InferGetStaticPropsType,
-	NextPage,
-} from 'next'
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
@@ -14,8 +9,9 @@ import {
 	REVALIDATE_TIME_IN_SEC,
 } from '~/lib/common'
 import { Loading } from '~/components/elements'
+import { MainLayout } from '~/components/layouts'
 
-const ProjectDetail: NextPage<
+const ProjectDetail: NextPageWithLayout<
 	InferGetStaticPropsType<typeof getStaticProps>
 > = ({ project }) => {
 	const router = useRouter()
@@ -74,6 +70,10 @@ export const getStaticProps: GetStaticProps<
 		},
 		revalidate: REVALIDATE_TIME_IN_SEC,
 	}
+}
+
+ProjectDetail.getLayout = function getProjectDetailLayout(page) {
+	return <MainLayout>{page}</MainLayout>
 }
 
 export default ProjectDetail

@@ -4,6 +4,7 @@ import {
 	HStack,
 	LinkBox,
 	LinkOverlay,
+	Skeleton,
 	Spacer,
 	StackDivider,
 	StackItem,
@@ -17,6 +18,10 @@ import { paths } from '~/lib/common'
 import { useDrawer } from '~/hooks'
 
 const navHeight = '72px'
+
+export const HeaderSkeleton = React.memo(function HeaderSkeleton() {
+	return <Skeleton />
+})
 
 export const Header = React.memo<React.PropsWithChildren>(function Header({
 	children,

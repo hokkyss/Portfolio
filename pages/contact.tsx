@@ -1,11 +1,19 @@
 import { Flex } from '@chakra-ui/react'
-import { NextPage } from 'next'
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import * as React from 'react'
 
-import { ContactCard } from '~/components/modules'
+import { MainLayout } from '~/components/layouts'
+import BlogCardSkeleton from '~/components/modules/BlogCard/BlogCardSkeleton'
 
-const ContactPage: NextPage = () => {
+const ContactCard = dynamic(
+	() => import('~/components/modules/ContactCard/ContactCard'),
+	{
+		loading: () => <BlogCardSkeleton />,
+	}
+)
+
+const ContactPage: NextPageWithLayout = () => {
 	return (
 		<React.Fragment>
 			<Head>
@@ -16,14 +24,20 @@ const ContactPage: NextPage = () => {
 				/>
 			</Head>
 			<Flex direction="row" wrap="wrap" justifyContent="center">
-				<ContactCard contact="github" />
-				<ContactCard contact="linkedin" />
-				<ContactCard contact="instagram" />
-				<ContactCard contact="whatsapp" />
-				<ContactCard contact="gmail" />
+				<React.Suspense>
+					<ContactCard contact="github" />
+					<ContactCard contact="linkedin" />
+					<ContactCard contact="instagram" />
+					<ContactCard contact="whatsapp" />
+					<ContactCard contact="gmail" />
+				</React.Suspense>
 			</Flex>
 		</React.Fragment>
 	)
+}
+
+ContactPage.getLayout = function getContactPageLayout(page) {
+	return <MainLayout>{page}</MainLayout>
 }
 
 export default ContactPage

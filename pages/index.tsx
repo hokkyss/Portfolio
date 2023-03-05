@@ -1,5 +1,4 @@
 import * as React from 'react'
-import type { NextPage } from 'next'
 import Head from 'next/head'
 import {
 	CenterProps,
@@ -19,6 +18,7 @@ import { motion } from 'framer-motion'
 import { IoIosHand } from 'react-icons/io'
 
 import { useBreakpointValue } from '~/hooks'
+import { MainLayout } from '~/components/layouts'
 
 const texts = ['software engineer', 'student', 'motivated learner']
 
@@ -39,7 +39,7 @@ const wave = keyframes`
 
 const waveAnimation = `${wave} 1s ease-in-out infinite`
 
-const Home: NextPage = () => {
+const Home: NextPageWithLayout = () => {
 	const [num, setNum] = React.useState(0)
 
 	const boxSize = useBreakpointValue<ImageProps['boxSize']>({
@@ -126,6 +126,10 @@ const Home: NextPage = () => {
 			</Center>
 		</React.Fragment>
 	)
+}
+
+Home.getLayout = function getHomeLayout(page) {
+	return <MainLayout>{page}</MainLayout>
 }
 
 export default Home

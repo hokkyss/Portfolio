@@ -1,10 +1,10 @@
 import * as React from 'react'
-import type { NextPage } from 'next'
 import Head from 'next/head'
 
 import { Collapse, Tag } from '~/components/elements'
 import { Box, Container, ContainerProps, Heading, Text } from '@chakra-ui/react'
 import { useBreakpointValue } from '~/hooks'
+import { MainLayout } from '~/components/layouts'
 
 const skills: Skill = {
 	databases: ['mysql', 'postgresql', 'mariadb'],
@@ -35,7 +35,7 @@ const skills: Skill = {
 	others: ['firebase'],
 }
 
-const Skills: NextPage = () => {
+const Skills: NextPageWithLayout = () => {
 	const flexDirection = useBreakpointValue<ContainerProps['flexDirection']>({
 		base: 'column',
 		md: 'row',
@@ -100,6 +100,10 @@ const Skills: NextPage = () => {
 			</Container>
 		</React.Fragment>
 	)
+}
+
+Skills.getLayout = function getSkillsLayout(page) {
+	return <MainLayout>{page}</MainLayout>
 }
 
 export default Skills

@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import * as React from 'react'
 
 import { useBreakpointValue } from '~/hooks'
@@ -6,6 +7,7 @@ export const DrawerContext = React.createContext<boolean>(false)
 
 export const DrawerProvider = React.memo<React.PropsWithChildren>(
 	function DrawerProvider({ children }) {
+		const router = useRouter()
 		const breakpoint = useBreakpointValue({
 			base: true,
 			xs: false,

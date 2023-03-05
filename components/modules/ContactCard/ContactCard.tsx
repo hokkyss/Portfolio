@@ -60,9 +60,7 @@ const subtitle: Record<Socials, string> = {
 	instagram: 'hokkyss',
 }
 
-export const ContactCard = React.memo(function ContactCard(
-	props: ContactCardProps
-) {
+const ContactCard = React.memo(function ContactCard(props: ContactCardProps) {
 	const { contact } = props
 
 	return (
@@ -90,3 +88,5 @@ export const ContactCard = React.memo(function ContactCard(
 		</Card>
 	)
 })
+
+export default ContactCard
