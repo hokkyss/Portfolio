@@ -1,9 +1,3 @@
-export const specificBlogPath = { path: '/blogs/[id]', name: 'Blog Detail' }
-export const specificProjectPath = {
-	path: '/projects/[id]',
-	name: 'Project Detail',
-}
-
 export const paths = {
 	home: { path: '/', name: 'Home' },
 	skills: { path: '/about', name: 'About' },

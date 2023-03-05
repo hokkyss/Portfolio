@@ -18,7 +18,7 @@ type ProjectCardProps = {
 	project: Project
 }
 
-export const ProjectCard = React.memo(function ProjectCard({
+const ProjectCard = React.memo(function ProjectCard({
 	project,
 }: ProjectCardProps) {
 	const [fade, { on, off }] = useBoolean(true)
@@ -70,3 +70,4 @@ export const ProjectCard = React.memo(function ProjectCard({
 		</Card>
 	)
 })
+export default ProjectCard

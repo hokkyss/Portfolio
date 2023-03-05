@@ -4,5 +4,6 @@
 	"editorconfig.generateAuto": true,
 	"prettier.endOfLine": "auto",
 	"editor.tabSize": 2,
-	"dotenv.enableAutocloaking": false
+	"dotenv.enableAutocloaking": false,
+	"typescript.tsdk": "node_modules/typescript/lib"
 }

@@ -1,15 +1,11 @@
 import * as React from 'react'
-import { Skeleton, Tag as ChakraTag } from '@chakra-ui/react'
-
-export const TagSkeleton = React.memo(function TagSkeleton() {
-	return <Skeleton m="0.5" height="6" w="20" rounded="6px" />
-})
+import { Tag as ChakraTag } from '@chakra-ui/react'
 
 type TagProps = {
 	tag: string
 }
 
-export const Tag = React.memo<TagProps>(function Tag({ tag }) {
+const Tag = React.memo<TagProps>(function Tag({ tag }) {
 	return (
 		<ChakraTag
 			variant="subtle"
@@ -25,3 +21,5 @@ export const Tag = React.memo<TagProps>(function Tag({ tag }) {
 		</ChakraTag>
 	)
 })
+
+export default Tag

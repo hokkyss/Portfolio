@@ -1,40 +1,21 @@
-import {
-	Flex,
-	Heading,
-	HStack,
-	LinkOverlay,
-	SkeletonText,
-	Spacer,
-	Text,
-} from '@chakra-ui/react'
+import { Flex, Heading, LinkOverlay, Spacer, Text } from '@chakra-ui/react'
+import dynamic from 'next/dynamic'
 import NextLink from 'next/link'
 import * as React from 'react'
 
-import { Card, Tag, TagSkeleton } from '~/components/elements'
+import { Card } from '~/components/elements'
 import { formatDate } from '~/lib/common'
+import TagSkeleton from '../Tag/TagSkeleton'
 
-type BlogCardProps = {
+const Tag = dynamic(() => import('~/components/modules/Tag/Tag'), {
+	loading: () => <TagSkeleton />,
+})
+
+export type BlogCardProps = {
 	blog: Blog
 }
 
-export const BlogCardSkeleton = React.memo(function BlogCardSkeleton() {
-	return (
-		<Card>
-			<SkeletonText noOfLines={1} skeletonHeight="4" w="36" />
-			<Spacer height="6" />
-			<SkeletonText noOfLines={2} skeletonHeight="5" />
-			<Spacer height="5" />
-			<SkeletonText noOfLines={1} skeletonHeight="4" />
-			<Spacer height="5" />
-			<HStack>
-				<TagSkeleton />
-				<TagSkeleton />
-			</HStack>
-		</Card>
-	)
-})
-
-export const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
+const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 	const { blog } = props
 
 	return (
@@ -59,9 +40,13 @@ export const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 			<Text fontSize="md" noOfLines={2} color="gray.500" mb="4">
 				{blog.subtitle}
 			</Text>
-			{/* {blog.tags.map((tag) => (
-				<Tag tag={tag.name} key={tag.id} />
-			))} */}
+			{blog.tags.map((tag) => (
+				<React.Suspense key={tag}>
+					<Tag tag={tag} />
+				</React.Suspense>
+			))}
 		</Card>
 	)
 })
+
+export default BlogCard

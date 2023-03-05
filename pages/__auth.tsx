@@ -1,11 +1,14 @@
-import { getAuth, signInWithCustomToken } from 'firebase/auth'
-import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore'
-import { GetServerSideProps, InferGetServerSidePropsType, NextPage } from 'next'
+import { signInWithCustomToken } from 'firebase/auth'
+import type { InferGetServerSidePropsType, NextPage } from 'next'
+import {
+	serverSideSignIn,
+	withServerSideUser,
+} from 'next-firebase-session-auth'
 import * as React from 'react'
 
 import { Loading } from '~/components/elements'
-import { initializeFirebaseClient } from '~/lib/common'
-import { accessTokenConverter } from '~/lib/server'
+import { initializeFirebaseClient, getCustomToken } from '~/lib/common'
+import { initializeFirebaseAdmin } from '~/lib/server'
 
 const AuthPage: NextPage<
 	InferGetServerSidePropsType<typeof getServerSideProps>
@@ -13,7 +16,19 @@ const AuthPage: NextPage<
 	return <Loading />
 }
 
-export const getServerSideProps: GetServerSideProps = async function (ctx) {
+export const getServerSideProps = withServerSideUser(async function ({
+	isSignedIn,
+	...ctx
+}) {
+	if (isSignedIn) {
+		return {
+			redirect: {
+				destination: '/',
+				permanent: false,
+			},
+		}
+	}
+
 	const accessToken = ctx.query.accessToken
 	if (typeof accessToken !== 'string') {
 		return {
@@ -24,48 +39,22 @@ export const getServerSideProps: GetServerSideProps = async function (ctx) {
 		}
 	}
 
-	const firebaseApp = initializeFirebaseClient()
-	const firestore = getFirestore(firebaseApp)
-	const auth = getAuth(firebaseApp)
-
-	if (auth.currentUser) {
-		return {
-			redirect: {
-				destination: '/contact',
-				permanent: false,
-			},
-		}
-	}
-
-	const documentRef = doc(firestore, 'accessTokens', accessToken).withConverter(
-		accessTokenConverter
+	const customToken = await getCustomToken(accessToken)
+	await serverSideSignIn(
+		ctx.req,
+		ctx.res,
+		(auth) => signInWithCustomToken(auth, customToken),
+		initializeFirebaseAdmin(),
+		initializeFirebaseClient()
 	)
 
-	try {
-		const accessTokenSnapshot = await getDoc(documentRef)
-
-		if (!accessTokenSnapshot.exists() || accessTokenSnapshot.data().used) {
-			throw new Error('Not Found')
-		}
-
-		const customToken = accessTokenSnapshot.data().customToken
-		await signInWithCustomToken(auth, customToken)
-		await setDoc(documentRef, { used: true }, { merge: true })
-
-		return {
-			redirect: {
-				destination: '/blogs',
-				permanent: false,
-			},
-		}
-	} catch {
-		return {
-			redirect: {
-				destination: '/',
-				permanent: false,
-			},
-		}
+	return {
+		redirect: {
+			destination: '/',
+			permanent: false,
+		},
 	}
-}
+},
+initializeFirebaseAdmin())
 
 export default AuthPage

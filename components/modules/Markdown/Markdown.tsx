@@ -17,7 +17,7 @@ import {
 import remarkGemoji from 'remark-gemoji'
 import remarkEmoji from 'remark-emoji'
 
-export const Markdown = React.memo<{ children: string }>(function Markdown({
+const Markdown = React.memo<{ children: string }>(function Markdown({
 	children,
 }) {
 	return (
@@ -182,3 +182,5 @@ export const Markdown = React.memo<{ children: string }>(function Markdown({
 		</ReactMarkdown>
 	)
 })
+
+export default Markdown

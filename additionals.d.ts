@@ -1,3 +1,17 @@
+declare type GetLayout = (page: React.ReactElement) => React.ReactNode
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+declare type NextPageWithLayout<P = {}, IP = P> = import('next').NextPage<
+	P,
+	IP
+> & {
+	getLayout?: GetLayout
+}
+
+declare type AppPropsWithLayout = import('next/app').AppProps & {
+	Component: NextPageWithLayout
+}
+
 declare namespace NodeJS {
 	interface ProcessEnv {
 		NEXT_PUBLIC_API_URL: string

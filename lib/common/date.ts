@@ -29,7 +29,7 @@ export const formatDate = (isostringOrDate: string | Date): string => {
 			? new Date(isostringOrDate)
 			: isostringOrDate
 
-	return `${days[date.getDay()]}, ${
-		months[date.getMonth()]
-	} ${date.getDate()}, ${date.getFullYear()}`
+	return `${days[date.getUTCDay()]}, ${
+		months[date.getUTCMonth()]
+	} ${date.getUTCDate()}, ${date.getUTCFullYear()}`
 }
