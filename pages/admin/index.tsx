@@ -5,6 +5,6 @@ const AdminHomepage: NextPageWithLayout = () => {
 	return <React.Fragment>This is Admin Homepage</React.Fragment>
 }
 
-AdminHomepage.getLayout = function getAdminHomepageLayout(page) {
-	return <AdminLayout>{page}</AdminLayout>
+AdminHomepage.getLayout = function getAdminHomepageLayout() {
+	return <AdminLayout />
 }

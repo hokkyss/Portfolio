@@ -5,9 +5,8 @@ import dynamic from 'next/dynamic'
 import { Flex } from '@chakra-ui/react'
 
 import { getProjects, REVALIDATE_TIME_IN_SEC } from '~/lib/common'
-import { MainLayout } from '~/components/layouts'
 import BlogCardSkeleton from '~/components/modules/BlogCard/BlogCardSkeleton'
-
+import MainLayout from '~/components/layouts/MainLayout'
 const ProjectCard = dynamic(
 	() => import('~/components/modules/ProjectCard/ProjectCard'),
 	{
@@ -31,15 +30,13 @@ const ProjectList: NextPageWithLayout<
 				<title>Projects · Hokki Suwanda</title>
 			</Head>
 			<Flex direction="row" wrap="wrap" justifyContent="center">
-				<React.Suspense>
-					{projects.length > 0 ? (
-						projects.map((project) => (
-							<ProjectCard project={project} key={'project-' + project.slug} />
-						))
-					) : (
-						<UnderDevelopment />
-					)}
-				</React.Suspense>
+				{projects.length > 0 ? (
+					projects.map((project) => (
+						<ProjectCard project={project} key={'project-' + project.slug} />
+					))
+				) : (
+					<UnderDevelopment />
+				)}
 			</Flex>
 		</React.Fragment>
 	)
@@ -64,8 +61,8 @@ export const getStaticProps: GetStaticProps<{
 	}
 }
 
-ProjectList.getLayout = function getProjectListLayout(page) {
-	return <MainLayout>{page}</MainLayout>
+ProjectList.getLayout = function getProjectListLayout() {
+	return <MainLayout />
 }
 
 export default ProjectList

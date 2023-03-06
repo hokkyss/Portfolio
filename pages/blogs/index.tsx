@@ -5,10 +5,15 @@ import dynamic from 'next/dynamic'
 import { Flex } from '@chakra-ui/react'
 
 import { getBlogs, REVALIDATE_TIME_IN_SEC } from '~/lib/common'
-import { MainLayout } from '~/components/layouts'
 
 import BlogCardSkeleton from '~/components/modules/BlogCard/BlogCardSkeleton'
-const BlogCard = dynamic(() => import('~/components/modules/BlogCard/BlogCard'))
+import MainLayout from '~/components/layouts/MainLayout'
+const BlogCard = dynamic(
+	() => import('~/components/modules/BlogCard/BlogCard'),
+	{
+		loading: () => <BlogCardSkeleton />,
+	}
+)
 
 const Blog: NextPageWithLayout<
 	InferGetStaticPropsType<typeof getStaticProps>
@@ -20,9 +25,7 @@ const Blog: NextPageWithLayout<
 			</Head>
 			<Flex direction="row" wrap="wrap" justifyContent="center">
 				{blogs.map((blog) => (
-					<React.Suspense key={blog.slug} fallback={<BlogCardSkeleton />}>
-						<BlogCard blog={blog} />
-					</React.Suspense>
+					<BlogCard blog={blog} key={`blog-${blog.slug}`} />
 				))}
 			</Flex>
 		</React.Fragment>
@@ -50,8 +53,8 @@ export const getStaticProps: GetStaticProps<{
 	}
 }
 
-Blog.getLayout = function getBlogLayout(page) {
-	return <MainLayout>{page}</MainLayout>
+Blog.getLayout = function getBlogLayout() {
+	return <MainLayout />
 }
 
 export default Blog

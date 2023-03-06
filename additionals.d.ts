@@ -1,4 +1,4 @@
-declare type GetLayout = (page: React.ReactElement) => React.ReactNode
+declare type GetLayout = () => React.ReactNode
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 declare type NextPageWithLayout<P = {}, IP = P> = import('next').NextPage<

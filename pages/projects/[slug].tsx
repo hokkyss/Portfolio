@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
-import { useRouter } from 'next/router'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 import {
 	getProjects,
@@ -9,7 +9,7 @@ import {
 	REVALIDATE_TIME_IN_SEC,
 } from '~/lib/common'
 import { Loading } from '~/components/elements'
-import { MainLayout } from '~/components/layouts'
+import MainLayout from '~/components/layouts/MainLayout'
 
 const ProjectDetail: NextPageWithLayout<
 	InferGetStaticPropsType<typeof getStaticProps>
@@ -72,8 +72,8 @@ export const getStaticProps: GetStaticProps<
 	}
 }
 
-ProjectDetail.getLayout = function getProjectDetailLayout(page) {
-	return <MainLayout>{page}</MainLayout>
+ProjectDetail.getLayout = function getProjectDetailLayout() {
+	return <MainLayout />
 }
 
 export default ProjectDetail

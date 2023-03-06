@@ -26,9 +26,7 @@ import { useDrawer } from '~/hooks'
 import { paths } from '~/lib/common'
 // import { SocialMedia } from '~/layouts'
 
-export const Drawer = React.memo<React.PropsWithChildren>(function Drawer({
-	children,
-}) {
+export const Drawer = React.memo(function Drawer() {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const drawer = useDrawer()
 	const { pathname } = useRouter()
@@ -98,7 +96,6 @@ export const Drawer = React.memo<React.PropsWithChildren>(function Drawer({
 					</ChakraDrawer>
 				</React.Fragment>
 			)}
-			{children}
 		</React.Fragment>
 	)
 })

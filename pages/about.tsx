@@ -1,10 +1,11 @@
 import * as React from 'react'
 import Head from 'next/head'
-
-import { Collapse, Tag } from '~/components/elements'
 import { Box, Container, ContainerProps, Heading, Text } from '@chakra-ui/react'
+
+import { Collapse } from '~/components/elements'
 import { useBreakpointValue } from '~/hooks'
-import { MainLayout } from '~/components/layouts'
+import Tag from '~/components/modules/Tag/Tag'
+import MainLayout from '~/components/layouts/MainLayout'
 
 const skills: Skill = {
 	databases: ['mysql', 'postgresql', 'mariadb'],
@@ -102,8 +103,8 @@ const Skills: NextPageWithLayout = () => {
 	)
 }
 
-Skills.getLayout = function getSkillsLayout(page) {
-	return <MainLayout>{page}</MainLayout>
+Skills.getLayout = function getSkillsLayout() {
+	return <MainLayout />
 }
 
 export default Skills

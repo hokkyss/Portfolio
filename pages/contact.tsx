@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import * as React from 'react'
 
-import { MainLayout } from '~/components/layouts'
+import MainLayout from '~/components/layouts/MainLayout'
 import BlogCardSkeleton from '~/components/modules/BlogCard/BlogCardSkeleton'
 
 const ContactCard = dynamic(
@@ -24,20 +24,18 @@ const ContactPage: NextPageWithLayout = () => {
 				/>
 			</Head>
 			<Flex direction="row" wrap="wrap" justifyContent="center">
-				<React.Suspense>
-					<ContactCard contact="github" />
-					<ContactCard contact="linkedin" />
-					<ContactCard contact="instagram" />
-					<ContactCard contact="whatsapp" />
-					<ContactCard contact="gmail" />
-				</React.Suspense>
+				<ContactCard contact="github" />
+				<ContactCard contact="linkedin" />
+				<ContactCard contact="instagram" />
+				<ContactCard contact="whatsapp" />
+				<ContactCard contact="gmail" />
 			</Flex>
 		</React.Fragment>
 	)
 }
 
-ContactPage.getLayout = function getContactPageLayout(page) {
-	return <MainLayout>{page}</MainLayout>
+ContactPage.getLayout = function getContactPageLayout() {
+	return <MainLayout />
 }
 
 export default ContactPage
