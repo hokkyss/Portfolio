@@ -7,8 +7,9 @@ import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 
 import { Loading } from '~/components/elements'
-import { MainLayout } from '~/components/layouts'
+
 import BlogCardSkeleton from '~/components/modules/BlogCard/BlogCardSkeleton'
+import MainLayout from '~/components/layouts/MainLayout'
 const Markdown = dynamic(
 	() => import('~/components/modules/Markdown/Markdown'),
 	{ loading: () => <BlogCardSkeleton /> }
@@ -71,8 +72,8 @@ export const getStaticProps: GetStaticProps<
 	}
 }
 
-BlogContent.getLayout = function getBlogContentLayout(page) {
-	return <MainLayout>{page}</MainLayout>
+BlogContent.getLayout = function getBlogContentLayout() {
+	return <MainLayout />
 }
 
 export default BlogContent

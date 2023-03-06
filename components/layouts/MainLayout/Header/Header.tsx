@@ -1,10 +1,8 @@
 import {
-	Box,
 	Flex,
 	HStack,
 	LinkBox,
 	LinkOverlay,
-	Skeleton,
 	Spacer,
 	StackDivider,
 	StackItem,
@@ -19,13 +17,7 @@ import { useDrawer } from '~/hooks'
 
 const navHeight = '72px'
 
-export const HeaderSkeleton = React.memo(function HeaderSkeleton() {
-	return <Skeleton />
-})
-
-export const Header = React.memo<React.PropsWithChildren>(function Header({
-	children,
-}) {
+const Header = React.memo(function Header() {
 	const drawer = useDrawer()
 	const { pathname } = useRouter()
 
@@ -70,9 +62,8 @@ export const Header = React.memo<React.PropsWithChildren>(function Header({
 					<Spacer />
 				</Flex>
 			)}
-			<Box height={drawer ? '100vh' : `calc(100vh - ${navHeight})`}>
-				{children}
-			</Box>
 		</React.Fragment>
 	)
 })
+
+export default Header

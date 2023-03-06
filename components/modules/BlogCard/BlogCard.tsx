@@ -41,9 +41,7 @@ const BlogCard = React.memo(function BlogCard(props: BlogCardProps) {
 				{blog.subtitle}
 			</Text>
 			{blog.tags.map((tag) => (
-				<React.Suspense key={tag}>
-					<Tag tag={tag} />
-				</React.Suspense>
+				<Tag tag={tag} key={`tag-${tag}`} />
 			))}
 		</Card>
 	)

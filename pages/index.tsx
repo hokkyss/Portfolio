@@ -1,4 +1,5 @@
 import * as React from 'react'
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import {
 	CenterProps,
@@ -18,7 +19,7 @@ import { motion } from 'framer-motion'
 import { IoIosHand } from 'react-icons/io'
 
 import { useBreakpointValue } from '~/hooks'
-import { MainLayout } from '~/components/layouts'
+import MainLayout from '~/components/layouts/MainLayout'
 
 const texts = ['software engineer', 'student', 'motivated learner']
 
@@ -128,8 +129,8 @@ const Home: NextPageWithLayout = () => {
 	)
 }
 
-Home.getLayout = function getHomeLayout(page) {
-	return <MainLayout>{page}</MainLayout>
+Home.getLayout = function getHomeLayout() {
+	return <MainLayout />
 }
 
 export default Home

@@ -1,19 +1,21 @@
+import dynamic from 'next/dynamic'
 import * as React from 'react'
 import { DrawerProvider } from '~/components/context'
 
 import { Drawer } from './Drawer/Drawer'
-import { Header } from './Header/Header'
+import HeaderSkeleton from './Header/HeaderSkeleton'
 
-export const MainLayout = React.memo<React.PropsWithChildren>(
-	function MainLayout({ children }) {
-		return (
-			<DrawerProvider>
-				<Drawer>
-					<Header>{children}</Header>
-				</Drawer>
-			</DrawerProvider>
-		)
-	}
-)
+const Header = dynamic(() => import('./Header/Header'), {
+	loading: () => <HeaderSkeleton />,
+})
 
-export * from './SocialMedia/SocialMedia'
+const MainLayout = React.memo(function MainLayout() {
+	return (
+		<DrawerProvider>
+			<Drawer />
+			<Header />
+		</DrawerProvider>
+	)
+})
+
+export default MainLayout

@@ -25,9 +25,7 @@ const UnderDevelopment = React.memo(function UnderDevelopment() {
 				justifyContent="center"
 				alignItems="flex-start"
 			>
-				<React.Suspense>
-					<BlogCard blog={underDevelopment} />
-				</React.Suspense>
+				<BlogCard blog={underDevelopment} />
 			</Flex>
 		</React.Fragment>
 	)
