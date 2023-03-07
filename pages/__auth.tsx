@@ -13,7 +13,7 @@ import { initializeFirebaseAdmin } from '~/lib/server'
 const AuthPage: NextPage<
 	InferGetServerSidePropsType<typeof getServerSideProps>
 > = () => {
-	return <Loading />
+	return <React.Fragment />
 }
 
 export const getServerSideProps = withServerSideUser(async function ({

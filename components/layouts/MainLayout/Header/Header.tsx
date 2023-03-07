@@ -26,8 +26,7 @@ const Header = React.memo(function Header() {
 			{/* use Drawer instead of Header */}
 			{!drawer && (
 				<Flex
-					paddingY="6"
-					paddingX="6"
+					p="6"
 					bgColor="blackAlpha.900"
 					fontWeight="semibold"
 					as="nav"

@@ -8,6 +8,7 @@ import { getBlogs, REVALIDATE_TIME_IN_SEC } from '~/lib/common'
 
 import BlogCardSkeleton from '~/components/modules/BlogCard/BlogCardSkeleton'
 import MainLayout from '~/components/layouts/MainLayout'
+
 const BlogCard = dynamic(
 	() => import('~/components/modules/BlogCard/BlogCard'),
 	{
@@ -23,7 +24,12 @@ const Blog: NextPageWithLayout<
 			<Head>
 				<title>Blogs · Hokki Suwanda</title>
 			</Head>
-			<Flex direction="row" wrap="wrap" justifyContent="center">
+			<Flex
+				direction="row"
+				wrap="wrap"
+				justifyContent="center"
+				alignItems="flex-start"
+			>
 				{blogs.map((blog) => (
 					<BlogCard blog={blog} key={`blog-${blog.slug}`} />
 				))}

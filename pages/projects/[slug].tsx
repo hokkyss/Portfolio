@@ -18,12 +18,7 @@ const ProjectDetail: NextPageWithLayout<
 
 	if (router.isFallback) {
 		return (
-			<React.Fragment>
-				<Head>
-					<title>Loading · Hokki Suwanda</title>
-				</Head>
-				<Loading />
-			</React.Fragment>
+			<Loading />
 		)
 	}
 
