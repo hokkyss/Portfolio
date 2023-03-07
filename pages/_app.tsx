@@ -8,8 +8,9 @@ import { theme } from '~/lib/client'
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 	const getLayout = React.useCallback(
-		() => (Component.getLayout ? Component.getLayout() : <React.Fragment />),
-		[Component]
+		() =>
+			Component.getLayout ? Component.getLayout(pageProps) : <React.Fragment />,
+		[Component, pageProps]
 	)
 
 	return (

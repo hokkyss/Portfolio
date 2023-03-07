@@ -78,24 +78,24 @@ const Skills: NextPageWithLayout = () => {
 						My Skills
 					</Heading>
 					<Collapse title="Programming Languages">
-						{/* {skills.languages.map((l) => (
+						{skills.languages.map((l) => (
 							<Tag key={l} tag={l} />
-						))} */}
+						))}
 					</Collapse>
 					<Collapse title="Frameworks and Libraries">
-						{/* {skills.frameworks.map((f) => (
+						{skills.frameworks.map((f) => (
 							<Tag key={f} tag={f} />
-						))} */}
+						))}
 					</Collapse>
 					<Collapse title="Databases">
-						{/* {skills.databases.map((d) => (
+						{skills.databases.map((d) => (
 							<Tag key={d} tag={d} />
-						))} */}
+						))}
 					</Collapse>
 					<Collapse title="Others">
-						{/* {skills.others.map((d) => (
+						{skills.others.map((d) => (
 							<Tag key={d} tag={d} />
-						))} */}
+						))}
 					</Collapse>
 				</Box>
 			</Container>

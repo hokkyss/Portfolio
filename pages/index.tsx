@@ -1,5 +1,4 @@
 import * as React from 'react'
-import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import {
 	CenterProps,
@@ -75,13 +74,7 @@ const Home: NextPageWithLayout = () => {
 			<Head>
 				<title>hokkyss · Hokki Suwanda</title>
 			</Head>
-			<Center
-				width="full"
-				height="full"
-				flexDirection={flexDirection}
-				justifyContent="center"
-				alignItems="center"
-			>
+			<Center width="full" height="full" flexDirection={flexDirection}>
 				<ChakraImage
 					borderRadius="full"
 					bg="transparent"

@@ -5,27 +5,20 @@ const defaultColor: BoxProps['bgColor'][] = ['whiteAlpha.500', 'whiteAlpha.900']
 export const Card = forwardRef<
 	Omit<BoxProps, 'borderTopColor' | 'borderTopWidth'> & {
 		borderTopColor?: BoxProps['bgColor'][]
-		noBorderTop?: boolean
+		withBorderTop?: boolean
 	},
 	'div'
 >(function Card(props, ref) {
 	const {
 		children,
 		borderTopColor = defaultColor,
-		noBorderTop = false,
+		withBorderTop = true,
 		...rest
 	} = props
 
 	return (
-		<LinkBox
-			m="2"
-			rounded="md"
-			shadow="md"
-			ref={ref}
-			as="article"
-			overflow="hidden"
-		>
-			{!noBorderTop && (
+		<LinkBox m="2" rounded="md" shadow="md" ref={ref} overflow="hidden">
+			{withBorderTop && (
 				<Box
 					height="2"
 					width="full"

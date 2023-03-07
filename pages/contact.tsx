@@ -9,7 +9,7 @@ import BlogCardSkeleton from '~/components/modules/BlogCard/BlogCardSkeleton'
 const ContactCard = dynamic(
 	() => import('~/components/modules/ContactCard/ContactCard'),
 	{
-		loading: () => <BlogCardSkeleton />,
+		'loading': () => <BlogCardSkeleton />
 	}
 )
 
@@ -23,7 +23,7 @@ const ContactPage: NextPageWithLayout = () => {
 					content="Contact hokkyss (Hokki Suwanda) through github, linkedin, instagram, whatsapp, and email"
 				/>
 			</Head>
-			<Flex direction="row" wrap="wrap" justifyContent="center">
+			<Flex direction="row" wrap="wrap" alignItems="center" justify="center">
 				<ContactCard contact="github" />
 				<ContactCard contact="linkedin" />
 				<ContactCard contact="instagram" />
