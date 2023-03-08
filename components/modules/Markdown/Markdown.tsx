@@ -8,7 +8,6 @@ import {
 	Heading,
 	Img as Image,
 	Kbd,
-	LinkOverlay,
 	ListItem,
 	OrderedList,
 	Text,
@@ -30,9 +29,9 @@ const Markdown = React.memo<{ children: string }>(function Markdown({
 			components={{
 				a: ({ children, href, className }) =>
 					href ? (
-						<LinkOverlay as={Link} className={className} href={href}>
+						<Link className={className} href={href}>
 							{children}
-						</LinkOverlay>
+						</Link>
 					) : (
 						<Text className={className}>{children}</Text>
 					),
@@ -83,32 +82,76 @@ const Markdown = React.memo<{ children: string }>(function Markdown({
 						<React.Fragment />
 					),
 				h1: ({ children, className }) => (
-					<Heading className={className} my="4" as="h1" size="2xl">
-						{children}
-					</Heading>
+					<React.Fragment>
+						<Heading
+							className={className}
+							mt="4"
+							mb="2"
+							as="h1"
+							size="2xl"
+							fontWeight="semibold"
+						>
+							{children}
+						</Heading>
+						<Divider mb="4" />
+					</React.Fragment>
 				),
 				h2: ({ children, className }) => (
-					<Heading className={className} my="4" as="h2" size="xl">
-						{children}
-					</Heading>
+					<React.Fragment>
+						<Heading
+							className={className}
+							mt="4"
+							mb="2"
+							as="h2"
+							size="xl"
+							fontWeight="semibold"
+						>
+							{children}
+						</Heading>
+						<Divider mb="4" />
+					</React.Fragment>
 				),
 				h3: ({ children, className }) => (
-					<Heading className={className} my="4" as="h3" size="lg">
+					<Heading
+						className={className}
+						my="4"
+						as="h3"
+						size="lg"
+						fontWeight="semibold"
+					>
 						{children}
 					</Heading>
 				),
 				h4: ({ children, className }) => (
-					<Heading className={className} my="4" as="h4" size="md">
+					<Heading
+						className={className}
+						my="4"
+						as="h4"
+						size="md"
+						fontWeight="medium"
+					>
 						{children}
 					</Heading>
 				),
 				h5: ({ children, className }) => (
-					<Heading className={className} my="4" as="h5" size="sm">
+					<Heading
+						className={className}
+						my="4"
+						as="h5"
+						size="sm"
+						fontWeight="medium"
+					>
 						{children}
 					</Heading>
 				),
 				h6: ({ children, className }) => (
-					<Heading className={className} my="4" as="h6" size="xs">
+					<Heading
+						className={className}
+						my="4"
+						as="h6"
+						size="xs"
+						fontWeight="medium"
+					>
 						{children}
 					</Heading>
 				),

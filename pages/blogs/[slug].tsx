@@ -2,18 +2,12 @@ import * as React from 'react'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 
 import { getBlogs, getOneBlog, REVALIDATE_TIME_IN_SEC } from '~/lib/common'
-import { Flex } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import dynamic from 'next/dynamic'
 
 import { Loading } from '~/components/elements'
-
-import BlogCardSkeleton from '~/components/modules/BlogCard/BlogCardSkeleton'
 import MainLayout from '~/components/layouts/MainLayout'
-const Markdown = dynamic(
-	() => import('~/components/modules/Markdown/Markdown'),
-	{ loading: () => <BlogCardSkeleton /> }
-)
+import Markdown from '~/components/modules/Markdown/Markdown'
 
 const BlogContent: NextPageWithLayout<
 	InferGetStaticPropsType<typeof getStaticProps>
@@ -25,9 +19,9 @@ const BlogContent: NextPageWithLayout<
 	}
 
 	return (
-		<Flex>
+		<Box w="container.lg" mx="auto">
 			<Markdown>{blog.markdown}</Markdown>
-		</Flex>
+		</Box>
 	)
 }
 

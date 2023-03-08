@@ -41,14 +41,6 @@ const Blog: NextPageWithLayout<
 export const getStaticProps: GetStaticProps<{
 	blogs: Blog[]
 }> = async (context) => {
-	if (process.env.NODE_ENV !== 'development') {
-		return {
-			props: {
-				blogs: [],
-			},
-		}
-	}
-
 	const blogs = await getBlogs()
 
 	return {

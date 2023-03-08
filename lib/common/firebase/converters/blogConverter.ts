@@ -10,7 +10,12 @@ export const blogConverter: FirestoreDataConverter<Blog> = {
 			updatedAt: (
 				(data.updatedAt as Timestamp)?.toDate() || new Date()
 			).toISOString(),
-			markdown: data.markdown || '',
+			markdown: (data.markdown || '')
+				.replaceAll('\\n', '\n')
+				.replaceAll('\\x3C', '<')
+				.replaceAll('\\x3E', '>')
+				.replaceAll('\\x3D', '=')
+				.replaceAll('\\x26', '&'),
 			slug: data.slug || snapshot.id || '',
 			subtitle: data.subtitle || '',
 			tags: data.tags || '',
@@ -26,7 +31,12 @@ export const blogConverter: FirestoreDataConverter<Blog> = {
 			updatedAt: Timestamp.fromDate(
 				new Date((modelObject.updatedAt as any) || Date.now())
 			),
-			markdown: modelObject.markdown || '',
+			markdown: ((modelObject.markdown as string) || '')
+				.replaceAll('\n', '\\n')
+				.replaceAll('<', '\\x3C')
+				.replaceAll('>', '\\x3E')
+				.replaceAll('=', '\\x3D')
+				.replaceAll('&', '\\x26'),
 			slug: modelObject.slug || '',
 			subtitle: modelObject.subtitle || '',
 			tags: modelObject.tags || '',
