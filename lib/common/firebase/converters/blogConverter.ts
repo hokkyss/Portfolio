@@ -11,7 +11,7 @@ export const blogConverter: FirestoreDataConverter<Blog> = {
 				(data.updatedAt as Timestamp)?.toDate() || new Date()
 			).toISOString(),
 			markdown: data.markdown || '',
-			slug: data.slug || '',
+			slug: data.slug || snapshot.id || '',
 			subtitle: data.subtitle || '',
 			tags: data.tags || '',
 			title: data.title || '',
