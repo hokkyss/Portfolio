@@ -19,15 +19,17 @@ export const getBlogs = async function () {
 		const blogDocs = await getDocs(q)
 		return blogDocs.docs.map((snapshot) => snapshot.data())
 	} catch {
-		return <Blog[]>[{
-			'createdAt': new Date().toISOString(),
-			'updatedAt': new Date().toISOString(),
-			'subtitle': "Something happened when fetching data",
-			"title": "Error",
-			"writerUid": "",
-			"tags": ["nextjs"],
-			"markdown": "",
-			"slug": ""
-		}]
+		return <Blog[]>[
+			{
+				createdAt: new Date().toISOString(),
+				updatedAt: new Date().toISOString(),
+				subtitle: 'Something happened when fetching data',
+				title: 'Error',
+				writerUid: '',
+				tags: ['nextjs'],
+				markdown: '',
+				slug: 'error',
+			},
+		]
 	}
 }
