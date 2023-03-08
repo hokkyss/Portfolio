@@ -28,9 +28,7 @@ export const blogConverter: FirestoreDataConverter<Blog> = {
 			createdAt: Timestamp.fromDate(
 				new Date((modelObject.createdAt as any) || Date.now())
 			),
-			updatedAt: Timestamp.fromDate(
-				new Date((modelObject.updatedAt as any) || Date.now())
-			),
+			updatedAt: Timestamp.fromDate(new Date()),
 			markdown: ((modelObject.markdown as string) || '')
 				.replaceAll('\n', '\\n')
 				.replaceAll('<', '\\x3C')
