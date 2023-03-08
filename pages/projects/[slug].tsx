@@ -17,9 +17,7 @@ const ProjectDetail: NextPageWithLayout<
 	const router = useRouter()
 
 	if (router.isFallback) {
-		return (
-			<Loading />
-		)
+		return <Loading />
 	}
 
 	return (

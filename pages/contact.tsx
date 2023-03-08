@@ -9,7 +9,7 @@ import BlogCardSkeleton from '~/components/modules/BlogCard/BlogCardSkeleton'
 const ContactCard = dynamic(
 	() => import('~/components/modules/ContactCard/ContactCard'),
 	{
-		'loading': () => <BlogCardSkeleton />
+		loading: () => <BlogCardSkeleton />,
 	}
 )
 
