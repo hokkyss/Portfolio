@@ -6,6 +6,7 @@ import {
 	query,
 } from 'firebase/firestore'
 import { blogConverter, initializeFirebaseClient } from '~/lib/common'
+import { ERROR_BLOG } from '~/lib/constants'
 
 export const getBlogs = async function () {
 	const firebaseApp = initializeFirebaseClient()
@@ -19,17 +20,6 @@ export const getBlogs = async function () {
 		const blogDocs = await getDocs(q)
 		return blogDocs.docs.map((snapshot) => snapshot.data())
 	} catch {
-		return <Blog[]>[
-			{
-				createdAt: new Date().toISOString(),
-				updatedAt: new Date().toISOString(),
-				subtitle: 'Something happened when fetching data',
-				title: 'Error',
-				writerUid: '',
-				tags: ['nextjs'],
-				markdown: '',
-				slug: 'error',
-			},
-		]
+		return <Blog[]>[ERROR_BLOG]
 	}
 }

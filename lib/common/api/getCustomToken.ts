@@ -1,6 +1,6 @@
 import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore'
 
-import { accessTokenConverter } from '../firebase/converters/accessTokenConverter'
+import { accessTokenConverter } from '../firebase/accessTokenConverter'
 import { initializeFirebaseClient } from '../firebase/initializeClient'
 
 export const getCustomToken = async (accessToken: string) => {
