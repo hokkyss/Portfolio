@@ -9,8 +9,8 @@ import {
 export const FormControl = forwardRef<Omit<FormControlProps, 'variant'>, 'div'>(
 	(props, ref) => {
 		return (
-			<Box ref={ref} p={2}>
-				<ChakraFormControl {...props} variant="dark-floating" />
+			<Box ref={ref}>
+				<ChakraFormControl {...props} variant="floating" />
 			</Box>
 		)
 	}
