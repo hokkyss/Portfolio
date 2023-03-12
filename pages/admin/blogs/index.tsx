@@ -1,8 +1,8 @@
 import {
 	Box,
+	Button,
 	Heading,
-	LinkBox,
-	LinkOverlay,
+	IconButton,
 	Table,
 	TableContainer,
 	Tbody,
@@ -15,9 +15,12 @@ import {
 import { InferGetServerSidePropsType } from 'next'
 import { withServerSideUser } from 'next-firebase-session-auth'
 import Link from 'next/link'
+import Router from 'next/router'
 import * as React from 'react'
+import { MdDelete, MdEdit } from 'react-icons/md'
 
 import { AdminLayout } from '~/components/layouts'
+import { deleteBlog } from '~/lib/client'
 import { formatDateTime, getBlogs } from '~/lib/common'
 import { initializeFirebaseAdmin } from '~/lib/server'
 
@@ -25,11 +28,14 @@ type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 
 const AdminBlogView: NextPageWithLayout<PageProps> = ({ blogs }) => {
 	return (
-		<Box w="container.sm" mx="auto">
+		<Box w="fit-content" mx="auto">
 			<Heading as="h1" textAlign="center" p="6">
 				Resources
 			</Heading>
 			<TableContainer>
+				<Button as={Link} href="/admin/blogs/create" w="full">
+					Create
+				</Button>
 				<Table>
 					<Thead>
 						<Tr>
@@ -37,38 +43,39 @@ const AdminBlogView: NextPageWithLayout<PageProps> = ({ blogs }) => {
 							<Th>Title</Th>
 							<Th>Slug</Th>
 							<Th>Last Updated</Th>
+							<Th>Actions</Th>
 						</Tr>
 					</Thead>
 					<Tbody>
 						{blogs.map((blog, index) => (
 							<Tr key={blog.slug}>
-								<LinkBox _hover={{ textDecor: 'underline' }} as={Td}>
-									<LinkOverlay as={Link} href={`/admin/blogs/${blog.slug}`}>
-										{index + 1}
-									</LinkOverlay>
-								</LinkBox>
-								<LinkBox _hover={{ textDecor: 'underline' }} as={Td}>
-									<LinkOverlay as={Link} href={`/admin/blogs/${blog.slug}`}>
-										{blog.title}
-									</LinkOverlay>
-								</LinkBox>
-								<LinkBox _hover={{ textDecor: 'underline' }} as={Td}>
-									<LinkOverlay as={Link} href={`/admin/blogs/${blog.slug}`}>
-										{blog.slug}
-									</LinkOverlay>
-								</LinkBox>
+								<Td>{index + 1}</Td>
+								<Td>{blog.title}</Td>
+								<Td>{blog.slug}</Td>
 								<Td>{formatDateTime(blog.updatedAt)}</Td>
+								<Td gap="2">
+									<IconButton
+										aria-label="Edit"
+										colorScheme="green"
+										icon={<MdEdit />}
+										as={Link}
+										href={`/admin/blogs/${blog.slug}`}
+									/>
+									<IconButton
+										aria-label="Delete"
+										colorScheme="red"
+										icon={<MdDelete />}
+										onClick={() =>
+											deleteBlog(blog.slug)
+												.then(() => Router.replace(Router.asPath))
+												.catch(() => null)
+										}
+									/>
+								</Td>
 							</Tr>
 						))}
 					</Tbody>
-					<Tfoot>
-						{/* <Tr>
-							<Th>No</Th>
-							<Th>Title</Th>
-							<Th>Slug</Th>
-							<Th>Last Updated</Th>
-						</Tr> */}
-					</Tfoot>
+					<Tfoot></Tfoot>
 				</Table>
 			</TableContainer>
 		</Box>
