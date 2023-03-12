@@ -1,14 +1,14 @@
 import {
 	Button,
 	Flex,
-	FlexProps,
 	FormLabel,
 	Input,
 	Textarea,
-	ToastId,
+	chakra,
+	FlexProps,
 	useToast,
 	UseToastOptions,
-	chakra,
+	ToastId,
 } from '@chakra-ui/react'
 import { InferGetServerSidePropsType } from 'next'
 import { withServerSideUser } from 'next-firebase-session-auth'
@@ -19,25 +19,17 @@ import { FormControl } from '~/components/elements'
 import { AdminLayout } from '~/components/layouts'
 import Markdown from '~/components/modules/Markdown/Markdown'
 import { useBreakpointValue } from '~/hooks'
-import { editBlog } from '~/lib/client'
-import { getOneBlog } from '~/lib/common'
-import { initializeFirebaseAdmin } from '~/lib/server'
+import { createBlog } from '~/lib/client'
 
 type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 
-const AdminUpdateBlog: NextPageWithLayout<PageProps> = ({ blog }) => {
-	const [newBlog, setNewBlog] = React.useState<Blog>(blog)
+const AdminCreateBlog: NextPageWithLayout = () => {
 	const toast = useToast()
 	const toastIdRef = React.useRef<ToastId>()
-
-	const onChange = React.useCallback<
-		React.ChangeEventHandler<HTMLTextAreaElement & HTMLInputElement>
-	>((e) => {
-		setNewBlog((prev) => ({
-			...prev,
-			[e.target.name]: e.target.value,
-		}))
-	}, [])
+	const flexDirection = useBreakpointValue<FlexProps['flexDirection']>({
+		base: 'column',
+		md: 'row',
+	})
 
 	const updateToast = React.useCallback(
 		(options: UseToastOptions) => {
@@ -55,6 +47,22 @@ const AdminUpdateBlog: NextPageWithLayout<PageProps> = ({ blog }) => {
 		[toast]
 	)
 
+	const [blog, setBlog] = React.useState<CreateBlogDto>({
+		markdown: '',
+		slug: '',
+		subtitle: '',
+		tags: [],
+		title: '',
+	})
+
+	const onChange: React.ChangeEventHandler<
+		HTMLInputElement | HTMLTextAreaElement
+	> = React.useCallback((e) => {
+		setBlog((prev) => ({
+			...prev,
+			[e.target.name]: e.target.value,
+		}))
+	}, [])
 	const onSubmit = React.useCallback<React.FormEventHandler<HTMLFormElement>>(
 		(e) => {
 			e.preventDefault()
@@ -62,14 +70,7 @@ const AdminUpdateBlog: NextPageWithLayout<PageProps> = ({ blog }) => {
 				title: 'Loading',
 				status: 'loading',
 			})
-			editBlog(
-				newBlog.markdown,
-				newBlog.slug,
-				blog.slug,
-				newBlog.subtitle,
-				newBlog.tags,
-				newBlog.title
-			)
+			createBlog(blog.markdown, blog.slug, blog.subtitle, blog.tags, blog.title)
 				.then(() =>
 					updateToast({
 						status: 'success',
@@ -77,19 +78,15 @@ const AdminUpdateBlog: NextPageWithLayout<PageProps> = ({ blog }) => {
 					})
 				)
 				.then(() => Router.replace('/admin/blogs'))
-				.catch(() =>
+				.catch((e) =>
 					updateToast({
 						status: 'error',
+						description: e.message || 'Internal Server Error',
 					})
 				)
 		},
-		[blog.slug, newBlog, updateToast]
+		[blog, updateToast]
 	)
-
-	const flexDirection = useBreakpointValue<FlexProps['flexDirection']>({
-		base: 'column',
-		md: 'row',
-	})
 
 	return (
 		<React.Fragment>
@@ -106,7 +103,7 @@ const AdminUpdateBlog: NextPageWithLayout<PageProps> = ({ blog }) => {
 						placeholder="Title"
 						name="title"
 						onChange={onChange}
-						value={newBlog.title}
+						value={blog.title}
 					/>
 					<FormLabel>Title</FormLabel>
 				</FormControl>
@@ -115,7 +112,7 @@ const AdminUpdateBlog: NextPageWithLayout<PageProps> = ({ blog }) => {
 						placeholder="Subtitle"
 						name="subtitle"
 						onChange={onChange}
-						value={newBlog.subtitle}
+						value={blog.subtitle}
 					/>
 					<FormLabel>Subtitle</FormLabel>
 				</FormControl>
@@ -124,7 +121,7 @@ const AdminUpdateBlog: NextPageWithLayout<PageProps> = ({ blog }) => {
 						placeholder="Slug"
 						name="slug"
 						onChange={onChange}
-						value={newBlog.slug}
+						value={blog.slug}
 					/>
 					<FormLabel>Slug</FormLabel>
 				</FormControl>
@@ -132,7 +129,7 @@ const AdminUpdateBlog: NextPageWithLayout<PageProps> = ({ blog }) => {
 					<Flex flex="1">
 						<Textarea
 							name="markdown"
-							value={newBlog.markdown}
+							value={blog.markdown}
 							onChange={onChange}
 							h="full"
 							minH="full"
@@ -146,7 +143,7 @@ const AdminUpdateBlog: NextPageWithLayout<PageProps> = ({ blog }) => {
 						borderRadius="md"
 						p="2"
 					>
-						<Markdown>{newBlog.markdown}</Markdown>
+						<Markdown>{blog.markdown}</Markdown>
 					</Flex>
 				</Flex>
 				<Button type="submit">Submit</Button>
@@ -155,46 +152,23 @@ const AdminUpdateBlog: NextPageWithLayout<PageProps> = ({ blog }) => {
 	)
 }
 
-AdminUpdateBlog.getLayout = ({ blog: _, ...userSession }: PageProps) => {
+AdminCreateBlog.getLayout = ({ ...userSession }: PageProps) => {
 	return <AdminLayout {...userSession} />
 }
 
-export const getServerSideProps = withServerSideUser<{ blog: Blog }>(
-	async ({ isSignedIn, ...ctx }) => {
-		if (!isSignedIn) {
-			return {
-				redirect: {
-					destination: '/',
-					permanent: false,
-				},
-			}
-		}
-
-		if (
-			!ctx.params ||
-			!ctx.params.slug ||
-			typeof ctx.params.slug !== 'string'
-		) {
-			return {
-				notFound: true,
-			}
-		}
-
-		const slug = ctx.params.slug
-		const blog = await getOneBlog(slug)
-		if (!blog) {
-			return {
-				notFound: true,
-			}
-		}
-
+export const getServerSideProps = withServerSideUser(async ({ isSignedIn }) => {
+	if (!isSignedIn) {
 		return {
-			props: {
-				blog: blog,
+			redirect: {
+				destination: '/',
+				permanent: false,
 			},
 		}
-	},
-	initializeFirebaseAdmin()
-)
+	}
 
-export default AdminUpdateBlog
+	return {
+		props: {},
+	}
+})
+
+export default AdminCreateBlog

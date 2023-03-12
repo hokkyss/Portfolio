@@ -36,6 +36,11 @@ declare type Blog = {
 	writerUid: string
 }
 
+declare type CreateBlogDto = Pick<
+	Blog,
+	'markdown' | 'slug' | 'subtitle' | 'tags' | 'title'
+>
+
 declare type Project = {
 	slug: string
 	title: string
