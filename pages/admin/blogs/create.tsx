@@ -20,6 +20,7 @@ import { AdminLayout } from '~/components/layouts'
 import Markdown from '~/components/modules/Markdown/Markdown'
 import { useBreakpointValue } from '~/hooks'
 import { createBlog } from '~/lib/client'
+import { initializeFirebaseAdmin } from '~/lib/server'
 
 type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 
@@ -63,6 +64,7 @@ const AdminCreateBlog: NextPageWithLayout = () => {
 			[e.target.name]: e.target.value,
 		}))
 	}, [])
+
 	const onSubmit = React.useCallback<React.FormEventHandler<HTMLFormElement>>(
 		(e) => {
 			e.preventDefault()
@@ -169,6 +171,6 @@ export const getServerSideProps = withServerSideUser(async ({ isSignedIn }) => {
 	return {
 		props: {},
 	}
-})
+}, initializeFirebaseAdmin())
 
 export default AdminCreateBlog
