@@ -5,6 +5,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { twMerge } from 'tailwind-merge';
 
+import NavigationItem from './_libs/_client/_atoms/_navigation-item/navigation-item.atom';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -19,17 +21,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <nav
           className={twMerge(
             'fixed left-0 top-0 right-0',
-            'flex justify-center',
-            'lg:border border-b border-gray-300 dark:border-neutral-800 lg:rounded-xl',
-            'backdrop-blur-2xl',
+            'flex justify-between',
+            'backdrop-blur-md',
             'bg-gradient-to-b dark:from-inherit from-zinc-200 dark:bg-zinc-800/30 lg:dark:bg-zinc-800/30',
-            'py-8 lg:p-4',
+            'p-6 lg:p-4',
           )}
         >
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
+          <div className="flex gap-x-2">
+            <NavigationItem href="/">Home</NavigationItem>
+            <NavigationItem href="/about">About</NavigationItem>
+            <NavigationItem href="/about">Projects</NavigationItem>
+            <NavigationItem href="/about">Blogs</NavigationItem>
+            <NavigationItem href="/about">Contact</NavigationItem>
+          </div>
+          <div className="flex" />
         </nav>
-        <main className="pt-24 pb-32">{children}</main>
+        <main className="pt-24 pb-32 min-h-screen">{children}</main>
         <footer
           className={twMerge(
             'h-32 w-full',
@@ -39,7 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             'pb-5',
           )}
         >
-          &copy; Hokki Suwanda
+          &copy; Hokki Suwanda (2023)
         </footer>
       </body>
     </html>
