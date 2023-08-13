@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   colorScheme: 'light dark',
   description:
-    "I'm Hokki Suwanda, a fullstack software engineer. I am an informatics penultimate student in Bandung Institute of Technology. An undergraduate student full of enthusiasm and motivation with problem solving capabilities. Very excited to learn something new. Always fulfilling all responsibilities heartfully. Currently a penultimate Informatics/Computer Science student in Bandung Institute of Technology. Pursuing career as a software engineer. Used quite lot of tech stacks.",
+    "I'm Hokki Suwanda, a fullstack software engineer. A Computer Science Fresh Graduate. A graduated undergraduate student full of enthusiasm and motivation with problem solving capabilities. Very excited to learn something new. Always fulfilling all responsibilities heartfully. Pursuing career as a fullstack software engineer. Used quite lot of tech stacks.",
   title: 'hokkyss | Hokki Suwanda',
 };
 
@@ -38,14 +38,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
           <div className="flex" />
         </nav>
-        <main className="pt-24 pb-32 min-h-screen">{children}</main>
+        <main className="pt-24 pb-32 min-h-screen h-screen">{children}</main>
         <footer
           className={twMerge(
             'h-32 w-full',
             'flex items-end justify-center',
             'fixed bottom-0 left-0 right-0',
             'bg-gradient-to-t from-white via-white dark:from-black dark:via-black',
-            'pb-5',
+            'pb-6',
             'text-xs',
           )}
         >
