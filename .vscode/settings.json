@@ -9,6 +9,7 @@
     "source.organizeImports": true
   },
   "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
   "eslint.validate": ["typescript", "typescriptreact", "json", "jsonc", "json5"],
   "tailwindCSS.classAttributes": [".*[cC][lL][aA][sS]{2}([nN][aA][mM][eE][sS]?)?", ".*[sS][tT][yY][lL][Ee][sS]"],
   "tailwindCSS.experimental.classRegex": [
