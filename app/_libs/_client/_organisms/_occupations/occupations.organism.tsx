@@ -24,7 +24,7 @@ export default function Occupations(props: OccupationProps) {
   );
 
   return (
-    <FadingText disabled={occupations.length === 1} ms={ms}>
+    <FadingText disabled={occupations.length === 1} key={occupations[index]} ms={ms}>
       {occupations[index]}
     </FadingText>
   );

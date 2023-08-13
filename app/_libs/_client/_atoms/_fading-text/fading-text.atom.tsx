@@ -21,7 +21,7 @@ export default function FadingText(props: FadingTextProps) {
     const timeout = setTimeout(load, 200);
 
     return () => clearTimeout(timeout);
-  }, [load, children]);
+  }, [load]);
 
   useEffect(() => {
     if (disabled) return;
@@ -29,7 +29,7 @@ export default function FadingText(props: FadingTextProps) {
     const timeout = setTimeout(unload, ms - 200);
 
     return () => clearTimeout(timeout);
-  }, [unload, ms, children, disabled]);
+  }, [unload, ms, disabled]);
 
   return (
     <code className={twMerge('font-bold text-transparent duration-300 blur-xl', loaded && 'blur-none text-blue-500')}>
