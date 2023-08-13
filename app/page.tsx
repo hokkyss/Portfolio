@@ -29,7 +29,7 @@ export default async function HomePage(_props: HomePageProps) {
         'md:flex-row md:gap-x-5',
       )}
     >
-      <Image alt="Me" className="w-60 h-60 rounded-full" fetchPriority="high" priority src={me} />
+      <Image alt="Me" className="rounded-full" fetchPriority="high" height={240} priority src={me} width={240} />
       <div className="text-2xl h-60 flex flex-col justify-center gap-y-8 text-center md:text-start">
         <div className="flex flex-col gap-y-2">
           <h1>Hi, I&apos;m Hokki Suwanda, a</h1>
