@@ -7,13 +7,13 @@ import { twMerge } from 'tailwind-merge';
 
 import useBoolean from '../../_hooks/_use-boolean/use-boolean.hook';
 
-interface BouncingTextProps {
+interface FadingTextProps {
   children: string;
   disabled?: boolean;
   ms: number;
 }
 
-export default function FadingText(props: BouncingTextProps) {
+export default function FadingText(props: FadingTextProps) {
   const { children, disabled = false, ms } = props;
   const [loaded, { turnOff: unload, turnOn: load }] = useBoolean(false);
 
@@ -32,9 +32,7 @@ export default function FadingText(props: BouncingTextProps) {
   }, [unload, ms, children, disabled]);
 
   return (
-    <code
-      className={twMerge('font-bold text-transparent duration-[400ms] blur-xl', loaded && 'blur-none text-blue-500')}
-    >
+    <code className={twMerge('font-bold text-transparent duration-300 blur-xl', loaded && 'blur-none text-blue-500')}>
       {children}
     </code>
   );
