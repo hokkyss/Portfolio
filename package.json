@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@material-design-icons/svg": "^0.14.10",
     "@tanstack/react-query": "^4.32.6",
     "client-only": "^0.0.1",
     "next": "13.4.13",
