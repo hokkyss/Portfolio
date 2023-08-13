@@ -1,6 +1,0 @@
-export * from './Card/Card'
-export * from './Collapse/Collapse'
-export * from './ErrorBoundary/ErrorBoundary'
-export * from './FormControl/FormControl'
-export * from './Icon/Icon'
-export * from './Loading/Loading'
