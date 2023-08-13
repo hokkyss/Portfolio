@@ -4,6 +4,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 
 import { Inter } from 'next/font/google';
+import { twMerge } from 'tailwind-merge';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,7 +16,33 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={twMerge(inter.className, 'flex flex-col')}>
+        <nav
+          className={twMerge(
+            'fixed lg:static left-0 top-0',
+            'flex w-full lg:w-auto justify-center',
+            'lg:border border-b border-gray-300 dark:border-neutral-800 lg:rounded-xl',
+            'backdrop-blur-2xl',
+            'bg-gradient-to-b dark:from-inherit from-zinc-200 dark:bg-zinc-800/30 lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30',
+            'pb-6 pt-8',
+          )}
+        >
+          Get started by editing&nbsp;
+          <code className="font-mono font-bold">app/page.tsx</code>
+        </nav>
+        <main className="flex grow shrink-0">{children}</main>
+        <footer
+          className={twMerge(
+            'w-full h-32',
+            'flex items-end justify-center lg:h-auto lg:w-auto ',
+            'fixed bottom-0 left-0 lg:static',
+            'lg:bg-none bg-gradient-to-t from-white via-white dark:from-black dark:via-black',
+            'pb-5',
+          )}
+        >
+          &copy; Hokki Suwanda
+        </footer>
+      </body>
     </html>
   );
 }
