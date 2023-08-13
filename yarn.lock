@@ -1114,6 +1114,11 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@material-design-icons/svg@^0.14.10":
+  version "0.14.10"
+  resolved "https://registry.yarnpkg.com/@material-design-icons/svg/-/svg-0.14.10.tgz#25804b66d0740b0bf8d6841fa343dfdd60f22e82"
+  integrity sha512-rXxfqj5Su8i51aG8s8QRIe7mX1gB+C/ZCroLu3JvIsO3+Vx6PcWP97HLwIl7AQH/jYIHQlKq0E6OMqU91u5fCg==
+
 "@next/env@13.4.13":
   version "13.4.13"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-13.4.13.tgz#50250cec7626904b93a4a934933d6a747763259d"
