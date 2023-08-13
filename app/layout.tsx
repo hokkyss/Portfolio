@@ -47,11 +47,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <NavigationItem href="/about">About</NavigationItem>
             <NavigationItem href="/about">Projects</NavigationItem>
             <NavigationItem href="/about">Blogs</NavigationItem>
-            <NavigationItem href="/about">Contact</NavigationItem>
           </div>
           <div className="flex justify-end items-center" />
         </nav>
-        <main className="pt-24 pb-32 min-h-screen h-screen bg-gray-400">{children}</main>
+        <main className="pt-24 pb-32 min-h-screen h-screen">{children}</main>
         <footer
           className={twMerge(
             'h-20 w-full',
