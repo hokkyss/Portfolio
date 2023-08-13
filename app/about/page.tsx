@@ -1,5 +1,15 @@
-import type { PageProps } from '~/.next/types/app/about/page';
+import type { Metadata, ResolvingMetadata } from 'next';
 
-export default async function AboutPage(_: PageProps) {
+import type DefaultPageProps from '../_libs/_common/_types/page-props.type';
+
+type AboutPageProps = DefaultPageProps;
+
+export async function generateMetadata(_props: AboutPageProps, _parent: ResolvingMetadata): Promise<Metadata> {
+  return {
+    title: 'hokkyss | About',
+  };
+}
+
+export default async function AboutPage() {
   return <div>About</div>;
 }
