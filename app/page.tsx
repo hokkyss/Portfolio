@@ -5,6 +5,7 @@ import type DefaultPageProps from './_libs/_common/_types/page-props.type';
 import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
 
+import Occupations from './_libs/_client/_organisms/_occupations/occupations.organism';
 import me from './_libs/_server/_assets/me.png';
 
 type HomePageProps = DefaultPageProps;
@@ -24,7 +25,7 @@ export default async function HomePage(_props: HomePageProps) {
       <Image alt="Me" className="w-60 h-60 rounded-full" fetchPriority="high" priority src={me} />
       <div className="text-2xl flex flex-col gap-y-2">
         <h1>Hi, I&apos;m Hokki Suwanda, a</h1>
-        <code className="font-bold text-blue-500">Full stack engineer</code>
+        <Occupations occupations={['fullstack engineer', 'self learner', 'tech enthusiast']} />
         <h1>from Indonesia.</h1>
       </div>
     </section>
