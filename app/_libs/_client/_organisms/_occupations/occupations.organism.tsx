@@ -8,12 +8,13 @@ import FadingText from '../../_atoms/_fading-text/fading-text.atom';
 import useInterval from '../../_hooks/_use-interval/use-interval.hook';
 
 interface OccupationProps {
+  delay?: number;
   ms?: number;
   occupations: string[];
 }
 
 export default function Occupations(props: OccupationProps) {
-  const { ms = 2000, occupations } = props;
+  const { delay = 200, ms = 2000, occupations } = props;
   const [index, setIndex] = useState(0);
 
   useInterval(
@@ -24,7 +25,7 @@ export default function Occupations(props: OccupationProps) {
   );
 
   return (
-    <FadingText disabled={occupations.length === 1} key={occupations[index]} ms={ms}>
+    <FadingText delay={delay} disabled={occupations.length === 1} key={occupations[index]} ms={ms}>
       {occupations[index]}
     </FadingText>
   );
