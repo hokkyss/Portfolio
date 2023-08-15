@@ -46,18 +46,20 @@ export default async function HomePage(_props: HomePageProps) {
         </div>
       </Section>
       <Section
-        className="justify-normal items-start px-20 flex-col gap-y-7 bg-gradient-to-b from-transparent to-blue-400"
+        className="justify-normal items-start min-h-full h-fit px-20 flex-col gap-y-7 bg-gradient-to-b from-transparent to-blue-400"
         id="about"
       >
-        <h1 className="text-4xl font-bold">About Me and Myself</h1>
+        <h1 className="text-4xl font-bold">Me and Myself</h1>
         <Paragraph>
-          Hi! I&apos;m Hokki Suwanda. I&apos;m a Fullstack Software Engineer from Indonesia. I am a Bachelor of
-          Engineering graduated from Bandung Institute of Technology Computer Science Major.
+          Hi! I&apos;m Hokki Suwanda. I&apos;m a Fullstack Software Engineer from Indonesia. Full of enthusiasm and
+          motivation with problem solving capabilities. Very excited to learn something new. Fulfilling all
+          responsibilities wholeheartedly. Pursuing career as a fullstack software engineer. Used quite lot of tech
+          stacks.
         </Paragraph>
         <Paragraph>
-          Full of enthusiasm and motivation with problem solving capabilities. Very excited to learn something new.
-          Always fulfilling all responsibilities wholeheartedly. Pursuing career as a fullstack software engineer. Used
-          quite lot of tech stacks.
+          I am a Bachelor of Engineering graduated from Bandung Institute of Technology Computer Science Major. The
+          first programming language I learned is Pascal. It was in high school. That sparked my interest in
+          programming. After a taste of competitive programming, I fell in love with coding. So, here I am.
         </Paragraph>
       </Section>
     </>
