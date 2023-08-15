@@ -40,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             'backdrop-blur-md',
             'bg-gradient-to-b dark:from-black from-zinc-200',
             'p-6',
+            'z-50',
           )}
         >
           <div className="flex items-center gap-x-2">
@@ -50,10 +51,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
           <div className="flex justify-end items-center" />
         </nav>
-        <main className="pt-24 pb-32 min-h-screen h-screen">{children}</main>
+        <main className="min-h-screen h-screen">{children}</main>
         <footer
           className={twMerge(
-            'h-20 w-full',
+            'h-20 w-full z-50',
             'flex items-end justify-center',
             'fixed bottom-0 left-0 right-0',
             'bg-gradient-to-t from-white via-white dark:from-black dark:via-black',

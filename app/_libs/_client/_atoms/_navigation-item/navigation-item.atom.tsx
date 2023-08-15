@@ -17,7 +17,10 @@ export default function NavigationItem(props: NavigationItemProps) {
   const pathname = usePathname();
 
   return (
-    <Link className={twMerge('px-3 hover:underline', pathname === href && 'text-blue-500 drop-shadow-sm')} href={href}>
+    <Link
+      className={twMerge('px-3 hover:underline transition-all', pathname === href && 'text-blue-500 drop-shadow-sm')}
+      href={href}
+    >
       {children}
     </Link>
   );
