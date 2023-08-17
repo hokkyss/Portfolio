@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { twMerge } from 'tailwind-merge';
 
-import NavigationItem from './_libs/_client/_atoms/_navigation-item/navigation-item.atom';
+import NavigationItem from '~/_client/_atoms/_navigation-item/navigation-item.atom';
 
 const inter = Inter({ subsets: ['latin'] });
 

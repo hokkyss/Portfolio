@@ -1,3 +1,5 @@
+import 'server-only';
+
 import type { ForwardRefExoticComponent, RefAttributes, SVGProps } from 'react';
 
 /**
