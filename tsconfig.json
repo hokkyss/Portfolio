@@ -11,7 +11,7 @@
     "moduleResolution": "Bundler",
     "noEmit": true,
     "paths": {
-      "@/*": ["./*"]
+      "~/*": ["./app/_libs/*", "./app/about/_libs/*"]
     },
     "plugins": [
       {
