@@ -10,9 +10,12 @@ import NavigationItem from './_libs/_client/_atoms/_navigation-item/navigation-i
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  authors: [{ name: 'Hokki Suwanda', url: 'https://github.com/hokkyss' }],
   colorScheme: 'light dark',
+  creator: 'Hokki Suwanda',
   description:
     "I'm Hokki Suwanda, a fullstack software engineer. A Computer Science Fresh Graduate. Full of enthusiasm and motivation with problem solving capabilities. Very excited to learn something new. Always fulfilling all responsibilities wholeheartedly. Pursuing career as a fullstack software engineer. Used quite lot of tech stacks.",
+  generator: 'Next.js',
   keywords: [
     'Hokki Suwanda',
     'hokkyss',
@@ -26,6 +29,7 @@ export const metadata: Metadata = {
     'Institut Teknologi Bandung',
     'competitive programming',
   ],
+  publisher: 'Vercel',
   title: 'hokkyss | Hokki Suwanda',
 };
 

@@ -8,10 +8,11 @@ import Link from 'next/link';
 
 import GitIcon from './_libs/_client/_assets/git.svg';
 import LinkedInIcon from './_libs/_client/_assets/linkedin.svg';
-import Paragraph from './_libs/_client/_atoms/_paragraph/paragraph.atom';
-import Section from './_libs/_client/_atoms/_section/section.atom';
 import Occupations from './_libs/_client/_organisms/_occupations/occupations.organism';
 import me from './_libs/_server/_assets/me.png';
+import Paragraph from './_libs/_server/_atoms/_paragraph/paragraph.atom';
+import Section from './_libs/_server/_atoms/_section/section.atom';
+import TechStack from './_libs/_server/_molecules/_tech-stack/tech-stack.molecule';
 
 type HomePageProps = DefaultPageProps;
 
@@ -46,10 +47,10 @@ export default async function HomePage(_props: HomePageProps) {
         </div>
       </Section>
       <Section
-        className="justify-normal items-start min-h-full h-fit px-20 flex-col gap-y-7 bg-gradient-to-b from-transparent to-blue-400"
+        className="justify-normal items-start min-h-full h-fit px-20 flex-col gap-y-10 bg-gradient-to-b from-transparent to-blue-400"
         id="about"
       >
-        <h1 className="text-4xl font-bold">Me and Myself</h1>
+        <h1 className="text-4xl font-bold self-center">Me and Myself</h1>
         <Paragraph>
           Hi! I&apos;m Hokki Suwanda. I&apos;m a Fullstack Software Engineer from Indonesia. Full of enthusiasm and
           motivation with problem solving capabilities. Very excited to learn something new. Fulfilling all
@@ -61,6 +62,7 @@ export default async function HomePage(_props: HomePageProps) {
           first programming language I learned is Pascal. It was in high school. That sparked my interest in
           programming. After a taste of competitive programming, I fell in love with coding. So, here I am.
         </Paragraph>
+        <TechStack techStacks={[{ icon: 'react', name: 'React' }]} title="Frameworks and Libraries" />
       </Section>
     </>
   );

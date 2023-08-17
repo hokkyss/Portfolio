@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import todoSchema from '../_models/todo.model';
+import todoSchema from '../_models/tech-stack.model';
 
 export default class TodoService {
   public static async getTodos() {
