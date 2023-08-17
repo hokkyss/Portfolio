@@ -7,6 +7,7 @@ import styled from '~/_common/_utils/_styled/styled.util';
 import Icon from '../_icons/icon.atom';
 
 interface TechStackChipProps {
+  className?: string;
   techStack: TechStack;
 }
 
@@ -20,12 +21,12 @@ const ChipContainer = styled('span')(
 );
 
 export default async function TechStackChip(props: TechStackChipProps) {
-  const { techStack } = props;
+  const { className, techStack } = props;
 
   const ChipIcon = techStack.icon in Icon ? Icon[techStack.icon] : Icon.default;
 
   return (
-    <ChipContainer>
+    <ChipContainer className={className}>
       <ChipIcon />
       {techStack.name}
     </ChipContainer>
