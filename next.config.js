@@ -52,6 +52,12 @@ const nextConfig = {
                   },
                   'prefixIds',
                   'removeDimensions',
+                  {
+                    name: 'sortAttrs',
+                    params: {
+                      xmlnsOrder: 'alphabetical',
+                    },
+                  },
                 ],
               },
             },
