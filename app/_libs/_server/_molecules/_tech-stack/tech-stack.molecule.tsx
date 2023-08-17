@@ -14,8 +14,10 @@ interface TechStackProps {
 const TechStackContainer = styled('div')(
   'relative w-full border rounded-lg px-3 pb-2 pt-5 flex flex-col transition-all duration-300',
   'border-black dark:border-white',
-  // 'hover:border-fuchsia-700 hover:text-fuchsia-700 hover:dark:border-orange-400 hover:dark:text-orange-400',
+  'hover:border-fuchsia-700 hover:text-fuchsia-700',
+  'hover:dark:border-green-300 hover:dark:text-green-300',
   'flex flex-row flex-wrap gap-x-2 gap-y-2 justify-center',
+  'selection:dark:bg-green-300 selection:dark:text-black',
 );
 const TechStackGroupTitle = styled('h1')('absolute px-2 -top-[14px] backdrop-blur-xl text-xl');
 
@@ -26,7 +28,11 @@ export default async function TechStack(props: TechStackProps) {
     <TechStackContainer>
       <TechStackGroupTitle>{title}</TechStackGroupTitle>
       {techStacks.map((techStack) => (
-        <TechStackChip key={techStack.name} techStack={techStack} />
+        <TechStackChip
+          className="hover:fill-fuchsia-700 hover:text-fuchsia-700 hover:dark:fill-green-300 hover:dark:text-green-300"
+          key={techStack.name}
+          techStack={techStack}
+        />
       ))}
     </TechStackContainer>
   );
