@@ -2,6 +2,8 @@ import 'server-only';
 
 import type { TechStack } from '~/_common/_models/tech-stack.model';
 
+import { memo } from 'react';
+
 import styled from '~/_common/_utils/_styled/styled.util';
 
 import Icon from '../_icons/icon.atom';
@@ -20,7 +22,7 @@ const ChipContainer = styled('span')(
   'hover:scale-105 hover:-translate-y-0.5',
 );
 
-export default async function TechStackChip(props: TechStackChipProps) {
+const TechStackChip = memo<TechStackChipProps>(async (props) => {
   const { className, techStack } = props;
 
   const ChipIcon = techStack.icon in Icon ? Icon[techStack.icon] : Icon.default;
@@ -31,4 +33,6 @@ export default async function TechStackChip(props: TechStackChipProps) {
       {techStack.name}
     </ChipContainer>
   );
-}
+});
+
+export default TechStackChip;

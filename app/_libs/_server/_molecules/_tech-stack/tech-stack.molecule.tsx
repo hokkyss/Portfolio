@@ -1,13 +1,15 @@
 import 'server-only';
 
-import type { TechStack } from '~/_common/_models/tech-stack.model';
+import type { TechStack as TechStackModel } from '~/_common/_models/tech-stack.model';
+
+import { memo } from 'react';
 
 import styled from '~/_common/_utils/_styled/styled.util';
 
 import TechStackChip from '../../_atoms/_tech-stack-chip/tech-stack-chip.atom';
 
 interface TechStackProps {
-  techStacks: TechStack[];
+  techStacks: TechStackModel[];
   title: string;
 }
 
@@ -21,7 +23,7 @@ const TechStackContainer = styled('div')(
 );
 const TechStackGroupTitle = styled('h1')('absolute px-2 -top-[14px] backdrop-blur-xl text-xl');
 
-export default async function TechStack(props: TechStackProps) {
+const TechStack = memo<TechStackProps>(async (props) => {
   const { techStacks, title } = props;
 
   return (
@@ -36,4 +38,6 @@ export default async function TechStack(props: TechStackProps) {
       ))}
     </TechStackContainer>
   );
-}
+});
+
+export default TechStack;

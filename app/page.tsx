@@ -5,6 +5,7 @@ import type DefaultPageProps from './_libs/_common/_types/page-props.type';
 import GmailIcon from '@material-design-icons/svg/outlined/mail.svg';
 import Image from 'next/image';
 import Link from 'next/link';
+import { memo } from 'react';
 
 import Occupations from '~/_client/_organisms/_occupations/occupations.organism';
 import me from '~/_server/_assets/me.png';
@@ -20,7 +21,7 @@ export async function generateMetadata(_props: HomePageProps, _parent: Resolving
 
 const iconClassName = 'w-8 hover:fill-blue-500 transition-[fill] duration-300';
 
-export default async function HomePage(_props: HomePageProps) {
+const HomePage = memo<HomePageProps>(async (_props) => {
   const LinkedInIcon = Icon.linkedin;
   const GitIcon = Icon.git;
 
@@ -50,4 +51,6 @@ export default async function HomePage(_props: HomePageProps) {
       <AboutMeSection />
     </>
   );
-}
+});
+
+export default HomePage;

@@ -1,8 +1,10 @@
 import './globals.css';
 
 import type { Metadata } from 'next';
+import type { PropsWithChildren } from 'react';
 
 import { Inter } from 'next/font/google';
+import { memo } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 import NavigationItem from '~/_client/_atoms/_navigation-item/navigation-item.atom';
@@ -33,7 +35,7 @@ export const metadata: Metadata = {
   title: 'hokkyss | Hokki Suwanda',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const RootLayout = memo<PropsWithChildren>(async ({ children }) => {
   return (
     <html lang="en">
       <body className={twMerge(inter.className, 'flex flex-col' /* , 'text-black dark:text-white' */)}>
@@ -71,4 +73,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </body>
     </html>
   );
-}
+});
+
+export default RootLayout;
