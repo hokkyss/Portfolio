@@ -1,5 +1,5 @@
 import type React from 'react';
-import type { ReactNode } from 'react';
+import type { CSSProperties, LegacyRef, ReactNode, Ref } from 'react';
 import type { ClassNameValue } from 'tailwind-merge';
 
 import { createElement, forwardRef } from 'react';
@@ -7,8 +7,11 @@ import { twMerge } from 'tailwind-merge';
 
 type StylableComponent<
   // NOTE: ref can be anything
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  T extends { className?: string; ref?: any } = { className?: string; ref?: any },
+  T extends { className?: string; ref?: unknown; style?: CSSProperties } = {
+    className?: string;
+    ref?: unknown;
+    style?: CSSProperties;
+  },
 > = (props: T) => ReactNode;
 
 type IntrinsicElement = Exclude<keyof React.JSX.IntrinsicElements, 'object' | 'symbol'>;
@@ -17,10 +20,10 @@ type InferPropType<P> = P extends StylableComponent<infer U>
   ? U
   : P extends keyof React.JSX.IntrinsicElements
   ? React.JSX.IntrinsicElements[P]
-  : { className?: string };
+  : { className?: string; style?: CSSProperties };
 
 type InferComponentRef<P> = 'ref' extends keyof P
-  ? P['ref'] extends React.Ref<infer U> | undefined
+  ? P['ref'] extends LegacyRef<infer U> | Ref<infer U> | undefined
     ? U
     : unknown
   : unknown;
