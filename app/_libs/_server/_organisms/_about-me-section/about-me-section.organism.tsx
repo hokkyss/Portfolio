@@ -1,11 +1,13 @@
 import 'server-only';
 
+import { memo } from 'react';
+
 import Paragraph from '~/_server/_atoms/_paragraph/paragraph.atom';
 import Section from '~/_server/_atoms/_section/section.atom';
 
 import TechStacks from '../_tech-stacks/tech-stacks.organism';
 
-export default async function AboutMeSection() {
+const AboutMeSection = memo(async () => {
   return (
     <Section
       className="justify-normal items-start min-h-full h-fit px-20 flex-col gap-y-10 bg-gradient-to-b from-transparent to-blue-400"
@@ -26,4 +28,6 @@ export default async function AboutMeSection() {
       <TechStacks />
     </Section>
   );
-}
+});
+
+export default AboutMeSection;

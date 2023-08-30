@@ -2,18 +2,22 @@
 
 import 'client-only';
 
-import { useCallback, useState } from 'react';
+import type { CSSProperties } from 'react';
+
+import { forwardRef, useCallback, useState } from 'react';
 
 import FadingText from '../../_atoms/_fading-text/fading-text.atom';
 import useInterval from '../../_hooks/_use-interval/use-interval.hook';
 
 interface OccupationProps {
+  className?: string;
   delay?: number;
   ms?: number;
   occupations: string[];
+  style?: CSSProperties;
 }
 
-export default function Occupations(props: OccupationProps) {
+const Occupations = forwardRef<HTMLElement, OccupationProps>((props, ref) => {
   const { delay = 200, ms = 2000, occupations } = props;
   const [index, setIndex] = useState(0);
 
@@ -25,8 +29,10 @@ export default function Occupations(props: OccupationProps) {
   );
 
   return (
-    <FadingText delay={delay} disabled={occupations.length === 1} key={occupations[index]} ms={ms}>
+    <FadingText delay={delay} disabled={occupations.length === 1} key={occupations[index]} ms={ms} ref={ref}>
       {occupations[index]}
     </FadingText>
   );
-}
+});
+
+export default Occupations;

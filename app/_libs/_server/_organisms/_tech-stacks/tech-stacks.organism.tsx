@@ -1,8 +1,10 @@
 import 'server-only';
 
+import { memo } from 'react';
+
 import TechStack from '~/_server/_molecules/_tech-stack/tech-stack.molecule';
 
-export default async function TechStacks() {
+const TechStacks = memo(async () => {
   return (
     <>
       <TechStack
@@ -63,4 +65,6 @@ export default async function TechStacks() {
       />
     </>
   );
-}
+});
+
+export default TechStacks;

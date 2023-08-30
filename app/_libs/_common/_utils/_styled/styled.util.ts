@@ -1,18 +1,18 @@
 import type React from 'react';
-import type { CSSProperties, LegacyRef, ReactNode, Ref } from 'react';
+import type { CSSProperties, FC, LegacyRef, Ref } from 'react';
 import type { ClassNameValue } from 'tailwind-merge';
 
 import { createElement, forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-type StylableComponent<
-  // NOTE: ref can be anything
-  T extends { className?: string; ref?: unknown; style?: CSSProperties } = {
-    className?: string;
-    ref?: unknown;
-    style?: CSSProperties;
-  },
-> = (props: T) => ReactNode;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export interface StylableProps<RefType = any> {
+  className?: string;
+  ref?: RefType;
+  style?: CSSProperties;
+}
+
+type StylableComponent<T extends StylableProps = StylableProps> = FC<T>;
 
 type IntrinsicElement = Exclude<keyof React.JSX.IntrinsicElements, 'object' | 'symbol'>;
 
