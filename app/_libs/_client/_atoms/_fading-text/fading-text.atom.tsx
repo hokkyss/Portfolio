@@ -9,6 +9,8 @@ import { twMerge } from 'tailwind-merge';
 
 import useBoolean from '../../_hooks/_use-boolean/use-boolean.hook';
 
+import styles from './fading-text.module.css';
+
 interface FadingTextProps {
   children: string;
   className?: string;
@@ -37,10 +39,7 @@ const FadingText = forwardRef<HTMLElement, FadingTextProps>((props, ref) => {
   }, [unload, ms, disabled, delay]);
 
   return (
-    <code
-      className={twMerge('font-bold text-transparent duration-500 blur-xl', loaded && 'blur-none text-blue-500')}
-      ref={ref}
-    >
+    <code className={twMerge(styles.text, loaded && styles['appeared-text'])} ref={ref}>
       {children}
     </code>
   );

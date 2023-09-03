@@ -8,6 +8,8 @@ import { usePathname } from 'next/navigation';
 import { forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 
+import styles from './navigation-item.module.css';
+
 interface NavigationItemProps {
   children: ReactNode;
   className?: string;
@@ -20,11 +22,7 @@ const NavigationItem = forwardRef<HTMLAnchorElement, NavigationItemProps>((props
   const pathname = usePathname();
 
   return (
-    <Link
-      className={twMerge('px-3 hover:underline transition-all', pathname === href && 'text-blue-500 drop-shadow-sm')}
-      href={href}
-      ref={ref}
-    >
+    <Link className={twMerge(styles.link, pathname === href && styles['current-link'])} href={href} ref={ref}>
       {children}
     </Link>
   );

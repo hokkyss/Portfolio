@@ -1,0 +1,36 @@
+.body {
+  @apply flex flex-col;
+  @apply text-black dark:text-white;
+
+  .navbar {
+    @apply fixed left-0 top-0 right-0;
+    @apply flex flex-row justify-between;
+    @apply backdrop-blur-md;
+    @apply bg-gradient-to-b dark:from-black from-zinc-200;
+    @apply p-6;
+    @apply z-50;
+
+    .navbar-links {
+      @apply flex items-center;
+      @apply gap-x-2;
+    }
+
+    .navbar-utils {
+      @apply flex justify-end items-center;
+    }
+  }
+
+  .main {
+    @apply min-h-screen h-screen;
+  }
+
+  .footer {
+    @apply fixed bottom-0 left-0 right-0;
+    @apply z-50;
+    @apply h-20 w-full;
+    @apply flex flex-row items-end justify-center;
+    @apply bg-gradient-to-t from-white via-white dark:from-black dark:via-black;
+    @apply pb-3;
+    @apply text-xs;
+  }
+}

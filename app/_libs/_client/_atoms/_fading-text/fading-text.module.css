@@ -1,0 +1,10 @@
+.text {
+  @apply text-transparent;
+  @apply font-bold;
+  @apply duration-500;
+  @apply blur-xl;
+}
+
+.appeared-text {
+  @apply blur-none text-blue-500;
+}

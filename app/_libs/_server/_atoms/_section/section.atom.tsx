@@ -1,7 +1,14 @@
 import 'server-only';
 
-import styled from '~/_common/_utils/_styled/styled.util';
+import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
-const Section = styled('section')('relative pt-24 pb-32', 'flex flex-col justify-center h-full items-center gap-y-5');
+import { forwardRef } from 'react';
+import { twMerge } from 'tailwind-merge';
+
+import styles from './section.module.css';
+
+const Section = forwardRef<HTMLElement, DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>>(
+  ({ className, ...rest }, ref) => <section className={twMerge(styles.base, className)} {...rest} ref={ref} />,
+);
 
 export default Section;
