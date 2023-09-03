@@ -1,6 +1,12 @@
+/* eslint-disable perfectionist/sort-objects */
+/**
+ * @see https://tailwindcss.com/docs/using-with-preprocessors#nesting
+ */
 module.exports = {
   plugins: {
-    autoprefixer: {},
+    'postcss-import': {},
+    'tailwindcss/nesting': {},
     tailwindcss: {},
+    autoprefixer: {},
   },
 };

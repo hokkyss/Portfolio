@@ -21,8 +21,6 @@ export async function generateMetadata(_props: HomePageProps, _parent: Resolving
   return {};
 }
 
-const iconClassName = 'w-8 hover:fill-blue-500 transition-[fill] duration-300';
-
 const HomePage = memo<HomePageProps>(async (_props) => {
   const LinkedInIcon = Icon.linkedin;
   const GitIcon = Icon.git;
@@ -39,13 +37,13 @@ const HomePage = memo<HomePageProps>(async (_props) => {
           </div>
           <div className={styles['social-media-container']}>
             <Link className={styles['social-media-link']} href="https://link.hokkyss.com/mail-me" target="_blank">
-              <GmailIcon className={iconClassName} />
+              <GmailIcon className={styles['social-media-icon']} />
             </Link>
             <Link className={styles['social-media-link']} href="https://link.hokkyss.com/linkedin" target="_blank">
-              <LinkedInIcon className={iconClassName} />
+              <LinkedInIcon className={styles['social-media-icon']} />
             </Link>
             <Link className={styles['social-media-link']} href="https://link.hokkyss.com/github" target="_blank">
-              <GitIcon className={iconClassName} />
+              <GitIcon className={styles['social-media-icon']} />
             </Link>
           </div>
         </div>
