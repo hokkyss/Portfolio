@@ -17,14 +17,18 @@
   .text-container {
     @apply flex flex-col gap-y-2;
   }
-}
 
-.social-media-container {
-  @apply flex flex-row;
-  @apply justify-center md:justify-normal;
-  @apply gap-x-1;
-}
+  .social-media-container {
+    @apply flex flex-row;
+    @apply justify-center md:justify-normal;
+    @apply gap-x-1;
 
-.social-media-link {
-  @apply flex items-center;
+    .social-media-link {
+      @apply flex items-center;
+
+      .social-media-icon {
+        @apply w-8 hover:fill-blue-500 transition-[fill] duration-300;
+      }
+    }
+  }
 }
