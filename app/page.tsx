@@ -11,7 +11,9 @@ import Occupations from '~/_client/_organisms/_occupations/occupations.organism'
 import me from '~/_server/_assets/me.png';
 import Icon from '~/_server/_atoms/_icons/icon.atom';
 import Section from '~/_server/_atoms/_section/section.atom';
-import AboutMeSection from '~/_server/_organisms/_about-me-section/about-me-section.organism';
+import AboutMeSection from '~/_server/_organisms/_about-me/about-me.organism';
+
+import styles from './page.module.css';
 
 type HomePageProps = DefaultPageProps;
 
@@ -27,22 +29,22 @@ const HomePage = memo<HomePageProps>(async (_props) => {
 
   return (
     <>
-      <Section className="md:flex-row md:gap-x-5" id="cover">
-        <Image alt="Me" className="rounded-full" fetchPriority="high" height={240} priority src={me} width={240} />
-        <div className="text-2xl h-60 flex flex-col justify-center gap-y-8 text-center md:text-start">
-          <div className="flex flex-col gap-y-2">
+      <Section className={styles.section} id="cover">
+        <Image alt="Me" className={styles.me} fetchPriority="high" height={240} priority src={me} width={240} />
+        <div className={styles['description-container']}>
+          <div className={styles['text-container']}>
             <h1>Hi, I&apos;m Hokki Suwanda, a</h1>
             <Occupations delay={200} occupations={['fullstack engineer', 'motivated learner', 'tech enthusiast']} />
             <h1>from Indonesia.</h1>
           </div>
-          <div className="flex flex-row gap-x-1 justify-center md:justify-normal">
-            <Link className="flex items-center" href="https://link.hokkyss.com/mail-me" target="_blank">
+          <div className={styles['social-media-container']}>
+            <Link className={styles['social-media-link']} href="https://link.hokkyss.com/mail-me" target="_blank">
               <GmailIcon className={iconClassName} />
             </Link>
-            <Link className="flex items-center" href="https://link.hokkyss.com/linkedin" target="_blank">
+            <Link className={styles['social-media-link']} href="https://link.hokkyss.com/linkedin" target="_blank">
               <LinkedInIcon className={iconClassName} />
             </Link>
-            <Link className="flex items-center" href="https://link.hokkyss.com/github" target="_blank">
+            <Link className={styles['social-media-link']} href="https://link.hokkyss.com/github" target="_blank">
               <GitIcon className={iconClassName} />
             </Link>
           </div>

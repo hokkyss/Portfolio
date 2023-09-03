@@ -9,6 +9,8 @@ import { twMerge } from 'tailwind-merge';
 
 import NavigationItem from '~/_client/_atoms/_navigation-item/navigation-item.atom';
 
+import styles from './layout.module.css';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -38,38 +40,18 @@ export const metadata: Metadata = {
 const RootLayout = memo<PropsWithChildren>(async ({ children }) => {
   return (
     <html lang="en">
-      <body className={twMerge(inter.className, 'flex flex-col' /* , 'text-black dark:text-white' */)}>
-        <nav
-          className={twMerge(
-            'fixed left-0 top-0 right-0',
-            'flex justify-between',
-            'backdrop-blur-md',
-            'bg-gradient-to-b dark:from-black from-zinc-200',
-            'p-6',
-            'z-50',
-          )}
-        >
-          <div className="flex items-center gap-x-2">
+      <body className={twMerge(inter.className, styles.body)}>
+        <nav className={styles['navbar']}>
+          <div className={styles['navbar-links']}>
             <NavigationItem href="/">Home</NavigationItem>
             <NavigationItem href="/about">About</NavigationItem>
             <NavigationItem href="/about">Projects</NavigationItem>
             <NavigationItem href="/about">Blogs</NavigationItem>
           </div>
-          <div className="flex justify-end items-center" />
+          <div className={styles['navbar-utils']} />
         </nav>
-        <main className="min-h-screen h-screen">{children}</main>
-        <footer
-          className={twMerge(
-            'h-20 w-full z-50',
-            'flex items-end justify-center',
-            'fixed bottom-0 left-0 right-0',
-            'bg-gradient-to-t from-white via-white dark:from-black dark:via-black',
-            'pb-3',
-            'text-xs',
-          )}
-        >
-          Copyright &copy; 2023 Hokki Suwanda. All rights reserved.
-        </footer>
+        <main className={styles.main}>{children}</main>
+        <footer className={styles.footer}>Copyright &copy; 2023 Hokki Suwanda. All rights reserved.</footer>
       </body>
     </html>
   );
