@@ -7,8 +7,6 @@ import { Inter } from 'next/font/google';
 import { memo } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-import NavigationItem from '~/_client/_atoms/_navigation-item/navigation-item.atom';
-
 import styles from './layout.module.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -41,7 +39,7 @@ const RootLayout = memo<PropsWithChildren>(async ({ children }) => {
   return (
     <html lang="en">
       <body className={twMerge(inter.className, styles.body)}>
-        <nav className={styles['navbar']}>
+        {/* <nav className={styles['navbar']}>
           <div className={styles['navbar-links']}>
             <NavigationItem href="/">Home</NavigationItem>
             <NavigationItem href="/about">About</NavigationItem>
@@ -49,7 +47,7 @@ const RootLayout = memo<PropsWithChildren>(async ({ children }) => {
             <NavigationItem href="/about">Blogs</NavigationItem>
           </div>
           <div className={styles['navbar-utils']} />
-        </nav>
+        </nav> */}
         <main className={styles.main}>{children}</main>
         <footer className={styles.footer}>Copyright &copy; 2023 Hokki Suwanda. All rights reserved.</footer>
       </body>
