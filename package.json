@@ -1,87 +1,49 @@
 {
-	"name": "hokkkyss-portfolio",
-	"version": "1.0.0",
-	"private": true,
-	"scripts": {
-		"dev": "cross-env next dev",
-		"build": "cross-env next build",
-		"start": "cross-env next start",
-		"lint": "cross-env next lint --no-cache",
-		"prepare": "husky install"
-	},
-	"dependencies": {
-		"@chakra-ui/react": "^1.8.8",
-		"@emotion/react": "^11",
-		"@emotion/styled": "^11",
-		"axios": "^0.27.2",
-		"cross-env": "^7.0.3",
-		"firebase": "^9.9.0",
-		"framer-motion": "^6",
-		"next": "^12.2.2",
-		"next-pwa": "^5.5.4",
-		"react": "17.0.2",
-		"react-dom": "17.0.2",
-		"react-icons": "^4.3.1",
-		"uuid": "^8.3.2"
-	},
-	"devDependencies": {
-		"@types/node": "18.0.4",
-		"@types/react": "17.0.43",
-		"@types/react-dom": "17.0.14",
-		"@types/uuid": "^8.3.4",
-		"@typescript-eslint/eslint-plugin": "^5.30.6",
-		"@typescript-eslint/parser": "^5.30.6",
-		"eslint": "8.12.0",
-		"eslint-config-next": "^12.2.2",
-		"eslint-config-prettier": "^8.5.0",
-		"eslint-plugin-jsx-a11y": "^6.6.0",
-		"eslint-plugin-prettier": "^4.2.1",
-		"husky": "^8.0.1",
-		"lint-staged": "^12.3.7",
-		"prettier": "^2.7.1",
-		"typescript": "4.7.4"
-	},
-	"prettier": {
-		"endOfLine": "auto",
-		"useTabs": true,
-		"printWidth": 80,
-		"arrowParens": "always",
-		"semi": false,
-		"tabWidth": 2,
-		"bracketSpacing": true,
-		"jsxSingleQuote": false,
-		"singleQuote": true
-	},
-	"eslintConfig": {
-		"extends": [
-			"next/core-web-vitals",
-			"eslint:recommended",
-			"plugin:jsx-a11y/recommended",
-			"plugin:@typescript-eslint/recommended",
-			"plugin:prettier/recommended"
-		],
-		"parser": "@typescript-eslint/parser",
-		"env": {
-			"node": true
-		},
-		"rules": {
-			"prettier/prettier": "error",
-			"camelcase": "error",
-			"no-console": "error",
-			"no-unused-vars": "off",
-			"no-unused-labels": "warn",
-			"no-else-return": "warn",
-			"no-alert": "error",
-			"no-compare-neg-zero": "error",
-			"no-caller": "error",
-			"no-duplicate-imports": "error",
-			"no-empty-function": "warn",
-			"no-eval": "error",
-			"no-new-func": "error",
-			"no-this-before-super": "error"
-		}
-	},
-	"lint-staged": {
-		"*.ts(x)?": "eslint --ext .ts --ext .tsx"
-	}
+  "dependencies": {
+    "@icons-pack/react-simple-icons": "^8.0.1",
+    "@material-design-icons/svg": "^0.14.10",
+    "@tanstack/react-query": "^4.32.6",
+    "client-only": "^0.0.1",
+    "next": "13.4.13",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "server-only": "^0.0.1",
+    "tailwind-merge": "^1.14.0",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^8.0.1",
+    "@types/node": "20.4.10",
+    "@types/react": "18.2.20",
+    "@types/react-dom": "18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
+    "autoprefixer": "10.4.14",
+    "eslint": "8.47.0",
+    "eslint-config-alloy": "^5.1.1",
+    "eslint-config-next": "13.4.13",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-jsonc": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-perfectionist": "^1.5.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.33.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "postcss": "8.4.27",
+    "prettier": "^3.0.1",
+    "svgo": "^3.0.2",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.1.6"
+  },
+  "name": "@hokkyss/next-boilerplate",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "lint": "next lint",
+    "start": "next start"
+  },
+  "version": "1.0.0"
 }

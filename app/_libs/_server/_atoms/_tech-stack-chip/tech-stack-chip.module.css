@@ -1,0 +1,8 @@
+.container {
+  @apply w-fit h-fit;
+  @apply bg-gradient-to-tl from-slate-600 to-slate-300;
+  @apply inline-flex flex-row gap-x-2 border p-2 rounded-md transition;
+  @apply text-black dark:text-white;
+  @apply border-black dark:border-white;
+  @apply hover:scale-105 hover:-translate-y-0.5;
+}
