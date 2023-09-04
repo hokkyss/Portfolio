@@ -3,11 +3,21 @@ import 'server-only';
 import { memo } from 'react';
 
 import TechStack from '~/_server/_molecules/_tech-stack/tech-stack.molecule';
+import UserService from '~/_server/_services/_api/user.service';
 
 const TechStacks = memo(async () => {
+  const skills = await UserService.getSkills();
+
   return (
     <>
-      <TechStack
+      {skills.map((skill) => (
+        <TechStack
+          key={skill.name}
+          techStacks={skill.skills.map((techStack) => ({ icon: techStack.slug, name: techStack.name }))}
+          title={skill.name}
+        />
+      ))}
+      {/* <TechStack
         techStacks={[
           { icon: 'c', name: 'C' },
           { icon: 'cpp', name: 'C++' },
@@ -62,7 +72,7 @@ const TechStacks = memo(async () => {
           { icon: 'git', name: 'Git' },
         ]}
         title="Others"
-      />
+      /> */}
     </>
   );
 });

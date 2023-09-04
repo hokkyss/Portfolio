@@ -3,6 +3,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import type { PropsWithChildren } from 'react';
 
+import { Analytics } from '@vercel/analytics/react';
 import { Inter } from 'next/font/google';
 import { memo } from 'react';
 import { twMerge } from 'tailwind-merge';
@@ -50,6 +51,7 @@ const RootLayout = memo<PropsWithChildren>(async ({ children }) => {
         </nav> */}
         <main className={styles.main}>{children}</main>
         <footer className={styles.footer}>Copyright &copy; 2023 Hokki Suwanda. All rights reserved.</footer>
+        <Analytics />
       </body>
     </html>
   );
