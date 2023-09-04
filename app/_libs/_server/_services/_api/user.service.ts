@@ -14,7 +14,16 @@ const endpoints = new Zodios(
       alias: 'getSkills',
       method: 'get',
       path: '/v1/user/skills',
-      response: z.any(),
+      response: z
+        .object({
+          data: z.array(
+            z.object({
+              name: z.string(),
+              skills: z.array(z.object({ name: z.string(), slug: z.string() })),
+            }),
+          ),
+        })
+        .transform(({ data }) => data),
     })
     .build(),
 );

@@ -3,6 +3,7 @@
     "@icons-pack/react-simple-icons": "^8.0.1",
     "@material-design-icons/svg": "^0.14.10",
     "@tanstack/react-query": "^4.32.6",
+    "@vercel/analytics": "^1.0.2",
     "@zodios/core": "^10.9.6",
     "@zodios/plugins": "^10.6.0",
     "axios": "^1.5.0",
