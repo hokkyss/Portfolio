@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { memo } from 'react';
 
 import Occupations from '~/_client/_organisms/_occupations/occupations.organism';
-import me from '~/_server/_assets/me.png';
+import me from '~/_server/_assets/images/me.png';
 import Icon from '~/_server/_atoms/_icons/icon.atom';
 import Section from '~/_server/_atoms/_section/section.atom';
 import AboutMeSection from '~/_server/_organisms/_about-me/about-me.organism';
