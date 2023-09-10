@@ -1,0 +1,97 @@
+{
+	"env": {
+		"browser": true,
+		"es2017": true,
+		"node": true
+	},
+	"overrides": [
+		{
+			"extends": ["plugin:@html-eslint/recommended"],
+			"files": ["*.html"],
+			"parser": "@html-eslint/parser",
+			"rules": {
+				"@html-eslint/indent": ["error", "tab"],
+				"@html-eslint/no-extra-spacing-attrs": ["error", { "enforceBeforeSelfClose": true }],
+				"@html-eslint/require-closing-tags": ["error", { "selfClosing": "always" }],
+				"prettier/prettier": "off"
+			}
+		},
+		{
+			"extends": [
+				"eslint:recommended",
+				"plugin:@typescript-eslint/recommended",
+				"alloy",
+				"alloy/typescript",
+				"plugin:svelte/recommended",
+				"plugin:perfectionist/recommended-natural",
+				"prettier"
+			],
+			"files": ["*.svelte"],
+			"parser": "svelte-eslint-parser",
+			"parserOptions": {
+				"parser": "@typescript-eslint/parser",
+				"project": "./tsconfig.eslint.json"
+			}
+		},
+		{
+			"extends": ["plugin:jsonc/recommended-with-json", "plugin:jsonc/prettier"],
+			"files": ["*.json"],
+			"parser": "jsonc-eslint-parser",
+			"rules": {
+				"jsonc/comma-style": "error",
+				"jsonc/sort-keys": "error"
+			}
+		},
+		{
+			"extends": [
+				"eslint:recommended",
+				"plugin:@typescript-eslint/recommended",
+				"alloy",
+				"alloy/typescript",
+				"plugin:svelte/recommended",
+				"plugin:perfectionist/recommended-natural",
+				"prettier"
+			],
+			"files": ["*.ts", "*.js"],
+			"parser": "@typescript-eslint/parser"
+		}
+	],
+	"parserOptions": {
+		"ecmaVersion": 2020,
+		"extraFileExtensions": [".svelte", ".html"],
+		"project": "./tsconfig.eslint.json",
+		"sourceType": "module"
+	},
+	"plugins": ["@typescript-eslint", "@html-eslint", "prettier", "perfectionist"],
+	"rules": {
+		"@typescript-eslint/interface-name-prefix": "off",
+		"@typescript-eslint/no-unused-vars": [
+			"error",
+			{
+				"argsIgnorePattern": "^_",
+				"destructuredArrayIgnorePattern": "^_",
+				"varsIgnorePattern": "^_"
+			}
+		],
+		"no-console": "error",
+		"no-unused-vars": "off",
+		"perfectionist/sort-imports": [
+			"error",
+			{
+				"groups": [
+					"side-effect",
+					["type", "builtin-type", "external-type"],
+					"internal-type",
+					"parent-type",
+					"sibling-type",
+					["builtin", "external"],
+					"internal",
+					"parent",
+					"sibling",
+					"unknown"
+				]
+			}
+		],
+		"prettier/prettier": ["error", {}, { "usePrettierrc": true }]
+	}
+}

@@ -10,7 +10,7 @@
 	},
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"typescript.enablePromptUseWorkspaceTsdk": true,
-	"eslint.validate": ["typescript", "json", "jsonc", "json5"],
+	"eslint.validate": ["typescript", "json", "jsonc", "json5", "svelte", "html"],
 	"[svelte]": {
 		"editor.defaultFormatter": "svelte.svelte-vscode",
 		"typescript.suggest.enabled": true,
