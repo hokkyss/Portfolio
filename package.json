@@ -1,4 +1,7 @@
 {
+	"dependencies": {
+		"@floating-ui/dom": "^1.5.1"
+	},
 	"devDependencies": {
 		"@html-eslint/eslint-plugin": "^0.19.1",
 		"@html-eslint/parser": "^0.19.1",

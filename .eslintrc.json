@@ -53,7 +53,45 @@
 				"prettier"
 			],
 			"files": ["*.ts", "*.js"],
-			"parser": "@typescript-eslint/parser"
+			"parser": "@typescript-eslint/parser",
+			"rules": {
+				"@typescript-eslint/consistent-type-imports": [
+					"error",
+					{
+						"fixStyle": "separate-type-imports",
+						"prefer": "type-imports"
+					}
+				],
+				"@typescript-eslint/interface-name-prefix": "off",
+				"@typescript-eslint/no-unused-vars": [
+					"error",
+					{
+						"argsIgnorePattern": "^_",
+						"destructuredArrayIgnorePattern": "^_",
+						"varsIgnorePattern": "^_"
+					}
+				],
+				"no-console": "error",
+				"no-unused-vars": "off",
+				"perfectionist/sort-imports": [
+					"error",
+					{
+						"groups": [
+							"side-effect",
+							["type", "builtin-type", "external-type"],
+							"internal-type",
+							"parent-type",
+							"sibling-type",
+							["builtin", "external"],
+							"internal",
+							"parent",
+							"sibling",
+							"unknown"
+						]
+					}
+				],
+				"prettier/prettier": ["error", {}, { "usePrettierrc": true }]
+			}
 		}
 	],
 	"parserOptions": {
@@ -62,36 +100,5 @@
 		"project": "./tsconfig.eslint.json",
 		"sourceType": "module"
 	},
-	"plugins": ["@typescript-eslint", "@html-eslint", "prettier", "perfectionist"],
-	"rules": {
-		"@typescript-eslint/interface-name-prefix": "off",
-		"@typescript-eslint/no-unused-vars": [
-			"error",
-			{
-				"argsIgnorePattern": "^_",
-				"destructuredArrayIgnorePattern": "^_",
-				"varsIgnorePattern": "^_"
-			}
-		],
-		"no-console": "error",
-		"no-unused-vars": "off",
-		"perfectionist/sort-imports": [
-			"error",
-			{
-				"groups": [
-					"side-effect",
-					["type", "builtin-type", "external-type"],
-					"internal-type",
-					"parent-type",
-					"sibling-type",
-					["builtin", "external"],
-					"internal",
-					"parent",
-					"sibling",
-					"unknown"
-				]
-			}
-		],
-		"prettier/prettier": ["error", {}, { "usePrettierrc": true }]
-	}
+	"plugins": ["@typescript-eslint", "@html-eslint", "prettier", "perfectionist"]
 }
