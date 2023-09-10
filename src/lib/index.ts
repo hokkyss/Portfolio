@@ -1,1 +1,2 @@
-export const CLIENT = 'CLIENT';
+export * as assets from './assets';
+export * as components from './components';

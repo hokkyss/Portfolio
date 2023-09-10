@@ -24,6 +24,7 @@
 				"alloy/typescript",
 				"plugin:svelte/recommended",
 				"plugin:perfectionist/recommended-natural",
+				"plugin:tailwindcss/recommended",
 				"prettier"
 			],
 			"files": ["*.svelte"],
@@ -31,6 +32,44 @@
 			"parserOptions": {
 				"parser": "@typescript-eslint/parser",
 				"project": "./tsconfig.eslint.json"
+			},
+			"rules": {
+				"@typescript-eslint/consistent-type-imports": [
+					"error",
+					{
+						"fixStyle": "separate-type-imports",
+						"prefer": "type-imports"
+					}
+				],
+				"@typescript-eslint/interface-name-prefix": "off",
+				"@typescript-eslint/no-unused-vars": [
+					"error",
+					{
+						"argsIgnorePattern": "^_",
+						"destructuredArrayIgnorePattern": "^_",
+						"varsIgnorePattern": "^_"
+					}
+				],
+				"no-console": "error",
+				"no-unused-vars": "off",
+				"perfectionist/sort-imports": [
+					"error",
+					{
+						"groups": [
+							"side-effect",
+							["type", "builtin-type", "external-type"],
+							"internal-type",
+							"parent-type",
+							"sibling-type",
+							["builtin", "external"],
+							"internal",
+							"parent",
+							"sibling",
+							"unknown"
+						]
+					}
+				],
+				"prettier/prettier": ["error", {}, { "usePrettierrc": true }]
 			}
 		},
 		{

@@ -1,2 +1,2 @@
-// place files you want to import through the `$lib` alias in this folder.
-export const SERVER = 'SERVER';
+export * as models from './models';
+export * as services from './services';

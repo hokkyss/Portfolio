@@ -6,9 +6,6 @@
 	export let data: PageData;
 </script>
 
-<svelte:head>
-	<title>Hokki Suwanda</title>
-	<meta content="blabla" name="description" />
-</svelte:head>
+<svelte:head></svelte:head>
 
 <h1 bind:this={headingElement}>{data['hello-world']}</h1>

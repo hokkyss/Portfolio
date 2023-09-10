@@ -13,3 +13,4 @@ package-lock.json
 yarn.lock
 coverage
 test-results
+*.css
