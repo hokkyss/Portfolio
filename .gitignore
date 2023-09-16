@@ -40,3 +40,4 @@ yarn-error.log*
 service-account.json
 next-env.d.ts
 package-lock.json
+app/**/*.module.css.d.ts
