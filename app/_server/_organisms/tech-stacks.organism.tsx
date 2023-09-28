@@ -75,6 +75,8 @@ const TechStacks = memo(async () => {
           { icon: 'vercel', name: 'Vercel' },
           { icon: 'netlify', name: 'Netlify' },
           { icon: 'git', name: 'Git' },
+          { icon: 'jest', name: 'Jest' },
+          { icon: 'vitest', name: 'Vitest' },
         ]}
         title="Others"
       />
