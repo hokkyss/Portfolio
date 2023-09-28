@@ -28,6 +28,7 @@ import {
   SiGo,
   SiHtml5,
   SiJavascript,
+  SiJest,
   SiLinkedin,
   SiMariadb,
   SiMui,
@@ -48,6 +49,7 @@ import {
   SiTailwindcss,
   SiTypescript,
   SiVercel,
+  SiVitest,
 } from '@icons-pack/react-simple-icons';
 import GmailIcon from '@material-design-icons/svg/outlined/mail.svg';
 
@@ -71,6 +73,7 @@ const Icon: Record<string, IconType> = {
   go: SiGo,
   html5: SiHtml5,
   javascript: SiJavascript,
+  jest: SiJest,
   linkedin: SiLinkedin,
   mariadb: SiMariadb,
   mui: SiMui,
@@ -90,6 +93,7 @@ const Icon: Record<string, IconType> = {
   tailwindcss: SiTailwindcss,
   typescript: SiTypescript,
   vercel: SiVercel,
+  vitest: SiVitest,
 };
 
 export default Icon;
