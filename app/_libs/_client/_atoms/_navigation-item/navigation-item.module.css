@@ -1,7 +1,0 @@
-.link {
-  @apply px-3 hover:underline transition-all;
-}
-
-.current-link {
-  @apply text-blue-500 drop-shadow-sm;
-}

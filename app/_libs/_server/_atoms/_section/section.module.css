@@ -1,7 +1,0 @@
-.base {
-  @apply pt-24 pb-32;
-  @apply relative;
-  @apply flex flex-col justify-center items-center;
-  @apply h-full;
-  @apply gap-y-5;
-}
