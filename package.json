@@ -51,6 +51,7 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
+    "postinstall": "husky install",
     "start": "next start"
   },
   "version": "1.0.0"
