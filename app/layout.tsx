@@ -8,6 +8,8 @@ import { Inter } from 'next/font/google';
 import { memo } from 'react';
 import { twMerge } from 'tailwind-merge';
 
+import Cursor from './_client/_atoms/cursor.atom';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -46,6 +48,7 @@ const RootLayout = memo<PropsWithChildren>(async ({ children }) => {
         <main className={mainStyle}>{children}</main>
         <footer className={footerStyle}>Copyright &copy; 2023 Hokki Suwanda. All rights reserved.</footer>
         <Analytics />
+        <Cursor />
       </body>
     </html>
   );
