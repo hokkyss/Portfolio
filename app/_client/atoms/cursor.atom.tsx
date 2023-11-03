@@ -1,4 +1,5 @@
 'use client';
+
 import 'client-only';
 
 import { autoUpdate, offset, shift, useFloating } from '@floating-ui/react';

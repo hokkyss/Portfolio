@@ -1,6 +1,6 @@
 import type { Metadata, ResolvingMetadata } from 'next';
 
-import type DefaultPageProps from '~/_common/_types/page-props.type';
+import type DefaultPageProps from '~/_common/types/page-props.type';
 
 import { memo } from 'react';
 

@@ -1,10 +1,10 @@
+'use server';
+
 import 'server-only';
 
-import type { TechStack as TechStackModel } from '~/_common/_models/tech-stack.model';
+import type { TechStack as TechStackModel } from '~/_common/models/tech-stack.model';
 
-import { memo } from 'react';
-
-import TechStackChip from '../_atoms/tech-stack-chip.atom';
+import TechStackChip from '../atoms/tech-stack-chip.atom';
 
 interface TechStackProps {
   techStacks: TechStackModel[];
@@ -14,7 +14,7 @@ interface TechStackProps {
 const titleStyle = 'px-2 absolute -top-[14px] backdrop-blur-xl text-xl';
 const chipStyle = 'hover:text-blue-700 hover:dark:fill-green-300 hover:dark:text-green-300';
 
-const TechStack = memo<TechStackProps>(async (props) => {
+const TechStack = async (props: TechStackProps) => {
   const { techStacks, title } = props;
 
   return (
@@ -25,6 +25,6 @@ const TechStack = memo<TechStackProps>(async (props) => {
       ))}
     </div>
   );
-});
+};
 
 export default TechStack;

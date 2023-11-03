@@ -6,8 +6,8 @@ import type { CSSProperties } from 'react';
 
 import { forwardRef, useCallback, useState } from 'react';
 
-import FadingText from '../_atoms/fading-text.atom';
-import useInterval from '../_hooks/use-interval.hook';
+import FadingText from '../atoms/fading-text.atom';
+import useInterval from '../hooks/use-interval.hook';
 
 interface OccupationProps {
   className?: string;
