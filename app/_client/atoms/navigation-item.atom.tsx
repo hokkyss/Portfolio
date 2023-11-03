@@ -1,5 +1,7 @@
 'use client';
 
+import 'client-only';
+
 import type { Route } from 'next';
 import type { CSSProperties, ReactNode } from 'react';
 

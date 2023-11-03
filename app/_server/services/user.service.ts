@@ -1,9 +1,11 @@
+import 'server-only';
+
 import { Zodios, apiBuilder } from '@zodios/core';
 import { pluginToken } from '@zodios/plugins';
 import { cache } from 'react';
 import { z } from 'zod';
 
-import serverEnvConfig from '~/_server/_configs/env.config';
+import serverEnvConfig from '~/_server/configs/env.config';
 
 import AuthService from './auth.service';
 

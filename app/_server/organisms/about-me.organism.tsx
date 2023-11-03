@@ -1,8 +1,8 @@
+'use server';
+
 import 'server-only';
 
-import { memo } from 'react';
-
-import Section from '~/_server/_atoms/section.atom';
+import Section from '~/_server/atoms/section.atom';
 
 import TechStacks from './tech-stacks.organism';
 
@@ -11,7 +11,7 @@ const containerStyle =
 const titleStyle = 'text-4xl font-bold self-center';
 const contentStyle = 'text-lg';
 
-const AboutMe = memo(async () => {
+const AboutMe = async () => {
   return (
     <Section className={containerStyle} id="about">
       <h1 className={titleStyle}>Me and Myself</h1>
@@ -29,6 +29,6 @@ const AboutMe = memo(async () => {
       <TechStacks />
     </Section>
   );
-});
+};
 
 export default AboutMe;

@@ -1,3 +1,7 @@
+'use client';
+
+import 'client-only';
+
 import { useCallback, useMemo, useState } from 'react';
 
 export type UseBooleanResult = [

@@ -7,7 +7,7 @@ import type { CSSProperties } from 'react';
 import { forwardRef, useEffect } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-import useBoolean from '../_hooks/use-boolean.hook';
+import useBoolean from '../hooks/use-boolean.hook';
 
 interface FadingTextProps {
   children: string;

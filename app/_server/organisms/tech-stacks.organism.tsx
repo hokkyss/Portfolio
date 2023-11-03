@@ -1,11 +1,12 @@
+'use server';
+
 import 'server-only';
 
 import dynamic from 'next/dynamic';
-import { memo } from 'react';
 
-const TechStack = dynamic(() => import('~/_server/_molecules/tech-stack.molecule'));
+const TechStack = dynamic(() => import('~/_server/molecules/tech-stack.molecule'));
 
-const TechStacks = memo(async () => {
+const TechStacks = async () => {
   // const skills = await UserService.getSkills();
 
   return (
@@ -82,6 +83,6 @@ const TechStacks = memo(async () => {
       />
     </>
   );
-});
+};
 
 export default TechStacks;

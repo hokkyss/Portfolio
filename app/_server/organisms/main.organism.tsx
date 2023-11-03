@@ -1,13 +1,16 @@
-import dynamic from 'next/dynamic';
-import { memo } from 'react';
+'use server';
 
-import { me } from '~/_server/_assets/images';
-import Icon from '~/_server/_atoms/icon.atom';
+import 'server-only';
+
+import dynamic from 'next/dynamic';
+
+import { me } from '~/_server/assets/images';
+import Icon from '~/_server/atoms/icon.atom';
 
 const Image = dynamic(() => import('next/image'));
 const Link = dynamic(() => import('next/link'));
-const Section = dynamic(() => import('~/_server/_atoms/section.atom'));
-const Occupations = dynamic(() => import('~/_client/_organisms/occupations.organism'));
+const Section = dynamic(() => import('~/_server/atoms/section.atom'));
+const Occupations = dynamic(() => import('~/_client/organisms/occupations.organism'));
 
 const sectionStyle = 'md:flex-row md:gap-x-5';
 const myPictureStyle = 'rounded-full';
@@ -17,7 +20,7 @@ const socialMediaContainerStyle = 'flex flex-row justify-center md:justify-norma
 const socialMediaLinkStyle = 'flex items-center';
 const socialMediaIconStyle = 'w-8 hover:fill-blue-500 transition-[fill] duration-300';
 
-const Main = memo(async () => {
+const Main = async () => {
   const LinkedInIcon = Icon.linkedin;
   const GitIcon = Icon.git;
   const GmailIcon = Icon.gmail;
@@ -45,6 +48,6 @@ const Main = memo(async () => {
       </div>
     </Section>
   );
-});
+};
 
 export default Main;
