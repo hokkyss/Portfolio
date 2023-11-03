@@ -16,10 +16,10 @@ const ExternalLink = dynamic(dynamicIconImports['external-link']);
 const AboutMe = async () => {
   return (
     <Section
-      className={tw`flex flex-col justify-normal items-start gap-y-10 min-h-full h-fit bg-gradient-to-b from-transparent to-blue-400 px-8 md:px-20`}
+      className={tw`flex h-fit min-h-full flex-col items-start justify-normal gap-y-10 bg-gradient-to-b from-transparent to-blue-400 px-8 md:px-20`}
       id="about"
     >
-      <h1 className={tw`text-4xl font-bold self-center`}>Me and Myself</h1>
+      <h1 className={tw`self-center text-4xl font-bold`}>Me and Myself</h1>
       <p className={tw`text-lg`}>
         Hi! I&apos;m Hokki Suwanda. I&apos;m a Fullstack Software Engineer from Indonesia. Full of enthusiasm and
         motivation with problem solving capabilities. Very excited to learn something new. Fulfilling all
@@ -31,23 +31,23 @@ const AboutMe = async () => {
         programming language I learned is Pascal. It was in high school. That sparked my interest in programming. After
         a taste of competitive programming, I fell in love with coding. So, here I am.
       </p>
-      <p className={tw`text-lg w-full`}>
+      <p className={tw`w-full text-lg`}>
         By the way, my favorite games are{' '}
         <Link
-          className={tw`font-semibold hover:underline inline-flex relative mr-2`}
+          className={tw`relative mr-2 inline-flex font-semibold hover:underline`}
           href="https://www.nintendo.com/us/store/products/fire-emblem-three-houses-switch/"
           target="_blank"
         >
           Fire Emblem Three Houses
-          <ExternalLink className={tw`inline absolute w-3 h-3 -right-3`} />
+          <ExternalLink className={tw`absolute -right-3 inline h-3 w-3`} />
         </Link>{' '}
         and{' '}
         <Link
-          className={tw`font-semibold hover:underline inline-flex relative`}
+          className={tw`relative inline-flex font-semibold hover:underline`}
           href="https://www.pokemon.com/us/pokemon-video-games/pokemon-black-version-and-pokemon-white-version/"
         >
           Pokémon Black
-          <ExternalLink className={tw`inline absolute w-3 h-3 -right-3`} />
+          <ExternalLink className={tw`absolute -right-3 inline h-3 w-3`} />
         </Link>
         .
       </p>

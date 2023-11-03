@@ -20,7 +20,7 @@ export default function ErrorBoundary(props: ErrorBoundaryProps) {
   const { error, reset } = props;
 
   return (
-    <div className={tw`h-full w-full flex justify-center items-center`}>
+    <div className={tw`flex h-full w-full items-center justify-center`}>
       <Card className={tw`max-w-xl break-words`}>
         <CardHeader>
           <CardTitle>Sorry :&#40;</CardTitle>
@@ -29,7 +29,7 @@ export default function ErrorBoundary(props: ErrorBoundaryProps) {
         <CardContent>
           <p className={tw`text-lg text-red-500`}>{error.message}</p>
         </CardContent>
-        <CardFooter className={tw`flex flex-row justify-end items-center`}>
+        <CardFooter className={tw`flex flex-row items-center justify-end`}>
           <Button onClick={reset} type="button" variant="default">
             Reload
           </Button>

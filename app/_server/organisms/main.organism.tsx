@@ -15,19 +15,19 @@ const Section = dynamic(() => import('~/_server/atoms/section.atom'));
 const Occupations = dynamic(() => import('~/_client/organisms/occupations.organism'));
 
 const socialMediaLink = tw`flex items-center`;
-const socialMediaIcon = tw`w-8 hover:fill-blue-500 transition-[fill] duration-300`;
+const socialMediaIcon = tw`w-8 transition-[fill] duration-300 hover:fill-blue-500`;
 
 const Main = async () => {
   return (
     <Section className={tw`md:flex-row md:gap-x-5`} id="cover">
       <Image alt="Me" className={tw`rounded-full`} fetchPriority="high" height={240} priority src={me} width={240} />
-      <div className={tw`flex flex-col justify-center gap-y-6 text-2xl text-center md:text-start h-60`}>
+      <div className={tw`flex h-60 flex-col justify-center gap-y-6 text-center text-2xl md:text-start`}>
         <div className={tw`flex flex-col gap-y-2`}>
           <h1>Hi, I&apos;m Hokki Suwanda, a</h1>
           <Occupations delay={200} occupations={['fullstack engineer', 'motivated learner', 'tech enthusiast']} />
           <h1>from Indonesia.</h1>
         </div>
-        <div className={tw`flex flex-row gap-x-1 justify-center md:justify-normal`}>
+        <div className={tw`flex flex-row justify-center gap-x-1 md:justify-normal`}>
           <Link
             className={badgeVariants({ variant: 'default' })}
             href="https://www.credly.com/badges/589bac2f-109c-4758-9aa8-495416bd0263/public_url"
@@ -36,7 +36,7 @@ const Main = async () => {
             Certified Node.js App Developer
           </Link>
         </div>
-        <div className={tw`flex flex-row justify-center md:justify-normal gap-x-1`}>
+        <div className={tw`flex flex-row justify-center gap-x-1 md:justify-normal`}>
           <Link className={socialMediaLink} href="https://link.hokkyss.com/mail-me" target="_blank">
             <Icon className={socialMediaIcon} name="gmail" />
           </Link>
