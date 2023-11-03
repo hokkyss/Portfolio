@@ -13,7 +13,7 @@
     "client-only": "^0.0.1",
     "clsx": "^2.0.0",
     "lucide-react": "^0.291.0",
-    "next": "13.4.13",
+    "next": "^14.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "server-only": "^0.0.1",
@@ -31,10 +31,11 @@
     "autoprefixer": "10.4.14",
     "eslint": "8.47.0",
     "eslint-config-alloy": "^5.1.1",
-    "eslint-config-next": "13.4.13",
+    "eslint-config-next": "^14.0.1",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-jsonc": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-next": "^0.0.0",
     "eslint-plugin-perfectionist": "^1.5.1",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.33.1",
@@ -51,7 +52,7 @@
     "typescript": "5.1.6"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18.17.0"
   },
   "name": "@hokkyss/next-boilerplate",
   "private": true,
