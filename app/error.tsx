@@ -20,7 +20,7 @@ export default function ErrorBoundary(props: ErrorBoundaryProps) {
     <div className={tw`h-full w-full flex justify-center items-center`}>
       <Card className={tw`max-w-xl break-words`}>
         <CardHeader>
-          <CardTitle>Error</CardTitle>
+          <CardTitle>Sorry :&#40;</CardTitle>
           <CardDescription>An Error Happened on {error.digest ? 'Server' : 'Client'} Side</CardDescription>
         </CardHeader>
         <CardContent>
