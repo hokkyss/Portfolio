@@ -8,7 +8,7 @@ type AboutPageProps = DefaultPageProps;
 
 export async function generateMetadata(_props: AboutPageProps, _parent: ResolvingMetadata): Promise<Metadata> {
   return {
-    title: 'hokkyss | About',
+    title: 'About',
   };
 }
 

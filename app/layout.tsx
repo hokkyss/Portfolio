@@ -1,7 +1,7 @@
 import 'server-only';
 import './globals.css';
 
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import type { PropsWithChildren } from 'react';
 
 import { Analytics } from '@vercel/analytics/react';
@@ -12,9 +12,17 @@ import { cn, tw } from './_common/utils/classname.util';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
+export const viewport: Viewport = {
+  colorScheme: 'light dark',
+  height: 'device-height',
+  initialScale: 1.0,
+  maximumScale: 1.0,
+  minimumScale: 1.0,
+  width: 'device-width',
+};
+
 export const metadata: Metadata = {
   authors: [{ name: 'Hokki Suwanda', url: 'https://github.com/hokkyss' }],
-  colorScheme: 'light dark',
   creator: 'Hokki Suwanda',
   description:
     "I'm Hokki Suwanda, a fullstack software engineer. A Computer Science Fresh Graduate. Full of enthusiasm and motivation with problem solving capabilities. Very excited to learn something new. Always fulfilling all responsibilities wholeheartedly. Pursuing career as a fullstack software engineer. Used quite lot of tech stacks.",
@@ -33,7 +41,10 @@ export const metadata: Metadata = {
     'competitive programming',
   ],
   publisher: 'Vercel',
-  title: 'hokkyss | Hokki Suwanda',
+  title: {
+    default: 'hokkyss | Hokki Suwanda',
+    template: 'hokkyss | %s',
+  },
 };
 
 export default async function Layout({ children }: PropsWithChildren) {
