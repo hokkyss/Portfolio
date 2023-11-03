@@ -1,15 +1,16 @@
+import 'server-only';
 import './globals.css';
 
 import type { Metadata } from 'next';
 import type { PropsWithChildren } from 'react';
 
+import { Analytics } from '@vercel/analytics/react';
 import { Inter } from 'next/font/google';
-import { memo } from 'react';
-import { twMerge } from 'tailwind-merge';
 
-import styles from './layout.module.css';
+import WebVitals from './_client/atoms/web-vitals.atom';
+import { cn, tw } from './_common/utils/classname.util';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
   authors: [{ name: 'Hokki Suwanda', url: 'https://github.com/hokkyss' }],
@@ -35,24 +36,21 @@ export const metadata: Metadata = {
   title: 'hokkyss | Hokki Suwanda',
 };
 
-const RootLayout = memo<PropsWithChildren>(async ({ children }) => {
+export default async function Layout({ children }: PropsWithChildren) {
   return (
-    <html lang="en">
-      <body className={twMerge(inter.className, styles.body)}>
-        {/* <nav className={styles['navbar']}>
-          <div className={styles['navbar-links']}>
-            <NavigationItem href="/">Home</NavigationItem>
-            <NavigationItem href="/about">About</NavigationItem>
-            <NavigationItem href="/about">Projects</NavigationItem>
-            <NavigationItem href="/about">Blogs</NavigationItem>
-          </div>
-          <div className={styles['navbar-utils']} />
-        </nav> */}
-        <main className={styles.main}>{children}</main>
-        <footer className={styles.footer}>Copyright &copy; 2023 Hokki Suwanda. All rights reserved.</footer>
+    <html dir="ltr" lang="en">
+      <body className={cn(inter.className, tw`flex flex-col text-black dark:text-white`)}>
+        <main className={tw`min-h-screen h-screen`} role="main">
+          {children}
+        </main>
+        <footer
+          className={tw`fixed bottom-0 left-0 right-0 z-50 h-20 w-full flex flex-row items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black pb-3 text-xs`}
+        >
+          Copyright &copy; 2023 Hokki Suwanda. All rights reserved.
+        </footer>
+        <Analytics />
+        <WebVitals />
       </body>
     </html>
   );
-});
-
-export default RootLayout;
+}
