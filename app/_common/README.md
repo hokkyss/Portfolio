@@ -1,4 +1,4 @@
-# `app/_libs/_common`
+# `app/_common`
 
 `_common` directory is for everything that is usable from both server side and client side. In other words, side-agnostic.
 
@@ -9,13 +9,12 @@ Some possible contents of `_common` are:
 3. General utility functions
 4. Constants
 5. Dependency Injections
-6. Vanilla state managements (like `zustand` or `valtio`)
+6. Vanilla state managements (like `zustand` or `valtio`), though client and server states are not synchronized.
 7. Environment variables prefixed with `NEXT_PUBLIC`
 8. etc
 
 ### Conventions
 
-0. It extends `_libs` conventions.
 1. You cannot use any directives (defaulted to server side by Next). Next, however, is smart enough to know whether a module is imported in client side, so you don't have to worry about anything.
 2. You cannot import `server-only` nor `client-only`
 3. You may not access objects related to `document` or `window`. If you want to access `document` or `window`, use `_client` directory instead.
