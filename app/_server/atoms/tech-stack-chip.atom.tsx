@@ -6,7 +6,7 @@ import type { TechStack } from '~/_common/models/tech-stack.model';
 
 import { cn, tw } from '~/_common/utils/classname.util';
 
-import Icon, { getIconName } from './icon.atom';
+import Icon from './icon.atom';
 
 interface TechStackChipProps {
   className?: string;
@@ -23,7 +23,7 @@ const TechStackChip = async (props: TechStackChipProps) => {
         className,
       )}
     >
-      <Icon name={getIconName(techStack.icon)} />
+      <Icon name={Icon.getIconName(techStack.icon)} />
       {techStack.name}
     </span>
   );
