@@ -5,7 +5,7 @@ import 'server-only';
 import dynamic from 'next/dynamic';
 
 import badgeVariants from '~/_common/styles/badge.style';
-import { cn, tw } from '~/_common/utils/classname.util';
+import { tw } from '~/_common/utils/classname.util';
 import { me } from '~/_server/assets/images';
 import Icon from '~/_server/atoms/icon.atom';
 
@@ -27,9 +27,9 @@ const Main = async () => {
           <Occupations delay={200} occupations={['fullstack engineer', 'motivated learner', 'tech enthusiast']} />
           <h1>from Indonesia.</h1>
         </div>
-        <div className={tw`flex flex-row gap-x-1`}>
+        <div className={tw`flex flex-row gap-x-1 justify-center md:justify-normal`}>
           <Link
-            className={cn(badgeVariants({ variant: 'default' }), tw`outline-none`)}
+            className={badgeVariants({ variant: 'default' })}
             href="https://www.credly.com/badges/589bac2f-109c-4758-9aa8-495416bd0263/public_url"
             target="_blank"
           >

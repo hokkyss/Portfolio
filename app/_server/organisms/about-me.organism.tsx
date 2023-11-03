@@ -16,7 +16,7 @@ const ExternalLink = dynamic(dynamicIconImports['external-link']);
 const AboutMe = async () => {
   return (
     <Section
-      className={tw`flex flex-col justify-normal items-start gap-y-10 min-h-full h-fit px-20 bg-gradient-to-b from-transparent to-blue-400`}
+      className={tw`flex flex-col justify-normal items-start gap-y-10 min-h-full h-fit bg-gradient-to-b from-transparent to-blue-400 px-8 md:px-20`}
       id="about"
     >
       <h1 className={tw`text-4xl font-bold self-center`}>Me and Myself</h1>
