@@ -2,10 +2,16 @@
 
 import 'server-only';
 
+import dynamicIconImports from 'lucide-react/dynamicIconImports';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+
 import { tw } from '~/_common/utils/classname.util';
 import Section from '~/_server/atoms/section.atom';
 
 import TechStacks from './tech-stacks.organism';
+
+const ExternalLink = dynamic(dynamicIconImports['external-link']);
 
 const AboutMe = async () => {
   return (
@@ -24,6 +30,26 @@ const AboutMe = async () => {
         I am a Bachelor of Engineering graduated from Bandung Institute of Technology Computer Science Major. The first
         programming language I learned is Pascal. It was in high school. That sparked my interest in programming. After
         a taste of competitive programming, I fell in love with coding. So, here I am.
+      </p>
+      <p className={tw`text-lg w-full`}>
+        By the way, my favorite games are{' '}
+        <Link
+          className={tw`font-semibold hover:underline inline-flex relative mr-2`}
+          href="https://www.nintendo.com/us/store/products/fire-emblem-three-houses-switch/"
+          target="_blank"
+        >
+          Fire Emblem Three Houses
+          <ExternalLink className={tw`inline absolute w-3 h-3 -right-3`} />
+        </Link>{' '}
+        and{' '}
+        <Link
+          className={tw`font-semibold hover:underline inline-flex relative`}
+          href="https://www.pokemon.com/us/pokemon-video-games/pokemon-black-version-and-pokemon-white-version/"
+        >
+          Pokémon Black
+          <ExternalLink className={tw`inline absolute w-3 h-3 -right-3`} />
+        </Link>
+        .
       </p>
       <TechStacks />
     </Section>
