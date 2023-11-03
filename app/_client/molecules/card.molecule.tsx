@@ -1,3 +1,7 @@
+'use client';
+
+import 'client-only';
+
 import type { HTMLAttributes } from 'react';
 
 import { forwardRef } from 'react';
