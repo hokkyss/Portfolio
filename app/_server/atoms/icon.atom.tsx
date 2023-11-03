@@ -53,7 +53,7 @@ import {
 } from '@icons-pack/react-simple-icons';
 import GmailIcon from '@material-design-icons/svg/outlined/mail.svg';
 
-const Icon: Record<string, IconType> = {
+const iconMap = {
   angular: SiAngular,
   c: SiC,
   'chakra-ui': SiChakraui,
@@ -61,7 +61,6 @@ const Icon: Record<string, IconType> = {
   csharp: SiCsharp,
   css3: SiCss3,
   cssmodules: SiCssmodules,
-  default: SiSimpleicons,
   django: SiDjango,
   docker: SiDocker,
   express: SiExpress,
@@ -82,6 +81,7 @@ const Icon: Record<string, IconType> = {
   netlify: SiNetlify,
   'next.js': SiNextdotjs,
   'node.js': SiNodedotjs,
+  'not-found': SiSimpleicons,
   postgresql: SiPostgresql,
   prisma: SiPrisma,
   python: SiPython,
@@ -96,4 +96,27 @@ const Icon: Record<string, IconType> = {
   vitest: SiVitest,
 };
 
-export default Icon;
+type AvailableIcons = keyof typeof iconMap;
+
+type IconProps = {
+  name: AvailableIcons;
+} & SVGProps<SVGSVGElement> & {
+    size?: number | string;
+    title?: string;
+  };
+
+export function getIconName(name: string): AvailableIcons {
+  if (name in iconMap) {
+    return name as AvailableIcons;
+  }
+
+  return 'not-found';
+}
+
+export default async function Icon(props: IconProps) {
+  const { name, ...rest } = props;
+
+  const IconComponent: IconType = iconMap[name];
+
+  return <IconComponent {...rest} name={name} title={name === 'not-found' ? 'Icon Unavailable' : rest.title} />;
+}

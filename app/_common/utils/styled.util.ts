@@ -5,8 +5,7 @@ import type { ClassNameValue } from 'tailwind-merge';
 import { createElement, forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export interface StylableProps<RefType = any> {
+export interface StylableProps<RefType = unknown> {
   className?: string;
   ref?: RefType;
   style?: CSSProperties;

@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 import tailwindcssAnimate from 'tailwindcss-animate';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 const tailwindConfig: Config = {
   content: [
@@ -62,6 +63,9 @@ const tailwindConfig: Config = {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
         },
+      },
+      fontFamily: {
+        sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
       },
       keyframes: {
         'accordion-down': {
