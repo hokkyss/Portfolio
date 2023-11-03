@@ -18,7 +18,7 @@ export default async function NotFound() {
         </Card.Header>
         <Card.Content />
         <Card.Footer className={tw`flex flex-row justify-end items-center`}>
-          <Link className={buttonVariants({ variant: 'outline' })} href="/">
+          <Link className={buttonVariants({ variant: 'outline' })} href="/" prefetch={false} replace target="_self">
             Return Home
           </Link>
         </Card.Footer>
