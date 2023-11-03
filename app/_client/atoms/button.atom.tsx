@@ -1,12 +1,12 @@
 'use client';
 
-import type { ButtonVariants } from '~/_common/variants/button.variant';
+import type { ButtonVariants } from '~/_common/styles/button.style';
 
 import { Slot } from '@radix-ui/react-slot';
 import * as React from 'react';
 
+import buttonVariants from '~/_common/styles/button.style';
 import { cn } from '~/_common/utils/classname.util';
-import buttonVariants from '~/_common/variants/button.variant';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, ButtonVariants {
   asChild?: boolean;
