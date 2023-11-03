@@ -2,8 +2,6 @@
 
 import 'server-only';
 
-import Link from 'next/link';
-
 import buttonVariants from './_common/styles/button.style';
 import { tw } from './_common/utils/classname.util';
 import Card from './_server/molecules/card.molecule';
@@ -18,9 +16,9 @@ export default async function NotFound() {
         </Card.Header>
         <Card.Content />
         <Card.Footer className={tw`flex flex-row justify-end items-center`}>
-          <Link className={buttonVariants({ variant: 'outline' })} href="/" prefetch={false} replace target="_self">
+          <a className={buttonVariants({ variant: 'outline' })} href="/" role="navigation" target="_self">
             Return Home
-          </Link>
+          </a>
         </Card.Footer>
       </Card>
     </div>
