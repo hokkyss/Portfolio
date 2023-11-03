@@ -4,12 +4,19 @@ import 'server-only';
 
 import type { DetailedHTMLProps, HTMLAttributes } from 'react';
 
-import { twMerge } from 'tailwind-merge';
+import { cn, tw } from '~/_common/utils/classname.util';
 
-const baseStyle = 'pt-24 pb-32 relative flex flex-col justify-center items-center h-full gap-y-5';
+type SectionProps = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
 
-const Section = async ({ className, ...rest }: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>) => (
-  <section className={twMerge(baseStyle, className)} {...rest} />
-);
+const Section = async (props: SectionProps) => {
+  const { className, ...rest } = props;
+
+  return (
+    <section
+      className={cn(tw`pt-24 pb-32 relative flex flex-col justify-center items-center h-full gap-y-5`, className)}
+      {...rest}
+    />
+  );
+};
 
 export default Section;

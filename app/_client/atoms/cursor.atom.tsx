@@ -5,6 +5,8 @@ import 'client-only';
 import { autoUpdate, offset, shift, useFloating } from '@floating-ui/react';
 import { memo, useEffect, useMemo, useState } from 'react';
 
+import { tw } from '~/_common/utils/classname.util';
+
 const Cursor = memo(() => {
   const [cursorPosition, setCursorPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const referenceElement = useMemo(
@@ -55,7 +57,7 @@ const Cursor = memo(() => {
 
   return (
     <span
-      className="bg-green-600 -z-[10] rounded-full blur-lg w-20 h-20"
+      className={tw`bg-green-600 -z-[10] rounded-full blur-lg w-20 h-20`}
       ref={refs.setFloating}
       style={floatingStyles}
     />

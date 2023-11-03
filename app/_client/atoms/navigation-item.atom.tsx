@@ -8,7 +8,8 @@ import type { CSSProperties, ReactNode } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { forwardRef } from 'react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn, tw } from '~/_common/utils/classname.util';
 
 interface NavigationItemProps {
   children: ReactNode;
@@ -17,15 +18,16 @@ interface NavigationItemProps {
   style?: CSSProperties;
 }
 
-const linkStyle = 'px-3 hover:underline transition-all';
-const currentLinkStyle = 'text-blue-500 drop-shadow-sm';
-
 const NavigationItem = forwardRef<HTMLAnchorElement, NavigationItemProps>((props, ref) => {
   const { children, href } = props;
   const pathname = usePathname();
 
   return (
-    <Link className={twMerge(linkStyle, pathname === href && currentLinkStyle)} href={href} ref={ref}>
+    <Link
+      className={cn(tw`px-3 hover:underline transition-all`, pathname === href && tw`text-blue-500 drop-shadow-sm`)}
+      href={href}
+      ref={ref}
+    >
       {children}
     </Link>
   );

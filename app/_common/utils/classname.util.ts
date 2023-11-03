@@ -6,3 +6,17 @@ import { twMerge } from 'tailwind-merge';
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export function tw(template: TemplateStringsArray, ...substitutions: unknown[]): string;
+export function tw(className: string): string;
+export function tw(val: TemplateStringsArray | string, ...substitutions: unknown[]) {
+  if (typeof val === 'string') {
+    return val;
+  }
+
+  if (substitutions.length > 0) {
+    throw new Error('Tailwind classes cannot be created dynamically at runtime');
+  }
+
+  return String.raw(val, substitutions);
+}

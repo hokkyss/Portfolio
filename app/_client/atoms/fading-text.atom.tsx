@@ -5,7 +5,8 @@ import 'client-only';
 import type { CSSProperties } from 'react';
 
 import { forwardRef, useEffect } from 'react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn, tw } from '~/_common/utils/classname.util';
 
 import useBoolean from '../hooks/use-boolean.hook';
 
@@ -17,9 +18,6 @@ interface FadingTextProps {
   ms: number;
   style?: CSSProperties;
 }
-
-const textStyle = 'text-transparent font-bold duration-500 blur-xl';
-const appearedTextStyle = 'blur-none text-blue-500';
 
 const FadingText = forwardRef<HTMLElement, FadingTextProps>((props, ref) => {
   const { children, delay, disabled = false, ms } = props;
@@ -40,7 +38,10 @@ const FadingText = forwardRef<HTMLElement, FadingTextProps>((props, ref) => {
   }, [unload, ms, disabled, delay]);
 
   return (
-    <code className={twMerge(textStyle, loaded && appearedTextStyle)} ref={ref}>
+    <code
+      className={cn(tw`text-transparent font-bold duration-500 blur-xl`, loaded && tw`blur-none text-blue-500`)}
+      ref={ref}
+    >
       {children}
     </code>
   );

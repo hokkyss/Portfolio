@@ -5,6 +5,7 @@ import 'client-only';
 import { useReportWebVitals } from 'next/web-vitals';
 
 import envConfig from '~/_common/configs/env.config';
+import { tw } from '~/_common/utils/classname.util';
 
 export default function WebVitals() {
   useReportWebVitals((metric) => {
@@ -15,5 +16,5 @@ export default function WebVitals() {
     }
   });
 
-  return <span className="absolute hidden" id="web-vitals" />;
+  return <span className={tw`absolute hidden`} id="web-vitals" />;
 }
