@@ -57,6 +57,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
+    "generate": "shadcn-ui add",
     "lint": "next lint",
     "postinstall": "husky install",
     "start": "next start"
