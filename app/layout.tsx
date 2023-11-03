@@ -7,7 +7,6 @@ import type { PropsWithChildren } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { Inter } from 'next/font/google';
 
-import Cursor from './_client/atoms/cursor.atom';
 import WebVitals from './_client/atoms/web-vitals.atom';
 import { cn, tw } from './_common/utils/classname.util';
 
@@ -50,7 +49,6 @@ export default async function Layout({ children }: PropsWithChildren) {
           Copyright &copy; 2023 Hokki Suwanda. All rights reserved.
         </footer>
         <Analytics />
-        <Cursor />
         <WebVitals />
       </body>
     </html>

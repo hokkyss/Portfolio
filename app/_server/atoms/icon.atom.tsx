@@ -1,3 +1,5 @@
+'use server';
+
 import 'server-only';
 
 import type { ForwardRefExoticComponent, RefAttributes, SVGProps } from 'react';
@@ -105,18 +107,20 @@ type IconProps = {
     title?: string;
   };
 
-export function getIconName(name: string): AvailableIcons {
-  if (name in iconMap) {
-    return name as AvailableIcons;
-  }
-
-  return 'not-found';
-}
-
-export default async function Icon(props: IconProps) {
+async function Icon(props: IconProps) {
   const { name, ...rest } = props;
 
   const IconComponent: IconType = iconMap[name];
 
   return <IconComponent {...rest} name={name} title={name === 'not-found' ? 'Icon Unavailable' : rest.title} />;
 }
+
+export default Object.assign(Icon, {
+  getIconName(name: string): AvailableIcons {
+    if (name in iconMap) {
+      return name as AvailableIcons;
+    }
+
+    return 'not-found';
+  },
+});
