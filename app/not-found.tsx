@@ -4,17 +4,25 @@ import 'server-only';
 
 import Link from 'next/link';
 
+import buttonVariants from './_common/styles/button.style';
 import { tw } from './_common/utils/classname.util';
-import buttonVariants from './_common/variants/button.variant';
+import Card from './_server/molecules/card.molecule';
 
 export default async function NotFound() {
   return (
-    <div>
-      <h1 className={tw`tracking-normal text-4xl font-bold`}>Not Found</h1>
-      <h2>Could not find requested resource</h2>
-      <Link className={buttonVariants({ variant: 'link' })} href="/">
-        Return Home
-      </Link>
+    <div className={tw`h-full w-full flex justify-center items-center`}>
+      <Card className={tw`w-80`}>
+        <Card.Header>
+          <Card.Title>Not Found.</Card.Title>
+          <Card.Description>Could not find requested resource</Card.Description>
+        </Card.Header>
+        <Card.Content />
+        <Card.Footer className={tw`flex flex-row justify-end items-center`}>
+          <Link className={buttonVariants({ variant: 'outline' })} href="/">
+            Return Home
+          </Link>
+        </Card.Footer>
+      </Card>
     </div>
   );
 }
