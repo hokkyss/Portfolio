@@ -39,7 +39,7 @@ const FadingText = forwardRef<HTMLElement, FadingTextProps>((props, ref) => {
 
   return (
     <code
-      className={cn(tw`text-transparent font-bold duration-500 blur-xl`, loaded && tw`blur-none text-blue-500`)}
+      className={cn(tw`font-bold text-transparent blur-xl duration-500`, loaded && tw`text-blue-500 blur-none`)}
       ref={ref}
     >
       {children}

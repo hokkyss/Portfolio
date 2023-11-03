@@ -18,9 +18,9 @@ const TechStack = async (props: TechStackProps) => {
 
   return (
     <div
-      className={tw`flex flex-row justify-center flex-wrap gap-2 relative w-full border border-black dark:border-white hover:border-blue-700 hover:dark:border-green-300 rounded-lg px-3 pb-2 pt-5 transition-all duration-300 hover:text-blue-700 hover:dark:text-green-300 selection:dark:text-black selection:dark:bg-green-300`}
+      className={tw`relative flex w-full flex-row flex-wrap justify-center gap-2 rounded-lg border border-black px-3 pb-2 pt-5 transition-all duration-300 hover:border-blue-700 hover:text-blue-700 dark:border-white selection:dark:bg-green-300 selection:dark:text-black hover:dark:border-green-300 hover:dark:text-green-300`}
     >
-      <h1 className={tw`px-2 absolute -top-[14px] backdrop-blur-xl text-xl`}>{title}</h1>
+      <h1 className={tw`absolute -top-[14px] px-2 text-xl backdrop-blur-xl`}>{title}</h1>
       {techStacks.map((techStack) => (
         <TechStackChip
           className={tw`hover:text-blue-700 hover:dark:fill-green-300 hover:dark:text-green-300`}

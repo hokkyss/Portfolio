@@ -40,11 +40,11 @@ export default async function Layout({ children }: PropsWithChildren) {
   return (
     <html dir="ltr" lang="en">
       <body className={cn(inter.className, tw`flex flex-col text-black dark:text-white`)}>
-        <main className={tw`min-h-screen h-screen`} role="main">
+        <main className={tw`h-screen min-h-screen`} role="main">
           {children}
         </main>
         <footer
-          className={tw`fixed bottom-0 left-0 right-0 z-50 h-20 w-full flex flex-row items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black pb-3 text-xs`}
+          className={tw`fixed bottom-0 left-0 right-0 z-50 flex h-20 w-full flex-row items-end justify-center bg-gradient-to-t from-white via-white pb-3 text-xs dark:from-black dark:via-black`}
         >
           Copyright &copy; 2023 Hokki Suwanda. All rights reserved.
         </footer>

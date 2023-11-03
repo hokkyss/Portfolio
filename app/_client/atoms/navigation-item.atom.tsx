@@ -24,7 +24,7 @@ const NavigationItem = forwardRef<HTMLAnchorElement, NavigationItemProps>((props
 
   return (
     <Link
-      className={cn(tw`px-3 hover:underline transition-all`, pathname === href && tw`text-blue-500 drop-shadow-sm`)}
+      className={cn(tw`px-3 transition-all hover:underline`, pathname === href && tw`text-blue-500 drop-shadow-sm`)}
       href={href}
       ref={ref}
     >

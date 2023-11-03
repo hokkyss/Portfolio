@@ -13,7 +13,7 @@ const Section = async (props: SectionProps) => {
 
   return (
     <section
-      className={cn(tw`pt-24 pb-32 relative flex flex-col justify-center items-center h-full gap-y-5`, className)}
+      className={cn(tw`relative flex h-full flex-col items-center justify-center gap-y-5 pb-32 pt-24`, className)}
       {...rest}
     />
   );

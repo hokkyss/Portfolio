@@ -19,7 +19,7 @@ const TechStackChip = async (props: TechStackChipProps) => {
   return (
     <span
       className={cn(
-        tw`w-fit h-fit bg-gradient-to-tl from-slate-600 to-slate-300 inline-flex flex-row gap-x-2 border p-2 rounded transition text-black dark:text-white border-black dark:border-white hover:scale-105 hover:-translate-y-0.5`,
+        tw`inline-flex h-fit w-fit flex-row gap-x-2 rounded border border-black bg-gradient-to-tl from-slate-600 to-slate-300 p-2 text-black transition hover:-translate-y-0.5 hover:scale-105 dark:border-white dark:text-white`,
         className,
       )}
     >
