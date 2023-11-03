@@ -28,7 +28,7 @@ const Cursor = memo(() => {
 
   return (
     <span
-      className={tw`bg-slate-600 -z-[10] rounded-full blur-2xl w-40 h-40`}
+      className={tw`hidden md:inline bg-slate-600 -z-[10] rounded-full blur-2xl w-40 h-40`}
       ref={refs.setFloating}
       style={floatingStyles}
       {...getFloatingProps()}
