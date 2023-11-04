@@ -43,14 +43,18 @@ export default async function AboutMe() {
         </Link>{' '}
         and{' '}
         <Link
-          className={tw`relative inline-flex font-semibold hover:underline`}
+          className={tw`relative mr-2 inline-flex font-semibold hover:underline`}
           href="https://www.pokemon.com/us/pokemon-video-games/pokemon-black-version-and-pokemon-white-version/"
           target="_blank"
         >
-          Pokémon Black
+          Pokémon Black and White
           <ExternalLink className={tw`absolute -right-3 inline h-3 w-3`} />
         </Link>
-        .
+        . In fact, this website&apos;s colors are inspired from the games:{' '}
+        <code className={tw`hidden bg-white px-1 text-black dark:inline`}>Black</code>{' '}
+        <code className={tw`inline bg-black px-1 text-white dark:hidden`}>White</code>,{' '}
+        <code className={tw`text-blue-600`}>Blue</code>, <code className={tw`text-amber-500`}>Orange</code>, and{' '}
+        <code className={tw`text-red-500`}>Red</code>.
       </p>
       <TechStacks />
     </Section>

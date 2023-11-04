@@ -8,6 +8,7 @@ import type { EmptyObject } from './_common/types/common.type';
 
 import { Analytics } from '@vercel/analytics/react';
 import { Inter } from 'next/font/google';
+import Link from 'next/link';
 
 import WebVitals from './_client/atoms/web-vitals.atom';
 import envConfig from './_common/configs/env.config';
@@ -75,7 +76,11 @@ export default async function Layout({ children }: PropsWithChildren) {
         <footer
           className={tw`fixed bottom-0 left-0 right-0 z-50 flex h-20 w-full flex-row items-end justify-center bg-gradient-to-t from-white via-white pb-3 text-xs dark:from-black dark:via-black`}
         >
-          Copyright &copy; 2023 Hokki Suwanda. All rights reserved.
+          Copyright &copy; 2023 Hokki Suwanda. Made with{' '}
+          <Link className={tw`ml-1 text-blue-600 hover:underline`} href="https://ui.shadcn.com/" target="_blank">
+            shadcn-ui
+          </Link>
+          .
         </footer>
         <Analytics />
         <WebVitals />
