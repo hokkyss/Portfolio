@@ -13,7 +13,7 @@ export default async function Experiences() {
       id="experiences"
     >
       <h1 className={tw`self-center text-4xl font-bold`}>Experiences</h1>
-      <div className={tw`flex w-full flex-col gap-y-4`}>
+      <div className={tw`flex w-full flex-col gap-y-2`}>
         <ExperienceCard
           companyName="Nomura Research Institute Indonesia"
           from="2023-04-03"

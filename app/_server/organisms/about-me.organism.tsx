@@ -2,16 +2,14 @@
 
 import 'server-only';
 
-import dynamicIconImports from 'lucide-react/dynamicIconImports';
-import dynamic from 'next/dynamic';
 import Link from 'next/link';
 
 import { tw } from '~/_common/utils/classname.util';
 import Section from '~/_server/atoms/section.atom';
 
-import TechStacks from './tech-stacks.organism';
+import LucideIcon from '../atoms/lucide-icon.atom';
 
-const ExternalLink = dynamic(dynamicIconImports['external-link']);
+import TechStacks from './tech-stacks.organism';
 
 export default async function AboutMe() {
   return (
@@ -39,7 +37,7 @@ export default async function AboutMe() {
           target="_blank"
         >
           Fire Emblem Three Houses
-          <ExternalLink className={tw`absolute -right-3 inline h-3 w-3`} />
+          <LucideIcon className={tw`absolute -right-3 inline h-3 w-3`} name="external-link" />
         </Link>{' '}
         and{' '}
         <Link
@@ -48,7 +46,7 @@ export default async function AboutMe() {
           target="_blank"
         >
           Pokémon Black and White
-          <ExternalLink className={tw`absolute -right-3 inline h-3 w-3`} />
+          <LucideIcon className={tw`absolute -right-3 inline h-3 w-3`} name="external-link" />
         </Link>
         . In fact, this website&apos;s colors are inspired from the games:{' '}
         <code className={tw`hidden bg-white px-1 text-black dark:inline`}>Black</code>{' '}
