@@ -15,11 +15,11 @@ const Section = dynamic(() => import('~/_server/atoms/section.atom'));
 const Occupations = dynamic(() => import('~/_client/organisms/occupations.organism'));
 
 const socialMediaLink = tw`flex items-center`;
-const socialMediaIcon = tw`w-8 transition-[fill] duration-300 hover:fill-blue-500`;
+const socialMediaIcon = tw`w-8 transition-[fill] duration-300 hover:fill-blue-700 dark:hover:fill-white`;
 
 export default async function Main() {
   return (
-    <Section className={tw`md:flex-row md:gap-x-5`} id="cover">
+    <Section className={tw`h-screen bg-transparent dark:bg-slate-950/80 md:flex-row md:gap-x-5`} id="cover">
       <Image alt="Me" className={tw`rounded-full`} fetchPriority="high" height={240} priority src={me} width={240} />
       <div className={tw`flex h-60 flex-col justify-center gap-y-6 text-center text-2xl md:text-start`}>
         <div className={tw`flex flex-col gap-y-2`}>

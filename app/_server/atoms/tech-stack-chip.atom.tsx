@@ -19,7 +19,10 @@ export default async function TechStackChip(props: TechStackChipProps) {
   return (
     <span
       className={cn(
-        tw`inline-flex h-fit w-fit flex-row gap-x-2 rounded border border-black bg-gradient-to-tl from-slate-600 to-slate-300 p-2 text-black transition hover:-translate-y-0.5 hover:scale-105 dark:border-white dark:text-white`,
+        tw`inline-flex h-fit w-fit flex-row gap-x-2 rounded border bg-gradient-to-tl p-2 transition hover:-translate-y-0.5 hover:scale-105`,
+        tw`border-[currentColor]`,
+        tw`from-slate-600 to-slate-300`,
+        tw`dark:from-slate-800 dark:to-slate-600/60`,
         className,
       )}
     >
