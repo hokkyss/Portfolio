@@ -2,11 +2,13 @@
 
 import 'server-only';
 
-import ReactMarkdown from 'react-markdown';
+import dynamic from 'next/dynamic';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 
 import { cn, tw } from '~/_common/utils/classname.util';
+
+const ReactMarkdown = dynamic(() => import('react-markdown'));
 
 interface MarkdownProps {
   allowedElements?: (keyof JSX.IntrinsicElements)[];
