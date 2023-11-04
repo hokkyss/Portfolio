@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default async function NotFound() {
   return (
-    <div className={tw`flex h-full w-full items-center justify-center`}>
+    <div className={tw`flex h-screen w-screen items-center justify-center`}>
       <Card className={tw`w-80`}>
         <Card.Header>
           <Card.Title>Not Found.</Card.Title>

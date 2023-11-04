@@ -20,7 +20,7 @@ export default function ErrorBoundary(props: ErrorBoundaryProps) {
   const { error, reset } = props;
 
   return (
-    <div className={tw`flex h-full w-full items-center justify-center`}>
+    <div className={tw`flex h-screen w-screen items-center justify-center`}>
       <Card className={tw`max-w-xl break-words`}>
         <CardHeader>
           <CardTitle>Sorry :&#40;</CardTitle>

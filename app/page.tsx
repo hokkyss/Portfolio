@@ -2,8 +2,8 @@ import 'server-only';
 
 import type DefaultPageProps from '~/_common/types/page-props.type';
 
-import { unstable_cache } from 'next/cache';
 import dynamic from 'next/dynamic';
+import { cache } from 'react';
 
 import apiEndpoint from './_common/services/api/api.service';
 
@@ -14,9 +14,7 @@ const AboutMe = dynamic(() => import('./_server/organisms/about-me.organism'));
 
 type HomePageProps = DefaultPageProps;
 
-const getExperiences = unstable_cache(() => apiEndpoint.getExperiences(), ['api.experiences'], {
-  tags: ['api.experiences'],
-});
+const getExperiences = cache(apiEndpoint.getExperiences);
 
 export default async function Page(_props: HomePageProps) {
   const experiences = await getExperiences();
