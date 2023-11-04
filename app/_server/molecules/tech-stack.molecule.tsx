@@ -12,8 +12,7 @@ interface TechStackProps {
   techStacks: TechStackModel[];
   title: string;
 }
-
-const TechStack = async (props: TechStackProps) => {
+export default async function TechStack(props: TechStackProps) {
   const { techStacks, title } = props;
 
   return (
@@ -30,6 +29,4 @@ const TechStack = async (props: TechStackProps) => {
       ))}
     </div>
   );
-};
-
-export default TechStack;
+}

@@ -13,9 +13,9 @@ type HomePageProps = DefaultPageProps;
 export default async function Page(_props: HomePageProps) {
   return (
     <>
+      <Cursor />
       <Main />
       <AboutMe />
-      <Cursor />
     </>
   );
 }

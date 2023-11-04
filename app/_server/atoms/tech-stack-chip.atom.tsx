@@ -13,7 +13,7 @@ interface TechStackChipProps {
   techStack: TechStack;
 }
 
-const TechStackChip = async (props: TechStackChipProps) => {
+export default async function TechStackChip(props: TechStackChipProps) {
   const { className, techStack } = props;
 
   return (
@@ -27,6 +27,4 @@ const TechStackChip = async (props: TechStackChipProps) => {
       {techStack.name}
     </span>
   );
-};
-
-export default TechStackChip;
+}

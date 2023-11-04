@@ -13,7 +13,7 @@ import TechStacks from './tech-stacks.organism';
 
 const ExternalLink = dynamic(dynamicIconImports['external-link']);
 
-const AboutMe = async () => {
+export default async function AboutMe() {
   return (
     <Section
       className={tw`flex h-fit min-h-full flex-col items-start justify-normal gap-y-10 bg-gradient-to-b from-transparent to-blue-400 px-8 md:px-20`}
@@ -45,6 +45,7 @@ const AboutMe = async () => {
         <Link
           className={tw`relative inline-flex font-semibold hover:underline`}
           href="https://www.pokemon.com/us/pokemon-video-games/pokemon-black-version-and-pokemon-white-version/"
+          target="_blank"
         >
           Pokémon Black
           <ExternalLink className={tw`absolute -right-3 inline h-3 w-3`} />
@@ -54,6 +55,4 @@ const AboutMe = async () => {
       <TechStacks />
     </Section>
   );
-};
-
-export default AboutMe;
+}

@@ -8,7 +8,7 @@ import { cn, tw } from '~/_common/utils/classname.util';
 
 type SectionProps = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
 
-const Section = async (props: SectionProps) => {
+export default async function Section(props: SectionProps) {
   const { className, ...rest } = props;
 
   return (
@@ -17,6 +17,4 @@ const Section = async (props: SectionProps) => {
       {...rest}
     />
   );
-};
-
-export default Section;
+}
