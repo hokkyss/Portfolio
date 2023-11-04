@@ -4,11 +4,13 @@ import 'server-only';
 
 import type { Experience } from '~/_common/models/experience.model';
 
+import dynamic from 'next/dynamic';
+
 import { cn, tw } from '~/_common/utils/classname.util';
 
 import Section from '../atoms/section.atom';
 
-import ExperienceCard from './experience-card.molecule';
+const ExperienceCard = dynamic(() => import('./experience-card.molecule'));
 
 interface ExperiencesProps {
   experiences: Experience[];
