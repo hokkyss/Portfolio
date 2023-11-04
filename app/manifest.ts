@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-import serverEnvConfig from './_server/configs/env.config';
+import envConfig from './_common/configs/env.config';
 
 export default function generateManifest(): MetadataRoute.Manifest {
   return {
@@ -38,7 +38,7 @@ export default function generateManifest(): MetadataRoute.Manifest {
     lang: 'en',
     name: 'hokkyss Portfolio',
     orientation: 'any',
-    scope: serverEnvConfig.url,
+    scope: envConfig.url,
     short_name: 'hokkyss',
     start_url: '/',
     theme_color: '#fff',

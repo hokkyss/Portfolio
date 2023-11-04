@@ -1,23 +1,29 @@
+'use server';
+
+import 'server-only';
+
 import { tw } from '~/_common/utils/classname.util';
 import { formatDate } from '~/_common/utils/date.util';
 
 import Badge from '../atoms/badge.atom';
 import Icon from '../atoms/icon.atom';
 import LucideIcon from '../atoms/lucide-icon.atom';
+import Card from '../molecules/card.molecule';
 
-import Card from './card.molecule';
+import Markdown from './markdown.organism';
 
 interface ExperienceCardProps {
   companyName: string;
-  from: Date | string;
+  description: string;
+  from: Date;
   link: string;
   role: string;
   techStacks: string[];
-  to?: Date | string;
+  to?: Date | null;
 }
 
 export default async function ExperienceCard(props: ExperienceCardProps) {
-  const { companyName, from, link, role, techStacks, to } = props;
+  const { companyName, description, from, link, role, techStacks, to } = props;
 
   return (
     <Card className={tw`w-full`}>
@@ -32,7 +38,9 @@ export default async function ExperienceCard(props: ExperienceCardProps) {
           {role} ({formatDate(from)} - {to ? formatDate(to) : 'Present'})
         </Card.Description>
       </Card.Header>
-      <Card.Content>#halo</Card.Content>
+      <Card.Content>
+        <Markdown allowedElements={['a', 'ul', 'ol', 'li', 'p']}>{description}</Markdown>
+      </Card.Content>
       <Card.Footer className={tw`flex-wrap gap-1`}>
         {techStacks.map((tech) => (
           <Badge className={tw`gap-x-1`} key={tech} variant="secondary">

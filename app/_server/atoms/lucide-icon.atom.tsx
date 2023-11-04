@@ -1,3 +1,7 @@
+'use server';
+
+import 'server-only';
+
 import type { LucideProps } from 'lucide-react';
 
 import dynamicIconImports from 'lucide-react/dynamicIconImports';
