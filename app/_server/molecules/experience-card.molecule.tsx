@@ -3,6 +3,7 @@ import { formatDate } from '~/_common/utils/date.util';
 
 import Badge from '../atoms/badge.atom';
 import Icon from '../atoms/icon.atom';
+import LucideIcon from '../atoms/lucide-icon.atom';
 
 import Card from './card.molecule';
 
@@ -21,9 +22,10 @@ export default async function ExperienceCard(props: ExperienceCardProps) {
   return (
     <Card className={tw`w-full`}>
       <Card.Header>
-        <Card.Title>
+        <Card.Title className={tw`relative hover:underline`}>
           <a href={link} target="_blank">
             {companyName}
+            <LucideIcon className={tw`mb-2 ml-1 inline h-3 w-3`} name="external-link" />
           </a>
         </Card.Title>
         <Card.Description>
