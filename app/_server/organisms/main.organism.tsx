@@ -17,7 +17,7 @@ const Occupations = dynamic(() => import('~/_client/organisms/occupations.organi
 const socialMediaLink = tw`flex items-center`;
 const socialMediaIcon = tw`w-8 transition-[fill] duration-300 hover:fill-blue-500`;
 
-const Main = async () => {
+export default async function Main() {
   return (
     <Section className={tw`md:flex-row md:gap-x-5`} id="cover">
       <Image alt="Me" className={tw`rounded-full`} fetchPriority="high" height={240} priority src={me} width={240} />
@@ -50,6 +50,4 @@ const Main = async () => {
       </div>
     </Section>
   );
-};
-
-export default Main;
+}

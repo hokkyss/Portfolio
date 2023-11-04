@@ -22,6 +22,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  applicationName: 'Hokki Suwanda Portfolio',
   authors: [{ name: 'Hokki Suwanda', url: 'https://github.com/hokkyss' }],
   creator: 'Hokki Suwanda',
   description:
@@ -41,6 +42,9 @@ export const metadata: Metadata = {
     'competitive programming',
   ],
   publisher: 'Vercel',
+  robots: {
+    notranslate: true,
+  },
   title: {
     default: 'hokkyss | Hokki Suwanda',
     template: 'hokkyss | %s',
@@ -50,7 +54,7 @@ export const metadata: Metadata = {
 export default async function Layout({ children }: PropsWithChildren) {
   return (
     <html dir="ltr" lang="en">
-      <body className={cn(inter.className, tw`flex flex-col text-black dark:text-white`)}>
+      <body className={cn('notranslate', inter.className, tw`flex flex-col text-black dark:text-white`)}>
         <main className={tw`h-screen min-h-screen`} role="main">
           {children}
         </main>
