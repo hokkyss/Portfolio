@@ -31,7 +31,7 @@ export default async function ExperienceCard(props: ExperienceCardProps) {
         <Card.Title className={tw`relative hover:underline`}>
           <a href={link} target="_blank">
             {companyName}
-            <LucideIcon className={tw`mb-2 ml-1 inline h-3 w-3`} name="external-link" />
+            <LucideIcon className={tw`mb-3 ml-1 inline h-3 w-3`} name="external-link" />
           </a>
         </Card.Title>
         <Card.Description>
