@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-import serverEnvConfig from './_server/configs/env.config';
+import envConfig from './_common/configs/env.config';
 
 export default function generateRobots(): MetadataRoute.Robots {
   return {
@@ -9,6 +9,6 @@ export default function generateRobots(): MetadataRoute.Robots {
       disallow: '/private/',
       userAgent: '*',
     },
-    sitemap: new URL('/sitemap.xml', serverEnvConfig.url).toString(),
+    sitemap: new URL('/sitemap.xml', envConfig.url).toString(),
   };
 }
