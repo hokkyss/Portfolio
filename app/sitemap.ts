@@ -8,7 +8,7 @@ export default function generateSitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'daily',
       lastModified: '2023-11-04T11:52:00.000+0700',
       priority: 1,
-      url: envConfig.url,
+      url: envConfig.appUrl,
     },
   ];
 }

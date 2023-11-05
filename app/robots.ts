@@ -9,6 +9,6 @@ export default function generateRobots(): MetadataRoute.Robots {
       disallow: '/private/',
       userAgent: '*',
     },
-    sitemap: new URL('/sitemap.xml', envConfig.url).toString(),
+    sitemap: new URL('/sitemap.xml', envConfig.appUrl).toString(),
   };
 }

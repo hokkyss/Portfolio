@@ -8,7 +8,7 @@ import { card, cardContent, cardDescription, cardFooter, cardHeader, cardTitle }
 import { cn } from '~/_common/utils/classname.util';
 
 async function CardRoot({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn(card, className)} {...props} />;
+  return <article className={cn(card, className)} {...props} />;
 }
 
 async function CardHeader({ className, ...props }: HTMLAttributes<HTMLDivElement>) {

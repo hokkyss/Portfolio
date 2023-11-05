@@ -38,7 +38,7 @@ export default function generateManifest(): MetadataRoute.Manifest {
     lang: 'en',
     name: 'hokkyss Portfolio',
     orientation: 'any',
-    scope: envConfig.url,
+    scope: envConfig.appUrl,
     short_name: 'hokkyss',
     start_url: '/',
     theme_color: '#fff',

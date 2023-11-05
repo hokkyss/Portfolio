@@ -19,5 +19,7 @@ const experienceSchema = z.object({
     .transform((val) => (val ? parseDate(val) : null)),
 });
 
+export const generateExperienceCardId = (id: string) => `experience-${id}`;
+
 export default experienceSchema;
 export type Experience = z.infer<typeof experienceSchema>;
