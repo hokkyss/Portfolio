@@ -1811,6 +1811,11 @@
   dependencies:
     qs "^6.11.0"
 
+"@zodios/react@^10.4.5":
+  version "10.4.5"
+  resolved "https://registry.yarnpkg.com/@zodios/react/-/react-10.4.5.tgz#e796152ee034f24facc5c8a156d98c81c43eaec5"
+  integrity sha512-2jisuquf30bEQg6KzhtYnoutXEQD9uD/I0vBO3d3AzL91SLhFTeHNSk2MwkBj0LL/wCIWt9v0sUL52OMv++EwQ==
+
 acorn-jsx@^5.3.2:
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-5.3.2.tgz#7ed5bb55908b3b2f1bc55c6af1653bada7f07937"

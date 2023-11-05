@@ -1,9 +1,6 @@
-import { Zodios } from '@zodios/core';
-
-import envConfig from '~/_common/configs/env.config';
-
 import experienceEndpoints from './endpoints/experiences.endpoint';
+import projectEndpoints from './endpoints/projects.endpoint';
 
-const apiEndpoint = new Zodios(envConfig.url, [...experienceEndpoints]);
+const apiEndpoints = [...experienceEndpoints, ...projectEndpoints];
 
-export default apiEndpoint;
+export default apiEndpoints;

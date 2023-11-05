@@ -34,6 +34,7 @@ export default async function Experiences(props: ExperiencesProps) {
             companyName={exp.company.name}
             description={exp.description}
             from={exp.from}
+            id={exp.id}
             key={exp.id}
             link={exp.company.link}
             role={exp.role}

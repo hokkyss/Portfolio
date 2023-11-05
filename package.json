@@ -8,6 +8,7 @@
     "@vercel/analytics": "^1.0.2",
     "@zodios/core": "^10.9.6",
     "@zodios/plugins": "^10.6.0",
+    "@zodios/react": "^10.4.5",
     "axios": "^1.5.0",
     "class-variance-authority": "^0.7.0",
     "client-only": "^0.0.1",

@@ -6,10 +6,9 @@ import dynamic from 'next/dynamic';
 
 import badgeVariants from '~/_common/styles/badge.style';
 import { tw } from '~/_common/utils/classname.util';
-import { me } from '~/_server/assets/images';
 import Icon from '~/_server/atoms/icon.atom';
 
-const Image = dynamic(() => import('next/image'));
+const Image = dynamic(() => import('~/_server/atoms/image.atom'));
 const Link = dynamic(() => import('next/link'));
 const Section = dynamic(() => import('~/_server/atoms/section.atom'));
 const Occupations = dynamic(() => import('~/_client/organisms/occupations.organism'));
@@ -20,7 +19,7 @@ const socialMediaIcon = tw`w-8 transition-[fill] duration-300 hover:fill-blue-70
 export default async function Main() {
   return (
     <Section className={tw`h-screen bg-transparent dark:bg-slate-950/80 md:flex-row md:gap-x-5`} id="cover">
-      <Image alt="Me" className={tw`rounded-full`} fetchPriority="high" height={240} priority src={me} width={240} />
+      <Image alt="Me" className={tw`rounded-full`} fetchPriority="high" height={240} name="me" priority width={240} />
       <div className={tw`flex h-60 flex-col justify-center gap-y-6 text-center text-2xl md:text-start`}>
         <div className={tw`flex flex-col gap-y-2`}>
           <h1>Hi, I&apos;m Hokki Suwanda, a</h1>

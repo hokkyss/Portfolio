@@ -8,7 +8,7 @@ const experienceEndpoints = apiBuilder()
     alias: 'getExperiences',
     immutable: true,
     method: 'get',
-    path: '/api/experiences',
+    path: '/experiences',
     response: z.array(experienceSchema),
   })
   .build();

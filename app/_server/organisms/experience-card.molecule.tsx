@@ -2,6 +2,7 @@
 
 import 'server-only';
 
+import { generateExperienceCardId } from '~/_common/models/experience.model';
 import { tw } from '~/_common/utils/classname.util';
 import { formatDate } from '~/_common/utils/date.util';
 
@@ -16,6 +17,7 @@ interface ExperienceCardProps {
   companyName: string;
   description: string;
   from: Date;
+  id: string;
   link: string;
   role: string;
   techStacks: string[];
@@ -23,13 +25,13 @@ interface ExperienceCardProps {
 }
 
 export default async function ExperienceCard(props: ExperienceCardProps) {
-  const { companyName, description, from, link, role, techStacks, to } = props;
+  const { companyName, description, from, id, link, role, techStacks, to } = props;
 
   return (
-    <Card className={tw`w-full`}>
+    <Card className={tw`w-full`} id={generateExperienceCardId(id)} role="article">
       <Card.Header>
-        <Card.Title className={tw`relative hover:underline`}>
-          <a href={link} target="_blank">
+        <Card.Title className={tw`relative`}>
+          <a className={tw`hover:underline`} href={link} target="_blank">
             {companyName}
             <LucideIcon className={tw`mb-3 ml-1 inline h-3 w-3`} name="external-link" />
           </a>
