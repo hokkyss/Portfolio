@@ -8,15 +8,13 @@ import { cn, tw } from '~/_common/utils/classname.util';
 
 type SectionProps = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
 
-const Section = async (props: SectionProps) => {
+export default async function Section(props: SectionProps) {
   const { className, ...rest } = props;
 
   return (
     <section
-      className={cn(tw`pt-24 pb-32 relative flex flex-col justify-center items-center h-full gap-y-5`, className)}
+      className={cn(tw`relative flex h-full flex-col items-center justify-center gap-y-5 pb-32 pt-24`, className)}
       {...rest}
     />
   );
-};
-
-export default Section;
+}

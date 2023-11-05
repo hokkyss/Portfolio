@@ -11,12 +11,12 @@ export function tw(template: TemplateStringsArray, ...substitutions: unknown[]):
 export function tw(className: string): string;
 export function tw(val: TemplateStringsArray | string, ...substitutions: unknown[]) {
   if (typeof val === 'string') {
-    return cn(val);
+    return twMerge(val);
   }
 
   if (substitutions.length > 0) {
     throw new Error('Tailwind classes cannot be created dynamically at runtime');
   }
 
-  return cn(String.raw(val, substitutions));
+  return twMerge(String.raw(val, substitutions));
 }

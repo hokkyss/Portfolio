@@ -13,13 +13,16 @@ interface TechStackChipProps {
   techStack: TechStack;
 }
 
-const TechStackChip = async (props: TechStackChipProps) => {
+export default async function TechStackChip(props: TechStackChipProps) {
   const { className, techStack } = props;
 
   return (
     <span
       className={cn(
-        tw`w-fit h-fit bg-gradient-to-tl from-slate-600 to-slate-300 inline-flex flex-row gap-x-2 border p-2 rounded transition text-black dark:text-white border-black dark:border-white hover:scale-105 hover:-translate-y-0.5`,
+        tw`inline-flex h-fit w-fit flex-row gap-x-2 rounded border bg-gradient-to-tl p-2 transition hover:-translate-y-0.5 hover:scale-105`,
+        tw`border-[currentColor]`,
+        tw`from-slate-600 to-slate-300`,
+        tw`dark:from-slate-800 dark:to-slate-600/60`,
         className,
       )}
     >
@@ -27,6 +30,4 @@ const TechStackChip = async (props: TechStackChipProps) => {
       {techStack.name}
     </span>
   );
-};
-
-export default TechStackChip;
+}

@@ -457,3 +457,13 @@ export type FlattenKeys<T> = T extends object
         : `.${FlattenKeys<T[K]>}`}`;
     }[keyof T]
   : never;
+
+/**
+ * Take the value type given an array type
+ *
+ * @example
+ * ```ts
+ * type N = Member<number[]>; // type N = number;
+ * ```
+ */
+export type Member<T> = T extends Array<infer U> ? U : T extends ReadonlyArray<infer U> ? Readonly<U> : never;

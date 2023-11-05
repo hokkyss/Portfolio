@@ -4,11 +4,9 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   experimental: {
-    appDir: true,
-    serverActions: true,
     typedRoutes: true,
   },
-  // transpilePackages: ['lucide-react'],
+  transpilePackages: ['lucide-react'],
   webpack(config) {
     // #region SVGR
     // see https://github.com/vercel/next.js/issues/48177 regarding SVGR Issue

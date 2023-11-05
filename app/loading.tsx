@@ -2,17 +2,13 @@
 
 import 'server-only';
 
-import dynamicIconImports from 'lucide-react/dynamicIconImports';
-import dynamic from 'next/dynamic';
-
 import { tw } from './_common/utils/classname.util';
-
-const Loader = dynamic(dynamicIconImports['loader-2']);
+import LucideIcon from './_server/atoms/lucide-icon.atom';
 
 export default async function Loading() {
   return (
-    <div className={tw('h-full w-full flex justify-center items-center')}>
-      <Loader className={tw('animate-spin w-10 h-10')} />
+    <div className={tw`flex h-screen w-screen items-center justify-center`}>
+      <LucideIcon className={tw`h-10 w-10 animate-spin`} name="loader-2" />
     </div>
   );
 }
