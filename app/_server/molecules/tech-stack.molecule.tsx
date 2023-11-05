@@ -4,7 +4,7 @@ import 'server-only';
 
 import type { TechStack as TechStackModel } from '~/_common/models/tech-stack.model';
 
-import { tw } from '~/_common/utils/classname.util';
+import { cn, tw } from '~/_common/utils/classname.util';
 
 import TechStackChip from '../atoms/tech-stack-chip.atom';
 
@@ -12,24 +12,38 @@ interface TechStackProps {
   techStacks: TechStackModel[];
   title: string;
 }
-
-const TechStack = async (props: TechStackProps) => {
+export default async function TechStack(props: TechStackProps) {
   const { techStacks, title } = props;
 
   return (
     <div
-      className={tw`flex flex-row justify-center flex-wrap gap-2 relative w-full border border-black dark:border-white hover:border-blue-700 hover:dark:border-green-300 rounded-lg px-3 pb-2 pt-5 transition-all duration-300 hover:text-blue-700 hover:dark:text-green-300 selection:dark:text-black selection:dark:bg-green-300`}
+      className={cn(
+        'group',
+        tw`relative flex w-full flex-row flex-wrap justify-center gap-2 rounded-lg border px-3 pb-2 pt-5 transition-all duration-300`,
+        tw`bg-transparent hover:bg-blue-800/20`,
+        tw`border-black dark:border-white/80 hover:dark:border-white`,
+        tw`selection:dark:bg-gray-600`,
+      )}
     >
-      <h1 className={tw`px-2 absolute -top-[14px] backdrop-blur-xl text-xl`}>{title}</h1>
+      <h1
+        className={cn(
+          tw`absolute -top-[14px] px-2 text-xl backdrop-blur-xl`,
+          tw`dark:text-white/80`,
+          tw`dark:group-hover:text-white`,
+        )}
+      >
+        {title}
+      </h1>
       {techStacks.map((techStack) => (
         <TechStackChip
-          className={tw`hover:text-blue-700 hover:dark:fill-green-300 hover:dark:text-green-300`}
+          className={cn(
+            tw`dark:border-white/80 dark:text-white/80`,
+            tw`dark:group-hover:border-white dark:group-hover:text-white`,
+          )}
           key={techStack.name}
           techStack={techStack}
         />
       ))}
     </div>
   );
-};
-
-export default TechStack;
+}

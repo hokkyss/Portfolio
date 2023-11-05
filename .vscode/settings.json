@@ -11,6 +11,6 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "eslint.validate": ["typescript", "typescriptreact", "json", "jsonc", "json5"],
-  "tailwindCSS.classAttributes": [],
-  "tailwindCSS.experimental.classRegex": [["tw\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"], ["tw`([^`]*)`"]]
+  "tailwindCSS.classAttributes": ["class"],
+  "tailwindCSS.experimental.classRegex": [["tw\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"], "tw\\`([^`]*)\\`"]
 }

@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 
 const TechStack = dynamic(() => import('~/_server/molecules/tech-stack.molecule'));
 
-const TechStacks = async () => {
+export default async function TechStacks() {
   // const skills = await UserService.getSkills();
 
   return (
@@ -83,6 +83,4 @@ const TechStacks = async () => {
       />
     </>
   );
-};
-
-export default TechStacks;
+}
