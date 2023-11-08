@@ -2,6 +2,8 @@
 
 import 'server-only';
 
+import type { Tech } from '~/_common/models/tech.model';
+
 import Link from 'next/link';
 
 import { tw } from '~/_common/utils/classname.util';
@@ -11,7 +13,11 @@ import LucideIcon from '../atoms/lucide-icon.atom';
 
 import TechStacks from './tech-stacks.organism';
 
-export default async function AboutMe() {
+interface AboutMeProps {
+  skills: Tech[];
+}
+
+export default async function AboutMe({ skills }: AboutMeProps) {
   return (
     <Section
       className={tw`relative flex h-fit min-h-full flex-col items-start justify-normal gap-y-10 bg-gradient-to-b from-transparent to-blue-600/50 px-8 dark:from-slate-950/80 dark:to-blue-950/80 md:px-20`}
@@ -54,7 +60,7 @@ export default async function AboutMe() {
         <code className={tw`text-blue-600`}>Blue</code>, <code className={tw`text-amber-500`}>Orange</code>, and{' '}
         <code className={tw`text-red-500`}>Red</code>.
       </p>
-      <TechStacks />
+      <TechStacks tech={skills} />
     </Section>
   );
 }

@@ -8,7 +8,7 @@ const projectEndpoints = apiBuilder()
     alias: 'getProjects',
     immutable: true,
     method: 'get',
-    path: '/projects',
+    path: '/api/projects',
     response: z.array(projectSchema),
   })
   .build();
