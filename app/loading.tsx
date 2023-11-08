@@ -1,5 +1,3 @@
-'use server';
-
 import 'server-only';
 
 import { tw } from './_common/utils/classname.util';
