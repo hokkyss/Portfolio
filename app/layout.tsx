@@ -17,9 +17,6 @@ import { cn, tw } from './_common/utils/classname.util';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export function generateViewport(): Viewport {
-  if (envConfig.__DEV__) {
-    return {};
-  }
   return {
     colorScheme: 'light dark',
     height: 'device-height',
@@ -31,10 +28,6 @@ export function generateViewport(): Viewport {
 }
 
 export async function generateMetadata(_props: EmptyObject, _parent: ResolvingMetadata): Promise<Metadata> {
-  if (envConfig.__DEV__) {
-    return {};
-  }
-
   return {
     applicationName: 'Hokki Suwanda Portfolio',
     authors: [{ name: 'Hokki Suwanda', url: 'https://github.com/hokkyss' }],
@@ -57,6 +50,11 @@ export async function generateMetadata(_props: EmptyObject, _parent: ResolvingMe
     ],
     publisher: 'Vercel',
     robots: {
+      googleBot: {
+        index: !envConfig.__DEV__,
+        notranslate: true,
+      },
+      index: !envConfig.__DEV__,
       notranslate: true,
     },
     title: {
