@@ -22,6 +22,7 @@ import {
   SiCssmodules,
   SiDjango,
   SiDocker,
+  SiEslint,
   SiExpress,
   SiFastapi,
   SiFirebase,
@@ -65,6 +66,7 @@ const iconMap = {
   cssmodules: SiCssmodules,
   django: SiDjango,
   docker: SiDocker,
+  eslint: SiEslint,
   express: SiExpress,
   fastapi: SiFastapi,
   firebase: SiFirebase,
@@ -112,7 +114,9 @@ async function Icon(props: IconProps) {
 
   const IconComponent: IconType = iconMap[name];
 
-  return <IconComponent {...rest} name={name} title={name === 'not-found' ? 'Icon Unavailable' : rest.title} />;
+  return (
+    <IconComponent role="img" {...rest} name={name} title={name === 'not-found' ? 'Icon Unavailable' : rest.title} />
+  );
 }
 
 export default Object.assign(Icon, {

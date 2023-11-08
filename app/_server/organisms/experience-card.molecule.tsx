@@ -2,6 +2,8 @@
 
 import 'server-only';
 
+import type { TechStack } from '~/_common/models/tech-stack.model';
+
 import { generateExperienceCardId } from '~/_common/models/experience.model';
 import { tw } from '~/_common/utils/classname.util';
 import { formatDate } from '~/_common/utils/date.util';
@@ -20,7 +22,7 @@ interface ExperienceCardProps {
   id: string;
   link: string;
   role: string;
-  techStacks: string[];
+  techStacks: TechStack[];
   to?: Date | null;
 }
 
@@ -45,9 +47,9 @@ export default async function ExperienceCard(props: ExperienceCardProps) {
       </Card.Content>
       <Card.Footer className={tw`flex-wrap gap-1`}>
         {techStacks.map((tech) => (
-          <Badge className={tw`gap-x-1`} key={tech} variant="secondary">
-            <Icon className={tw`h-3 w-3`} name={Icon.getIconName(tech)} />
-            {tech}
+          <Badge className={tw`gap-x-1`} key={tech.id} variant="secondary">
+            <Icon className={tw`h-3 w-3`} name={Icon.getIconName(tech.icon)} />
+            {tech.name}
           </Badge>
         ))}
       </Card.Footer>

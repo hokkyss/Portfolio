@@ -4,17 +4,11 @@ import { createClient } from '@sanity/client';
 import { z } from 'zod';
 
 import envConfig from '~/_common/configs/env.config';
+import experienceSchema from '~/_common/models/experience.model';
 import techSchema from '~/_common/models/tech.model';
+import sanityConfig from '~/_server/configs/sanity.config';
 
-import serverEnvConfig from '../../configs/env.config';
-
-const sanityClient = createClient({
-  apiVersion: serverEnvConfig.cmsApiVersion,
-  dataset: serverEnvConfig.cmsDataset,
-  perspective: envConfig.__DEV__ ? 'previewDrafts' : 'published',
-  projectId: serverEnvConfig.cmsProjectId,
-  useCdn: envConfig.__DEV__ ? false : true,
-});
+const sanityClient = createClient(sanityConfig);
 
 // #region Get Skills
 const getSkills = async () =>
@@ -33,8 +27,38 @@ const getSkills = async () =>
       {},
       {
         next: {
-          revalidate: 3600,
-          tags: ['tech'],
+          revalidate: envConfig.__DEV__ ? 0 : 3600,
+        },
+      },
+    ),
+  );
+
+const getExperiences = async () =>
+  z.array(experienceSchema).parse(
+    await sanityClient.fetch(
+      `
+* [_type == "experience"] | order(to desc, orderRank) {
+  "id": _id,
+  description,
+  from,
+  to,
+  role,
+  company -> {
+    "id": _id,
+    name,
+    link
+  },
+  techStacks[] -> {
+    "id": _id,
+    name,
+    icon
+  }
+}
+`,
+      {},
+      {
+        next: {
+          revalidate: envConfig.__DEV__ ? 0 : 3600,
         },
       },
     ),
@@ -42,6 +66,7 @@ const getSkills = async () =>
 // #endregion
 
 const cmsService = {
+  getExperiences,
   getSkills,
 };
 
