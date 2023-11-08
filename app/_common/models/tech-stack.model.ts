@@ -2,6 +2,7 @@ import { z } from 'zod';
 
 const techStackSchema = z.object({
   icon: z.string(),
+  id: z.string(),
   name: z.string(),
 });
 
