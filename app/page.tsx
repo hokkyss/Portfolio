@@ -9,6 +9,7 @@ import { z } from 'zod';
 import experienceSchema from './_common/models/experience.model';
 import projectSchema from './_common/models/project.model';
 import { thisWebsite, urlShortener } from './_server/assets/images';
+import cmsService from './_server/services/cms/cms.service';
 
 const Experiences = dynamic(() => import('./_server/organisms/experiences.organism'));
 const Projects = dynamic(() => import('./_server/organisms/projects.organism'));
@@ -139,12 +140,13 @@ Currently available links: [github](https://link.hokkyss.com/github?utm_source=h
 export default async function Page(_props: HomePageProps) {
   const experiences = await getExperiences();
   const projects = await getProjects();
+  const skills = await cmsService.getSkills();
 
   return (
     <>
       <Cursor />
       <Main />
-      <AboutMe />
+      <AboutMe skills={skills} />
       <Experiences experiences={experiences} />
       <Projects projects={projects} />
     </>
