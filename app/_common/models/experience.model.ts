@@ -2,8 +2,11 @@ import { z } from 'zod';
 
 import { parseDate } from '../utils/date.util';
 
+import techStackSchema from './tech-stack.model';
+
 const experienceSchema = z.object({
   company: z.object({
+    id: z.string(),
     link: z.string().url(),
     name: z.string(),
   }),
@@ -11,7 +14,7 @@ const experienceSchema = z.object({
   from: z.string().transform((val) => parseDate(val)),
   id: z.string(),
   role: z.string(),
-  techStacks: z.array(z.string()).min(1),
+  techStacks: z.array(techStackSchema).min(1),
   to: z
     .string()
     .optional()
