@@ -31,7 +31,8 @@ const nextConfig = {
               dimensions: false,
               expandProps: true,
               exportType: 'default',
-              ref: true,
+              memo: false,
+              ref: false,
               svgProps: {
                 className: '{props.className ?? props.class ?? undefined}',
                 color: "{props.color ?? 'currentColor'}",
@@ -59,6 +60,7 @@ const nextConfig = {
                   },
                 ],
               },
+              typescript: true,
             },
           },
         ],
