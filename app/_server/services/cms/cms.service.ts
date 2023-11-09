@@ -11,6 +11,9 @@ import sanityConfig from '~/_server/configs/sanity.config';
 
 const sanityClient = createClient(sanityConfig);
 
+// 1 DAY
+const revalidate = 60 * 60 * 24;
+
 // #region Get Skills
 const getSkills = async () =>
   z.array(techSchema).parse(
@@ -28,7 +31,7 @@ const getSkills = async () =>
       {},
       {
         next: {
-          revalidate: envConfig.__DEV__ ? 0 : 3600,
+          revalidate: envConfig.__DEV__ ? 0 : revalidate,
         },
       },
     ),
@@ -61,7 +64,7 @@ const getExperiences = async () =>
       {},
       {
         next: {
-          revalidate: envConfig.__DEV__ ? 0 : 3600,
+          revalidate: envConfig.__DEV__ ? 0 : revalidate,
         },
       },
     ),
@@ -97,7 +100,7 @@ const getProjects = async () =>
       {},
       {
         next: {
-          revalidate: envConfig.__DEV__ ? 0 : 3600,
+          revalidate: envConfig.__DEV__ ? 0 : revalidate,
         },
       },
     ),
