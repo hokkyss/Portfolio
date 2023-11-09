@@ -14,56 +14,69 @@ import Card from '../molecules/card.molecule';
 type ProjectCardProps = Project;
 
 export default async function ProjectCard(project: ProjectCardProps) {
+  const { id, links, name, summary, techStacks, thumbnail } = project;
+
   return (
     <Card
       className={tw`flex w-80 flex-col overflow-hidden`}
-      id={generateProjectCardId(project.id)}
-      key={generateProjectCardId(project.id)}
+      id={generateProjectCardId(id)}
+      key={generateProjectCardId(id)}
       role="article"
     >
       <Card.Header className={tw`p-0 pb-6`}>
-        <Image alt="" className={tw`h-[400px] object-cover`} loading="lazy" priority={false} src={project.thumbnail} />
+        <Image
+          alt={thumbnail.filename}
+          blurDataURL={thumbnail.blurDataURL}
+          className={tw`h-[400px] object-cover`}
+          height={thumbnail.height}
+          loading="lazy"
+          placeholder="blur"
+          priority={false}
+          src={thumbnail.url}
+          style={{ aspectRatio: thumbnail.aspectRatio }}
+          width={thumbnail.width}
+        />
       </Card.Header>
       <Card.Content className={tw`flex w-full grow flex-col gap-y-2`}>
         <Card.Title className={tw`relative text-3xl`}>
-          <a className={cn(project.links.website && tw`hover:underline`)} href={project.links.website} target="_blank">
-            {project.name}
-            {project.links.website && <LucideIcon className={tw`mb-3 ml-1 inline h-3 w-3`} name="external-link" />}
+          <a className={cn(links.website && tw`hover:underline`)} href={links.website} target="_blank">
+            {name}
+            {links.website && <LucideIcon className={tw`mb-3 ml-1 inline h-3 w-3`} name="external-link" />}
           </a>
         </Card.Title>
-        <Card.Description>{project.summary}</Card.Description>
+        <Card.Description>{summary}</Card.Description>
         <div className={tw`flex flex-row flex-wrap gap-1`}>
-          {project.techStacks.map((tech) => (
-            <Badge className={tw`gap-x-1`} key={tech} variant="secondary">
-              <Icon className={tw`h-3 w-3`} name={Icon.getIconName(tech)} />
-              {tech}
+          {techStacks.map((tech) => (
+            <Badge className={tw`gap-x-1`} key={tech.id} variant="secondary">
+              <Icon className={tw`h-3 w-3`} name={Icon.getIconName(tech.icon)} />
+              {tech.name}
             </Badge>
           ))}
         </div>
       </Card.Content>
       <Card.Footer className={tw`flex-wrap gap-1`}>
-        {project.links.github && (
+        {links.github && (
           <a
             className={cn(buttonVariants({ size: 'icon', variant: 'link' }), tw`h-6 w-6 hover:text-blue-600`)}
-            href={project.links.github}
+            href={links.github}
             target="_blank"
           >
             <LucideIcon name="github" />
           </a>
         )}
-        {project.links.appStore && (
+        {links.appStore && (
           <a
             className={cn(buttonVariants({ size: 'icon', variant: 'link' }), tw`h-6 w-6 hover:text-blue-600`)}
-            href={project.links.appStore}
+            href={links.appStore}
             target="_blank"
           >
             <LucideIcon name="apple" />
           </a>
         )}
-        {project.links.playStore && (
+        {links.playStore && (
           <a
             className={cn(buttonVariants({ size: 'icon', variant: 'link' }), tw`h-6 w-6 hover:text-blue-600`)}
-            href={project.links.playStore}
+            href={links.playStore}
             target="_blank"
           >
             <LucideIcon name="play" />

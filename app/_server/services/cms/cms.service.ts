@@ -5,6 +5,7 @@ import { z } from 'zod';
 
 import envConfig from '~/_common/configs/env.config';
 import experienceSchema from '~/_common/models/experience.model';
+import projectSchema from '~/_common/models/project.model';
 import techSchema from '~/_common/models/tech.model';
 import sanityConfig from '~/_server/configs/sanity.config';
 
@@ -32,7 +33,9 @@ const getSkills = async () =>
       },
     ),
   );
+// #endregion
 
+// #region Get Experiences
 const getExperiences = async () =>
   z.array(experienceSchema).parse(
     await sanityClient.fetch(
@@ -65,8 +68,45 @@ const getExperiences = async () =>
   );
 // #endregion
 
+// #region Get Projects
+const getProjects = async () =>
+  z.array(projectSchema).parse(
+    await sanityClient.fetch(
+      `
+* [_type == 'project'] | order(orderRank) {
+  "id": _id,
+  links,
+  name,
+  summary,
+  "thumbnail": thumbnail.asset-> {
+    "blurDataURL": metadata.lqip,
+    "width": metadata.dimensions.width,
+    "height": metadata.dimensions.height,
+    "aspectRatio": metadata.dimensions.aspectRatio,
+    url,
+    "filename": originalFilename
+  },
+  techStacks[] -> {
+    "id": _id,
+    name,
+    icon
+  },
+  description
+}
+`,
+      {},
+      {
+        next: {
+          revalidate: envConfig.__DEV__ ? 0 : 3600,
+        },
+      },
+    ),
+  );
+// #endregion
+
 const cmsService = {
   getExperiences,
+  getProjects,
   getSkills,
 };
 
