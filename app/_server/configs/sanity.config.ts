@@ -11,6 +11,7 @@ const sanityConfig: ClientConfig = {
   dataset: serverEnvConfig.cmsDataset,
   perspective: envConfig.__DEV__ ? 'previewDrafts' : 'published',
   projectId: serverEnvConfig.cmsProjectId,
+  token: serverEnvConfig.cmsToken,
   useCdn: envConfig.__DEV__ ? false : true,
 };
 
