@@ -1,6 +1,6 @@
-import type { StaticImageData } from 'next/image';
-
 import { z } from 'zod';
+
+import techStackSchema from './tech-stack.model';
 
 const projectSchema = z.object({
   description: z.string(),
@@ -12,10 +12,16 @@ const projectSchema = z.object({
     website: z.string().url().optional(),
   }),
   name: z.string(),
-  relatedExperiences: z.array(z.string()),
   summary: z.string(),
-  techStacks: z.array(z.string()).min(1),
-  thumbnail: z.string().or(z.custom<StaticImageData>()),
+  techStacks: z.array(techStackSchema).min(1),
+  thumbnail: z.object({
+    aspectRatio: z.number(),
+    blurDataURL: z.string().startsWith('data:image'),
+    filename: z.string(),
+    height: z.number(),
+    url: z.string(),
+    width: z.number(),
+  }),
 });
 
 export const generateProjectCardId = (id: string) => `project-${id}`;

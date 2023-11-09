@@ -13,6 +13,15 @@ const nextConfig = {
   experimental: {
     typedRoutes: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        hostname: 'cdn.sanity.io',
+        pathname: `/images/${process.env.CMS_PROJECT_ID}/${process.env.CMS_DATASET}/*`,
+        protocol: 'https',
+      },
+    ],
+  },
   transpilePackages: ['lucide-react'],
   webpack(config) {
     // #region SVGR
