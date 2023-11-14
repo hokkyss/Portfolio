@@ -14,9 +14,10 @@ export function tw(val: TemplateStringsArray | string, ...substitutions: unknown
     return twMerge(val);
   }
 
+  // NOTE: it is possible to not use substitutions, but I'm afraid it will be undebuggable
   if (substitutions.length > 0) {
     throw new Error('Tailwind classes cannot be created dynamically at runtime');
   }
 
-  return twMerge(String.raw(val, substitutions));
+  return twMerge(String.raw({ raw: val }, ...substitutions));
 }
