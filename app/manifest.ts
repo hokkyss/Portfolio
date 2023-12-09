@@ -7,7 +7,7 @@ export default function generateManifest(): MetadataRoute.Manifest {
     background_color: '#fff',
     description: "Hokki Suwanda's Portfolio Web Application using Next.js",
     dir: 'ltr',
-    display: 'browser',
+    display: 'standalone',
     icons: [
       {
         sizes: '16x16 32x32 48x48',
