@@ -39,10 +39,14 @@ export default async function ProjectCard(project: ProjectCardProps) {
       </Card.Header>
       <Card.Content className={tw`flex w-full grow flex-col gap-y-2`}>
         <Card.Title className={tw`relative text-3xl`}>
-          <a className={cn(links.website && tw`hover:underline`)} href={links.website} target="_blank">
-            {name}
-            {links.website && <LucideIcon className={tw`mb-3 ml-1 inline h-3 w-3`} name="external-link" />}
-          </a>
+          {links.website ? (
+            <a className={cn(links.website && tw`hover:underline`)} href={links.website} target="_blank">
+              {name}
+              <LucideIcon className={tw`mb-3 ml-1 inline h-3 w-3`} name="external-link" />
+            </a>
+          ) : (
+            <p className={cn(links.website && tw`hover:underline`)}>{name}</p>
+          )}
         </Card.Title>
         <Card.Description>{summary}</Card.Description>
         <div className={tw`flex flex-row flex-wrap gap-1`}>
