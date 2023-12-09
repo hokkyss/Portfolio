@@ -28,6 +28,7 @@ const Cursor = memo(() => {
 
   return (
     <span
+      aria-label="Cursor Highlight"
       className={tw`pointer-events-none -z-[10] hidden h-40 w-40 rounded-full bg-slate-600 blur-2xl dark:bg-yellow-400 md:pointer-events-auto md:inline`}
       ref={refs.setFloating}
       style={floatingStyles}

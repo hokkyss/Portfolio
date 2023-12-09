@@ -38,6 +38,7 @@ export default async function AboutMe({ skills }: AboutMeProps) {
       <p className={tw`w-full text-lg`}>
         By the way, my favorite games are{' '}
         <Link
+          aria-label="Fire Emblem Three Houses"
           className={tw`relative mr-2 inline-flex font-semibold hover:underline`}
           href="https://www.nintendo.com/us/store/products/fire-emblem-three-houses-switch/"
           target="_blank"
@@ -47,6 +48,7 @@ export default async function AboutMe({ skills }: AboutMeProps) {
         </Link>{' '}
         and{' '}
         <Link
+          aria-label="Pokémon Black and White"
           className={tw`relative mr-2 inline-flex font-semibold hover:underline`}
           href="https://www.pokemon.com/us/pokemon-video-games/pokemon-black-version-and-pokemon-white-version/"
           target="_blank"

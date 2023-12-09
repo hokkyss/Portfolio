@@ -3,5 +3,8 @@ declare namespace NodeJS {
     readonly CMS_API_VERSION: string;
     readonly CMS_DATASET: string;
     readonly CMS_PROJECT_ID: string;
+    readonly CMS_TOKEN: string;
+    readonly NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: string;
+    readonly NEXT_PUBLIC_GTM_ID: string;
   }
 }
