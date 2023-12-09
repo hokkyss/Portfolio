@@ -28,6 +28,7 @@ export default async function Main() {
         </div>
         <div className={tw`flex flex-row justify-center gap-x-1 md:justify-normal`}>
           <Link
+            aria-label="Certified Node.js App Developer"
             className={badgeVariants({ variant: 'default' })}
             href="https://www.credly.com/badges/589bac2f-109c-4758-9aa8-495416bd0263/public_url"
             target="_blank"
@@ -36,13 +37,18 @@ export default async function Main() {
           </Link>
         </div>
         <div className={tw`flex flex-row justify-center gap-x-1 md:justify-normal`}>
-          <Link className={socialMediaLink} href="https://link.hokkyss.com/mail-me" target="_blank">
+          <Link aria-label="gmail" className={socialMediaLink} href="https://link.hokkyss.com/mail-me" target="_blank">
             <Icon className={socialMediaIcon} name="gmail" />
           </Link>
-          <Link className={socialMediaLink} href="https://link.hokkyss.com/linkedin" target="_blank">
+          <Link
+            aria-label="Linkedin"
+            className={socialMediaLink}
+            href="https://link.hokkyss.com/linkedin"
+            target="_blank"
+          >
             <Icon className={socialMediaIcon} name="linkedin" />
           </Link>
-          <Link className={socialMediaLink} href="https://link.hokkyss.com/github" target="_blank">
+          <Link aria-label="Github" className={socialMediaLink} href="https://link.hokkyss.com/github" target="_blank">
             <Icon className={socialMediaIcon} name="git" />
           </Link>
         </div>

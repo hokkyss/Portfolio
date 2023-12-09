@@ -57,6 +57,7 @@ export default async function ProjectCard(project: ProjectCardProps) {
       <Card.Footer className={tw`flex-wrap gap-1`}>
         {links.github && (
           <a
+            aria-label="Github"
             className={cn(buttonVariants({ size: 'icon', variant: 'link' }), tw`h-6 w-6 hover:text-blue-600`)}
             href={links.github}
             target="_blank"
@@ -66,6 +67,7 @@ export default async function ProjectCard(project: ProjectCardProps) {
         )}
         {links.appStore && (
           <a
+            aria-label="Apple App Store"
             className={cn(buttonVariants({ size: 'icon', variant: 'link' }), tw`h-6 w-6 hover:text-blue-600`)}
             href={links.appStore}
             target="_blank"
@@ -75,6 +77,7 @@ export default async function ProjectCard(project: ProjectCardProps) {
         )}
         {links.playStore && (
           <a
+            aria-label="Google Play Store"
             className={cn(buttonVariants({ size: 'icon', variant: 'link' }), tw`h-6 w-6 hover:text-blue-600`)}
             href={links.playStore}
             target="_blank"
