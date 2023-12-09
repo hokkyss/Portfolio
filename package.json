@@ -3,6 +3,7 @@
     "@floating-ui/react": "^0.26.1",
     "@icons-pack/react-simple-icons": "^8.0.1",
     "@material-design-icons/svg": "^0.14.10",
+    "@next/third-parties": "^14.0.4",
     "@radix-ui/react-slot": "^1.0.2",
     "@sanity/client": "^6.7.1",
     "@tanstack/react-query": "^4.32.6",
