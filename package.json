@@ -3,6 +3,7 @@
     "@floating-ui/react": "^0.26.1",
     "@icons-pack/react-simple-icons": "^8.0.1",
     "@material-design-icons/svg": "^0.14.10",
+    "@next/third-parties": "^14.0.4",
     "@radix-ui/react-slot": "^1.0.2",
     "@sanity/client": "^6.7.1",
     "@tanstack/react-query": "^4.32.6",
@@ -13,6 +14,7 @@
     "class-variance-authority": "^0.7.0",
     "client-only": "^0.0.1",
     "clsx": "^2.0.0",
+    "cross-env": "^7.0.3",
     "date-fns": "^2.30.0",
     "lucide-react": "^0.291.0",
     "next": "^14.0.1",
@@ -26,6 +28,7 @@
     "zod": "^3.22.2"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^14.0.1",
     "@svgr/webpack": "^8.0.1",
     "@types/node": "20.4.10",
     "@types/postcss-import": "^14.0.2",
@@ -47,6 +50,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
+    "next-compose-plugins": "^2.2.1",
     "postcss": "8.4.27",
     "prettier": "^3.0.1",
     "prettier-plugin-tailwindcss": "^0.5.6",
@@ -62,6 +66,7 @@
   "name": "@hokkyss/next-boilerplate",
   "private": true,
   "scripts": {
+    "analyze": "cross-env ANALYZE=true next build",
     "build": "next build",
     "dev": "next dev",
     "generate": "shadcn-ui add",

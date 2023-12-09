@@ -16,7 +16,7 @@ async function CardHeader({ className, ...props }: HTMLAttributes<HTMLDivElement
 }
 
 async function CardTitle({ className, ...props }: HTMLAttributes<HTMLHeadingElement>) {
-  return <h3 className={cn(cardTitle, className)} {...props} />;
+  return <h2 className={cn(cardTitle, className)} {...props} />;
 }
 
 async function CardDescription({ className, ...props }: HTMLAttributes<HTMLParagraphElement>) {
