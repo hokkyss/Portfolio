@@ -30,6 +30,7 @@ export const viewport: Viewport = {
   height: 'device-height',
   initialScale: 1.0,
   minimumScale: 1.0,
+  themeColor: '#fff',
   width: 'device-width',
 };
 
