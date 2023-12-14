@@ -54,7 +54,7 @@ import {
   SiVercel,
   SiVitest,
 } from '@icons-pack/react-simple-icons';
-import GmailIcon from '@material-design-icons/svg/outlined/mail.svg';
+import GmailIcon from '@material-design-icons/svg/outlined/mail.svg?react';
 
 const iconMap = {
   angular: SiAngular,

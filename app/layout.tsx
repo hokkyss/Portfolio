@@ -81,6 +81,8 @@ export default async function Layout(props: LayoutProps) {
     <html dir="ltr" lang="en">
       <head>
         <SpeedInsights debug={envConfig.__DEV__} />
+        <Analytics debug={envConfig.__DEV__} />
+        <WebVitals />
       </head>
       {envConfig.gtmId && <GoogleTagManager gtmId={envConfig.gtmId} />}
       <body className={cn('notranslate', inter.className, tw`relative flex flex-col text-black dark:text-white/80`)}>
@@ -114,8 +116,6 @@ export default async function Layout(props: LayoutProps) {
           </Link>
           .
         </footer>
-        <Analytics />
-        <WebVitals />
       </body>
     </html>
   );

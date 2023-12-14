@@ -1,3 +1,7 @@
+'use server';
+
+import 'server-only';
+
 import type { Project } from '~/_common/models/project.model';
 
 import Image from 'next/image';

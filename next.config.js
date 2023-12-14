@@ -28,63 +28,51 @@ const nextConfig = {
     // see https://github.com/vercel/next.js/issues/48177 regarding SVGR Issue
     const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'));
 
-    config.module.rules.push(
-      // Reapply the existing rule, but only for svg imports ending in ?url
-      {
-        ...fileLoaderRule,
-        resourceQuery: /url/, // *.svg?url
-        test: /\.svg$/i,
-      },
-      // Convert all other *.svg imports to React components
-      {
-        issuer: fileLoaderRule.issuer,
-        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
-        test: /\.svg$/i,
-        use: [
-          {
-            loader: '@svgr/webpack',
-            options: {
-              dimensions: false,
-              expandProps: true,
-              exportType: 'default',
-              memo: false,
-              ref: false,
-              svgProps: {
-                className: '{props.className ?? props.class ?? undefined}',
-                color: "{props.color ?? 'currentColor'}",
-                fill: "{props.fill ?? 'currentColor'}",
-                role: 'img',
-              },
-              svgo: true,
-              svgoConfig: {
-                plugins: [
-                  {
-                    name: 'preset-default',
-                    params: {
-                      overrides: {
-                        removeViewBox: false,
-                      },
-                    },
-                  },
-                  'prefixIds',
-                  'removeDimensions',
-                  {
-                    name: 'sortAttrs',
-                    params: {
-                      xmlnsOrder: 'alphabetical',
-                    },
-                  },
-                ],
-              },
-              typescript: true,
+    config.module.rules.push({
+      issuer: fileLoaderRule.issuer,
+      resourceQuery: /react/, // Convert all *.svg?react imports to React components
+      test: /\.svg$/i,
+      use: [
+        {
+          loader: '@svgr/webpack',
+          options: {
+            dimensions: false,
+            expandProps: true,
+            exportType: 'default',
+            memo: false,
+            ref: false,
+            svgProps: {
+              className: '{props.className ?? props.class ?? undefined}',
+              color: "{props.color ?? 'currentColor'}",
+              fill: "{props.fill ?? 'currentColor'}",
+              role: 'img',
             },
+            svgo: true,
+            svgoConfig: {
+              plugins: [
+                {
+                  name: 'preset-default',
+                  params: {
+                    overrides: {
+                      removeViewBox: false,
+                    },
+                  },
+                },
+                'prefixIds',
+                'removeDimensions',
+                {
+                  name: 'sortAttrs',
+                  params: {
+                    xmlnsOrder: 'alphabetical',
+                  },
+                },
+              ],
+            },
+            typescript: true,
           },
-        ],
-      },
-    );
-
-    // Modify the file loader rule to ignore *.svg, since we have it handled now.
-    fileLoaderRule.exclude = /\.svg$/i;
+        },
+      ],
+    });
     // #endregion SVGR
 
     return config;

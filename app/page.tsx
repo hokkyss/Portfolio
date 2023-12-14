@@ -4,7 +4,9 @@ import type DefaultPageProps from '~/_common/types/page-props.type';
 
 import dynamic from 'next/dynamic';
 
-import cmsService from './_server/services/cms/cms.service';
+import getExperiences from './_server/services/cms/get-experiences.service';
+import getProjects from './_server/services/cms/get-projects.service';
+import getSkills from './_server/services/cms/get-skills.service';
 
 const Experiences = dynamic(() => import('./_server/organisms/experiences.organism'));
 const Projects = dynamic(() => import('./_server/organisms/projects.organism'));
@@ -15,9 +17,9 @@ const AboutMe = dynamic(() => import('./_server/organisms/about-me.organism'));
 type HomePageProps = DefaultPageProps;
 
 export default async function Page(_props: HomePageProps) {
-  const experiences = await cmsService.getExperiences();
-  const projects = await cmsService.getProjects();
-  const skills = await cmsService.getSkills();
+  const experiences = await getExperiences();
+  const projects = await getProjects();
+  const skills = await getSkills();
 
   return (
     <>
