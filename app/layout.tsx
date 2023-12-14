@@ -6,6 +6,7 @@ import type { ReactNode } from 'react';
 
 import { GoogleTagManager } from '@next/third-parties/google';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
 
@@ -78,6 +79,9 @@ export default async function Layout(props: LayoutProps) {
 
   return (
     <html dir="ltr" lang="en">
+      <head>
+        <SpeedInsights debug={envConfig.__DEV__} />
+      </head>
       {envConfig.gtmId && <GoogleTagManager gtmId={envConfig.gtmId} />}
       <body className={cn('notranslate', inter.className, tw`relative flex flex-col text-black dark:text-white/80`)}>
         {/* <!-- Google Tag Manager (noscript) --> */}
