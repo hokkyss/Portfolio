@@ -3,11 +3,11 @@
 import 'client-only';
 
 import { useReportWebVitals } from 'next/web-vitals';
+import { memo } from 'react';
 
 import envConfig from '~/_common/configs/env.config';
-import { tw } from '~/_common/utils/classname.util';
 
-export default function WebVitals() {
+const WebVitals = memo(() => {
   useReportWebVitals((metric) => {
     if (envConfig.__DEV__) {
       // NOTE: console is only on development
@@ -16,5 +16,7 @@ export default function WebVitals() {
     }
   });
 
-  return <span className={tw`absolute hidden`} id="web-vitals" />;
-}
+  return null;
+});
+
+export default WebVitals;

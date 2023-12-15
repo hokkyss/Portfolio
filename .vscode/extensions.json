@@ -5,6 +5,7 @@
     "ms-vscode.vscode-typescript-next",
     "esbenp.prettier-vscode",
     "bradlc.vscode-tailwindcss",
-    "wayou.vscode-todo-highlight"
+    "wayou.vscode-todo-highlight",
+    "arcanis.vscode-zipfs"
   ]
 }

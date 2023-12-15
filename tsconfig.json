@@ -30,7 +30,7 @@
     ".next/types/**/*.ts",
     "app.d.ts",
     "postcss.config.js",
-    "tailwind.config.js",
-    "prettier.config.js"
+    "tailwind.config.ts",
+    "prettier.config.mjs"
   ]
 }

@@ -6,10 +6,6 @@ const envConfig = {
     process.env.VERCEL_ENV === 'preview' ||
     process.env.NODE_ENV === 'development',
   appUrl: (function () {
-    if (process.env.NODE_ENV === 'production') {
-      return `https://i-am.hokkyss.com`;
-    }
-
     if (process.env.NEXT_PUBLIC_DOMAIN) {
       return `https://${process.env.NEXT_PUBLIC_DOMAIN}/`;
     }

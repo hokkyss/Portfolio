@@ -1,13 +1,7 @@
-declare module '*.svg?url' {
-  const url: string;
+declare module '*.svg?react' {
+  import type { FC, RefAttributes, SVGProps } from 'react';
 
-  export default url;
-}
-
-declare module '*.svg' {
-  import type { ForwardRefExoticComponent, RefAttributes, SVGProps } from 'react';
-
-  const SVGComponent: ForwardRefExoticComponent<SVGProps<SVGSVGElement>> & RefAttributes<SVGSVGElement>;
+  const SVGComponent: FC<SVGProps<SVGSVGElement>> & RefAttributes<SVGSVGElement>;
 
   export default SVGComponent;
 }

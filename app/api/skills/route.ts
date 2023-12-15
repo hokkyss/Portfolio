@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 
-import cmsService from '~/_server/services/cms/cms.service';
+import getSkills from '~/_server/services/cms/get-skills.service';
 
 export async function GET() {
-  const response = NextResponse.json(await cmsService.getSkills(), {
+  const response = NextResponse.json(await getSkills(), {
     status: 200,
   });
 

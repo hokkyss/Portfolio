@@ -12,10 +12,10 @@ export declare type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends object
     ? DeepPartial<T[P]>
     : T[P] extends null | object
-    ? DeepPartial<T[P]> | null
-    : T[P] extends null | object | undefined
-    ? DeepPartial<T[P]> | null
-    : T[P];
+      ? DeepPartial<T[P]> | null
+      : T[P] extends null | object | undefined
+        ? DeepPartial<T[P]> | null
+        : T[P];
 };
 
 export type Except<T, K extends keyof T> = Omit<T, K>;
@@ -127,22 +127,22 @@ export declare type Intersect<ObjectOne, ObjectTwo> = {
   [P in CommonProperties<ObjectOne, ObjectTwo> as Equals<ObjectOne[P], ObjectTwo[P]> extends true
     ? P
     : ObjectOne[P] extends object
-    ? ObjectTwo[P] extends object
-      ? P
-      : never
-    : ObjectOne[P] extends ObjectTwo[P]
-    ? P
-    : ObjectTwo[P] extends ObjectOne[P]
-    ? P
-    : never]: Equals<ObjectOne[P], any> extends true
+      ? ObjectTwo[P] extends object
+        ? P
+        : never
+      : ObjectOne[P] extends ObjectTwo[P]
+        ? P
+        : ObjectTwo[P] extends ObjectOne[P]
+          ? P
+          : never]: Equals<ObjectOne[P], any> extends true
     ? ObjectTwo[P]
     : Equals<ObjectTwo[P], any> extends true
-    ? ObjectOne[P]
-    : ObjectOne[P] extends object
-    ? ObjectTwo[P] extends object
-      ? Intersect<ObjectOne[P], ObjectTwo[P]>
-      : never
-    : ObjectOne[P] & ObjectTwo[P];
+      ? ObjectOne[P]
+      : ObjectOne[P] extends object
+        ? ObjectTwo[P] extends object
+          ? Intersect<ObjectOne[P], ObjectTwo[P]>
+          : never
+        : ObjectOne[P] & ObjectTwo[P];
 };
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
@@ -453,8 +453,8 @@ export type FlattenKeys<T> = T extends object
       [K in keyof T]: `${Exclude<K, symbol>}${FlattenKeys<T[K]> extends never
         ? ''
         : T[K] extends unknown[]
-        ? ''
-        : `.${FlattenKeys<T[K]>}`}`;
+          ? ''
+          : `.${FlattenKeys<T[K]>}`}`;
     }[keyof T]
   : never;
 

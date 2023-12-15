@@ -2,8 +2,11 @@
 
 import 'client-only';
 
-import type { QueryClientConfig } from '@tanstack/react-query';
+import { MutationCache, QueryCache, QueryClient } from '@tanstack/react-query';
 
-const queryConfig: QueryClientConfig = {};
+const queryClient = new QueryClient({
+  mutationCache: new MutationCache(),
+  queryCache: new QueryCache(),
+});
 
-export default queryConfig;
+export default queryClient;

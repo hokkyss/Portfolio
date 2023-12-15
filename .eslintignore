@@ -1,4 +1,0 @@
-app/**/*.module.css.d.ts
-
-**/package.json
-!/package.json
