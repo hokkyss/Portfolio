@@ -18,8 +18,8 @@ type IntrinsicElement = Exclude<keyof React.JSX.IntrinsicElements, 'object' | 's
 type InferPropType<P> = P extends StylableComponent<infer U>
   ? U
   : P extends keyof React.JSX.IntrinsicElements
-  ? React.JSX.IntrinsicElements[P]
-  : { className?: string; style?: CSSProperties };
+    ? React.JSX.IntrinsicElements[P]
+    : { className?: string; style?: CSSProperties };
 
 type InferComponentRef<P> = 'ref' extends keyof P
   ? P['ref'] extends LegacyRef<infer U> | Ref<infer U> | undefined
@@ -42,8 +42,8 @@ function styled<Element extends StylableComponent>(
 ) => ReturnType<typeof forwardRef<InferComponentRef<Props>, Props>>;
 
 function styled<Element extends IntrinsicElement | StylableComponent>(element: Element) {
-  return <Props = InferPropType<typeof element>>(...classNames: ClassNames<Props>[]) =>
-    forwardRef<InferComponentRef<Props>, Props>((props, ref) =>
+  return <Props = InferPropType<typeof element>>(...classNames: ClassNames<Props>[]) => {
+    const Component = forwardRef<InferComponentRef<Props>, Props>((props, ref) =>
       createElement(element, {
         ...props,
         className: twMerge(
@@ -53,6 +53,11 @@ function styled<Element extends IntrinsicElement | StylableComponent>(element: E
         ref,
       }),
     );
+
+    Component.displayName = 'Anonymous';
+
+    return Component;
+  };
 }
 
 export default styled;

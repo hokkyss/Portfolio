@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 
-import cmsService from '~/_server/services/cms/cms.service';
+import getExperiences from '~/_server/services/cms/get-experiences.service';
 
 export async function GET() {
-  const response = NextResponse.json(await cmsService.getExperiences(), {
+  const response = NextResponse.json(await getExperiences(), {
     status: 200,
   });
 
