@@ -1596,6 +1596,7 @@ __metadata:
     "@icons-pack/react-simple-icons": "npm:^8.0.1"
     "@material-design-icons/svg": "npm:^0.14.10"
     "@next/bundle-analyzer": "npm:^14.0.1"
+    "@next/eslint-plugin-next": "npm:^14.0.4"
     "@next/third-parties": "npm:^14.0.4"
     "@radix-ui/react-slot": "npm:^1.0.2"
     "@sanity/client": "npm:^6.7.1"
@@ -1625,7 +1626,6 @@ __metadata:
     eslint-config-prettier: "npm:^9.0.0"
     eslint-plugin-jsonc: "npm:^2.9.0"
     eslint-plugin-jsx-a11y: "npm:^6.7.1"
-    eslint-plugin-next: "npm:^0.0.0"
     eslint-plugin-perfectionist: "npm:^1.5.1"
     eslint-plugin-prettier: "npm:^5.0.0"
     eslint-plugin-react: "npm:^7.33.1"
@@ -1944,7 +1944,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:14.0.4":
+"@next/eslint-plugin-next@npm:14.0.4, @next/eslint-plugin-next@npm:^14.0.4":
   version: 14.0.4
   resolution: "@next/eslint-plugin-next@npm:14.0.4"
   dependencies:
@@ -4709,13 +4709,6 @@ __metadata:
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
   checksum: 199b883e526e6f9d7c54cb3f094abc54f11a1ec816db5fb6cae3b938eb0e503acc10ccba91ca7451633a9d0b9abc0ea03601844a8aba5fe88c5e8897c9ac8f49
-  languageName: node
-  linkType: hard
-
-"eslint-plugin-next@npm:^0.0.0":
-  version: 0.0.0
-  resolution: "eslint-plugin-next@npm:0.0.0"
-  checksum: 2b2b1ca99e3144e0ec801b6d8818d41363497eb5ef50cc402e66effb9030e6c038f6dcbdf5d2804d16c826c75d022bcde2dcd84b490eb2b42a87e25eb82631e9
   languageName: node
   linkType: hard
 

@@ -2,6 +2,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:@next/next/recommended",
     "next/core-web-vitals",
     "plugin:perfectionist/recommended-natural",
     "prettier"
