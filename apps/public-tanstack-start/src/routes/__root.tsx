@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { defineViewport, resolveViewport } from '@portfolio/common/viewport';
 import ThemeProvider from '@portfolio/design-system/application-theme-provider';
 import Toaster from '@portfolio/design-system/toaster';
 import tw from '@portfolio/design-system/tw';
@@ -42,10 +43,14 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       {
         charSet: 'utf-8',
       },
-      {
-        content: 'width=device-width, initial-scale=1',
-        name: 'viewport',
-      },
+      ...resolveViewport(defineViewport({
+        colorScheme: 'light dark',
+        height: 'device-height',
+        initialScale: 1.0,
+        minimumScale: 1.0,
+        themeColor: '#fff',
+        width: 'device-width',
+      })),
       {
         title: 'Chat Application',
       },

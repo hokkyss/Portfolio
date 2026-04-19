@@ -1,31 +1,6 @@
-/**
- * @see {@link https://github.com/vercel/next.js/blob/canary/packages/next/src/lib/metadata/types/metadata-interface.ts#L697 Source}
- */
-export type Sitemap = Array<{
-  alternates?:
-    | {
-      languages?: SitemapLanguages<string> | undefined;
-    }
-    | undefined;
-  changeFrequency?:
-    | 'always'
-    | 'daily'
-    | 'hourly'
-    | 'monthly'
-    | 'never'
-    | 'weekly'
-    | 'yearly'
-    | undefined;
-  images?: string[] | undefined;
-  lastModified?: Date | string | undefined;
-  priority?: number | undefined;
-  url: string;
-  videos?: SitemapVideo[] | undefined;
-}>;
+export type HrefLang = LangCode | UnmatchedLang;
 
-type HrefLang = LangCode | UnmatchedLang;
-
-type LangCode
+export type LangCode
   = | 'aa'
     | 'ab'
     | 'ae'
@@ -448,17 +423,42 @@ type LangCode
     | `${Lowercase<string>}-${string}`;
 
 /**
+ * @see {@link https://github.com/vercel/next.js/blob/canary/packages/next/src/lib/metadata/types/metadata-interface.ts#L697 Source}
+ */
+export type Sitemap = Array<{
+  alternates?:
+    | {
+      languages?: SitemapLanguages<string> | undefined;
+    }
+    | undefined;
+  changeFrequency?:
+    | 'always'
+    | 'daily'
+    | 'hourly'
+    | 'monthly'
+    | 'never'
+    | 'weekly'
+    | 'yearly'
+    | undefined;
+  images?: string[] | undefined;
+  lastModified?: Date | string | undefined;
+  priority?: number | undefined;
+  url: string;
+  videos?: SitemapVideo[] | undefined;
+}>;
+
+/**
  * @see {@link https://github.com/vercel/next.js/blob/e68639f83a4853c91f60aa6044bb4502a9365996/packages/next/src/lib/metadata/types/alternative-urls-types.ts#L429 Copy-pasted source}
  * @see {@link https://hreflang.org/what-is-a-valid-hreflang Reference}
  */
-type SitemapLanguages<T> = {
+export type SitemapLanguages<T> = {
   [s in HrefLang]?: T | undefined
 };
 
 /**
  * @see {@link https://github.com/vercel/next.js/blob/canary/packages/next/src/lib/metadata/types/metadata-types.ts#L163C1-L166C2 Source}
  */
-type SitemapRestriction = {
+export type SitemapRestriction = {
   content: string;
   relationship: 'allow' | 'deny';
 };
@@ -466,7 +466,7 @@ type SitemapRestriction = {
 /**
  * @see {@link https://github.com/vercel/next.js/blob/canary/packages/next/src/lib/metadata/types/metadata-types.ts#L168 Source}
  */
-type SitemapVideo = {
+export type SitemapVideo = {
   content_loc?: string | undefined;
   description: string;
   duration?: number | undefined;
@@ -491,4 +491,4 @@ type SitemapVideo = {
   view_count?: number | undefined;
 };
 
-type UnmatchedLang = 'x-default';
+export type UnmatchedLang = 'x-default';

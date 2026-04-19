@@ -11,6 +11,7 @@ export default defineConfig({
         logger: './lib/logger/index',
         robots: './lib/robots/index',
         sitemap: './lib/sitemap/index',
+        viewport: './lib/viewport/index',
       },
       formats: ['es'],
     },

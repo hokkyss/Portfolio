@@ -32,6 +32,13 @@
       },
       "default": "./lib/manifest/index.ts"
     },
+    "./viewport": {
+      "production": {
+        "types": "./dist/viewport/index.d.ts",
+        "default": "./dist/viewport.js"
+      },
+      "default": "./lib/viewport/index.ts"
+    },
     "./errors/application-error": {
       "production": {
         "types": "./dist/errors/application.error.d.ts",
