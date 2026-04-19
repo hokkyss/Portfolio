@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "skills": {
+    "netlify-blobs": {
+      "source": "netlify/context-and-tools",
+      "sourceType": "github",
+      "computedHash": "0188e47c193c93e07829719470b2c6435d6034a6cf00157a329eb7d9ce0bb090"
+    },
+    "netlify-caching": {
+      "source": "netlify/context-and-tools",
+      "sourceType": "github",
+      "computedHash": "7d95ae3b693cd2d4a853670a0bcae4c592fa5a12852d17bdd0b8a0fced4d1e59"
+    },
+    "netlify-cli-and-deploy": {
+      "source": "netlify/context-and-tools",
+      "sourceType": "github",
+      "computedHash": "fbfda7a4bcff8ec5413272362a57373b4a059f05930a37759cdafa5559ee2d6f"
+    },
+    "netlify-config": {
+      "source": "netlify/context-and-tools",
+      "sourceType": "github",
+      "computedHash": "83dcef461e6d4d43a6a529e55e53e1bb3a3c0542d63a6a60ccf0d99955b0c7a6"
+    },
+    "netlify-edge-functions": {
+      "source": "netlify/context-and-tools",
+      "sourceType": "github",
+      "computedHash": "f89343e7ed95384904f3fe0bcdb12a653df4a22e33c7bd59b07b9360af33d73e"
+    },
+    "netlify-functions": {
+      "source": "netlify/context-and-tools",
+      "sourceType": "github",
+      "computedHash": "4285baefe3164ee2711ca175465c3d27ae4c31df6ed0cc46b28e2e8d75e668a8"
+    },
+    "netlify-image-cdn": {
+      "source": "netlify/context-and-tools",
+      "sourceType": "github",
+      "computedHash": "7a817d222d8356582affb1c93604515983c83c357475cf75471b2c5ae0ba5933"
+    },
+    "pnpm": {
+      "source": "sanity-io/next-sanity",
+      "sourceType": "github",
+      "computedHash": "755a02251e7e24534d8e78ea50bcdb426cd82e7147d2e866d64dd21716c75dd9"
+    },
+    "vite": {
+      "source": "antfu/skills",
+      "sourceType": "github",
+      "computedHash": "867ff66238f3152e9c494339ad08dc432dd0df5bcf5cc7a00b61a72b580eb908"
+    },
+    "vitest": {
+      "source": "supabase/supabase",
+      "sourceType": "github",
+      "computedHash": "669c7275f7e1379b06b2bcfa593603aead4c983b951c7e8edbc09640aa38d0a1"
+    }
+  }
+}

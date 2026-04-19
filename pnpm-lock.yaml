@@ -102,6 +102,10 @@ catalogs:
 importers:
 
   .:
+    dependencies:
+      '@tanstack/intent':
+        specifier: ^0.0.29
+        version: 0.0.29
     devDependencies:
       typescript:
         specifier: catalog:ts5
@@ -2810,6 +2814,10 @@ packages:
   '@tanstack/history@1.161.6':
     resolution: {integrity: sha512-NaOGLRrddszbQj9upGat6HG/4TKvXLvu+osAIgfxPYA+eIvYKv8GKDJOrY2D3/U9MRnKfMWD7bU4jeD4xmqyIg==}
     engines: {node: '>=20.19'}
+
+  '@tanstack/intent@0.0.29':
+    resolution: {integrity: sha512-tJcWapEkXGRLHE7mQYvQS0xIWrzKm2n7fQ/lOy4LCdR1hX0Yxb9QnwRwd0oqmmr54ObP9/5sfiD8vELxL/r30g==}
+    hasBin: true
 
   '@tanstack/pacer-lite@0.1.1':
     resolution: {integrity: sha512-y/xtNPNt/YeyoVxE/JCx+T7yjEzpezmbb+toK8DDD1P4m7Kzs5YR956+7OKexG3f8aXgC3rLZl7b1V+yNUSy5w==}
@@ -10221,6 +10229,11 @@ snapshots:
       - vue
 
   '@tanstack/history@1.161.6': {}
+
+  '@tanstack/intent@0.0.29':
+    dependencies:
+      cac: 6.7.14
+      yaml: 2.8.3
 
   '@tanstack/pacer-lite@0.1.1': {}
 
