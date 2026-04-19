@@ -41,6 +41,11 @@
       "sourceType": "github",
       "computedHash": "755a02251e7e24534d8e78ea50bcdb426cd82e7147d2e866d64dd21716c75dd9"
     },
+    "sanity-best-practices": {
+      "source": "sanity-io/agent-toolkit",
+      "sourceType": "github",
+      "computedHash": "cc5b4bd65ddd554c2ba2faf14f11858e59b48f6e600c578551cc58cc81b3e084"
+    },
     "vite": {
       "source": "antfu/skills",
       "sourceType": "github",
