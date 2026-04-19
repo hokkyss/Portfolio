@@ -9,7 +9,8 @@ export default defineConfig({
       entry: {
         'errors/application-error': './lib/errors/application.error',
         logger: './lib/logger/index',
-        'time-zone/supported-time-zones': './lib/time-zone/supported-time-zones',
+        robots: './lib/robots/index',
+        sitemap: './lib/sitemap/index',
       },
       formats: ['es'],
     },

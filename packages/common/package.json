@@ -11,19 +11,33 @@
       },
       "default": "./lib/logger/index.ts"
     },
+    "./robots": {
+      "production": {
+        "types": "./dist/robots/index.d.ts",
+        "default": "./dist/robots.js"
+      },
+      "default": "./lib/robots/index.ts"
+    },
+    "./sitemap": {
+      "production": {
+        "types": "./dist/sitemap/index.d.ts",
+        "default": "./dist/sitemap.js"
+      },
+      "default": "./lib/sitemap/index.ts"
+    },
+    "./manifest": {
+      "production": {
+        "types": "./dist/manifest/index.d.ts",
+        "default": "./dist/manifest.js"
+      },
+      "default": "./lib/manifest/index.ts"
+    },
     "./errors/application-error": {
       "production": {
         "types": "./dist/errors/application.error.d.ts",
         "default": "./dist/errors/application-error.js"
       },
       "default": "./lib/errors/application.error.ts"
-    },
-    "./time-zone/supported-time-zones": {
-      "production": {
-        "types": "./dist/time-zone/supported-time-zones.d.ts",
-        "default": "./dist/time-zone/supported-time-zones.js"
-      },
-      "default": "./lib/time-zone/supported-time-zones.ts"
     }
   },
   "types": "./index.d.ts",

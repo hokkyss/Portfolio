@@ -20,6 +20,7 @@
     "@tanstack/react-router-ssr-query": "catalog:tanstackStart",
     "@tanstack/react-start": "catalog:tanstackStart",
     "date-fns": "^4.1.0",
+    "dedent": "^1.7.2",
     "es-toolkit": "^1.43.0",
     "firebase-admin": "^13.6.1",
     "react": "catalog:react19",
