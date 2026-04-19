@@ -1,0 +1,51 @@
+{
+  "name": "@portfolio/common",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./logger": {
+      "production": {
+        "types": "./dist/logger/index.d.ts",
+        "default": "./dist/logger.js"
+      },
+      "default": "./lib/logger/index.ts"
+    },
+    "./errors/application-error": {
+      "production": {
+        "types": "./dist/errors/application.error.d.ts",
+        "default": "./dist/errors/application-error.js"
+      },
+      "default": "./lib/errors/application.error.ts"
+    },
+    "./time-zone/supported-time-zones": {
+      "production": {
+        "types": "./dist/time-zone/supported-time-zones.d.ts",
+        "default": "./dist/time-zone/supported-time-zones.js"
+      },
+      "default": "./lib/time-zone/supported-time-zones.ts"
+    }
+  },
+  "types": "./index.d.ts",
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "lint": "eslint",
+    "build": "tsc && vite build"
+  },
+  "peerDependencies": {
+    "zod": "catalog:zod4"
+  },
+  "devDependencies": {
+    "@portfolio/eslint": "workspace:^",
+    "@types/node": "^24.0.14",
+    "eslint": "catalog:eslint",
+    "typescript": "catalog:ts5",
+    "vite": "^7.0.5",
+    "vite-plugin-dts": "^4.5.4",
+    "zod": "catalog:zod4"
+  }
+}
