@@ -3,7 +3,7 @@ import type { Viewport } from './viewport.interface';
 /**
  * Convert viewport data to meta tags
  * @param viewport - Viewport configuration defined using `defineViewport`
- * @returns Array of meta tags
+ * @returns Array of meta tags property
  */
 export function resolveViewport(viewport: Viewport) {
   // Build viewport content string properties

@@ -9,8 +9,10 @@ export default defineConfig({
       entry: {
         'errors/application-error': './lib/errors/application.error',
         logger: './lib/logger/index',
+        opengraph: './lib/opengraph/index',
         robots: './lib/robots/index',
         sitemap: './lib/sitemap/index',
+        twitter: './lib/twitter/index',
         viewport: './lib/viewport/index',
       },
       formats: ['es'],

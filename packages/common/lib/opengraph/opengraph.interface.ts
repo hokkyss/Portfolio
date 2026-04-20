@@ -35,168 +35,138 @@ export type OpenGraphType
 type Locale = string;
 
 type OGActor = {
-  role?: string | undefined;
+  role?: string;
   url: string | URL;
 };
 type OGAlbum = {
-  disc?: number | undefined;
-  track?: number | undefined;
+  disc?: number;
+  track?: number;
   url: string | URL;
 };
 
 type OGAudio = OGAudioDescriptor | string | URL;
 
 type OGAudioDescriptor = {
-  secureUrl?: string | undefined | URL;
-  type?: string | undefined;
+  secureUrl?: string | URL;
+  type?: string;
   url: string | URL;
 };
 
 type OGImage = OGImageDescriptor | string | URL;
 
 type OGImageDescriptor = {
-  alt?: string | undefined;
-  height?: number | string | undefined;
-  secureUrl?: string | undefined | URL;
-  type?: string | undefined;
+  alt?: string;
+  height?: number | string;
+  secureUrl?: string | URL;
+  type?: string;
   url: string | URL;
-  width?: number | string | undefined;
+  width?: number | string;
 };
 
 type OGSong = {
-  disc?: number | undefined;
-  track?: number | undefined;
+  disc?: number;
+  track?: number;
   url: string | URL;
 };
 
 type OGVideo = OGVideoDescriptor | string | URL;
 
 type OGVideoDescriptor = {
-  height?: number | string | undefined;
-  secureUrl?: string | undefined | URL;
-  type?: string | undefined;
+  height?: number | string;
+  secureUrl?: string | URL;
+  type?: string;
   url: string | URL;
-  width?: number | string | undefined;
+  width?: number | string;
 };
 
 type OpenGraphArticle = {
-  authors?: Array<string | URL> | null | string | undefined | URL;
-  expirationTime?: string | undefined; // datetime
-  modifiedTime?: string | undefined; // datetime
-  publishedTime?: string | undefined; // datetime
-  section?: null | string | undefined;
-  tags?: Array<string> | null | string | undefined;
+  authors?: Array<string | URL>;
+  expirationTime?: string; // datetime
+  modifiedTime?: string; // datetime
+  publishedTime?: string; // datetime
+  section?: string;
+  tags?: Array<string>;
   type: 'article';
 } & OpenGraphMetadata;
 
 type OpenGraphBook = {
-  authors?: Array<string | URL> | null | string | undefined | URL;
-  isbn?: null | string | undefined;
-  releaseDate?: null | string | undefined; // datetime
-  tags?: Array<string> | null | string | undefined;
+  authors?: Array<string | URL>;
+  isbn?: string;
+  releaseDate?: string; // datetime
+  tags?: Array<string>;
   type: 'book';
 } & OpenGraphMetadata;
 
 type OpenGraphMetadata = {
-  alternateLocale?: Array<Locale> | Locale | undefined;
-  audio?: Array<OGAudio> | OGAudio | undefined;
-  countryName?: string | undefined;
-  description?: string | undefined;
-  determiner?: '' | 'a' | 'an' | 'auto' | 'the' | undefined;
-  emails?: Array<string> | string | undefined;
-  faxNumbers?: Array<string> | string | undefined;
-  images?: Array<OGImage> | OGImage | undefined;
-  locale?: Locale | undefined;
-  phoneNumbers?: Array<string> | string | undefined;
-  siteName?: string | undefined;
-  title?: string | undefined;
-  ttl?: number | undefined;
-  url?: null | string | undefined | URL;
-  videos?: Array<OGVideo> | OGVideo | undefined;
+  alternateLocale?: Array<Locale>;
+  audio?: Array<OGAudio>;
+  countryName?: string;
+  description?: string;
+  determiner?: '' | 'a' | 'an' | 'auto' | 'the';
+  emails?: Array<string>;
+  faxNumbers?: Array<string>;
+  images?: Array<OGImage>;
+  locale?: Locale;
+  phoneNumbers?: Array<string>;
+  siteName?: string;
+  title?: string;
+  ttl?: number;
+  url?: string | URL;
+  videos?: Array<OGVideo>;
 };
 
 type OpenGraphMusicAlbum = {
-  musicians?: Array<string | URL> | null | string | undefined | URL;
-  releaseDate?: null | string | undefined; // datetime
-  songs?:
-    | Array<OGSong | string | URL>
-    | null
-    | OGSong
-    | string
-    | undefined
-    | URL;
+  musicians?: Array<string | URL>;
+  releaseDate?: string; // datetime
+  songs?: Array<OGSong | string | URL>;
   type: 'music.album';
 } & OpenGraphMetadata;
 
 type OpenGraphMusicPlaylist = {
-  creators?: Array<string | URL> | null | string | undefined | URL;
-  songs?:
-    | Array<OGSong | string | URL>
-    | null
-    | OGSong
-    | string
-    | undefined
-    | URL;
+  creators?: Array<string | URL>;
+  songs?: Array<OGSong | string | URL>;
   type: 'music.playlist';
 } & OpenGraphMetadata;
 
 type OpenGraphMusicSong = {
-  albums?:
-    | Array<OGAlbum | string | URL>
-    | null
-    | OGAlbum
-    | string
-    | undefined
-    | URL;
-  duration?: null | number | undefined;
-  musicians?: Array<string | URL> | null | string | undefined | URL;
+  albums?: Array<OGAlbum | string | URL>;
+  duration?: number;
+  musicians?: Array<string | URL>;
   type: 'music.song';
 } & OpenGraphMetadata;
 
 type OpenGraphProfile = {
-  firstName?: null | string | undefined;
-  gender?: null | string | undefined;
-  lastName?: null | string | undefined;
+  firstName?: string;
+  gender?: string;
+  lastName?: string;
   type: 'profile';
-  username?: null | string | undefined;
+  username?: string;
 } & OpenGraphMetadata;
 
 type OpenGraphRadioStation = {
-  creators?: Array<string | URL> | null | string | undefined | URL;
+  creators?: Array<string | URL>;
   type: 'music.radio_station';
 } & OpenGraphMetadata;
 
 type OpenGraphVideoEpisode = {
-  actors?:
-    | Array<OGActor | string | URL>
-    | null
-    | OGActor
-    | string
-    | undefined
-    | URL;
-  directors?: Array<string | URL> | null | string | undefined | URL;
-  duration?: null | number | undefined;
-  releaseDate?: null | string | undefined; // datetime
-  series?: null | string | undefined | URL;
-  tags?: Array<string> | null | string | undefined;
+  actors?: Array<OGActor | string | URL>;
+  directors?: Array<string | URL>;
+  duration?: number;
+  releaseDate?: string; // datetime
+  series?: string | URL;
+  tags?: Array<string>;
   type: 'video.episode';
-  writers?: Array<string | URL> | null | string | undefined | URL;
+  writers?: Array<string | URL>;
 } & OpenGraphMetadata;
 
 type OpenGraphVideoMovie = {
-  actors?:
-    | Array<OGActor | string | URL>
-    | null
-    | OGActor
-    | string
-    | undefined
-    | URL;
-  directors?: Array<string | URL> | null | string | undefined | URL;
-  duration?: null | number | undefined;
-  releaseDate?: null | string | undefined; // datetime
-  tags?: Array<string> | null | string | undefined;
+  actors?: Array<OGActor | string | URL>;
+  directors?: Array<string | URL>;
+  duration?: number;
+  releaseDate?: string; // datetime
+  tags?: Array<string>;
   type: 'video.movie';
-  writers?: Array<string | URL> | null | string | undefined | URL;
+  writers?: Array<string | URL>;
 } & OpenGraphMetadata;
 
 type OpenGraphVideoOther = {

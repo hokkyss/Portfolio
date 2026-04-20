@@ -25,6 +25,20 @@
       },
       "default": "./lib/sitemap/index.ts"
     },
+    "./opengraph": {
+      "production": {
+        "types": "./dist/opengraph/index.d.ts",
+        "default": "./dist/opengraph.js"
+      },
+      "default": "./lib/opengraph/index.ts"
+    },
+    "./twitter": {
+      "production": {
+        "types": "./dist/twitter/index.d.ts",
+        "default": "./dist/twitter.js"
+      },
+      "default": "./lib/twitter/index.ts"
+    },
     "./manifest": {
       "production": {
         "types": "./dist/manifest/index.d.ts",
@@ -68,5 +82,8 @@
     "vite": "^7.0.5",
     "vite-plugin-dts": "^4.5.4",
     "zod": "catalog:zod4"
+  },
+  "dependencies": {
+    "ts-pattern": "^5.9.0"
   }
 }

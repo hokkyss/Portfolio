@@ -1,16 +1,13 @@
-import { OpenGraph } from '../opengraph/opengraph.interface';
 import { SitemapLanguages } from '../sitemap/sitemap.interface';
 import { Facebook } from './facebook.interface';
 import { Pinterest } from './pinterest.interface';
-import { Twitter } from './twitter.interface';
 
 /**
  * Metadata interface to describe all the metadata fields that can be set in a document.
  * @remarks
  * This interface covers all the metadata fields available in Next.js including title, description,
- * icons, openGraph, twitter, and more. Fields such as `metadataBase` help in composing absolute URLs
- * from relative ones. The `title` field supports both simple strings and a template object with `default`,
- * `template`, and `absolute` properties.
+ * icons, twitter, and more. Fields such as `metadataBase` help in composing absolute URLs
+ * from relative ones.
  * @example
  * ```tsx
  * // Static metadata export in a layout or page:
@@ -27,13 +24,6 @@ import { Twitter } from './twitter.interface';
  *       'de-DE': 'https://example.com/de-DE'
  *     }
  *   },
- *   openGraph: {
- *     title: 'My Site',
- *     description: 'Welcome to My Site',
- *     url: 'https://example.com',
- *     siteName: 'My Site',
- *     images: [{ url: 'https://example.com/og.png' }]
- *   },
  * }
  * ```
  * @see {@link https://github.com/vercel/next.js/blob/e68639f83a4853c91f60aa6044bb4502a9365996/packages/next/src/lib/metadata/types/metadata-interface.ts#L90C1-L123C6 Source}
@@ -49,7 +39,7 @@ export type Metadata = {
    * // Renders <meta name="abstract" content="My Website Description" />
    * ```
    */
-  abstract?: null | string | undefined;
+  abstract?: string;
 
   /**
    * The canonical and alternate URLs for the document.
@@ -65,7 +55,7 @@ export type Metadata = {
    * }
    * ```
    */
-  alternates?: AlternateURLs | null | undefined;
+  alternates?: AlternateURLs;
 
   /**
    * The Apple web app metadata for the document.
@@ -75,7 +65,7 @@ export type Metadata = {
    * ```
    * @see https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html
    */
-  appleWebApp?: AppleWebApp | boolean | null | undefined;
+  appleWebApp?: AppleWebApp | boolean;
 
   // Standard metadata names
   // https://developer.mozilla.org/docs/Web/HTML/Element/meta/name
@@ -88,7 +78,7 @@ export type Metadata = {
    * // Renders: <meta name="application-name" content="My Blog" />
    * ```
    */
-  applicationName?: null | string | undefined;
+  applicationName?: string;
 
   /**
    * The Facebook AppLinks metadata for the document.
@@ -106,7 +96,7 @@ export type Metadata = {
    * <meta property="al:android:url" content="https://example.com" />
    * ```
    */
-  appLinks?: AppLinks | null | undefined;
+  appLinks?: AppLinks;
 
   /**
    * The archives link rel property.
@@ -116,7 +106,7 @@ export type Metadata = {
    * // Renders <link rel="archives" href="https://example.com/archives" />
    * ```
    */
-  archives?: Array<string> | null | string | undefined;
+  archives?: Array<string> | string;
 
   /**
    * The assets link rel property.
@@ -126,7 +116,7 @@ export type Metadata = {
    * // Renders <link rel="assets" href="https://example.com/assets" />
    * ```
    */
-  assets?: Array<string> | null | string | undefined;
+  assets?: Array<string> | string;
 
   /**
    * The authors of the document.
@@ -138,7 +128,7 @@ export type Metadata = {
    * // <link rel="author" href="https://nextjs.org" />
    * ```
    */
-  authors?: Array<Author> | Author | null | undefined;
+  authors?: Array<Author> | Author;
 
   /**
    * The bookmarks link rel property.
@@ -150,7 +140,7 @@ export type Metadata = {
    * // Renders <link rel="bookmarks" href="https://example.com/bookmarks" />
    * ```
    */
-  bookmarks?: Array<string> | null | string | undefined;
+  bookmarks?: Array<string> | string;
 
   /**
    * The category meta name property.
@@ -160,7 +150,7 @@ export type Metadata = {
    * // Renders <meta name="category" content="My Category" />
    * ```
    */
-  category?: null | string | undefined;
+  category?: string;
 
   /**
    * The classification meta name property.
@@ -170,7 +160,7 @@ export type Metadata = {
    * // Renders <meta name="classification" content="My Classification" />
    * ```
    */
-  classification?: null | string | undefined;
+  classification?: string;
   /**
    * The creator of the document.
    * @example
@@ -179,7 +169,7 @@ export type Metadata = {
    * // Renders: <meta name="creator" content="Next.js Team" />
    * ```
    */
-  creator?: null | string | undefined;
+  creator?: string;
 
   // https://developer.mozilla.org/docs/Web/HTML/Element/meta/name#other_metadata_names
 
@@ -191,7 +181,7 @@ export type Metadata = {
    * // Renders: <meta name="description" content="My Blog Description" />
    * ```
    */
-  description?: null | string | undefined;
+  description?: string;
 
   /**
    * The Facebook metadata for the document.
@@ -206,7 +196,7 @@ export type Metadata = {
    * // Renders <meta property="fb:admins" content="12345678" />
    * ```
    */
-  facebook?: Facebook | null | undefined;
+  facebook?: Facebook;
 
   /**
    * Indicates whether devices should interpret certain formats (such as telephone numbers) as actionable links.
@@ -216,7 +206,7 @@ export type Metadata = {
    * // Renders: <meta name="format-detection" content="telephone=no" />
    * ```
    */
-  formatDetection?: FormatDetection | null | undefined;
+  formatDetection?: FormatDetection;
 
   /**
    * The generator used for the document.
@@ -226,7 +216,7 @@ export type Metadata = {
    * // Renders: <meta name="generator" content="Next.js" />
    * ```
    */
-  generator?: null | string | undefined;
+  generator?: string;
 
   /**
    * The icons for the document. Defaults to rel="icon".
@@ -243,7 +233,7 @@ export type Metadata = {
    * ```
    * @see https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-icon
    */
-  icons?: Array<Icon> | Icons | IconURL | null | undefined;
+  icons?: Array<Icon> | Icons | IconURL;
 
   /**
    * The metadata for the iTunes App.
@@ -255,7 +245,7 @@ export type Metadata = {
    * // Renders <meta name="apple-itunes-app" content="app-id=123456789, affiliate-data=123456789, app-arguments=123456789" />
    * ```
    */
-  itunes?: ItunesApp | null | undefined;
+  itunes?: ItunesApp;
 
   /**
    * The keywords for the document.
@@ -268,7 +258,7 @@ export type Metadata = {
    * keywords: ["react", "server components"]
    * ```
    */
-  keywords?: Array<string> | null | string | undefined;
+  keywords?: Array<string> | string;
 
   /**
    * A web application manifest, as defined in the Web Application Manifest specification.
@@ -279,7 +269,7 @@ export type Metadata = {
    * ```
    * @see https://developer.mozilla.org/docs/Web/Manifest
    */
-  manifest?: null | string | undefined | URL;
+  manifest?: string | undefined | URL;
 
   /**
    * The base path and origin for absolute URLs in various metadata fields.
@@ -287,27 +277,7 @@ export type Metadata = {
    * When relative URLs (for Open Graph images, alternates, etc.) are used, they are composed with this base.
    * If not provided, Next.js will populate a default value based on environment variables.
    */
-  metadataBase?: null | string | undefined | URL;
-
-  /**
-   * The Open Graph metadata for the document.
-   * @remarks
-   * Follows the Open Graph protocol to enrich link previews.
-   * @example
-   * ```tsx
-   * openGraph: {
-   *   type: "website",
-   *   url: "https://example.com",
-   *   title: "My Website",
-   *   description: "My Website Description",
-   *   siteName: "My Website",
-   *   images: [{ url: "https://example.com/og.png" }]
-   * }
-   * ```
-   * @see https://ogp.me/
-   */
-  openGraph?: null | OpenGraph | undefined;
-
+  metadataBase?: string | undefined | URL;
   /**
    * Arbitrary name/value pairs for additional metadata.
    * @remarks
@@ -320,8 +290,7 @@ export type Metadata = {
   other?:
     | {
       [name: string]: Array<number | string> | number | string;
-    }
-    | undefined;
+    };
 
   /**
    * The pagination link rel properties.
@@ -339,8 +308,8 @@ export type Metadata = {
    * @see https://developers.google.com/search/blog/2011/09/pagination-with-relnext-and-relprev
    */
   pagination?: {
-    next?: null | string | undefined | URL;
-    previous?: null | string | undefined | URL;
+    next?: string | undefined | URL;
+    previous?: string | undefined | URL;
   };
 
   /**
@@ -351,7 +320,7 @@ export type Metadata = {
    * // Renders <meta name="pinterest-rich-pin" content="true" />
    * ```
    */
-  pinterest?: null | Pinterest;
+  pinterest?: Pinterest;
   /**
    * The publisher of the document.
    * @example
@@ -360,7 +329,7 @@ export type Metadata = {
    * // Renders: <meta name="publisher" content="Vercel" />
    * ```
    */
-  publisher?: null | string | undefined;
+  publisher?: string;
   /**
    * The referrer setting for the document.
    * @example
@@ -369,7 +338,7 @@ export type Metadata = {
    * // Renders: <meta name="referrer" content="origin" />
    * ```
    */
-  referrer?: null | ReferrerEnum | undefined;
+  referrer?: ReferrerEnum;
   /**
    * The document title.
    * @remarks
@@ -386,25 +355,7 @@ export type Metadata = {
    * title: { default: "Dashboard", template: "%s | My Website" }
    * ```
    */
-  title?: null | string | undefined;
-
-  /**
-   * The Twitter metadata for the document.
-   * @remarks
-   * - Used for configuring Twitter Cards and can include details such as `card`, `site`, and `creator`.
-   * - Notably, more sites than just Twitter (now X) use this format.
-   * @example
-   * ```tsx
-   * twitter: {
-   *   card: "summary_large_image",
-   *   site: "@site",
-   *   creator: "@creator",
-   *   images: "https://example.com/og.png"
-   * }
-   * ```
-   */
-  twitter?: null | Twitter | undefined;
-
+  title?: string;
   /**
    * The common verification tokens for the document.
    * @example
@@ -419,104 +370,104 @@ export type Metadata = {
 };
 
 type AlternateLinkDescriptor = {
-  title?: string | undefined;
+  title?: string;
   url: string | URL;
 };
 
 type AlternateURLs = {
-  canonical?: AlternateLinkDescriptor | null | string | undefined | URL;
+  canonical?: AlternateLinkDescriptor | string | undefined | URL;
   languages?:
-    | SitemapLanguages<AlternateLinkDescriptor[] | null | string | URL>
-    | undefined;
+    | SitemapLanguages<AlternateLinkDescriptor[] | string | URL>;
+
   media?:
     | {
-      [media: string]: AlternateLinkDescriptor[] | null | string | URL;
-    }
-    | undefined;
+      [media: string]: AlternateLinkDescriptor[] | string | URL;
+    };
+
   types?:
     | {
-      [types: string]: AlternateLinkDescriptor[] | null | string | URL;
-    }
-    | undefined;
+      [types: string]: AlternateLinkDescriptor[] | string | URL;
+    };
+
 };
 
 type AppleImage = AppleImageDescriptor | string;
 
 type AppleImageDescriptor = {
-  media?: string | undefined;
+  media?: string;
   url: string;
 };
 
 type AppleWebApp = {
   // default true
-  capable?: boolean | undefined;
-  startupImage?: AppleImage | Array<AppleImage> | undefined;
+  capable?: boolean;
+  startupImage?: AppleImage | Array<AppleImage>;
   // default "default"
-  statusBarStyle?: 'black-translucent' | 'black' | 'default' | undefined;
-  title?: string | undefined;
+  statusBarStyle?: 'black-translucent' | 'black' | 'default';
+  title?: string;
 };
 
 type AppLinks = {
-  android?: AppLinksAndroid | Array<AppLinksAndroid> | undefined;
-  ios?: AppLinksApple | Array<AppLinksApple> | undefined;
-  ipad?: AppLinksApple | Array<AppLinksApple> | undefined;
-  iphone?: AppLinksApple | Array<AppLinksApple> | undefined;
-  web?: AppLinksWeb | Array<AppLinksWeb> | undefined;
-  windows?: AppLinksWindows | Array<AppLinksWindows> | undefined;
-  windows_phone?: AppLinksWindows | Array<AppLinksWindows> | undefined;
-  windows_universal?: AppLinksWindows | Array<AppLinksWindows> | undefined;
+  android?: AppLinksAndroid | Array<AppLinksAndroid>;
+  ios?: AppLinksApple | Array<AppLinksApple>;
+  ipad?: AppLinksApple | Array<AppLinksApple>;
+  iphone?: AppLinksApple | Array<AppLinksApple>;
+  web?: AppLinksWeb | Array<AppLinksWeb>;
+  windows?: AppLinksWindows | Array<AppLinksWindows>;
+  windows_phone?: AppLinksWindows | Array<AppLinksWindows>;
+  windows_universal?: AppLinksWindows | Array<AppLinksWindows>;
 };
 type AppLinksAndroid = {
-  app_name?: string | undefined;
-  class?: string | undefined;
+  app_name?: string;
+  class?: string;
   package: string;
   url?: string | undefined | URL;
 };
 type AppLinksApple = {
-  app_name?: string | undefined;
-  app_store_id?: number | string | undefined;
+  app_name?: string;
+  app_store_id?: number | string;
   url: string | URL;
 };
 
 type AppLinksWeb = {
-  should_fallback?: boolean | undefined;
+  should_fallback?: boolean;
   url: string | URL;
 };
 
 type AppLinksWindows = {
-  app_id?: string | undefined;
-  app_name?: string | undefined;
+  app_id?: string;
+  app_name?: string;
   url: string | URL;
 };
 
 type Author = {
   // renders as <meta name="author"...
-  name?: string | undefined;
+  name?: string;
   // renders as <link rel="author"...
   url?: string | undefined | URL;
 };
 
 type FormatDetection = {
-  address?: boolean | undefined;
-  date?: boolean | undefined;
-  email?: boolean | undefined;
-  telephone?: boolean | undefined;
-  url?: boolean | undefined;
+  address?: boolean;
+  date?: boolean;
+  email?: boolean;
+  telephone?: boolean;
+  url?: boolean;
 };
 
 type Icon = IconDescriptor | IconURL;
 
 type IconDescriptor = {
-  color?: string | undefined;
+  color?: string;
   /**
    * @see https://developer.mozilla.org/docs/Web/API/HTMLImageElement/fetchPriority
    */
-  fetchPriority?: 'auto' | 'high' | 'low' | undefined;
-  media?: string | undefined;
+  fetchPriority?: 'auto' | 'high' | 'low';
+  media?: string;
   /** defaults to rel="icon" unless superseded by Icons map */
-  rel?: string | undefined;
-  sizes?: string | undefined;
-  type?: string | undefined;
+  rel?: string;
+  sizes?: string;
+  type?: string;
   url: string | URL;
 };
 
@@ -525,13 +476,13 @@ type Icons = {
    * @see https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html
    * rel="apple-touch-icon"
    */
-  apple?: Icon | Icon[] | undefined;
+  apple?: Icon | Icon[];
   /** rel="icon" */
-  icon?: Icon | Icon[] | undefined;
+  icon?: Icon | Icon[];
   /** rel inferred from descriptor, defaults to "icon" */
-  other?: IconDescriptor | IconDescriptor[] | undefined;
+  other?: IconDescriptor | IconDescriptor[];
   /** rel="shortcut icon" */
-  shortcut?: Icon | Icon[] | undefined;
+  shortcut?: Icon | Icon[];
 };
 
 type IconURL = string | URL;
@@ -540,7 +491,7 @@ type IconURL = string | URL;
  * @see {@link https://developer.apple.com/documentation/webkit/promoting_apps_with_smart_app_banners Reference}
  */
 type ItunesApp = {
-  appArgument?: string | undefined;
+  appArgument?: string;
   appId: string;
 };
 
@@ -557,14 +508,14 @@ type ReferrerEnum
     | 'strict-origin';
 
 type Verification = {
-  google?: (number | string)[] | null | number | string | undefined;
-  me?: (number | string)[] | null | number | string | undefined;
+  google?: (number | string)[] | number | string;
+  me?: (number | string)[] | number | string;
   // if you ad-hoc additional verification
   other?:
     | {
       [name: string]: (number | string)[] | number | string;
-    }
-    | undefined;
-  yahoo?: (number | string)[] | null | number | string | undefined;
-  yandex?: (number | string)[] | null | number | string | undefined;
+    };
+
+  yahoo?: (number | string)[] | number | string;
+  yandex?: (number | string)[] | number | string;
 };
