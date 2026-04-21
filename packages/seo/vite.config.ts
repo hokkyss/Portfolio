@@ -7,8 +7,9 @@ export default defineConfig({
     emptyOutDir: true,
     lib: {
       entry: {
-        'errors/application-error': './lib/errors/application.error',
-        logger: './lib/logger/index',
+        'app-links': './lib/app-links/index',
+        icons: './lib/icons/index',
+        manifest: './lib/manifest/index',
         opengraph: './lib/opengraph/index',
         robots: './lib/robots/index',
         sitemap: './lib/sitemap/index',

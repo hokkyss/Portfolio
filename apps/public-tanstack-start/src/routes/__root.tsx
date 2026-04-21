@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import ThemeProvider from '@portfolio/design-system/application-theme-provider';
 import Toaster from '@portfolio/design-system/toaster';
 import tw from '@portfolio/design-system/tw';
+import { defineIcons, resolveIcons } from '@portfolio/seo/icons';
 import { defineOpenGraph, resolveOpenGraph } from '@portfolio/seo/opengraph';
 import { defineTwitter, resolveTwitter } from '@portfolio/seo/twitter';
 import { defineViewport, resolveViewport } from '@portfolio/seo/viewport';
@@ -41,66 +42,78 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
     };
   },
   shellComponent: RootDocument,
-  head: () => ({
-    links: [
-      {
-        href: appCss,
-        rel: 'stylesheet',
-      },
-      {
-        href: '/favicon.ico',
-        rel: 'icon',
-        sizes: '16x16',
-        type: 'image/x-icon',
-      },
-      {
-        href: '/icon.png',
-        rel: 'icon',
-        sizes: '512x512',
-        type: 'image/png',
-      },
-      {
-        href: '/apple-icon.png',
-        rel: 'apple-touch-icon',
+  head: () => {
+    const iconsMetadata = resolveIcons(defineIcons({
+      apple: [{
         sizes: '180x180',
         type: 'image/png',
-      },
-    ],
-    meta: [
-      {
-        charSet: 'utf-8',
-      },
-      ...resolveViewport(defineViewport({
-        colorScheme: 'light dark',
-        height: 'device-height',
-        initialScale: 1.0,
-        minimumScale: 1.0,
-        themeColor: '#fff',
-        width: 'device-width',
-      })),
-      ...resolveOpenGraph(defineOpenGraph({
-        images: [{
-          alt: 'hokkyss | Hokki Suwanda',
-          height: 512,
-          type: 'image/png',
-          url: new URL('/opengraph-image.png', getApplicationUrl()),
-          width: 512,
-        }],
-      })),
-      ...resolveTwitter(defineTwitter({
-        images: [{
-          alt: 'hokkyss | Hokki Suwanda',
-          height: 512,
-          type: 'image/png',
-          url: new URL('/twitter-image.png', getApplicationUrl()),
-          width: 512,
-        }],
-      })),
-      {
-        title: 'Chat Application',
-      },
-    ],
-  }),
+        url: '/apple-icon.png',
+      }],
+      icon: [{
+        sizes: '16x16',
+        type: 'image/x-icon',
+        url: '/favicon.ico',
+      }, {
+        sizes: '512x512',
+        type: 'image/png',
+        url: '/icon.png',
+      }],
+    }));
+
+    const viewportMetadata = resolveViewport(defineViewport({
+      colorScheme: 'light dark',
+      height: 'device-height',
+      initialScale: 1.0,
+      minimumScale: 1.0,
+      themeColor: '#fff',
+      width: 'device-width',
+    }));
+
+    const openGraphMetadata = resolveOpenGraph(defineOpenGraph({
+      images: [{
+        alt: 'hokkyss | Hokki Suwanda',
+        height: 512,
+        type: 'image/png',
+        url: new URL('/opengraph-image.png', getApplicationUrl()),
+        width: 512,
+      }],
+    }));
+
+    const twitterMetadata = resolveTwitter(defineTwitter({
+      images: [{
+        alt: 'hokkyss | Hokki Suwanda',
+        height: 512,
+        type: 'image/png',
+        url: new URL('/twitter-image.png', getApplicationUrl()),
+        width: 512,
+      }],
+    }));
+
+    return {
+      links: [
+        {
+          href: appCss,
+          rel: 'stylesheet',
+        },
+        ...iconsMetadata.links,
+        ...viewportMetadata.links,
+        ...openGraphMetadata.links,
+        ...twitterMetadata.links,
+      ],
+      meta: [
+        {
+          charSet: 'utf-8',
+        },
+        ...iconsMetadata.metas,
+        ...viewportMetadata.metas,
+        ...openGraphMetadata.metas,
+        ...twitterMetadata.metas,
+        {
+          title: 'Chat Application',
+        },
+      ],
+    };
+  },
 });
 
 /**

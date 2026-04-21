@@ -11,6 +11,20 @@
       },
       "default": "./lib/robots/index.ts"
     },
+    "./app-links": {
+      "production": {
+        "types": "./dist/app-links/index.d.ts",
+        "default": "./dist/app-links.js"
+      },
+      "default": "./lib/app-links/index.ts"
+    },
+    "./icons": {
+      "production": {
+        "types": "./dist/icons/index.d.ts",
+        "default": "./dist/icons.js"
+      },
+      "default": "./lib/icons/index.ts"
+    },
     "./sitemap": {
       "production": {
         "types": "./dist/sitemap/index.d.ts",

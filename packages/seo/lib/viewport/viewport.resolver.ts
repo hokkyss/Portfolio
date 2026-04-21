@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, MetaHTMLAttributes } from 'react';
+import type { SeoMetadata } from '../types';
 import type { Viewport } from './viewport.interface';
 
 /**
@@ -6,7 +6,12 @@ import type { Viewport } from './viewport.interface';
  * @param viewport - Viewport configuration defined using `defineViewport`
  * @returns Array of meta tags property
  */
-export function resolveViewport(viewport: Viewport): DetailedHTMLProps<MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>[] {
+export function resolveViewport(viewport: Viewport): SeoMetadata {
+  const finalResult: SeoMetadata = {
+    links: [],
+    metas: [],
+  };
+
   // Build viewport content string properties
   const viewportParts: string[] = [];
   if (viewport.width != null) {
@@ -33,6 +38,17 @@ export function resolveViewport(viewport: Viewport): DetailedHTMLProps<MetaHTMLA
   if (viewport.interactiveWidget) {
     viewportParts.push(`interactive-widget=${viewport.interactiveWidget}`);
   }
+  finalResult.metas.push({
+    content: viewportParts.join(', '),
+    name: 'viewport',
+  });
+
+  if (viewport.colorScheme) {
+    finalResult.metas.push({
+      content: viewport.colorScheme,
+      name: 'color-scheme',
+    });
+  }
 
   const themeColors: Array<{ content: string; media?: string }> = [];
   if (viewport.themeColor) {
@@ -55,25 +71,12 @@ export function resolveViewport(viewport: Viewport): DetailedHTMLProps<MetaHTMLA
     }
   }
 
-  const finalResult: DetailedHTMLProps<MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>[] = [];
-
-  if (viewport.colorScheme) {
-    finalResult.push({
-      content: viewport.colorScheme,
-      name: 'color-scheme',
-    });
-  }
   themeColors.forEach((themeColor) => {
-    finalResult.push({
+    finalResult.metas.push({
       content: themeColor.content,
       media: themeColor.media,
       name: 'theme-color',
     });
-  });
-
-  finalResult.push({
-    content: viewportParts.join(', '),
-    name: 'viewport',
   });
 
   return finalResult;

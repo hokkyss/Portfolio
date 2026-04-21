@@ -1,6 +1,6 @@
-import { SitemapLanguages } from '../sitemap/sitemap.interface';
-import { Facebook } from './facebook.interface';
-import { Pinterest } from './pinterest.interface';
+import type { SitemapLanguages } from '../sitemap/sitemap.interface';
+import type { Facebook } from './facebook.interface';
+import type { Pinterest } from './pinterest.interface';
 
 /**
  * Metadata interface to describe all the metadata fields that can be set in a document.
@@ -81,24 +81,6 @@ export type Metadata = {
   applicationName?: string;
 
   /**
-   * The Facebook AppLinks metadata for the document.
-   * @example
-   * ```tsx
-   * appLinks: {
-   *   ios: { appStoreId: "123456789", url: "https://example.com" },
-   *   android: { packageName: "com.example", url: "https://example.com" }
-   * }
-   *
-   * // Renders
-   * <meta property="al:ios:app_store_id" content="123456789" />
-   * <meta property="al:ios:url" content="https://example.com" />
-   * <meta property="al:android:package" content="com.example" />
-   * <meta property="al:android:url" content="https://example.com" />
-   * ```
-   */
-  appLinks?: AppLinks;
-
-  /**
    * The archives link rel property.
    * @example
    * ```tsx
@@ -106,7 +88,7 @@ export type Metadata = {
    * // Renders <link rel="archives" href="https://example.com/archives" />
    * ```
    */
-  archives?: Array<string> | string;
+  archives?: Array<string>;
 
   /**
    * The assets link rel property.
@@ -116,7 +98,7 @@ export type Metadata = {
    * // Renders <link rel="assets" href="https://example.com/assets" />
    * ```
    */
-  assets?: Array<string> | string;
+  assets?: Array<string>;
 
   /**
    * The authors of the document.
@@ -128,7 +110,7 @@ export type Metadata = {
    * // <link rel="author" href="https://nextjs.org" />
    * ```
    */
-  authors?: Array<Author> | Author;
+  authors?: Array<Author>;
 
   /**
    * The bookmarks link rel property.
@@ -140,7 +122,7 @@ export type Metadata = {
    * // Renders <link rel="bookmarks" href="https://example.com/bookmarks" />
    * ```
    */
-  bookmarks?: Array<string> | string;
+  bookmarks?: Array<string>;
 
   /**
    * The category meta name property.
@@ -219,23 +201,6 @@ export type Metadata = {
   generator?: string;
 
   /**
-   * The icons for the document. Defaults to rel="icon".
-   * @remarks
-   * You can specify a simple URL or an object to differentiate between icon types (e.g., apple-touch-icon).
-   * @example
-   * ```tsx
-   * icons: "https://example.com/icon.png"
-   * // or
-   * icons: {
-   *   icon: "https://example.com/icon.png",
-   *   apple: "https://example.com/apple-icon.png"
-   * }
-   * ```
-   * @see https://developer.mozilla.org/docs/Web/HTML/Attributes/rel#attr-icon
-   */
-  icons?: Array<Icon> | Icons | IconURL;
-
-  /**
    * The metadata for the iTunes App.
    * @remarks
    * Adds the `name="apple-itunes-app"` meta tag.
@@ -269,15 +234,8 @@ export type Metadata = {
    * ```
    * @see https://developer.mozilla.org/docs/Web/Manifest
    */
-  manifest?: string | undefined | URL;
+  manifest?: string | URL;
 
-  /**
-   * The base path and origin for absolute URLs in various metadata fields.
-   * @remarks
-   * When relative URLs (for Open Graph images, alternates, etc.) are used, they are composed with this base.
-   * If not provided, Next.js will populate a default value based on environment variables.
-   */
-  metadataBase?: string | undefined | URL;
   /**
    * Arbitrary name/value pairs for additional metadata.
    * @remarks
@@ -289,7 +247,7 @@ export type Metadata = {
    */
   other?:
     | {
-      [name: string]: Array<number | string> | number | string;
+      [name: string]: Array<number | string>;
     };
 
   /**
@@ -308,8 +266,8 @@ export type Metadata = {
    * @see https://developers.google.com/search/blog/2011/09/pagination-with-relnext-and-relprev
    */
   pagination?: {
-    next?: string | undefined | URL;
-    previous?: string | undefined | URL;
+    next?: string | URL;
+    previous?: string | URL;
   };
 
   /**
@@ -375,7 +333,7 @@ type AlternateLinkDescriptor = {
 };
 
 type AlternateURLs = {
-  canonical?: AlternateLinkDescriptor | string | undefined | URL;
+  canonical?: AlternateLinkDescriptor | string | URL;
   languages?:
     | SitemapLanguages<AlternateLinkDescriptor[] | string | URL>;
 
@@ -407,44 +365,11 @@ type AppleWebApp = {
   title?: string;
 };
 
-type AppLinks = {
-  android?: AppLinksAndroid | Array<AppLinksAndroid>;
-  ios?: AppLinksApple | Array<AppLinksApple>;
-  ipad?: AppLinksApple | Array<AppLinksApple>;
-  iphone?: AppLinksApple | Array<AppLinksApple>;
-  web?: AppLinksWeb | Array<AppLinksWeb>;
-  windows?: AppLinksWindows | Array<AppLinksWindows>;
-  windows_phone?: AppLinksWindows | Array<AppLinksWindows>;
-  windows_universal?: AppLinksWindows | Array<AppLinksWindows>;
-};
-type AppLinksAndroid = {
-  app_name?: string;
-  class?: string;
-  package: string;
-  url?: string | undefined | URL;
-};
-type AppLinksApple = {
-  app_name?: string;
-  app_store_id?: number | string;
-  url: string | URL;
-};
-
-type AppLinksWeb = {
-  should_fallback?: boolean;
-  url: string | URL;
-};
-
-type AppLinksWindows = {
-  app_id?: string;
-  app_name?: string;
-  url: string | URL;
-};
-
 type Author = {
   // renders as <meta name="author"...
   name?: string;
   // renders as <link rel="author"...
-  url?: string | undefined | URL;
+  url?: string | URL;
 };
 
 type FormatDetection = {
@@ -454,38 +379,6 @@ type FormatDetection = {
   telephone?: boolean;
   url?: boolean;
 };
-
-type Icon = IconDescriptor | IconURL;
-
-type IconDescriptor = {
-  color?: string;
-  /**
-   * @see https://developer.mozilla.org/docs/Web/API/HTMLImageElement/fetchPriority
-   */
-  fetchPriority?: 'auto' | 'high' | 'low';
-  media?: string;
-  /** defaults to rel="icon" unless superseded by Icons map */
-  rel?: string;
-  sizes?: string;
-  type?: string;
-  url: string | URL;
-};
-
-type Icons = {
-  /**
-   * @see https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html
-   * rel="apple-touch-icon"
-   */
-  apple?: Icon | Icon[];
-  /** rel="icon" */
-  icon?: Icon | Icon[];
-  /** rel inferred from descriptor, defaults to "icon" */
-  other?: IconDescriptor | IconDescriptor[];
-  /** rel="shortcut icon" */
-  shortcut?: Icon | Icon[];
-};
-
-type IconURL = string | URL;
 
 /**
  * @see {@link https://developer.apple.com/documentation/webkit/promoting_apps_with_smart_app_banners Reference}
@@ -508,14 +401,13 @@ type ReferrerEnum
     | 'strict-origin';
 
 type Verification = {
-  google?: (number | string)[] | number | string;
-  me?: (number | string)[] | number | string;
+  google?: (number | string)[];
+  me?: (number | string)[];
   // if you ad-hoc additional verification
   other?:
     | {
-      [name: string]: (number | string)[] | number | string;
+      [name: string]: (number | string)[];
     };
-
-  yahoo?: (number | string)[] | number | string;
-  yandex?: (number | string)[] | number | string;
+  yahoo?: (number | string)[];
+  yandex?: (number | string)[];
 };

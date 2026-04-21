@@ -1,5 +1,5 @@
-import { DetailedHTMLProps, MetaHTMLAttributes } from 'react';
 import { match } from 'ts-pattern';
+import type { SeoMetadata } from '../types';
 import type { Twitter } from './twitter.interface';
 
 /**
@@ -8,47 +8,50 @@ import type { Twitter } from './twitter.interface';
  * @param data - Twitter configuration defined using `defineTwitter`
  * @returns twitter meta tags properties
  */
-export function resolveTwitter(data: Twitter): DetailedHTMLProps<MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>[] {
-  const metas: DetailedHTMLProps<MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>[] = [];
+export function resolveTwitter(data: Twitter): SeoMetadata {
+  const metadata: SeoMetadata = {
+    links: [],
+    metas: [],
+  };
 
-  metas.push({
+  metadata.metas.push({
     content: data.card || 'summary_large_image',
     name: 'twitter:card',
   });
 
   if (data.site) {
-    metas.push({
+    metadata.metas.push({
       content: data.site,
       name: 'twitter:site',
     });
   }
 
   if (data.siteId) {
-    metas.push({
+    metadata.metas.push({
       content: data.siteId,
       name: 'twitter:site:id',
     });
   }
   if (data.creator) {
-    metas.push({
+    metadata.metas.push({
       content: data.creator,
       name: 'twitter:creator',
     });
   }
   if (data.creatorId) {
-    metas.push({
+    metadata.metas.push({
       content: data.creatorId,
       name: 'twitter:creator:id',
     });
   }
   if (data.title) {
-    metas.push({
+    metadata.metas.push({
       content: data.title,
       name: 'twitter:title',
     });
   }
   if (data.description) {
-    metas.push({
+    metadata.metas.push({
       content: data.description,
       name: 'twitter:description',
     });
@@ -58,43 +61,43 @@ export function resolveTwitter(data: Twitter): DetailedHTMLProps<MetaHTMLAttribu
   if (data.images) {
     for (const image of data.images) {
       if (typeof image === 'string' || image instanceof URL) {
-        metas.push({
+        metadata.metas.push({
           content: image.toString(),
           name: 'twitter:image',
         });
       } else {
         if (image.url) {
-          metas.push({
+          metadata.metas.push({
             content: image.url.toString(),
             name: 'twitter:image',
           });
         }
         if (image.alt) {
-          metas.push({
+          metadata.metas.push({
             content: image.alt,
             name: 'twitter:image:alt',
           });
         }
         if (image.secureUrl) {
-          metas.push({
+          metadata.metas.push({
             content: image.secureUrl.toString(),
             name: 'twitter:image:secure_url',
           });
         }
         if (image.type) {
-          metas.push({
+          metadata.metas.push({
             content: image.type,
             name: 'twitter:image:type',
           });
         }
         if (image.width) {
-          metas.push({
+          metadata.metas.push({
             content: String(image.width),
             name: 'twitter:image:width',
           });
         }
         if (image.height) {
-          metas.push({
+          metadata.metas.push({
             content: String(image.height),
             name: 'twitter:image:height',
           });
@@ -106,19 +109,19 @@ export function resolveTwitter(data: Twitter): DetailedHTMLProps<MetaHTMLAttribu
   match(data)
     .when((tw) => tw.card === 'player', (tw) => {
       for (const player of tw.players) {
-        metas.push({
+        metadata.metas.push({
           content: player.playerUrl.toString(),
           name: 'twitter:player',
         });
-        metas.push({
+        metadata.metas.push({
           content: player.streamUrl.toString(),
           name: 'twitter:player:stream',
         });
-        metas.push({
+        metadata.metas.push({
           content: player.width.toString(),
           name: 'twitter:player:width',
         });
-        metas.push({
+        metadata.metas.push({
           content: player.height.toString(),
           name: 'twitter:player:height',
         });
@@ -127,19 +130,19 @@ export function resolveTwitter(data: Twitter): DetailedHTMLProps<MetaHTMLAttribu
     .when((tw) => tw.card === 'app', (tw) => {
       for (const platform of ['iphone', 'ipad', 'googleplay'] as const) {
         if (tw.app.name) {
-          metas.push({
+          metadata.metas.push({
             content: tw.app.name,
             name: `twitter:app:name:${platform}`,
           });
         }
         if (tw.app.id[platform]) {
-          metas.push({
+          metadata.metas.push({
             content: String(tw.app.id[platform]),
             name: `twitter:app:id:${platform}`,
           });
         }
         if (tw.app.url?.[platform]) {
-          metas.push({
+          metadata.metas.push({
             content: tw.app.url[platform].toString(),
             name: `twitter:app:url:${platform}`,
           });
@@ -148,5 +151,5 @@ export function resolveTwitter(data: Twitter): DetailedHTMLProps<MetaHTMLAttribu
     })
     .otherwise(() => {});
 
-  return metas;
+  return metadata;
 }
