@@ -1,4 +1,4 @@
-import { defineManifest, resolveManifest } from '@portfolio/common/manifest';
+import { defineManifest, resolveManifest } from '@portfolio/seo/manifest';
 import { createFileRoute } from '@tanstack/react-router';
 import { getOrigin } from '@tanstack/react-router/ssr/server';
 

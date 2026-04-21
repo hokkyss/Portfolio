@@ -6,7 +6,7 @@ import { Robots } from './robots.interface';
  * @returns robots.txt file content
  * @see {@link https://github.com/vercel/next.js/blob/e68639f83a4853c91f60aa6044bb4502a9365996/packages/next/src/build/webpack/loaders/metadata/resolve-route-data.ts#L5}
  */
-export function resolveRobots(data: Robots) {
+export function resolveRobots(data: Robots): string {
   let content = '';
   const rules = Array.isArray(data.rules) ? data.rules : [data.rules];
   for (const rule of rules) {

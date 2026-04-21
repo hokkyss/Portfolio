@@ -13,6 +13,7 @@
     "@phosphor-icons/react": "^2.1.10",
     "@portfolio/common": "workspace:^",
     "@portfolio/design-system": "workspace:^",
+    "@portfolio/seo": "workspace:^",
     "@portfolio/utils": "workspace:^",
     "@tanstack/react-form": "^1.29.0",
     "@tanstack/react-query": "catalog:tanstackQuery",

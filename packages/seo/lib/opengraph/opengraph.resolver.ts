@@ -1,6 +1,6 @@
+import { DetailedHTMLProps, MetaHTMLAttributes } from 'react';
 import { match } from 'ts-pattern';
 import type { OpenGraph } from './opengraph.interface';
-import ApplicationError from '../errors/application.error';
 
 /**
  * Create a opengraph meta tags properties from OpenGraph configuration defined using `defineOpenGraph`
@@ -10,8 +10,8 @@ import ApplicationError from '../errors/application.error';
  * @see https://ogp.me/
  * @see {@link https://github.com/vercel/next.js/blob/e68639f83a4853c91f60aa6044bb4502a9365996/packages/next/src/lib/metadata/metadata.tsx#L807 Source implementation}
  */
-export function resolveOpenGraph(data: OpenGraph) {
-  const metas: Array<{ content: string; property: string }> = [];
+export function resolveOpenGraph(data: OpenGraph): DetailedHTMLProps<MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>[] {
+  const metas: DetailedHTMLProps<MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>[] = [];
 
   if (data.determiner) {
     metas.push({
@@ -530,7 +530,7 @@ export function resolveOpenGraph(data: OpenGraph) {
       .when((og) => og.type === 'video.tv_show', () => {})
       .when((og) => og.type === 'website', () => {})
       .otherwise((v) => {
-        throw new ApplicationError(500, `resolveOpenGraph: invalid OpenGraph type: ${v.type}`);
+        throw new Error(`resolveOpenGraph: invalid OpenGraph type: ${v.type}`);
       });
   }
 

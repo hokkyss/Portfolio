@@ -1,10 +1,10 @@
 import type { ReactNode } from 'react';
-import { defineOpenGraph, resolveOpenGraph } from '@portfolio/common/opengraph';
-import { defineTwitter, resolveTwitter } from '@portfolio/common/twitter';
-import { defineViewport, resolveViewport } from '@portfolio/common/viewport';
 import ThemeProvider from '@portfolio/design-system/application-theme-provider';
 import Toaster from '@portfolio/design-system/toaster';
 import tw from '@portfolio/design-system/tw';
+import { defineOpenGraph, resolveOpenGraph } from '@portfolio/seo/opengraph';
+import { defineTwitter, resolveTwitter } from '@portfolio/seo/twitter';
+import { defineViewport, resolveViewport } from '@portfolio/seo/viewport';
 import { tryit } from '@portfolio/utils';
 import { TanStackDevtools } from '@tanstack/react-devtools';
 import { type QueryClient, useSuspenseQuery } from '@tanstack/react-query';

@@ -125,6 +125,9 @@ importers:
       '@portfolio/design-system':
         specifier: workspace:^
         version: link:../../packages/design-system
+      '@portfolio/seo':
+        specifier: workspace:^
+        version: link:../../packages/seo
       '@portfolio/utils':
         specifier: workspace:^
         version: link:../../packages/utils
@@ -426,6 +429,40 @@ importers:
       typescript:
         specifier: catalog:ts5
         version: 5.9.3
+
+  packages/seo:
+    dependencies:
+      ts-pattern:
+        specifier: ^5.9.0
+        version: 5.9.0
+    devDependencies:
+      '@portfolio/eslint':
+        specifier: workspace:^
+        version: link:../eslint
+      '@types/node':
+        specifier: ^24.0.14
+        version: 24.10.4
+      '@types/react':
+        specifier: catalog:react19
+        version: 19.2.7
+      eslint:
+        specifier: catalog:eslint
+        version: 9.39.2(jiti@2.6.1)
+      react:
+        specifier: catalog:react19
+        version: 19.2.3
+      typescript:
+        specifier: catalog:ts5
+        version: 5.9.3
+      vite:
+        specifier: ^7.0.5
+        version: 7.3.0(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)(yaml@2.8.3)
+      vite-plugin-dts:
+        specifier: ^4.5.4
+        version: 4.5.4(@types/node@24.10.4)(rollup@4.54.0)(typescript@5.9.3)(vite@7.3.0(@types/node@24.10.4)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.21.0)(yaml@2.8.3))
+      zod:
+        specifier: catalog:zod4
+        version: 4.3.6
 
   packages/utils:
     dependencies:

@@ -1,3 +1,4 @@
+import { DetailedHTMLProps, MetaHTMLAttributes } from 'react';
 import { match } from 'ts-pattern';
 import type { Twitter } from './twitter.interface';
 
@@ -7,8 +8,8 @@ import type { Twitter } from './twitter.interface';
  * @param data - Twitter configuration defined using `defineTwitter`
  * @returns twitter meta tags properties
  */
-export function resolveTwitter(data: Twitter): Array<{ content: string; name: string }> {
-  const metas: Array<{ content: string; name: string }> = [];
+export function resolveTwitter(data: Twitter): DetailedHTMLProps<MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>[] {
+  const metas: DetailedHTMLProps<MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>[] = [];
 
   metas.push({
     content: data.card || 'summary_large_image',

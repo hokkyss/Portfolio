@@ -1,4 +1,4 @@
-import { defineRobots, resolveRobots } from '@portfolio/common/robots';
+import { defineRobots, resolveRobots } from '@portfolio/seo/robots';
 import { createFileRoute } from '@tanstack/react-router';
 import { getOrigin } from '@tanstack/react-router/ssr/server';
 

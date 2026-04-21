@@ -1,3 +1,4 @@
+import { DetailedHTMLProps, MetaHTMLAttributes } from 'react';
 import type { Viewport } from './viewport.interface';
 
 /**
@@ -5,7 +6,7 @@ import type { Viewport } from './viewport.interface';
  * @param viewport - Viewport configuration defined using `defineViewport`
  * @returns Array of meta tags property
  */
-export function resolveViewport(viewport: Viewport) {
+export function resolveViewport(viewport: Viewport): DetailedHTMLProps<MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>[] {
   // Build viewport content string properties
   const viewportParts: string[] = [];
   if (viewport.width != null) {
@@ -54,7 +55,7 @@ export function resolveViewport(viewport: Viewport) {
     }
   }
 
-  const finalResult = [];
+  const finalResult: DetailedHTMLProps<MetaHTMLAttributes<HTMLMetaElement>, HTMLMetaElement>[] = [];
 
   if (viewport.colorScheme) {
     finalResult.push({

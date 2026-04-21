@@ -1,4 +1,4 @@
-import { defineSitemap, resolveSitemap } from '@portfolio/common/sitemap';
+import { defineSitemap, resolveSitemap } from '@portfolio/seo/sitemap';
 import { createFileRoute } from '@tanstack/react-router';
 import { getOrigin } from '@tanstack/react-router/ssr/server';
 
