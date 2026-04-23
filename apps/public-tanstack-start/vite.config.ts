@@ -7,6 +7,7 @@ import { createHash } from 'node:crypto';
 import { defineConfig } from 'vite';
 
 const config = defineConfig({
+  envPrefix: ['VITE_'],
   plugins: [
     devtools({
       consolePiping: {

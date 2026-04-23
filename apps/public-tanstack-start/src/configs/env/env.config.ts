@@ -7,10 +7,12 @@ export const getClientEnv = createIsomorphicFn()
     const clientEnvSchema = z
       .object({
         environment: z.literal('client').default('client'),
+        gtmId: z.string().optional(),
       })
       .brand('ClientEnv');
 
     const envConfig = clientEnvSchema.parse({
+      gtmId: import.meta.env.VITE_GTM_ID,
     });
 
     return envConfig;
@@ -27,10 +29,12 @@ export const getServerEnv = createIsomorphicFn()
     const serverEnvSchema = z
       .object({
         environment: z.literal('server').default('server'),
+        gtmId: z.string().optional(),
       })
       .brand('ServerEnv');
 
     const envConfig = serverEnvSchema.parse({
+      gtmId: import.meta.env.VITE_GTM_ID,
     });
 
     return envConfig;

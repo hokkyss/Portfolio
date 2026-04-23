@@ -21,8 +21,25 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 import { getOrigin } from '@tanstack/react-router/ssr/server';
 import { createIsomorphicFn } from '@tanstack/react-start';
 import { getRequest } from '@tanstack/react-start/server';
+import getEnv from '../configs/env/env.config';
 import getApplicationThemeQuery from '../lib/common/queries/get-application-theme.query';
 import appCss from '../styles.css?url';
+
+/**
+ *
+ * @param w
+ * @param d
+ * @param s
+ * @param l
+ * @param i
+ */
+function gtm(w, d, s, l, i) {
+  w[l] = w[l] || []; w[l].push({ event: 'gtm.js', 'gtm.start':
+new Date().getTime() }); const dl = l != 'dataLayer' ? '&l=' + l : '',
+    f = d.getElementsByTagName(s)[0], j = d.createElement(s); j.async = true; j.src
+    = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+}
+
 const getApplicationUrl = createIsomorphicFn()
   .server(() => getOrigin(getRequest()))
   .client(() => location.origin);
@@ -44,6 +61,8 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
   },
   shellComponent: RootDocument,
   head: () => {
+    const env = getEnv();
+
     const iconsMetadata = resolveIcons(defineIcons({
       apple: [{
         sizes: '180x180',
@@ -145,6 +164,13 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         ...twitterMetadata.metas,
         ...metadata.metas,
       ],
+      scripts: [
+        ...(env.gtmId
+          ? [{
+              children: `(${gtm.toString()})(window, document, 'script', 'dataLayer', '${env.gtmId}')`,
+            }]
+          : []),
+      ],
     };
   },
 });
@@ -156,6 +182,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
  */
 function RootDocument({ children }: { children: ReactNode }) {
   const { data: theme } = useSuspenseQuery(getApplicationThemeQuery());
+  const env = getEnv();
 
   return (
     <html data-theme={theme} dir="ltr" lang="en">
@@ -163,6 +190,17 @@ function RootDocument({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body className={tw`grid notranslate`}>
+        {env.gtmId && (
+          <noscript>
+            <iframe
+              height="0"
+              src={`https://www.googletagmanager.com/ns.html?id=${env.gtmId}`}
+              style={{ display: 'none', visibility: 'hidden' }}
+              width="0"
+            >
+            </iframe>
+          </noscript>
+        )}
         <ThemeProvider theme={theme}>
           <Toaster position="bottom-right" />
           {children}

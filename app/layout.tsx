@@ -55,7 +55,6 @@ export default async function Layout(props: LayoutProps) {
       <head>
         <SpeedInsights debug={envConfig.__DEV__} />
       </head>
-      {envConfig.gtmId && <GoogleTagManager gtmId={envConfig.gtmId} />}
       <body className={cn('notranslate', inter.className, tw`relative flex flex-col text-black dark:text-white/80`)}>
         {/* <!-- Google Tag Manager (noscript) --> */}
         {envConfig.gtmId && (
