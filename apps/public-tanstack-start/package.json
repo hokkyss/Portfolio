@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@date-fns/tz": "^1.4.1",
+    "@fontsource/inter": "^5.2.8",
     "@phosphor-icons/react": "^2.1.10",
     "@portfolio/common": "workspace:^",
     "@portfolio/design-system": "workspace:^",

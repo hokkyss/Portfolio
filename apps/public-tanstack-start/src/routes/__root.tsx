@@ -1,8 +1,10 @@
+import '@fontsource/inter/100.css';
 import type { ReactNode } from 'react';
 import ThemeProvider from '@portfolio/design-system/application-theme-provider';
 import Toaster from '@portfolio/design-system/toaster';
 import tw from '@portfolio/design-system/tw';
 import { defineIcons, resolveIcons } from '@portfolio/seo/icons';
+import { defineMetadata, resolveMetadata } from '@portfolio/seo/metadata';
 import { defineOpenGraph, resolveOpenGraph } from '@portfolio/seo/opengraph';
 import { defineTwitter, resolveTwitter } from '@portfolio/seo/twitter';
 import { defineViewport, resolveViewport } from '@portfolio/seo/viewport';
@@ -21,7 +23,6 @@ import { createIsomorphicFn } from '@tanstack/react-start';
 import { getRequest } from '@tanstack/react-start/server';
 import getApplicationThemeQuery from '../lib/common/queries/get-application-theme.query';
 import appCss from '../styles.css?url';
-
 const getApplicationUrl = createIsomorphicFn()
   .server(() => getOrigin(getRequest()))
   .client(() => location.origin);
@@ -89,6 +90,39 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       }],
     }));
 
+    const metadata = resolveMetadata(defineMetadata({
+      applicationName: 'Hokki Suwanda Portfolio',
+      authors: [{ name: 'Hokki Suwanda', url: 'https://github.com/hokkyss' }],
+      creator: 'Hokki Suwanda',
+      description:
+    'I\'m Hokki Suwanda, a fullstack software engineer. A Computer Science Fresh Graduate. Full of enthusiasm and motivation with problem solving capabilities. Very excited to learn something new. Always fulfilling all responsibilities wholeheartedly. Pursuing career as a fullstack software engineer. Used quite lot of tech stacks.',
+      /**
+       * Full Stack Framework no2 (Next.js is no1 by sequence)
+       */
+      generator: 'FSFW02',
+      keywords: [
+        'Hokki Suwanda',
+        'hokkyss',
+        'software engineer',
+        'fullstack engineer',
+        'front end engineer',
+        'back end engineer',
+        'web developer',
+        'ITB',
+        'Bandung Institute of Technology',
+        'Institut Teknologi Bandung',
+        'competitive programming',
+      ],
+      other: {
+        'google-site-verification': ['SopKMe65nppr9IAQ7VUBO9NGz7Rek--0P1sqHEyvIOU'],
+      },
+      /**
+       * Deployment Platform: netlify
+       */
+      publisher: 'DPN',
+      title: 'hokkyss | Hokki Suwanda',
+    }));
+
     return {
       links: [
         {
@@ -99,6 +133,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         ...viewportMetadata.links,
         ...openGraphMetadata.links,
         ...twitterMetadata.links,
+        ...metadata.links,
       ],
       meta: [
         {
@@ -108,9 +143,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         ...viewportMetadata.metas,
         ...openGraphMetadata.metas,
         ...twitterMetadata.metas,
-        {
-          title: 'Chat Application',
-        },
+        ...metadata.metas,
       ],
     };
   },
@@ -125,11 +158,11 @@ function RootDocument({ children }: { children: ReactNode }) {
   const { data: theme } = useSuspenseQuery(getApplicationThemeQuery());
 
   return (
-    <html data-theme={theme} lang="en">
+    <html data-theme={theme} dir="ltr" lang="en">
       <head>
         <HeadContent />
       </head>
-      <body className={tw`grid`}>
+      <body className={tw`grid notranslate`}>
         <ThemeProvider theme={theme}>
           <Toaster position="bottom-right" />
           {children}

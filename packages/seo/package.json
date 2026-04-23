@@ -25,6 +25,13 @@
       },
       "default": "./lib/icons/index.ts"
     },
+    "./metadata": {
+      "production": {
+        "types": "./dist/metadata/index.d.ts",
+        "default": "./dist/metadata.js"
+      },
+      "default": "./lib/metadata/index.ts"
+    },
     "./sitemap": {
       "production": {
         "types": "./dist/sitemap/index.d.ts",

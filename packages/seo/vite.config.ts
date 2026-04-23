@@ -10,6 +10,7 @@ export default defineConfig({
         'app-links': './lib/app-links/index',
         icons: './lib/icons/index',
         manifest: './lib/manifest/index',
+        metadata: './lib/metadata/index',
         opengraph: './lib/opengraph/index',
         robots: './lib/robots/index',
         sitemap: './lib/sitemap/index',
