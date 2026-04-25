@@ -33,16 +33,16 @@ catalogs:
     '@tanstack/ai-react': ^0.5.4
     '@tanstack/react-ai-devtools': ^0.2.8
   tanstackQuery:
-    '@tanstack/eslint-plugin-query': ^5.99.0
-    '@tanstack/react-query': ^5.99.0
-    '@tanstack/react-query-devtools': ^5.99.0
+    '@tanstack/eslint-plugin-query': ^5.100.1
+    '@tanstack/react-query': ^5.100.1
+    '@tanstack/react-query-devtools': ^5.100.1
   tanstackStart:
     '@tanstack/eslint-plugin-router': ^1.161.6
-    '@tanstack/react-router': ^1.168.22
+    '@tanstack/react-router': ^1.168.24
     '@tanstack/react-router-devtools': ^1.166.13
     '@tanstack/react-router-ssr-query': ^1.166.11
-    '@tanstack/react-start': ^1.167.41
-    '@tanstack/router-plugin': ^1.167.22
+    '@tanstack/react-start': ^1.167.48
+    '@tanstack/router-plugin': ^1.167.26
   ts5:
     typescript: ^5.8.3
     typescript-eslint: ^8.37.0

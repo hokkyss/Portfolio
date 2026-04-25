@@ -33,11 +33,16 @@ import appCss from '../styles.css?url';
  * @param l
  * @param i
  */
-function gtm(w, d, s, l, i) {
-  w[l] = w[l] || []; w[l].push({ event: 'gtm.js', 'gtm.start':
-new Date().getTime() }); const dl = l != 'dataLayer' ? '&l=' + l : '',
-    f = d.getElementsByTagName(s)[0], j = d.createElement(s); j.async = true; j.src
-    = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+function gtm(w: typeof window, d: typeof document, s: 'script', l: 'dataLayer', i: string) {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  w[l] = w[l] || [];
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+  w[l].push({ event: 'gtm.js', 'gtm.start': new Date().getTime() });
+  const dl = l != 'dataLayer' ? '&l=' + l : '',
+    f = d.getElementsByTagName(s)[0], j = d.createElement(s);
+  j.async = true;
+  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode!.insertBefore(j, f);
 }
 
 const getApplicationUrl = createIsomorphicFn()

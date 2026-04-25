@@ -51,6 +51,7 @@ const functionLoggerMiddleware = createMiddleware({ type: 'function' })
             response: undefined,
             stack: err.stack,
             timestamp: new Date().toISOString(),
+            ...err.payload,
           }),
         );
         throw err;
