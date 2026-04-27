@@ -51,408 +51,711 @@
     "./index.css": "./index.css",
     "./package.json": "./package.json",
     "./accordion-content": {
-      "types": "./dist/accordion-content.d.ts",
-      "default": "./dist/accordion-content.js"
+      "production": {
+        "types": "./dist/accordion-content.d.ts",
+        "default": "./dist/accordion-content.js"
+      },
+      "default": "./src/accordion-content/accordion-content.ts"
     },
     "./accordion-item": {
-      "types": "./dist/accordion-item.d.ts",
-      "default": "./dist/accordion-item.js"
+      "production": {
+        "types": "./dist/accordion-item.d.ts",
+        "default": "./dist/accordion-item.js"
+      },
+      "default": "./src/accordion-item/accordion-item.ts"
     },
     "./accordion-trigger": {
-      "types": "./dist/accordion-trigger.d.ts",
-      "default": "./dist/accordion-trigger.js"
+      "production": {
+        "types": "./dist/accordion-trigger.d.ts",
+        "default": "./dist/accordion-trigger.js"
+      },
+      "default": "./src/accordion-trigger/accordion-trigger.ts"
     },
     "./accordion": {
-      "types": "./dist/accordion.d.ts",
-      "default": "./dist/accordion.js"
+      "production": {
+        "types": "./dist/accordion.d.ts",
+        "default": "./dist/accordion.js"
+      },
+      "default": "./src/accordion/accordion.ts"
     },
     "./application-theme-provider": {
-      "types": "./dist/application-theme-provider.d.ts",
-      "default": "./dist/application-theme-provider.js"
+      "production": {
+        "types": "./dist/application-theme-provider.d.ts",
+        "default": "./dist/application-theme-provider.js"
+      },
+      "default": "./src/application-theme-provider/application-theme-provider.ts"
     },
     "./is-valid-application-theme": {
-      "types": "./dist/is-valid-application-theme.d.ts",
-      "default": "./dist/is-valid-application-theme.js"
+      "production": {
+        "types": "./dist/is-valid-application-theme.d.ts",
+        "default": "./dist/is-valid-application-theme.js"
+      },
+      "default": "./src/is-valid-application-theme/is-valid-application-theme.ts"
     },
     "./use-application-theme": {
-      "types": "./dist/use-application-theme.d.ts",
-      "default": "./dist/use-application-theme.js"
+      "production": {
+        "types": "./dist/use-application-theme.d.ts",
+        "default": "./dist/use-application-theme.js"
+      },
+      "default": "./src/use-application-theme/use-application-theme.ts"
     },
     "./avatar-badge": {
-      "types": "./dist/avatar-badge.d.ts",
-      "default": "./dist/avatar-badge.js"
+      "production": {
+        "types": "./dist/avatar-badge.d.ts",
+        "default": "./dist/avatar-badge.js"
+      },
+      "default": "./src/avatar-badge/avatar-badge.ts"
     },
     "./avatar-fallback": {
-      "types": "./dist/avatar-fallback.d.ts",
-      "default": "./dist/avatar-fallback.js"
+      "production": {
+        "types": "./dist/avatar-fallback.d.ts",
+        "default": "./dist/avatar-fallback.js"
+      },
+      "default": "./src/avatar-fallback/avatar-fallback.ts"
     },
     "./avatar-group-count": {
-      "types": "./dist/avatar-group-count.d.ts",
-      "default": "./dist/avatar-group-count.js"
+      "production": {
+        "types": "./dist/avatar-group-count.d.ts",
+        "default": "./dist/avatar-group-count.js"
+      },
+      "default": "./src/avatar-group-count/avatar-group-count.ts"
     },
     "./avatar-group": {
-      "types": "./dist/avatar-group.d.ts",
-      "default": "./dist/avatar-group.js"
+      "production": {
+        "types": "./dist/avatar-group.d.ts",
+        "default": "./dist/avatar-group.js"
+      },
+      "default": "./src/avatar-group/avatar-group.ts"
     },
     "./avatar-image": {
-      "types": "./dist/avatar-image.d.ts",
-      "default": "./dist/avatar-image.js"
+      "production": {
+        "types": "./dist/avatar-image.d.ts",
+        "default": "./dist/avatar-image.js"
+      },
+      "default": "./src/avatar-image/avatar-image.ts"
     },
     "./avatar": {
-      "types": "./dist/avatar.d.ts",
-      "default": "./dist/avatar.js"
+      "production": {
+        "types": "./dist/avatar.d.ts",
+        "default": "./dist/avatar.js"
+      },
+      "default": "./src/avatar/avatar.ts"
     },
     "./button": {
-      "types": "./dist/button.d.ts",
-      "default": "./dist/button.js"
+      "production": {
+        "types": "./dist/button.d.ts",
+        "default": "./dist/button.js"
+      },
+      "default": "./src/button/button.ts"
     },
     "./card-action": {
-      "types": "./dist/card-action.d.ts",
-      "default": "./dist/card-action.js"
+      "production": {
+        "types": "./dist/card-action.d.ts",
+        "default": "./dist/card-action.js"
+      },
+      "default": "./src/card-action/card-action.ts"
     },
     "./card-content": {
-      "types": "./dist/card-content.d.ts",
-      "default": "./dist/card-content.js"
+      "production": {
+        "types": "./dist/card-content.d.ts",
+        "default": "./dist/card-content.js"
+      },
+      "default": "./src/card-content/card-content.ts"
     },
     "./card-description": {
-      "types": "./dist/card-description.d.ts",
-      "default": "./dist/card-description.js"
+      "production": {
+        "types": "./dist/card-description.d.ts",
+        "default": "./dist/card-description.js"
+      },
+      "default": "./src/card-description/card-description.ts"
     },
     "./card-footer": {
-      "types": "./dist/card-footer.d.ts",
-      "default": "./dist/card-footer.js"
+      "production": {
+        "types": "./dist/card-footer.d.ts",
+        "default": "./dist/card-footer.js"
+      },
+      "default": "./src/card-footer/card-footer.ts"
     },
     "./card-header": {
-      "types": "./dist/card-header.d.ts",
-      "default": "./dist/card-header.js"
+      "production": {
+        "types": "./dist/card-header.d.ts",
+        "default": "./dist/card-header.js"
+      },
+      "default": "./src/card-header/card-header.ts"
     },
     "./card-title": {
-      "types": "./dist/card-title.d.ts",
-      "default": "./dist/card-title.js"
+      "production": {
+        "types": "./dist/card-title.d.ts",
+        "default": "./dist/card-title.js"
+      },
+      "default": "./src/card-title/card-title.ts"
     },
     "./card": {
-      "types": "./dist/card.d.ts",
-      "default": "./dist/card.js"
+      "production": {
+        "types": "./dist/card.d.ts",
+        "default": "./dist/card.js"
+      },
+      "default": "./src/card/card.ts"
     },
     "./dropdown-menu-checkbox-item": {
-      "types": "./dist/dropdown-menu-checkbox-item.d.ts",
-      "default": "./dist/dropdown-menu-checkbox-item.js"
+      "production": {
+        "types": "./dist/dropdown-menu-checkbox-item.d.ts",
+        "default": "./dist/dropdown-menu-checkbox-item.js"
+      },
+      "default": "./src/dropdown-menu-checkbox-item/dropdown-menu-checkbox-item.ts"
     },
     "./dropdown-menu-content": {
-      "types": "./dist/dropdown-menu-content.d.ts",
-      "default": "./dist/dropdown-menu-content.js"
+      "production": {
+        "types": "./dist/dropdown-menu-content.d.ts",
+        "default": "./dist/dropdown-menu-content.js"
+      },
+      "default": "./src/dropdown-menu-content/dropdown-menu-content.ts"
     },
     "./dropdown-menu-group": {
-      "types": "./dist/dropdown-menu-group.d.ts",
-      "default": "./dist/dropdown-menu-group.js"
+      "production": {
+        "types": "./dist/dropdown-menu-group.d.ts",
+        "default": "./dist/dropdown-menu-group.js"
+      },
+      "default": "./src/dropdown-menu-group/dropdown-menu-group.ts"
     },
     "./dropdown-menu-item": {
-      "types": "./dist/dropdown-menu-item.d.ts",
-      "default": "./dist/dropdown-menu-item.js"
+      "production": {
+        "types": "./dist/dropdown-menu-item.d.ts",
+        "default": "./dist/dropdown-menu-item.js"
+      },
+      "default": "./src/dropdown-menu-item/dropdown-menu-item.ts"
     },
     "./dropdown-menu-label": {
-      "types": "./dist/dropdown-menu-label.d.ts",
-      "default": "./dist/dropdown-menu-label.js"
+      "production": {
+        "types": "./dist/dropdown-menu-label.d.ts",
+        "default": "./dist/dropdown-menu-label.js"
+      },
+      "default": "./src/dropdown-menu-label/dropdown-menu-label.ts"
     },
     "./dropdown-menu-portal": {
-      "types": "./dist/dropdown-menu-portal.d.ts",
-      "default": "./dist/dropdown-menu-portal.js"
+      "production": {
+        "types": "./dist/dropdown-menu-portal.d.ts",
+        "default": "./dist/dropdown-menu-portal.js"
+      },
+      "default": "./src/dropdown-menu-portal/dropdown-menu-portal.ts"
     },
     "./dropdown-menu-radio-group": {
-      "types": "./dist/dropdown-menu-radio-group.d.ts",
-      "default": "./dist/dropdown-menu-radio-group.js"
+      "production": {
+        "types": "./dist/dropdown-menu-radio-group.d.ts",
+        "default": "./dist/dropdown-menu-radio-group.js"
+      },
+      "default": "./src/dropdown-menu-radio-group/dropdown-menu-radio-group.ts"
     },
     "./dropdown-menu-radio-item": {
-      "types": "./dist/dropdown-menu-radio-item.d.ts",
-      "default": "./dist/dropdown-menu-radio-item.js"
+      "production": {
+        "types": "./dist/dropdown-menu-radio-item.d.ts",
+        "default": "./dist/dropdown-menu-radio-item.js"
+      },
+      "default": "./src/dropdown-menu-radio-item/dropdown-menu-radio-item.ts"
     },
     "./dropdown-menu-separator": {
-      "types": "./dist/dropdown-menu-separator.d.ts",
-      "default": "./dist/dropdown-menu-separator.js"
+      "production": {
+        "types": "./dist/dropdown-menu-separator.d.ts",
+        "default": "./dist/dropdown-menu-separator.js"
+      },
+      "default": "./src/dropdown-menu-separator/dropdown-menu-separator.ts"
     },
     "./dropdown-menu-shortcut": {
-      "types": "./dist/dropdown-menu-shortcut.d.ts",
-      "default": "./dist/dropdown-menu-shortcut.js"
+      "production": {
+        "types": "./dist/dropdown-menu-shortcut.d.ts",
+        "default": "./dist/dropdown-menu-shortcut.js"
+      },
+      "default": "./src/dropdown-menu-shortcut/dropdown-menu-shortcut.ts"
     },
     "./dropdown-menu-sub-content": {
-      "types": "./dist/dropdown-menu-sub-content.d.ts",
-      "default": "./dist/dropdown-menu-sub-content.js"
+      "production": {
+        "types": "./dist/dropdown-menu-sub-content.d.ts",
+        "default": "./dist/dropdown-menu-sub-content.js"
+      },
+      "default": "./src/dropdown-menu-sub-content/dropdown-menu-sub-content.ts"
     },
     "./dropdown-menu-sub-trigger": {
-      "types": "./dist/dropdown-menu-sub-trigger.d.ts",
-      "default": "./dist/dropdown-menu-sub-trigger.js"
+      "production": {
+        "types": "./dist/dropdown-menu-sub-trigger.d.ts",
+        "default": "./dist/dropdown-menu-sub-trigger.js"
+      },
+      "default": "./src/dropdown-menu-sub-trigger/dropdown-menu-sub-trigger.ts"
     },
     "./dropdown-menu-sub": {
-      "types": "./dist/dropdown-menu-sub.d.ts",
-      "default": "./dist/dropdown-menu-sub.js"
+      "production": {
+        "types": "./dist/dropdown-menu-sub.d.ts",
+        "default": "./dist/dropdown-menu-sub.js"
+      },
+      "default": "./src/dropdown-menu-sub/dropdown-menu-sub.ts"
     },
     "./dropdown-menu-trigger": {
-      "types": "./dist/dropdown-menu-trigger.d.ts",
-      "default": "./dist/dropdown-menu-trigger.js"
+      "production": {
+        "types": "./dist/dropdown-menu-trigger.d.ts",
+        "default": "./dist/dropdown-menu-trigger.js"
+      },
+      "default": "./src/dropdown-menu-trigger/dropdown-menu-trigger.ts"
     },
     "./dropdown-menu": {
-      "types": "./dist/dropdown-menu.d.ts",
-      "default": "./dist/dropdown-menu.js"
+      "production": {
+        "types": "./dist/dropdown-menu.d.ts",
+        "default": "./dist/dropdown-menu.js"
+      },
+      "default": "./src/dropdown-menu/dropdown-menu.ts"
     },
     "./field-content": {
-      "types": "./dist/field-content.d.ts",
-      "default": "./dist/field-content.js"
+      "production": {
+        "types": "./dist/field-content.d.ts",
+        "default": "./dist/field-content.js"
+      },
+      "default": "./src/field-content/field-content.ts"
     },
     "./field-description": {
-      "types": "./dist/field-description.d.ts",
-      "default": "./dist/field-description.js"
+      "production": {
+        "types": "./dist/field-description.d.ts",
+        "default": "./dist/field-description.js"
+      },
+      "default": "./src/field-description/field-description.ts"
     },
     "./field-error": {
-      "types": "./dist/field-error.d.ts",
-      "default": "./dist/field-error.js"
+      "production": {
+        "types": "./dist/field-error.d.ts",
+        "default": "./dist/field-error.js"
+      },
+      "default": "./src/field-error/field-error.ts"
     },
     "./field-group": {
-      "types": "./dist/field-group.d.ts",
-      "default": "./dist/field-group.js"
+      "production": {
+        "types": "./dist/field-group.d.ts",
+        "default": "./dist/field-group.js"
+      },
+      "default": "./src/field-group/field-group.ts"
     },
     "./field-label": {
-      "types": "./dist/field-label.d.ts",
-      "default": "./dist/field-label.js"
+      "production": {
+        "types": "./dist/field-label.d.ts",
+        "default": "./dist/field-label.js"
+      },
+      "default": "./src/field-label/field-label.ts"
     },
     "./field-legend": {
-      "types": "./dist/field-legend.d.ts",
-      "default": "./dist/field-legend.js"
+      "production": {
+        "types": "./dist/field-legend.d.ts",
+        "default": "./dist/field-legend.js"
+      },
+      "default": "./src/field-legend/field-legend.ts"
     },
     "./field-separator": {
-      "types": "./dist/field-separator.d.ts",
-      "default": "./dist/field-separator.js"
+      "production": {
+        "types": "./dist/field-separator.d.ts",
+        "default": "./dist/field-separator.js"
+      },
+      "default": "./src/field-separator/field-separator.ts"
     },
     "./field-set": {
-      "types": "./dist/field-set.d.ts",
-      "default": "./dist/field-set.js"
+      "production": {
+        "types": "./dist/field-set.d.ts",
+        "default": "./dist/field-set.js"
+      },
+      "default": "./src/field-set/field-set.ts"
     },
     "./field-title": {
-      "types": "./dist/field-title.d.ts",
-      "default": "./dist/field-title.js"
+      "production": {
+        "types": "./dist/field-title.d.ts",
+        "default": "./dist/field-title.js"
+      },
+      "default": "./src/field-title/field-title.ts"
     },
     "./field": {
-      "types": "./dist/field.d.ts",
-      "default": "./dist/field.js"
+      "production": {
+        "types": "./dist/field.d.ts",
+        "default": "./dist/field.js"
+      },
+      "default": "./src/field/field.ts"
     },
     "./input": {
-      "types": "./dist/input.d.ts",
-      "default": "./dist/input.js"
+      "production": {
+        "types": "./dist/input.d.ts",
+        "default": "./dist/input.js"
+      },
+      "default": "./src/input/input.ts"
     },
     "./input-group-addon": {
-      "types": "./dist/input-group-addon.d.ts",
-      "default": "./dist/input-group-addon.js"
+      "production": {
+        "types": "./dist/input-group-addon.d.ts",
+        "default": "./dist/input-group-addon.js"
+      },
+      "default": "./src/input-group-addon/input-group-addon.ts"
     },
     "./input-group-button": {
-      "types": "./dist/input-group-button.d.ts",
-      "default": "./dist/input-group-button.js"
+      "production": {
+        "types": "./dist/input-group-button.d.ts",
+        "default": "./dist/input-group-button.js"
+      },
+      "default": "./src/input-group-button/input-group-button.ts"
     },
     "./input-group-input": {
-      "types": "./dist/input-group-input.d.ts",
-      "default": "./dist/input-group-input.js"
+      "production": {
+        "types": "./dist/input-group-input.d.ts",
+        "default": "./dist/input-group-input.js"
+      },
+      "default": "./src/input-group-input/input-group-input.ts"
     },
     "./input-group-text": {
-      "types": "./dist/input-group-text.d.ts",
-      "default": "./dist/input-group-text.js"
+      "production": {
+        "types": "./dist/input-group-text.d.ts",
+        "default": "./dist/input-group-text.js"
+      },
+      "default": "./src/input-group-text/input-group-text.ts"
     },
     "./input-group-textarea": {
-      "types": "./dist/input-group-textarea.d.ts",
-      "default": "./dist/input-group-textarea.js"
+      "production": {
+        "types": "./dist/input-group-textarea.d.ts",
+        "default": "./dist/input-group-textarea.js"
+      },
+      "default": "./src/input-group-textarea/input-group-textarea.ts"
     },
     "./input-group": {
-      "types": "./dist/input-group.d.ts",
-      "default": "./dist/input-group.js"
+      "production": {
+        "types": "./dist/input-group.d.ts",
+        "default": "./dist/input-group.js"
+      },
+      "default": "./src/input-group/input-group.ts"
     },
     "./label": {
-      "types": "./dist/label.d.ts",
-      "default": "./dist/label.js"
+      "production": {
+        "types": "./dist/label.d.ts",
+        "default": "./dist/label.js"
+      },
+      "default": "./src/label/label.ts"
     },
     "./navigation-menu-content": {
-      "types": "./dist/navigation-menu-content.d.ts",
-      "default": "./dist/navigation-menu-content.js"
+      "production": {
+        "types": "./dist/navigation-menu-content.d.ts",
+        "default": "./dist/navigation-menu-content.js"
+      },
+      "default": "./src/navigation-menu-content/navigation-menu-content.ts"
     },
     "./navigation-menu-indicator": {
-      "types": "./dist/navigation-menu-indicator.d.ts",
-      "default": "./dist/navigation-menu-indicator.js"
+      "production": {
+        "types": "./dist/navigation-menu-indicator.d.ts",
+        "default": "./dist/navigation-menu-indicator.js"
+      },
+      "default": "./src/navigation-menu-indicator/navigation-menu-indicator.ts"
     },
     "./navigation-menu-item": {
-      "types": "./dist/navigation-menu-item.d.ts",
-      "default": "./dist/navigation-menu-item.js"
+      "production": {
+        "types": "./dist/navigation-menu-item.d.ts",
+        "default": "./dist/navigation-menu-item.js"
+      },
+      "default": "./src/navigation-menu-item/navigation-menu-item.ts"
     },
     "./navigation-menu-link": {
-      "types": "./dist/navigation-menu-link.d.ts",
-      "default": "./dist/navigation-menu-link.js"
+      "production": {
+        "types": "./dist/navigation-menu-link.d.ts",
+        "default": "./dist/navigation-menu-link.js"
+      },
+      "default": "./src/navigation-menu-link/navigation-menu-link.ts"
     },
     "./navigation-menu-list": {
-      "types": "./dist/navigation-menu-list.d.ts",
-      "default": "./dist/navigation-menu-list.js"
+      "production": {
+        "types": "./dist/navigation-menu-list.d.ts",
+        "default": "./dist/navigation-menu-list.js"
+      },
+      "default": "./src/navigation-menu-list/navigation-menu-list.ts"
     },
     "./navigation-menu-trigger": {
-      "types": "./dist/navigation-menu-trigger.d.ts",
-      "default": "./dist/navigation-menu-trigger.js"
+      "production": {
+        "types": "./dist/navigation-menu-trigger.d.ts",
+        "default": "./dist/navigation-menu-trigger.js"
+      },
+      "default": "./src/navigation-menu-trigger/navigation-menu-trigger.ts"
     },
     "./navigation-menu": {
-      "types": "./dist/navigation-menu.d.ts",
-      "default": "./dist/navigation-menu.js"
+      "production": {
+        "types": "./dist/navigation-menu.d.ts",
+        "default": "./dist/navigation-menu.js"
+      },
+      "default": "./src/navigation-menu/navigation-menu.ts"
     },
     "./scroll-area": {
-      "types": "./dist/scroll-area.d.ts",
-      "default": "./dist/scroll-area.js"
+      "production": {
+        "types": "./dist/scroll-area.d.ts",
+        "default": "./dist/scroll-area.js"
+      },
+      "default": "./src/scroll-area/scroll-area.ts"
     },
     "./scroll-bar": {
-      "types": "./dist/scroll-bar.d.ts",
-      "default": "./dist/scroll-bar.js"
+      "production": {
+        "types": "./dist/scroll-bar.d.ts",
+        "default": "./dist/scroll-bar.js"
+      },
+      "default": "./src/scroll-bar/scroll-bar.ts"
     },
     "./separator": {
-      "types": "./dist/separator.d.ts",
-      "default": "./dist/separator.js"
+      "production": {
+        "types": "./dist/separator.d.ts",
+        "default": "./dist/separator.js"
+      },
+      "default": "./src/separator/separator.ts"
     },
     "./sidebar-content": {
-      "types": "./dist/sidebar-content.d.ts",
-      "default": "./dist/sidebar-content.js"
+      "production": {
+        "types": "./dist/sidebar-content.d.ts",
+        "default": "./dist/sidebar-content.js"
+      },
+      "default": "./src/sidebar-content/sidebar-content.ts"
     },
     "./sidebar-footer": {
-      "types": "./dist/sidebar-footer.d.ts",
-      "default": "./dist/sidebar-footer.js"
+      "production": {
+        "types": "./dist/sidebar-footer.d.ts",
+        "default": "./dist/sidebar-footer.js"
+      },
+      "default": "./src/sidebar-footer/sidebar-footer.ts"
     },
     "./sidebar-group-action": {
-      "types": "./dist/sidebar-group-action.d.ts",
-      "default": "./dist/sidebar-group-action.js"
+      "production": {
+        "types": "./dist/sidebar-group-action.d.ts",
+        "default": "./dist/sidebar-group-action.js"
+      },
+      "default": "./src/sidebar-group-action/sidebar-group-action.ts"
     },
     "./sidebar-group-content": {
-      "types": "./dist/sidebar-group-content.d.ts",
-      "default": "./dist/sidebar-group-content.js"
+      "production": {
+        "types": "./dist/sidebar-group-content.d.ts",
+        "default": "./dist/sidebar-group-content.js"
+      },
+      "default": "./src/sidebar-group-content/sidebar-group-content.ts"
     },
     "./sidebar-group-label": {
-      "types": "./dist/sidebar-group-label.d.ts",
-      "default": "./dist/sidebar-group-label.js"
+      "production": {
+        "types": "./dist/sidebar-group-label.d.ts",
+        "default": "./dist/sidebar-group-label.js"
+      },
+      "default": "./src/sidebar-group-label/sidebar-group-label.ts"
     },
     "./sidebar-group": {
-      "types": "./dist/sidebar-group.d.ts",
-      "default": "./dist/sidebar-group.js"
+      "production": {
+        "types": "./dist/sidebar-group.d.ts",
+        "default": "./dist/sidebar-group.js"
+      },
+      "default": "./src/sidebar-group/sidebar-group.ts"
     },
     "./sidebar-header": {
-      "types": "./dist/sidebar-header.d.ts",
-      "default": "./dist/sidebar-header.js"
+      "production": {
+        "types": "./dist/sidebar-header.d.ts",
+        "default": "./dist/sidebar-header.js"
+      },
+      "default": "./src/sidebar-header/sidebar-header.ts"
     },
     "./sidebar-input": {
-      "types": "./dist/sidebar-input.d.ts",
-      "default": "./dist/sidebar-input.js"
+      "production": {
+        "types": "./dist/sidebar-input.d.ts",
+        "default": "./dist/sidebar-input.js"
+      },
+      "default": "./src/sidebar-input/sidebar-input.ts"
     },
     "./sidebar-inset": {
-      "types": "./dist/sidebar-inset.d.ts",
-      "default": "./dist/sidebar-inset.js"
+      "production": {
+        "types": "./dist/sidebar-inset.d.ts",
+        "default": "./dist/sidebar-inset.js"
+      },
+      "default": "./src/sidebar-inset/sidebar-inset.ts"
     },
     "./sidebar-menu-action": {
-      "types": "./dist/sidebar-menu-action.d.ts",
-      "default": "./dist/sidebar-menu-action.js"
+      "production": {
+        "types": "./dist/sidebar-menu-action.d.ts",
+        "default": "./dist/sidebar-menu-action.js"
+      },
+      "default": "./src/sidebar-menu-action/sidebar-menu-action.ts"
     },
     "./sidebar-menu-badge": {
-      "types": "./dist/sidebar-menu-badge.d.ts",
-      "default": "./dist/sidebar-menu-badge.js"
+      "production": {
+        "types": "./dist/sidebar-menu-badge.d.ts",
+        "default": "./dist/sidebar-menu-badge.js"
+      },
+      "default": "./src/sidebar-menu-badge/sidebar-menu-badge.ts"
     },
     "./sidebar-menu-button": {
-      "types": "./dist/sidebar-menu-button.d.ts",
-      "default": "./dist/sidebar-menu-button.js"
+      "production": {
+        "types": "./dist/sidebar-menu-button.d.ts",
+        "default": "./dist/sidebar-menu-button.js"
+      },
+      "default": "./src/sidebar-menu-button/sidebar-menu-button.ts"
     },
     "./sidebar-menu-item": {
-      "types": "./dist/sidebar-menu-item.d.ts",
-      "default": "./dist/sidebar-menu-item.js"
+      "production": {
+        "types": "./dist/sidebar-menu-item.d.ts",
+        "default": "./dist/sidebar-menu-item.js"
+      },
+      "default": "./src/sidebar-menu-item/sidebar-menu-item.ts"
     },
     "./sidebar-menu-skeleton": {
-      "types": "./dist/sidebar-menu-skeleton.d.ts",
-      "default": "./dist/sidebar-menu-skeleton.js"
+      "production": {
+        "types": "./dist/sidebar-menu-skeleton.d.ts",
+        "default": "./dist/sidebar-menu-skeleton.js"
+      },
+      "default": "./src/sidebar-menu-skeleton/sidebar-menu-skeleton.ts"
     },
     "./sidebar-menu-sub-button": {
-      "types": "./dist/sidebar-menu-sub-button.d.ts",
-      "default": "./dist/sidebar-menu-sub-button.js"
+      "production": {
+        "types": "./dist/sidebar-menu-sub-button.d.ts",
+        "default": "./dist/sidebar-menu-sub-button.js"
+      },
+      "default": "./src/sidebar-menu-sub-button/sidebar-menu-sub-button.ts"
     },
     "./sidebar-menu-sub-item": {
-      "types": "./dist/sidebar-menu-sub-item.d.ts",
-      "default": "./dist/sidebar-menu-sub-item.js"
+      "production": {
+        "types": "./dist/sidebar-menu-sub-item.d.ts",
+        "default": "./dist/sidebar-menu-sub-item.js"
+      },
+      "default": "./src/sidebar-menu-sub-item/sidebar-menu-sub-item.ts"
     },
     "./sidebar-menu-sub": {
-      "types": "./dist/sidebar-menu-sub.d.ts",
-      "default": "./dist/sidebar-menu-sub.js"
+      "production": {
+        "types": "./dist/sidebar-menu-sub.d.ts",
+        "default": "./dist/sidebar-menu-sub.js"
+      },
+      "default": "./src/sidebar-menu-sub/sidebar-menu-sub.ts"
     },
     "./sidebar-menu": {
-      "types": "./dist/sidebar-menu.d.ts",
-      "default": "./dist/sidebar-menu.js"
+      "production": {
+        "types": "./dist/sidebar-menu.d.ts",
+        "default": "./dist/sidebar-menu.js"
+      },
+      "default": "./src/sidebar-menu/sidebar-menu.ts"
     },
     "./sidebar-provider": {
-      "types": "./dist/sidebar-provider.d.ts",
-      "default": "./dist/sidebar-provider.js"
+      "production": {
+        "types": "./dist/sidebar-provider.d.ts",
+        "default": "./dist/sidebar-provider.js"
+      },
+      "default": "./src/sidebar-provider/sidebar-provider.ts"
     },
     "./sidebar-rail": {
-      "types": "./dist/sidebar-rail.d.ts",
-      "default": "./dist/sidebar-rail.js"
+      "production": {
+        "types": "./dist/sidebar-rail.d.ts",
+        "default": "./dist/sidebar-rail.js"
+      },
+      "default": "./src/sidebar-rail/sidebar-rail.ts"
     },
     "./sidebar-separator": {
-      "types": "./dist/sidebar-separator.d.ts",
-      "default": "./dist/sidebar-separator.js"
+      "production": {
+        "types": "./dist/sidebar-separator.d.ts",
+        "default": "./dist/sidebar-separator.js"
+      },
+      "default": "./src/sidebar-separator/sidebar-separator.ts"
     },
     "./sidebar-trigger": {
-      "types": "./dist/sidebar-trigger.d.ts",
-      "default": "./dist/sidebar-trigger.js"
+      "production": {
+        "types": "./dist/sidebar-trigger.d.ts",
+        "default": "./dist/sidebar-trigger.js"
+      },
+      "default": "./src/sidebar-trigger/sidebar-trigger.ts"
     },
     "./sidebar": {
-      "types": "./dist/sidebar.d.ts",
-      "default": "./dist/sidebar.js"
+      "production": {
+        "types": "./dist/sidebar.d.ts",
+        "default": "./dist/sidebar.js"
+      },
+      "default": "./src/sidebar/sidebar.ts"
     },
     "./use-sidebar": {
-      "types": "./dist/use-sidebar.d.ts",
-      "default": "./dist/use-sidebar.js"
+      "production": {
+        "types": "./dist/use-sidebar.d.ts",
+        "default": "./dist/use-sidebar.js"
+      },
+      "default": "./src/use-sidebar/use-sidebar.ts"
     },
     "./switch": {
-      "types": "./dist/switch.d.ts",
-      "default": "./dist/switch.js"
+      "production": {
+        "types": "./dist/switch.d.ts",
+        "default": "./dist/switch.js"
+      },
+      "default": "./src/switch/switch.ts"
     },
     "./textarea": {
-      "types": "./dist/textarea.d.ts",
-      "default": "./dist/textarea.js"
+      "production": {
+        "types": "./dist/textarea.d.ts",
+        "default": "./dist/textarea.js"
+      },
+      "default": "./src/textarea/textarea.ts"
     },
     "./toast": {
-      "types": "./dist/toast.d.ts",
-      "default": "./dist/toast.js"
+      "production": {
+        "types": "./dist/toast.d.ts",
+        "default": "./dist/toast.js"
+      },
+      "default": "./src/toast/toast.ts"
     },
     "./toaster": {
-      "types": "./dist/toaster.d.ts",
-      "default": "./dist/toaster.js"
+      "production": {
+        "types": "./dist/toaster.d.ts",
+        "default": "./dist/toaster.js"
+      },
+      "default": "./src/toaster/toaster.ts"
     },
     "./toggle": {
-      "types": "./dist/toggle.d.ts",
-      "default": "./dist/toggle.js"
+      "production": {
+        "types": "./dist/toggle.d.ts",
+        "default": "./dist/toggle.js"
+      },
+      "default": "./src/toggle/toggle.ts"
     },
     "./toggle-group-item": {
-      "types": "./dist/toggle-group-item.d.ts",
-      "default": "./dist/toggle-group-item.js"
+      "production": {
+        "types": "./dist/toggle-group-item.d.ts",
+        "default": "./dist/toggle-group-item.js"
+      },
+      "default": "./src/toggle-group-item/toggle-group-item.ts"
     },
     "./toggle-group": {
-      "types": "./dist/toggle-group.d.ts",
-      "default": "./dist/toggle-group.js"
+      "production": {
+        "types": "./dist/toggle-group.d.ts",
+        "default": "./dist/toggle-group.js"
+      },
+      "default": "./src/toggle-group/toggle-group.ts"
     },
     "./tooltip-content": {
-      "types": "./dist/tooltip-content.d.ts",
-      "default": "./dist/tooltip-content.js"
+      "production": {
+        "types": "./dist/tooltip-content.d.ts",
+        "default": "./dist/tooltip-content.js"
+      },
+      "default": "./src/tooltip-content/tooltip-content.ts"
     },
     "./tooltip-provider": {
-      "types": "./dist/tooltip-provider.d.ts",
-      "default": "./dist/tooltip-provider.js"
+      "production": {
+        "types": "./dist/tooltip-provider.d.ts",
+        "default": "./dist/tooltip-provider.js"
+      },
+      "default": "./src/tooltip-provider/tooltip-provider.ts"
     },
     "./tooltip-trigger": {
-      "types": "./dist/tooltip-trigger.d.ts",
-      "default": "./dist/tooltip-trigger.js"
+      "production": {
+        "types": "./dist/tooltip-trigger.d.ts",
+        "default": "./dist/tooltip-trigger.js"
+      },
+      "default": "./src/tooltip-trigger/tooltip-trigger.ts"
     },
     "./tooltip": {
-      "types": "./dist/tooltip.d.ts",
-      "default": "./dist/tooltip.js"
+      "production": {
+        "types": "./dist/tooltip.d.ts",
+        "default": "./dist/tooltip.js"
+      },
+      "default": "./src/tooltip/tooltip.ts"
     },
     "./cn": {
-      "types": "./dist/cn.d.ts",
-      "default": "./dist/cn.js"
+      "production": {
+        "types": "./dist/cn.d.ts",
+        "default": "./dist/cn.js"
+      },
+      "default": "./src/cn/cn.ts"
     },
     "./tw": {
-      "types": "./dist/tw.d.ts",
-      "default": "./dist/tw.js"
+      "production": {
+        "types": "./dist/tw.d.ts",
+        "default": "./dist/tw.js"
+      },
+      "default": "./src/tw/tw.ts"
     }
   },
   "files": [

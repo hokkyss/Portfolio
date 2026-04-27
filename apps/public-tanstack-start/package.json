@@ -16,6 +16,7 @@
     "@portfolio/design-system": "workspace:^",
     "@portfolio/seo": "workspace:^",
     "@portfolio/utils": "workspace:^",
+    "@resvg/resvg-js": "^2.6.2",
     "@sanity/client": "^7.22.0",
     "@tanstack/react-form": "^1.29.1",
     "@tanstack/react-query": "catalog:tanstackQuery",
@@ -31,6 +32,7 @@
     "react-markdown": "^10.1.0",
     "rehype-highlight": "^7.0.2",
     "remark-gfm": "^4.0.1",
+    "satori": "^0.26.0",
     "ts-pattern": "^5.9.0",
     "zod": "catalog:zod4",
     "zustand": "^5.0.11"
