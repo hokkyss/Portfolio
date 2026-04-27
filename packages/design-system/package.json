@@ -141,6 +141,10 @@
       },
       "default": "./src/avatar/avatar.ts"
     },
+    "./badge": {
+      "types": "./dist/badge.d.ts",
+      "default": "./dist/badge.js"
+    },
     "./button": {
       "production": {
         "types": "./dist/button.d.ts",

@@ -1,6 +1,11 @@
 import '@fontsource/inter/100.css';
 import type { ReactNode } from 'react';
+import { CircleNotchIcon } from '@phosphor-icons/react';
 import ThemeProvider from '@portfolio/design-system/application-theme-provider';
+import Button from '@portfolio/design-system/button';
+import CardComponent from '@portfolio/design-system/card';
+import CardContentComponent from '@portfolio/design-system/card-content';
+import CardTitleComponent from '@portfolio/design-system/card-title';
 import Toaster from '@portfolio/design-system/toaster';
 import tw from '@portfolio/design-system/tw';
 import { defineIcons, resolveIcons } from '@portfolio/seo/icons';
@@ -15,6 +20,7 @@ import { ReactQueryDevtoolsPanel } from '@tanstack/react-query-devtools';
 import {
   createRootRouteWithContext,
   HeadContent,
+  Link,
   Scripts,
 } from '@tanstack/react-router';
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
@@ -61,9 +67,11 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       throw err;
     }
 
-    return {
-    };
+    return {};
   },
+  pendingComponent: PendingComponent,
+  errorComponent: ErrorComponent,
+  notFoundComponent: NotFoundComponent,
   shellComponent: RootDocument,
   head: () => {
     const env = getEnv();
@@ -179,6 +187,58 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
     };
   },
 });
+
+/**
+ * Global error boundary — shown when a loader or component throws.
+ * @param root0
+ * @param root0.error
+ * @param root0.reset
+ */
+function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+  return (
+    <div className={tw`flex min-h-screen items-center justify-center p-8`}>
+      <CardComponent className={tw`max-w-md w-full`}>
+        <CardContentComponent className={tw`flex flex-col gap-y-4 pt-6`}>
+          <CardTitleComponent>Something went wrong</CardTitleComponent>
+          <p className={tw`text-sm text-muted-foreground`}>{error.message}</p>
+          <Button onClick={reset} variant="outline">
+            Try again
+          </Button>
+        </CardContentComponent>
+      </CardComponent>
+    </div>
+  );
+}
+
+/**
+ * Global 404 page — shown when no route matches.
+ */
+function NotFoundComponent() {
+  return (
+    <div className={tw`flex min-h-screen items-center justify-center p-8`}>
+      <CardComponent className={tw`max-w-md w-full`}>
+        <CardContentComponent className={tw`flex flex-col gap-y-4 pt-6`}>
+          <CardTitleComponent>404 — Page not found</CardTitleComponent>
+          <p className={tw`text-sm text-muted-foreground`}>
+            The page you&apos;re looking for doesn&apos;t exist.
+          </p>
+          <Button nativeButton={false} render={<Link to="/">Return Home</Link>} variant="outline" />
+        </CardContentComponent>
+      </CardComponent>
+    </div>
+  );
+}
+
+/**
+ * Global pending (loading) state — shown while route loaders are running.
+ */
+function PendingComponent() {
+  return (
+    <div className={tw`flex min-h-screen items-center justify-center`}>
+      <CircleNotchIcon aria-label="Loading" className={tw`h-12 w-12 animate-spin text-primary`} />
+    </div>
+  );
+}
 
 /**
  *
