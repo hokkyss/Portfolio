@@ -5,7 +5,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 import { readdirSync } from 'node:fs';
 import { appendFile, readFile, writeFile } from 'node:fs/promises';
-import { basename, extname, join, relative } from 'node:path';
+import { basename, dirname, extname, join, relative } from 'node:path';
 
 export default defineConfig((ctx) => {
   const srcFolder = join(import.meta.dirname, 'src');
@@ -65,11 +65,8 @@ export default defineConfig((ctx) => {
       /* eslint-disable perfectionist/sort-objects */
       entries.forEach(({ entryName, path }) => {
         exports[`./${entryName}`] = {
-          production: {
-            types: `./dist/${entryName}.d.ts`,
-            default: `./dist/${entryName}.js`,
-          },
-          default: `./src/${entryName}/${entryName}.ts`,
+          types: ctx.mode === 'production' ? `./dist/${entryName}.d.ts` : `./dist/${join(dirname(path), basename(path, extname(path)))}.d.ts`,
+          default: `./dist/${entryName}.js`,
         };
       });
       /* eslint-enable perfectionist/sort-objects */
