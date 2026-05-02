@@ -2,7 +2,12 @@
 
 import type { ApplicationTheme } from '@portfolio/design-system/application-theme-provider';
 import { LeafIcon, MoonIcon, ShieldIcon, SunIcon, SwordIcon } from '@phosphor-icons/react';
+import Button from '@portfolio/design-system/button';
 import cn from '@portfolio/design-system/cn';
+import DropdownMenu from '@portfolio/design-system/dropdown-menu';
+import DropdownMenuContent from '@portfolio/design-system/dropdown-menu-content';
+import DropdownMenuItem from '@portfolio/design-system/dropdown-menu-item';
+import DropdownMenuTrigger from '@portfolio/design-system/dropdown-menu-trigger';
 import tw from '@portfolio/design-system/tw';
 import useApplicationTheme from '@portfolio/design-system/use-application-theme';
 import { useMutation } from '@tanstack/react-query';
@@ -24,9 +29,7 @@ const THEMES: ThemeOption[] = [
 ];
 
 /**
- * Dropdown that lets the user switch between the 5 available themes.
- * Immediately updates the query cache for instant visual feedback, and
- * persists the choice via a server function that sets the cookie.
+ * Switcher molecule
  */
 export default function ThemeSwitcher() {
   const theme = useApplicationTheme();
@@ -42,43 +45,41 @@ export default function ThemeSwitcher() {
 
   return (
     <div className={tw`relative`} id="theme-switcher">
-      <details className={tw`group`}>
-        <summary
-          className={tw`flex cursor-pointer list-none items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground`}
-          id="theme-switcher-button"
-        >
-          <span className={tw`text-base`}>{current.icon}</span>
-          <span className={tw`hidden sm:inline`}>{current.label}</span>
-          <svg
-            className={tw`h-3 w-3 transition-transform group-open:rotate-180`}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-            viewBox="0 0 24 24"
+      <DropdownMenu>
+        <DropdownMenuTrigger render={(
+          <Button
+            id="theme-switcher-button"
+            type="button"
+            variant="outline"
           >
-            <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </summary>
-        <div
-          className={tw`absolute right-0 top-full z-50 mt-1 min-w-[160px] overflow-hidden rounded-lg border border-border bg-popover shadow-lg`}
+            <span className={tw`text-base`}>{current.icon}</span>
+            <span className={tw`hidden sm:inline`}>{current.label}</span>
+          </Button>
+        )}
         >
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end" className={tw`min-w-[160px]`}>
           {THEMES.map((t) => (
-            <button
-              className={cn(
-                tw`flex w-full items-center gap-3 px-3 py-2.5 text-sm transition-colors hover:bg-accent hover:text-accent-foreground`,
-                t.value === theme && tw`bg-primary/10 font-semibold text-primary`,
-              )}
+            <DropdownMenuItem
               id={`theme-option-${t.value}`}
               key={t.value}
               onClick={() => mutate(t.value)}
-              type="button"
+              render={(
+                <Button
+                  className={cn(
+                    tw`w-full justify-start gap-3`,
+                    t.value === theme && tw`bg-primary/10 font-semibold text-primary`,
+                  )}
+                  variant="ghost"
+                />
+              )}
             >
               <span className={tw`text-base`}>{t.icon}</span>
               {t.label}
-            </button>
+            </DropdownMenuItem>
           ))}
-        </div>
-      </details>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
   );
 }
