@@ -7,7 +7,15 @@ import { createHash } from 'node:crypto';
 import { defineConfig } from 'vite';
 
 const config = defineConfig({
+  build: {
+    rollupOptions: {
+      external: ['@sparticuz/chromium', '@resvg/resvg-js'],
+    },
+  },
   envPrefix: ['PUBLIC_'],
+  optimizeDeps: {
+    exclude: ['@resvg/resvg-js'],
+  },
   plugins: [
     devtools({
       consolePiping: {

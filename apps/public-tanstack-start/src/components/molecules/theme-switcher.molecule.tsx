@@ -1,12 +1,13 @@
 'use client';
 
 import type { ApplicationTheme } from '@portfolio/design-system/application-theme-provider';
+import { LeafIcon, MoonIcon, ShieldIcon, SunIcon, SwordIcon } from '@phosphor-icons/react';
 import cn from '@portfolio/design-system/cn';
-import useApplicationTheme from '@portfolio/design-system/use-application-theme';
 import tw from '@portfolio/design-system/tw';
-import { useQueryClient } from '@tanstack/react-query';
-import { MoonIcon, SunIcon, SwordIcon, ShieldIcon, LeafIcon } from '@phosphor-icons/react';
-import setApplicationThemeFunction from '../../lib/common/functions/set-application-theme.function';
+import useApplicationTheme from '@portfolio/design-system/use-application-theme';
+import { useMutation } from '@tanstack/react-query';
+import setApplicationThemeMutation from '../../lib/common/mutations/set-application-theme.mutation';
+import getApplicationThemeQuery from '../../lib/common/queries/get-application-theme.query';
 
 interface ThemeOption {
   icon: React.ReactNode;
@@ -15,8 +16,8 @@ interface ThemeOption {
 }
 
 const THEMES: ThemeOption[] = [
-  { icon: <SunIcon weight="fill" />, label: 'Light', value: 'light' },
-  { icon: <MoonIcon weight="fill" />, label: 'Dark', value: 'dark' },
+  { icon: <SunIcon weight="fill" />, label: 'Reshiram', value: 'light' },
+  { icon: <MoonIcon weight="fill" />, label: 'Zekrom', value: 'dark' },
   { icon: <SwordIcon weight="fill" />, label: 'Black Eagles', value: 'black-eagles' },
   { icon: <ShieldIcon weight="fill" />, label: 'Blue Lions', value: 'blue-lions' },
   { icon: <LeafIcon weight="fill" />, label: 'Golden Deer', value: 'golden-deer' },
@@ -29,20 +30,15 @@ const THEMES: ThemeOption[] = [
  */
 export default function ThemeSwitcher() {
   const theme = useApplicationTheme();
-  const queryClient = useQueryClient();
-  const current = THEMES.find((t) => t.value === theme) ?? THEMES[0]!;
-
-  async function handleSelect(value: ApplicationTheme) {
-    // Optimistic update — updates data-theme on <html> immediately
-    queryClient.setQueryData(['THEME'], value);
-
-    try {
-      await setApplicationThemeFunction({ data: { theme: value } });
-    } catch {
-      // Roll back on error
-      queryClient.setQueryData(['THEME'], theme);
-    }
-  }
+  const { mutate } = useMutation(
+    {
+      ...setApplicationThemeMutation(),
+      onSuccess(data, _variables, _onMutateResult, context) {
+        context.client.setQueryData(getApplicationThemeQuery().queryKey, data);
+      },
+    },
+  );
+  const current = THEMES.find((t) => t.value === theme) ?? THEMES[0];
 
   return (
     <div className={tw`relative`} id="theme-switcher">
@@ -63,7 +59,6 @@ export default function ThemeSwitcher() {
             <path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </summary>
-
         <div
           className={tw`absolute right-0 top-full z-50 mt-1 min-w-[160px] overflow-hidden rounded-lg border border-border bg-popover shadow-lg`}
         >
@@ -75,7 +70,7 @@ export default function ThemeSwitcher() {
               )}
               id={`theme-option-${t.value}`}
               key={t.value}
-              onClick={() => handleSelect(t.value)}
+              onClick={() => mutate(t.value)}
               type="button"
             >
               <span className={tw`text-base`}>{t.icon}</span>
