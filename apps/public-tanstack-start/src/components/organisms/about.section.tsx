@@ -1,5 +1,6 @@
-import tw from '@portfolio/design-system/tw';
 import { ArrowSquareOutIcon, CertificateIcon } from '@phosphor-icons/react';
+import Badge from '@portfolio/design-system/badge';
+import tw from '@portfolio/design-system/tw';
 
 /**
  * About Me section with improved bio and Node.js certification badge.
@@ -11,11 +12,12 @@ export default function AboutSection() {
       id="about"
     >
       {/* Section label */}
-      <p
-        className={tw`mb-3 font-mono text-xs tracking-widest text-primary uppercase`}
+      <Badge
+        className={tw`mb-3 font-mono text-xs tracking-widest uppercase`}
+        variant="secondary"
       >
         $ whoami
-      </p>
+      </Badge>
 
       <h2 className={tw`mb-12 text-4xl font-bold tracking-tight`}>About Me</h2>
 
@@ -23,14 +25,19 @@ export default function AboutSection() {
         {/* Bio */}
         <div className={tw`flex flex-col gap-5 text-base leading-relaxed text-muted-foreground`}>
           <p>
-            Hey, I'm <span className={tw`font-semibold text-foreground`}>Hokki</span> — a Fullstack
+            Hey, I'm
+            {' '}
+            <span className={tw`font-semibold text-foreground`}>Hokki</span>
+            {' '}
+            — a Fullstack
             Software Engineer from Indonesia with a passion for crafting clean, performant
             applications and a love for elegant solutions to complex problems.
           </p>
           <p>
             My story starts with a single Pascal lesson in high school — one program was all it
             took. Competitive programming sharpened my thinking, and I never stopped building. I'm
-            a Computer Science graduate from the{' '}
+            a Computer Science graduate from the
+            {' '}
             <span className={tw`font-medium text-foreground`}>
               Bandung Institute of Technology
             </span>
@@ -44,7 +51,8 @@ export default function AboutSection() {
           </p>
           <p>
             Oh — and if you haven't noticed, this site's design is a love letter to two games that
-            mean a lot to me:{' '}
+            mean a lot to me:
+            {' '}
             <a
               className={tw`font-medium text-primary hover:underline`}
               href="https://www.nintendo.com/us/store/products/fire-emblem-three-houses-switch/"
@@ -52,8 +60,10 @@ export default function AboutSection() {
               target="_blank"
             >
               Fire Emblem: Three Houses
-            </a>{' '}
-            and{' '}
+            </a>
+            {' '}
+            and
+            {' '}
             <a
               className={tw`font-medium text-primary hover:underline`}
               href="https://www.pokemon.com/us/pokemon-video-games/pokemon-black-version-and-pokemon-white-version/"

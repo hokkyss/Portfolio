@@ -1,5 +1,7 @@
-import tw from '@portfolio/design-system/tw';
 import { GithubLogoIcon, LinkedinLogoIcon } from '@phosphor-icons/react';
+import Badge from '@portfolio/design-system/badge';
+import Button from '@portfolio/design-system/button';
+import tw from '@portfolio/design-system/tw';
 import Typewriter from '../atoms/typewriter.atom';
 
 const PHRASES = [
@@ -33,11 +35,12 @@ export default function HeroSection() {
 
       <div className={tw`relative z-10 flex max-w-3xl flex-col items-center gap-6 text-center`}>
         {/* Eyebrow */}
-        <span
-          className={tw`inline-block rounded-full border border-primary/30 bg-primary/10 px-4 py-1 font-mono text-xs tracking-widest text-primary uppercase`}
+        <Badge
+          className={tw`px-4 py-1 font-mono text-xs tracking-widest uppercase`}
+          variant="secondary"
         >
           i-am.hokkyss.com
-        </span>
+        </Badge>
 
         {/* Main heading */}
         <h1 className={tw`text-5xl font-bold tracking-tight text-foreground sm:text-7xl`}>
@@ -46,7 +49,8 @@ export default function HeroSection() {
 
         {/* Typewriter subtitle */}
         <p className={tw`text-xl text-muted-foreground sm:text-2xl`}>
-          I am{' '}
+          I am
+          {' '}
           <Typewriter
             className={tw`font-semibold text-primary`}
             phrases={PHRASES}
@@ -61,28 +65,38 @@ export default function HeroSection() {
 
         {/* CTAs */}
         <div className={tw`flex flex-wrap items-center justify-center gap-3`}>
-          <a
-            aria-label="View GitHub profile"
-            className={tw`inline-flex items-center gap-2 rounded-lg border border-border bg-card px-5 py-2.5 text-sm font-medium transition-all hover:border-primary/50 hover:bg-primary/10 hover:text-primary`}
-            href="https://link.hokkyss.com/github"
-            id="hero-github-link"
-            rel="noopener noreferrer"
-            target="_blank"
+          <Button
+            className={tw`px-5 py-2.5 text-sm h-auto font-medium`}
+            render={(
+              <a
+                aria-label="View GitHub profile"
+                href="https://link.hokkyss.com/github"
+                id="hero-github-link"
+                rel="noopener noreferrer"
+                target="_blank"
+              />
+            )}
+            variant="outline"
           >
             <GithubLogoIcon size={18} />
             GitHub
-          </a>
-          <a
-            aria-label="View LinkedIn profile"
-            className={tw`inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/80`}
-            href="https://link.hokkyss.com/linkedin"
-            id="hero-linkedin-link"
-            rel="noopener noreferrer"
-            target="_blank"
+          </Button>
+          <Button
+            className={tw`px-5 py-2.5 text-sm h-auto font-medium`}
+            render={(
+              <a
+                aria-label="View LinkedIn profile"
+                href="https://link.hokkyss.com/linkedin"
+                id="hero-linkedin-link"
+                rel="noopener noreferrer"
+                target="_blank"
+              />
+            )}
+            variant="default"
           >
             <LinkedinLogoIcon size={18} />
             LinkedIn
-          </a>
+          </Button>
         </div>
 
         {/* Scroll hint */}

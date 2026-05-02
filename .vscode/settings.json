@@ -34,7 +34,8 @@
   "search.exclude": {
     "**/.yarn": true,
     "**/routeTree.gen.ts": true,
-    "**/.pnp.*": true
+    "**/.pnp.*": true,
+    "**/app/**/*": true
   },
   "eslint.debug": true,
   "typescript.enablePromptUseWorkspaceTsdk": true,

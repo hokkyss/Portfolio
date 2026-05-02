@@ -1,5 +1,6 @@
-import tw from '@portfolio/design-system/tw';
 import { EnvelopeIcon, GithubLogoIcon, LinkedinLogoIcon } from '@phosphor-icons/react';
+import Badge from '@portfolio/design-system/badge';
+import tw from '@portfolio/design-system/tw';
 
 const CONTACTS = [
   {
@@ -31,9 +32,12 @@ const CONTACTS = [
 export default function ContactSection() {
   return (
     <section className={tw`mx-auto max-w-6xl px-6 py-24`} id="contact">
-      <p className={tw`mb-3 font-mono text-xs tracking-widest text-primary uppercase`}>
+      <Badge
+        className={tw`mb-3 font-mono text-xs tracking-widest uppercase`}
+        variant="secondary"
+      >
         $ curl -X POST /api/contact
-      </p>
+      </Badge>
       <h2 className={tw`mb-4 text-4xl font-bold tracking-tight`}>Let's Connect</h2>
       <p className={tw`mb-12 max-w-xl text-muted-foreground`}>
         Open to new opportunities, collaborations, and interesting conversations. Feel free to
