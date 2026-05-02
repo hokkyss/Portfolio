@@ -24,7 +24,7 @@ export default function HeroSection() {
       {/* Ambient grid background */}
       <div
         aria-hidden="true"
-        className={tw`pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,oklch(var(--foreground)/0.04)_1px,transparent_1px),linear-gradient(to_bottom,oklch(var(--foreground)/0.04)_1px,transparent_1px)] [background-size:48px_48px]`}
+        className={tw`pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,oklch(var(--foreground)/0.04)_1px,transparent_1px),linear-gradient(to_bottom,oklch(var(--foreground)/0.04)_1px,transparent_1px)] bg-size-[48px_48px]`}
       />
 
       {/* Radial glow */}

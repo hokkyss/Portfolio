@@ -11,11 +11,27 @@ export const getClientEnv = createIsomorphicFn()
         cmsProjectId: z.never().optional(),
         cmsToken: z.never().optional(),
         environment: z.literal('client').default('client'),
+        firebaseApiKey: z.string(),
+        firebaseAppId: z.string(),
+        firebaseAuthDomain: z.string(),
+        firebaseDatabaseUrl: z.string(),
+        firebaseMeasurementId: z.string(),
+        firebaseMessagingSenderId: z.string(),
+        firebaseProjectId: z.string(),
+        firebaseStorageBucket: z.string(),
         gtmId: z.string().optional(),
       })
       .brand('ClientEnv');
 
     const envConfig = clientEnvSchema.parse({
+      firebaseApiKey: import.meta.env.PUBLIC_FIREBASE_API_KEY as never,
+      firebaseAppId: import.meta.env.PUBLIC_FIREBASE_APP_ID as never,
+      firebaseAuthDomain: import.meta.env.PUBLIC_FIREBASE_AUTH_DOMAIN as never,
+      firebaseDatabaseUrl: import.meta.env.FIREBASE_DATABASE_URL as never,
+      firebaseMeasurementId: import.meta.env.PUBLIC_FIREBASE_MEASUREMENT_ID as never,
+      firebaseMessagingSenderId: import.meta.env.PUBLIC_FIREBASE_MESSAGING_SENDER_ID as never,
+      firebaseProjectId: import.meta.env.PUBLIC_FIREBASE_PROJECT_ID as never,
+      firebaseStorageBucket: import.meta.env.PUBLIC_FIREBASE_STORAGE_BUCKET as never,
       gtmId: import.meta.env.PUBLIC_GTM_ID as never,
     });
 
@@ -37,6 +53,14 @@ export const getServerEnv = createIsomorphicFn()
         cmsProjectId: z.string(),
         cmsToken: z.string(),
         environment: z.literal('server').default('server'),
+        firebaseApiKey: z.string(),
+        firebaseAppId: z.string(),
+        firebaseAuthDomain: z.string(),
+        firebaseDatabaseUrl: z.string(),
+        firebaseMeasurementId: z.string(),
+        firebaseMessagingSenderId: z.string(),
+        firebaseProjectId: z.string(),
+        firebaseStorageBucket: z.string(),
         gtmId: z.string().optional(),
       })
       .brand('ServerEnv');
@@ -46,6 +70,14 @@ export const getServerEnv = createIsomorphicFn()
       cmsDataset: process.env.CMS_DATASET,
       cmsProjectId: process.env.CMS_PROJECT_ID,
       cmsToken: process.env.CMS_TOKEN,
+      firebaseApiKey: import.meta.env.FIREBASE_API_KEY as never,
+      firebaseAppId: import.meta.env.FIREBASE_APP_ID as never,
+      firebaseAuthDomain: import.meta.env.FIREBASE_AUTH_DOMAIN as never,
+      firebaseDatabaseUrl: import.meta.env.FIREBASE_DATABASE_URL as never,
+      firebaseMeasurementId: import.meta.env.FIREBASE_MEASUREMENT_ID as never,
+      firebaseMessagingSenderId: import.meta.env.FIREBASE_MESSAGING_SENDER_ID as never,
+      firebaseProjectId: import.meta.env.FIREBASE_PROJECT_ID as never,
+      firebaseStorageBucket: import.meta.env.FIREBASE_STORAGE_BUCKET as never,
       gtmId: import.meta.env.PUBLIC_GTM_ID as never,
     });
 
