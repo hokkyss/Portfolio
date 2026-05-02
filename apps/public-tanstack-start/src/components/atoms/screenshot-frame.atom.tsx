@@ -35,20 +35,20 @@ export default function ScreenshotFrame({ className, title, url }: ScreenshotFra
       {/* Screenshot or placeholder */}
       {screenshotSrc
         ? (
-          <img
-            alt={`${title} website preview`}
-            className={tw`aspect-video w-full object-cover object-top`}
-            loading="lazy"
-            src={screenshotSrc}
-          />
-        )
+            <img
+              alt={`${title} website preview`}
+              className={tw`aspect-video w-full object-cover object-top`}
+              loading="lazy"
+              src={screenshotSrc}
+            />
+          )
         : (
-          <div
-            className={tw`flex aspect-video w-full items-center justify-center bg-muted text-sm text-muted-foreground`}
-          >
-            No preview available
-          </div>
-        )}
+            <div
+              className={tw`flex aspect-video w-full items-center justify-center bg-muted text-sm text-muted-foreground`}
+            >
+              No preview available
+            </div>
+          )}
     </div>
   );
 }

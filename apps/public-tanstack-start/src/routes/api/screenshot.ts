@@ -40,11 +40,10 @@ export const Route = createFileRoute('/api/screenshot')({
           }
 
           // Lazy-load heavy deps so they don't affect cold start for other routes
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore – @sparticuz/chromium installed at deploy time
           const [{ default: chromium }, { default: puppeteerCore }] = await Promise.all([
+            // @sparticuz/chromium installed at deploy time
             import('@sparticuz/chromium'),
-            // @ts-ignore – puppeteer-core installed at deploy time
+            // puppeteer-core installed at deploy time
             import('puppeteer-core'),
           ]);
 
