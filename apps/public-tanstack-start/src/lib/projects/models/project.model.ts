@@ -21,7 +21,7 @@ export const projectModel = z
       height: z.number(),
       url: z.string(),
       width: z.number(),
-    }),
+    }).optional().nullable(),
   })
   .brand('ProjectModel');
 

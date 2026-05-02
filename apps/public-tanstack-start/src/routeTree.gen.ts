@@ -11,9 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
+import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ManifestDotwebmanifestRouteImport } from './routes/manifest[.]webmanifest'
 import { Route as FaviconDoticoRouteImport } from './routes/favicon[.]ico'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiScreenshotRouteImport } from './routes/api/screenshot'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -23,6 +26,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
   id: '/robots.txt',
   path: '/robots.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ManifestDotwebmanifestRoute = ManifestDotwebmanifestRouteImport.update({
@@ -35,64 +43,95 @@ const FaviconDoticoRoute = FaviconDoticoRouteImport.update({
   path: '/favicon.ico',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiScreenshotRoute = ApiScreenshotRouteImport.update({
+  id: '/api/screenshot',
+  path: '/api/screenshot',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/blog': typeof BlogRoute
   '/favicon.ico': typeof FaviconDoticoRoute
   '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
+  '/projects': typeof ProjectsRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/screenshot': typeof ApiScreenshotRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/blog': typeof BlogRoute
   '/favicon.ico': typeof FaviconDoticoRoute
   '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
+  '/projects': typeof ProjectsRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/screenshot': typeof ApiScreenshotRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/blog': typeof BlogRoute
   '/favicon.ico': typeof FaviconDoticoRoute
   '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
+  '/projects': typeof ProjectsRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/screenshot': typeof ApiScreenshotRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/blog'
     | '/favicon.ico'
     | '/manifest.webmanifest'
+    | '/projects'
     | '/robots.txt'
     | '/sitemap.xml'
+    | '/api/screenshot'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/blog'
     | '/favicon.ico'
     | '/manifest.webmanifest'
+    | '/projects'
     | '/robots.txt'
     | '/sitemap.xml'
+    | '/api/screenshot'
   id:
     | '__root__'
     | '/'
+    | '/blog'
     | '/favicon.ico'
     | '/manifest.webmanifest'
+    | '/projects'
     | '/robots.txt'
     | '/sitemap.xml'
+    | '/api/screenshot'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BlogRoute: typeof BlogRoute
   FaviconDoticoRoute: typeof FaviconDoticoRoute
   ManifestDotwebmanifestRoute: typeof ManifestDotwebmanifestRoute
+  ProjectsRoute: typeof ProjectsRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ApiScreenshotRoute: typeof ApiScreenshotRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -111,6 +150,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/manifest.webmanifest': {
       id: '/manifest.webmanifest'
       path: '/manifest.webmanifest'
@@ -125,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaviconDoticoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -132,15 +185,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/screenshot': {
+      id: '/api/screenshot'
+      path: '/api/screenshot'
+      fullPath: '/api/screenshot'
+      preLoaderRoute: typeof ApiScreenshotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BlogRoute: BlogRoute,
   FaviconDoticoRoute: FaviconDoticoRoute,
   ManifestDotwebmanifestRoute: ManifestDotwebmanifestRoute,
+  ProjectsRoute: ProjectsRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ApiScreenshotRoute: ApiScreenshotRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

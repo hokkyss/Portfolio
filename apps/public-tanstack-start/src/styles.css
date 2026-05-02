@@ -1,11 +1,5 @@
 @import "@portfolio/design-system/index.css" source(none);
-@import "@fontsource/inter" source(none);
+@import "@fontsource-variable/geist" source(none);
 
 @source ".";
 @source "../node_modules/@portfolio/design-system";
-
-@layer base {
-  html {
-    font-family: "Inter";
-  }
-}

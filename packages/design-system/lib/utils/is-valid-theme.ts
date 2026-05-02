@@ -9,7 +9,7 @@ export function isValidTheme(theme: unknown): theme is ApplicationTheme {
     return false;
   }
 
-  const validThemes: ApplicationTheme[] = ['dark', 'light'];
+  const validThemes: ApplicationTheme[] = ['black-eagles', 'blue-lions', 'dark', 'golden-deer', 'light'];
 
   return validThemes.includes(theme as never);
 }

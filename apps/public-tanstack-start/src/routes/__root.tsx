@@ -1,4 +1,3 @@
-import '@fontsource/inter/100.css';
 import type { ReactNode } from 'react';
 import { CircleNotchIcon } from '@phosphor-icons/react';
 import ThemeProvider from '@portfolio/design-system/application-theme-provider';
@@ -29,6 +28,7 @@ import { createIsomorphicFn } from '@tanstack/react-start';
 import { getRequest } from '@tanstack/react-start/server';
 import getEnv from '../configs/env/env.config';
 import getApplicationThemeQuery from '../lib/common/queries/get-application-theme.query';
+import NavBar from '../components/molecules/nav-bar.molecule';
 import appCss from '../styles.css?url';
 
 /**
@@ -267,6 +267,7 @@ function RootDocument({ children }: { children: ReactNode }) {
           </noscript>
         )}
         <ThemeProvider theme={theme}>
+          <NavBar />
           <Toaster position="bottom-right" />
           {children}
         </ThemeProvider>
