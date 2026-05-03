@@ -48,6 +48,7 @@ export default function ThemeSwitcher() {
       <DropdownMenu>
         <DropdownMenuTrigger render={(
           <Button
+            className={tw`w-40`}
             id="theme-switcher-button"
             type="button"
             variant="outline"
@@ -58,7 +59,7 @@ export default function ThemeSwitcher() {
         )}
         >
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className={tw`min-w-[160px]`}>
+        <DropdownMenuContent align="end" className={tw`min-w-40`}>
           {THEMES.map((t) => (
             <DropdownMenuItem
               id={`theme-option-${t.value}`}
