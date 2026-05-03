@@ -20,6 +20,7 @@ export default function HeroSection() {
     <section
       className={tw`relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-20`}
       id="hero"
+      role="main"
     >
       {/* Ambient grid background */}
       <div
