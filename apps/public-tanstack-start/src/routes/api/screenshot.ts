@@ -16,8 +16,7 @@ export const Route = createFileRoute('/api/screenshot')({
           const urlParam = new URL(ctx.request.url).searchParams.get('url');
 
           if (!urlParam) {
-            return new Response(JSON.stringify({ error: 'Missing url parameter' }), {
-              headers: { 'content-type': 'application/json' },
+            return Response.json({ error: 'Missing url parameter' }, {
               status: 400,
             });
           }
@@ -26,15 +25,13 @@ export const Route = createFileRoute('/api/screenshot')({
           try {
             parsedUrl = new URL(urlParam);
           } catch {
-            return new Response(JSON.stringify({ error: 'Invalid url parameter' }), {
-              headers: { 'content-type': 'application/json' },
+            return Response.json({ error: 'Invalid url parameter' }, {
               status: 400,
             });
           }
 
           if (!ALLOWED_ORIGINS.includes(parsedUrl.hostname)) {
-            return new Response(JSON.stringify({ error: 'URL not in allowlist' }), {
-              headers: { 'content-type': 'application/json' },
+            return Response.json({ error: 'URL not in allowlist' }, {
               status: 403,
             });
           }
