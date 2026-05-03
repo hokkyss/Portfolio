@@ -26,9 +26,9 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 import { getOrigin } from '@tanstack/react-router/ssr/server';
 import { createIsomorphicFn } from '@tanstack/react-start';
 import { getRequest } from '@tanstack/react-start/server';
+import NavBar from '../components/molecules/nav-bar.molecule';
 import getEnv from '../configs/env/env.config';
 import getApplicationThemeQuery from '../lib/common/queries/get-application-theme.query';
-import NavBar from '../components/molecules/nav-bar.molecule';
 import appCss from '../styles.css?url';
 
 /**
