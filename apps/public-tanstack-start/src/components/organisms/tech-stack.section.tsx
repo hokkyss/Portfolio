@@ -1,16 +1,13 @@
 import tw from '@portfolio/design-system/tw';
-import type { TechModel } from '../../lib/tech-stacks/models/tech.model';
-
-interface TechStackSectionProps {
-  techGroups: TechModel[];
-}
+import { useSuspenseQuery } from '@tanstack/react-query';
+import getTechStacksQuery from '../../lib/tech-stacks/queries/get-tech-stacks.query';
 
 /**
  * Displays grouped tech stacks in a visual chip layout.
- * @param root0
- * @param root0.techGroups
  */
-export default function TechStackSection({ techGroups }: TechStackSectionProps) {
+export default function TechStackSection() {
+  const { data: techGroups } = useSuspenseQuery(getTechStacksQuery());
+
   return (
     <section className={tw`bg-muted/30 py-24`} id="tech-stacks">
       <div className={tw`mx-auto max-w-6xl px-6`}>

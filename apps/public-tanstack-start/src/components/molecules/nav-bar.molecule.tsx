@@ -2,16 +2,16 @@
 
 import cn from '@portfolio/design-system/cn';
 import tw from '@portfolio/design-system/tw';
-import { Link } from '@tanstack/react-router';
+import { Link, LinkOptions } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import ThemeSwitcher from './theme-switcher.molecule';
 
-const NAV_LINKS = [
-  { href: '#about', label: 'About' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#contact', label: 'Contact' },
-] as const;
+const NAV_LINKS: { label: string; to: LinkOptions }[] = [
+  { label: 'About', to: { hash: 'about', to: '/' } },
+  { label: 'Experience', to: { hash: 'experience', to: '/' } },
+  { label: 'Projects', to: { hash: 'projects', to: '/' } },
+  { label: 'Contact', to: { hash: 'contact', to: '/' } },
+];
 
 /**
  * Fixed top navigation bar with brand, anchor links, and theme switcher.
@@ -50,24 +50,24 @@ export default function NavBar() {
         {/* Nav links — hidden on mobile */}
         <ul className={tw`hidden items-center gap-6 md:flex`} role="list">
           {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <a
+            <li key={link.label}>
+              <Link
                 className={tw`text-sm font-medium text-muted-foreground transition-colors hover:text-foreground`}
-                href={link.href}
                 id={`nav-link-${link.label.toLowerCase()}`}
+                {...link.to}
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
           <li>
-            <a
+            <Link
               className={tw`text-sm font-medium text-muted-foreground transition-colors hover:text-foreground`}
-              href="/projects"
-              id="nav-link-all-projects"
+              id="nav-link-blogs"
+              to="/blog"
             >
-              All Projects
-            </a>
+              Blogs
+            </Link>
           </li>
         </ul>
 

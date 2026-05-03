@@ -1,17 +1,14 @@
 import tw from '@portfolio/design-system/tw';
-import type { GetExperienceResponseDto } from '../../lib/experiences/dto/get-experience.dto';
+import { useSuspenseQuery } from '@tanstack/react-query';
+import getExperiencesQuery from '../../lib/experiences/queries/get-experiences.query';
 import ExperienceCard from '../molecules/experience-card.molecule';
-
-interface ExperienceSectionProps {
-  experiences: GetExperienceResponseDto;
-}
 
 /**
  * Experience timeline section.
- * @param root0
- * @param root0.experiences
  */
-export default function ExperienceSection({ experiences }: ExperienceSectionProps) {
+export default function ExperienceSection() {
+  const { data: experiences } = useSuspenseQuery(getExperiencesQuery({}));
+
   return (
     <section className={tw`mx-auto max-w-6xl px-6 py-24`} id="experience">
       <p className={tw`mb-3 font-mono text-xs tracking-widest text-primary uppercase`}>

@@ -79,7 +79,7 @@ export default function AboutSection() {
         {/* Certification badge */}
         <div className={tw`flex flex-col items-center gap-4`}>
           <a
-            aria-label="IBM Certified Node.js Application Developer credential"
+            aria-label="OpenJS Foundation Certified Node.js Application Developer credential"
             className={tw`group flex flex-col items-center gap-3 rounded-xl border border-border bg-card p-6 text-center transition-all hover:border-primary/40 hover:shadow-lg`}
             href="https://www.credly.com/badges/589bac2f-109c-4758-9aa8-495416bd0263/public_url"
             id="nodejs-certification-badge"
@@ -93,7 +93,7 @@ export default function AboutSection() {
             </div>
             <div>
               <p className={tw`text-xs font-semibold uppercase tracking-wider text-primary`}>
-                IBM Certified
+                OpenJS Foundation Certified
               </p>
               <p className={tw`mt-1 text-sm font-medium text-foreground`}>
                 Node.js Application
