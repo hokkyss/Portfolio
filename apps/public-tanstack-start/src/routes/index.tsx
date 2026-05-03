@@ -1,5 +1,4 @@
 import { Await, createFileRoute, useLoaderData } from '@tanstack/react-router';
-import { Suspense } from 'react';
 import AboutSection from '../components/organisms/about.section';
 import ContactSection from '../components/organisms/contact.section';
 import ExperienceSection from '../components/organisms/experience.section';
@@ -19,31 +18,41 @@ export const Route = createFileRoute('/')({
       techGroups: ctx.context.queryClient.prefetchQuery(getTechStacksQuery()),
     };
   },
+  shouldReload: false,
+  headers() {
+    return {
+      'Cache-Control': 'public, maxage=604800, s-maxage=86400, stale-while-revalidate',
+      'Netlify-Vary': 'cookie=th',
+    };
+  },
 });
 
 /**
  *
  */
 function RouteComponent() {
-  const { experiences: experiencesPromise, projects: projectsPromise, techGroups: techGroupsPromise } = useLoaderData({
+  const experiencesPromise = useLoaderData({
     from: '/',
+    select: (d) => d.experiences,
+  });
+  const projectsPromise = useLoaderData({
+    from: '/',
+    select: (d) => d.projects,
+  });
+  const techGroupsPromise = useLoaderData({
+    from: '/',
+    select: (d) => d.techGroups,
   });
 
   return (
     <>
       <HeroSection />
       <AboutSection />
-      <Suspense>
-        <Await promise={experiencesPromise}>{() => <ExperienceSection />}</Await>
-      </Suspense>
-      <Suspense>
-        <Await promise={projectsPromise}>
-          {() => <ProjectsSection />}
-        </Await>
-      </Suspense>
-      <Suspense>
-        <Await promise={techGroupsPromise}>{() => <TechStackSection />}</Await>
-      </Suspense>
+      <Await promise={experiencesPromise}>{() => <ExperienceSection />}</Await>
+      <Await promise={projectsPromise}>
+        {() => <ProjectsSection />}
+      </Await>
+      <Await promise={techGroupsPromise}>{() => <TechStackSection />}</Await>
       <ContactSection />
     </>
   );

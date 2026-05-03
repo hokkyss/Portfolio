@@ -13,16 +13,15 @@ export type Viewport = {
    * // Renders <meta name="color-scheme" content="dark" />
    * ```
    */
-  colorScheme?: ColorSchemeEnum | null | undefined;
-  height?: number | string | undefined;
-  initialScale?: number | undefined;
+  colorScheme?: string;
+  height?: number | string;
+  initialScale?: number;
   interactiveWidget?:
     | 'overlays-content'
     | 'resizes-content'
-    | 'resizes-visual'
-    | undefined;
-  maximumScale?: number | undefined;
-  minimumScale?: number | undefined;
+    | 'resizes-visual';
+  maximumScale?: number;
+  minimumScale?: number;
   /**
    * The theme color for the document.
    * @example
@@ -45,23 +44,14 @@ export type Viewport = {
     | null
     | string
     | ThemeColorDescriptor
-    | ThemeColorDescriptor[]
-    | undefined;
-  userScalable?: boolean | undefined;
-  viewportFit?: 'auto' | 'contain' | 'cover' | undefined;
+    | ThemeColorDescriptor[];
 
-  width?: number | string | undefined;
+  userScalable?: boolean;
+  viewportFit?: 'auto' | 'contain' | 'cover';
+  width?: number | string;
 };
-
-type ColorSchemeEnum
-  = | 'dark'
-    | 'dark light'
-    | 'light'
-    | 'light dark'
-    | 'normal'
-    | 'only light';
 
 type ThemeColorDescriptor = {
   color: string;
-  media?: string | undefined;
+  media?: string;
 };

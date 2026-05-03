@@ -12,7 +12,7 @@ export const Route = createFileRoute('/manifest.webmanifest')({
 
             const manifest = defineManifest({
               background_color: '#fff',
-              description: 'Hokki Suwanda\'s Portfolio Web Application using TanStack Start',
+              description: 'Hokki Suwanda\'s Portfolio Web Application',
               dir: 'ltr',
               display: 'standalone',
               icons: [

@@ -94,7 +94,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
     }));
 
     const viewportMetadata = resolveViewport(defineViewport({
-      colorScheme: 'light dark',
+      colorScheme: 'light dark black-eagles golden-deer blue-lions',
       height: 'device-height',
       initialScale: 1.0,
       minimumScale: 1.0,
@@ -145,6 +145,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         'Institut Teknologi Bandung',
         'competitive programming',
       ],
+      manifest: new URL('manifest.webmanifest', getApplicationUrl()).toString(),
       other: {
         'google-site-verification': ['SopKMe65nppr9IAQ7VUBO9NGz7Rek--0P1sqHEyvIOU'],
       },
@@ -158,6 +159,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
     return {
       links: [
         {
+          fetchPriority: 'high',
           href: appCss,
           rel: 'stylesheet',
         },
@@ -186,6 +188,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       ],
     };
   },
+  shouldReload: false,
 });
 
 /**
