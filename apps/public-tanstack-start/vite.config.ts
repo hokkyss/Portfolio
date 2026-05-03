@@ -1,4 +1,5 @@
 import createNetlifyTanstackStartPlugin from '@netlify/vite-plugin-tanstack-start';
+import { sentryTanstackStart } from '@sentry/tanstackstart-react/vite';
 import tailwindcss from '@tailwindcss/vite';
 import { devtools } from '@tanstack/devtools-vite';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
@@ -61,6 +62,11 @@ const config = defineConfig({
       start: {
         entry: 'start.ts',
       },
+    }),
+    sentryTanstackStart({
+      authToken: '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',
+      org: 'hokki-suwanda',
+      project: 'portfolio-web-tanstack-start-server',
     }),
     viteReact({
       babel: {

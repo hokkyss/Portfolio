@@ -1,6 +1,7 @@
 // Internally uses console.log
 /* eslint-disable no-console */
 import { type ILoggerClient } from '@portfolio/common/logger';
+import { logger } from '@sentry/tanstackstart-react';
 import { createIsomorphicFn } from '@tanstack/react-start';
 
 /**
@@ -29,17 +30,14 @@ const getLogger = createIsomorphicFn()
   })
   .server(function getLoggerServer(): ILoggerClient {
     return {
-      debug: (...args) => console.debug(...args),
-      error: (...args) => console.error(...args),
-      group: (...args) => console.group(...args),
-      groupEnd: () => console.groupEnd(),
-      log: (...args) => console.log(...args),
-      table: <T extends Record<string, unknown>>(
-        tabularData: T[],
-        properties?: (keyof T)[],
-      ) => console.table(tabularData, properties as string[]),
-      trace: (...args) => console.trace(...args),
-      warn: (...args) => console.warn(...args),
+      debug: (payload) => logger.debug(logger.fmt`${payload}`),
+      error: (payload) => logger.error(logger.fmt`${payload}`),
+      group: noop,
+      groupEnd: noop,
+      log: (payload) => logger.info(logger.fmt`${payload}`),
+      table: noop,
+      trace: (payload) => logger.trace(payload),
+      warn: (payload) => logger.warn(logger.fmt`${payload}`),
     };
   });
 

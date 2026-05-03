@@ -18,6 +18,7 @@
     "@portfolio/utils": "workspace:^",
     "@resvg/resvg-js": "^2.6.2",
     "@sanity/client": "^7.22.0",
+    "@sentry/tanstackstart-react": "^10.51.0",
     "@tanstack/react-form": "^1.29.1",
     "@tanstack/react-query": "catalog:tanstackQuery",
     "@tanstack/react-router": "catalog:tanstackStart",
