@@ -17,7 +17,7 @@ export const Route = createFileRoute('/robots.txt')({
                 disallow: import.meta.env.DEV ? '*' : '/private',
                 userAgent: '*',
               },
-              sitemap: 'sitemap.xml',
+              sitemap: new URL('sitemap.xml', origin).toString(),
             });
 
             return new Response(resolveRobots(robots), {
