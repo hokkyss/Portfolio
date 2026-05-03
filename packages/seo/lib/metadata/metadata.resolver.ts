@@ -5,6 +5,7 @@ import { Metadata } from './metadata.interface';
  * Resolves metadata object into SEO metadata
  * @param metadata Object returned from `defineMetadata`
  * @returns SEO metas and links tag (or `title` tag for title)
+ * @see {@link https://github.com/vercel/next.js/blob/e68639f83a4853c91f60aa6044bb4502a9365996/packages/next/src/lib/metadata/metadata.tsx#L423 Nextjs Implementation}
  */
 export function resolveMetadata(metadata: Metadata): SeoMetadata {
   const result: SeoMetadata = {
@@ -15,6 +16,13 @@ export function resolveMetadata(metadata: Metadata): SeoMetadata {
   if (metadata.title) {
     result.metas.push({
       title: metadata.title,
+    });
+  }
+
+  if (metadata.description) {
+    result.metas.push({
+      content: metadata.description,
+      name: 'description',
     });
   }
 
