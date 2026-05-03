@@ -39,6 +39,9 @@ export default function ThemeSwitcher() {
       onSuccess(data, _variables, _onMutateResult, context) {
         context.client.setQueryData(getApplicationThemeQuery().queryKey, data);
       },
+      onMutate(variables, context) {
+        context.client.setQueryData(getApplicationThemeQuery().queryKey, variables);
+      },
     },
   );
   const current = THEMES.find((t) => t.value === theme) ?? THEMES[0];
@@ -48,7 +51,7 @@ export default function ThemeSwitcher() {
       <DropdownMenu>
         <DropdownMenuTrigger render={(
           <Button
-            className={tw`w-40`}
+            className={tw`sm:w-40`}
             id="theme-switcher-button"
             type="button"
             variant="outline"
