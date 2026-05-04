@@ -1,0 +1,7 @@
+[build]
+  command = "pnpm --filter @portfolio/public-tanstack-start... run build"
+  publish = "apps/public-tanstack-start/dist/client"
+  base = "/"
+
+[functions]
+  directory = "apps/public-tanstack-start/.netlify/v1/functions"
