@@ -10,6 +10,7 @@ export const getClientEnv = createIsomorphicFn()
         cmsDataset: z.never().optional(),
         cmsProjectId: z.never().optional(),
         cmsToken: z.never().optional(),
+        enableRobots: z.never().optional(),
         environment: z.literal('client').default('client'),
         firebaseApiKey: z.string(),
         firebaseAppId: z.string(),
@@ -20,6 +21,7 @@ export const getClientEnv = createIsomorphicFn()
         firebaseProjectId: z.string(),
         firebaseStorageBucket: z.string(),
         gtmId: z.string().optional(),
+        sentryDsn: z.never().optional(),
       })
       .brand('ClientEnv');
 
@@ -52,6 +54,7 @@ export const getServerEnv = createIsomorphicFn()
         cmsDataset: z.string(),
         cmsProjectId: z.string(),
         cmsToken: z.string(),
+        enableRobots: z.coerce.boolean(),
         environment: z.literal('server').default('server'),
         firebaseApiKey: z.string(),
         firebaseAppId: z.string(),
@@ -62,6 +65,7 @@ export const getServerEnv = createIsomorphicFn()
         firebaseProjectId: z.string(),
         firebaseStorageBucket: z.string(),
         gtmId: z.string().optional(),
+        sentryDsn: z.string(),
       })
       .brand('ServerEnv');
 
@@ -70,6 +74,7 @@ export const getServerEnv = createIsomorphicFn()
       cmsDataset: process.env.CMS_DATASET,
       cmsProjectId: process.env.CMS_PROJECT_ID,
       cmsToken: process.env.CMS_TOKEN,
+      enableRobots: process.env.ENABLE_ROBOTS,
       firebaseApiKey: import.meta.env.PUBLIC_FIREBASE_API_KEY as never,
       firebaseAppId: import.meta.env.PUBLIC_FIREBASE_APP_ID as never,
       firebaseAuthDomain: import.meta.env.PUBLIC_FIREBASE_AUTH_DOMAIN as never,
@@ -79,6 +84,7 @@ export const getServerEnv = createIsomorphicFn()
       firebaseProjectId: import.meta.env.PUBLIC_FIREBASE_PROJECT_ID as never,
       firebaseStorageBucket: import.meta.env.PUBLIC_FIREBASE_STORAGE_BUCKET as never,
       gtmId: import.meta.env.PUBLIC_GTM_ID as never,
+      sentryDsn: process.env.SENTRY_DSN,
     });
 
     return envConfig;

@@ -64,9 +64,9 @@ const config = defineConfig({
       },
     }),
     sentryTanstackStart({
-      authToken: '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',
-      org: 'hokki-suwanda',
-      project: 'portfolio-web-tanstack-start-server',
+      authToken: process.env.SENTRY_AUTH_TOKEN,
+      org: process.env.SENTRY_ORGANIZATION,
+      project: process.env.SENTRY_PROJECT,
     }),
     viteReact({
       babel: {
