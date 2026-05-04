@@ -1,0 +1,413 @@
+import type { SitemapLanguages } from '../sitemap/sitemap.interface';
+import type { Facebook } from './facebook.interface';
+import type { Pinterest } from './pinterest.interface';
+
+/**
+ * Metadata interface to describe all the metadata fields that can be set in a document.
+ * @remarks
+ * This interface covers all the metadata fields available in Next.js including title, description,
+ * icons, twitter, and more. Fields such as `metadataBase` help in composing absolute URLs
+ * from relative ones.
+ * @example
+ * ```tsx
+ * // Static metadata export in a layout or page:
+ * import type { Metadata } from 'next'
+ *
+ * export const metadata: Metadata = {
+ *   metadataBase: new URL('https://example.com'),
+ *   title: { default: 'My Site', template: '%s | My Site' },
+ *   description: 'Welcome to My Site',
+ *   alternates: {
+ *     canonical: 'https://example.com',
+ *     languages: {
+ *       'en-US': 'https://example.com/en-US',
+ *       'de-DE': 'https://example.com/de-DE'
+ *     }
+ *   },
+ * }
+ * ```
+ * @see {@link https://github.com/vercel/next.js/blob/e68639f83a4853c91f60aa6044bb4502a9365996/packages/next/src/lib/metadata/types/metadata-interface.ts#L90C1-L123C6 Source}
+ */
+export type Metadata = {
+  /**
+   * A brief description of the web page.
+   * @remarks
+   * Rendered as the `abstract` meta tag. This is *not recommended* as it is superseded by `description`.
+   * @example
+   * ```tsx
+   * abstract: "My Website Description"
+   * // Renders <meta name="abstract" content="My Website Description" />
+   * ```
+   */
+  abstract?: string;
+
+  /**
+   * The canonical and alternate URLs for the document.
+   * @remarks
+   * This field allows defining a canonical URL as well as alternate URLs (such as for multiple languages).
+   * @example
+   * ```tsx
+   * alternates: {
+   *   canonical: "https://example.com",
+   *   languages: {
+   *     "en-US": "https://example.com/en-US"
+   *   }
+   * }
+   * ```
+   */
+  alternates?: AlternateURLs;
+
+  /**
+   * The Apple web app metadata for the document.
+   * @example
+   * ```tsx
+   * appleWebApp: { capable: true, title: "My Website", statusBarStyle: "black-translucent" }
+   * ```
+   * @see https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html
+   */
+  appleWebApp?: AppleWebApp | boolean;
+
+  // Standard metadata names
+  // https://developer.mozilla.org/docs/Web/HTML/Element/meta/name
+
+  /**
+   * The application name.
+   * @example
+   * ```tsx
+   * applicationName: "My Blog"
+   * // Renders: <meta name="application-name" content="My Blog" />
+   * ```
+   */
+  applicationName?: string;
+
+  /**
+   * The archives link rel property.
+   * @example
+   * ```tsx
+   * archives: "https://example.com/archives"
+   * // Renders <link rel="archives" href="https://example.com/archives" />
+   * ```
+   */
+  archives?: Array<string>;
+
+  /**
+   * The assets link rel property.
+   * @example
+   * ```tsx
+   * assets: "https://example.com/assets"
+   * // Renders <link rel="assets" href="https://example.com/assets" />
+   * ```
+   */
+  assets?: Array<string>;
+
+  /**
+   * The authors of the document.
+   * @example
+   * ```tsx
+   * authors: [{ name: "Next.js Team", url: "https://nextjs.org" }]
+   * // Renders:
+   * // <meta name="author" content="Next.js Team" />
+   * // <link rel="author" href="https://nextjs.org" />
+   * ```
+   */
+  authors?: Array<Author>;
+
+  /**
+   * The bookmarks link rel property.
+   * @remarks
+   * Although technically against the HTML spec, this is used in practice.
+   * @example
+   * ```tsx
+   * bookmarks: "https://example.com/bookmarks"
+   * // Renders <link rel="bookmarks" href="https://example.com/bookmarks" />
+   * ```
+   */
+  bookmarks?: Array<string>;
+
+  /**
+   * The category meta name property.
+   * @example
+   * ```tsx
+   * category: "My Category"
+   * // Renders <meta name="category" content="My Category" />
+   * ```
+   */
+  category?: string;
+
+  /**
+   * The classification meta name property.
+   * @example
+   * ```tsx
+   * classification: "My Classification"
+   * // Renders <meta name="classification" content="My Classification" />
+   * ```
+   */
+  classification?: string;
+  /**
+   * The creator of the document.
+   * @example
+   * ```tsx
+   * creator: "Next.js Team"
+   * // Renders: <meta name="creator" content="Next.js Team" />
+   * ```
+   */
+  creator?: string;
+
+  // https://developer.mozilla.org/docs/Web/HTML/Element/meta/name#other_metadata_names
+
+  /**
+   * The document description, and optionally the Open Graph and Twitter descriptions.
+   * @example
+   * ```tsx
+   * description: "My Blog Description"
+   * // Renders: <meta name="description" content="My Blog Description" />
+   * ```
+   */
+  description?: string;
+
+  /**
+   * The Facebook metadata for the document.
+   * @remarks
+   * Specify either `appId` or `admins` (but not both) to configure Facebook integration.
+   * @example
+   * ```tsx
+   * facebook: { appId: "12345678" }
+   * // Renders <meta property="fb:app_id" content="12345678" />
+   * // or
+   * facebook: { admins: ["12345678"] }
+   * // Renders <meta property="fb:admins" content="12345678" />
+   * ```
+   */
+  facebook?: Facebook;
+
+  /**
+   * Indicates whether devices should interpret certain formats (such as telephone numbers) as actionable links.
+   * @example
+   * ```tsx
+   * formatDetection: { telephone: false }
+   * // Renders: <meta name="format-detection" content="telephone=no" />
+   * ```
+   */
+  formatDetection?: FormatDetection;
+
+  /**
+   * The generator used for the document.
+   * @example
+   * ```tsx
+   * generator: "Next.js"
+   * // Renders: <meta name="generator" content="Next.js" />
+   * ```
+   */
+  generator?: string;
+
+  /**
+   * The metadata for the iTunes App.
+   * @remarks
+   * Adds the `name="apple-itunes-app"` meta tag.
+   * @example
+   * ```tsx
+   * itunes: { app: { id: "123456789", affiliateData: "123456789", appArguments: "123456789" } }
+   * // Renders <meta name="apple-itunes-app" content="app-id=123456789, affiliate-data=123456789, app-arguments=123456789" />
+   * ```
+   */
+  itunes?: ItunesApp;
+
+  /**
+   * The keywords for the document.
+   * @remarks
+   * When an array is provided, keywords are flattened into a comma-separated string.
+   * @example
+   * ```tsx
+   * keywords: "nextjs, react, blog"
+   * // or
+   * keywords: ["react", "server components"]
+   * ```
+   */
+  keywords?: Array<string> | string;
+
+  /**
+   * A web application manifest, as defined in the Web Application Manifest specification.
+   * @example
+   * ```tsx
+   * manifest: "https://example.com/manifest.json"
+   * // Renders: <link rel="manifest" href="https://example.com/manifest.json" />
+   * ```
+   * @see https://developer.mozilla.org/docs/Web/Manifest
+   */
+  manifest?: string | URL;
+
+  /**
+   * Arbitrary name/value pairs for additional metadata.
+   * @remarks
+   * Use this field to define custom meta tags that are not directly supported.
+   * @example
+   * ```tsx
+   * other: { custom: ["meta1", "meta2"] }
+   * ```
+   */
+  other?:
+    | {
+      [name: string]: Array<number | string>;
+    };
+
+  /**
+   * The pagination link rel properties.
+   * @example
+   * ```tsx
+   * pagination: {
+   *   previous: "https://example.com/items?page=1",
+   *   next: "https://example.com/items?page=3"
+   * }
+   *
+   * // Renders
+   * <link rel="prev" href="https://example.com/items?page=1" />
+   * <link rel="next" href="https://example.com/items?page=3" />
+   * ```
+   * @see https://developers.google.com/search/blog/2011/09/pagination-with-relnext-and-relprev
+   */
+  pagination?: {
+    next?: string | URL;
+    previous?: string | URL;
+  };
+
+  /**
+   * The Pinterest metadata for the document to choose whether opt out of rich pin data.
+   * @example
+   * ```tsx
+   * pinterest: { richPin: true }
+   * // Renders <meta name="pinterest-rich-pin" content="true" />
+   * ```
+   */
+  pinterest?: Pinterest;
+  /**
+   * The publisher of the document.
+   * @example
+   * ```tsx
+   * publisher: "Vercel"
+   * // Renders: <meta name="publisher" content="Vercel" />
+   * ```
+   */
+  publisher?: string;
+  /**
+   * The referrer setting for the document.
+   * @example
+   * ```tsx
+   * referrer: "origin"
+   * // Renders: <meta name="referrer" content="origin" />
+   * ```
+   */
+  referrer?: ReferrerEnum;
+  /**
+   * The document title.
+   * @remarks
+   * The title can be a simple string (e.g., `"My Blog"`) or an object with:
+   * - `default`: A fallback title for child segments.
+   * - `template`: A title template (e.g., `"%s | My Website"`) applied to child titles.
+   * - `absolute`: A title that overrides parent templates.
+   * @example
+   * ```tsx
+   * // As a simple string:
+   * title: "My Blog"
+   *
+   * // As a template object:
+   * title: { default: "Dashboard", template: "%s | My Website" }
+   * ```
+   */
+  title?: string;
+  /**
+   * The common verification tokens for the document.
+   * @example
+   * ```tsx
+   * verification: { google: "1234567890", yandex: "1234567890", "me": "1234567890" }
+   * // Renders <meta name="google-site-verification" content="1234567890" />
+   * // <meta name="yandex-verification" content="1234567890" />
+   * // <meta name="me" content="@me" />
+   * ```
+   */
+  verification?: undefined | Verification;
+};
+
+type AlternateLinkDescriptor = {
+  title?: string;
+  url: string | URL;
+};
+
+type AlternateURLs = {
+  canonical?: AlternateLinkDescriptor | string | URL;
+  languages?:
+    | SitemapLanguages<AlternateLinkDescriptor[] | string | URL>;
+
+  media?:
+    | {
+      [media: string]: AlternateLinkDescriptor[] | string | URL;
+    };
+
+  types?:
+    | {
+      [types: string]: AlternateLinkDescriptor[] | string | URL;
+    };
+
+};
+
+type AppleImage = AppleImageDescriptor | string;
+
+type AppleImageDescriptor = {
+  media?: string;
+  url: string;
+};
+
+type AppleWebApp = {
+  // default true
+  capable?: boolean;
+  startupImage?: AppleImage | Array<AppleImage>;
+  // default "default"
+  statusBarStyle?: 'black-translucent' | 'black' | 'default';
+  title?: string;
+};
+
+type Author = {
+  // renders as <meta name="author"...
+  name?: string;
+  // renders as <link rel="author"...
+  url?: string | URL;
+};
+
+type FormatDetection = {
+  address?: boolean;
+  date?: boolean;
+  email?: boolean;
+  telephone?: boolean;
+  url?: boolean;
+};
+
+/**
+ * @see {@link https://developer.apple.com/documentation/webkit/promoting_apps_with_smart_app_banners Reference}
+ */
+type ItunesApp = {
+  appArgument?: string;
+  appId: string;
+};
+
+/**
+ * does not include "unsafe-URL". to use this users should use '"unsafe-URL" as ReferrerEnum'
+ */
+type ReferrerEnum
+  = | 'no-referrer-when-downgrade'
+    | 'no-referrer'
+    | 'origin-when-cross-origin'
+    | 'origin'
+    | 'same-origin'
+    | 'strict-origin-when-cross-origin'
+    | 'strict-origin';
+
+type Verification = {
+  google?: (number | string)[];
+  me?: (number | string)[];
+  // if you ad-hoc additional verification
+  other?:
+    | {
+      [name: string]: (number | string)[];
+    };
+  yahoo?: (number | string)[];
+  yandex?: (number | string)[];
+};

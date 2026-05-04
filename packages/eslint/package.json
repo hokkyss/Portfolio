@@ -1,0 +1,41 @@
+{
+  "name": "@portfolio/eslint",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "Eslint config for monorepo",
+  "main": "get-config.js",
+  "exports": {
+    ".": {
+      "types": "./get-config.d.ts",
+      "default": "./get-config.js"
+    }
+  },
+  "keywords": [],
+  "author": {
+    "email": "hokkyss2@gmail.com",
+    "name": "Hokki Suwanda",
+    "url": "https://i-am.hokkyss.com"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@eslint-react/eslint-plugin": "catalog:react19",
+    "@eslint/js": "catalog:eslint",
+    "@stylistic/eslint-plugin": "catalog:eslint",
+    "@tanstack/eslint-plugin-query": "catalog:tanstackQuery",
+    "@tanstack/eslint-plugin-router": "catalog:tanstackStart",
+    "eslint-plugin-format": "catalog:eslint",
+    "eslint-plugin-jsdoc": "catalog:eslint",
+    "eslint-plugin-jsonc": "catalog:eslint",
+    "eslint-plugin-perfectionist": "catalog:eslint",
+    "eslint-plugin-react-hooks": "catalog:react19",
+    "eslint-plugin-react-refresh": "catalog:react19",
+    "eslint-plugin-unused-imports": "catalog:eslint",
+    "globals": "catalog:eslint",
+    "typescript-eslint": "catalog:ts5"
+  },
+  "devDependencies": {
+    "eslint": "catalog:eslint",
+    "typescript": "catalog:ts5"
+  }
+}

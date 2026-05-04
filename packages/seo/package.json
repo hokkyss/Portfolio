@@ -1,0 +1,99 @@
+{
+  "name": "@portfolio/seo",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./robots": {
+      "production": {
+        "types": "./dist/robots/index.d.ts",
+        "default": "./dist/robots.js"
+      },
+      "default": "./lib/robots/index.ts"
+    },
+    "./app-links": {
+      "production": {
+        "types": "./dist/app-links/index.d.ts",
+        "default": "./dist/app-links.js"
+      },
+      "default": "./lib/app-links/index.ts"
+    },
+    "./icons": {
+      "production": {
+        "types": "./dist/icons/index.d.ts",
+        "default": "./dist/icons.js"
+      },
+      "default": "./lib/icons/index.ts"
+    },
+    "./metadata": {
+      "production": {
+        "types": "./dist/metadata/index.d.ts",
+        "default": "./dist/metadata.js"
+      },
+      "default": "./lib/metadata/index.ts"
+    },
+    "./sitemap": {
+      "production": {
+        "types": "./dist/sitemap/index.d.ts",
+        "default": "./dist/sitemap.js"
+      },
+      "default": "./lib/sitemap/index.ts"
+    },
+    "./opengraph": {
+      "production": {
+        "types": "./dist/opengraph/index.d.ts",
+        "default": "./dist/opengraph.js"
+      },
+      "default": "./lib/opengraph/index.ts"
+    },
+    "./twitter": {
+      "production": {
+        "types": "./dist/twitter/index.d.ts",
+        "default": "./dist/twitter.js"
+      },
+      "default": "./lib/twitter/index.ts"
+    },
+    "./manifest": {
+      "production": {
+        "types": "./dist/manifest/index.d.ts",
+        "default": "./dist/manifest.js"
+      },
+      "default": "./lib/manifest/index.ts"
+    },
+    "./viewport": {
+      "production": {
+        "types": "./dist/viewport/index.d.ts",
+        "default": "./dist/viewport.js"
+      },
+      "default": "./lib/viewport/index.ts"
+    }
+  },
+  "types": "./index.d.ts",
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "lint": "eslint",
+    "build": "tsc && vite build"
+  },
+  "peerDependencies": {
+    "zod": "catalog:zod4",
+    "react": "catalog:react19"
+  },
+  "devDependencies": {
+    "@portfolio/eslint": "workspace:^",
+    "@types/node": "^24.0.14",
+    "@types/react": "catalog:react19",
+    "eslint": "catalog:eslint",
+    "react": "catalog:react19",
+    "typescript": "catalog:ts5",
+    "vite": "^7.0.5",
+    "vite-plugin-dts": "^4.5.4",
+    "zod": "catalog:zod4"
+  },
+  "dependencies": {
+    "ts-pattern": "^5.9.0"
+  }
+}
