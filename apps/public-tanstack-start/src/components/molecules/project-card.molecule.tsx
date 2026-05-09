@@ -25,7 +25,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <Card
-      className={tw`group flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl`}
+      className={tw`group flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl pt-0`}
       id={`project-card-${name.toLowerCase().replace(/\s+/g, '-')}`}
     >
       {/* Live screenshot */}
