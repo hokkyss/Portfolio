@@ -15,13 +15,14 @@ export const getClientEnv = createIsomorphicFn()
         firebaseApiKey: z.string(),
         firebaseAppId: z.string(),
         firebaseAuthDomain: z.string(),
-        firebaseDatabaseUrl: z.string(),
+        firebaseDatabaseUrl: z.string().optional(),
         firebaseMeasurementId: z.string(),
         firebaseMessagingSenderId: z.string(),
         firebaseProjectId: z.string(),
-        firebaseStorageBucket: z.string(),
+        firebaseStorageBucket: z.string().optional(),
         gtmId: z.string().optional(),
         sentryDsn: z.never().optional(),
+        sentryEnvironment: z.never().optional(),
       })
       .brand('ClientEnv');
 
@@ -59,13 +60,14 @@ export const getServerEnv = createIsomorphicFn()
         firebaseApiKey: z.string(),
         firebaseAppId: z.string(),
         firebaseAuthDomain: z.string(),
-        firebaseDatabaseUrl: z.string(),
+        firebaseDatabaseUrl: z.string().optional(),
         firebaseMeasurementId: z.string(),
         firebaseMessagingSenderId: z.string(),
         firebaseProjectId: z.string(),
-        firebaseStorageBucket: z.string(),
+        firebaseStorageBucket: z.string().optional(),
         gtmId: z.string().optional(),
         sentryDsn: z.string(),
+        sentryEnvironment: z.enum(['development', 'production']).catch('production'),
       })
       .brand('ServerEnv');
 
@@ -85,6 +87,7 @@ export const getServerEnv = createIsomorphicFn()
       firebaseStorageBucket: import.meta.env.PUBLIC_FIREBASE_STORAGE_BUCKET as never,
       gtmId: import.meta.env.PUBLIC_GTM_ID as never,
       sentryDsn: process.env.SENTRY_DSN,
+      sentryEnvironment: process.env.SENTRY_ENVIRONMENT,
     });
 
     return envConfig;
