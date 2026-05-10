@@ -210,13 +210,11 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <CardContentComponent className={tw`flex flex-col gap-y-4 pt-6`}>
           <CardTitleComponent>Something went wrong</CardTitleComponent>
           <p className={tw`text-sm text-muted-foreground`}>{error.message}</p>
-          {eventId && (
-            <p className={tw`text-xs text-muted-foreground font-mono`}>
-              Request ID:
-              {' '}
-              {eventId}
-            </p>
-          )}
+          <p className={tw`text-xs text-muted-foreground font-mono`}>
+            Request ID:
+            {' '}
+            {error instanceof ApplicationError ? error.payload['requestId'] as string : eventId}
+          </p>
           <p className={tw`text-xs text-muted-foreground font-mono`}>
             Build:
             {' '}
