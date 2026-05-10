@@ -4,14 +4,28 @@ import tailwindcss from '@tailwindcss/vite';
 import { devtools } from '@tanstack/devtools-vite';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
 import viteReact from '@vitejs/plugin-react';
+import { execSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { defineConfig } from 'vite';
+import packageJson from './package.json' with { type: 'json' };
+
+const getBuildNumber = () => {
+  try {
+    return (process.env.COMMIT_REF || process.env.BUILD_ID)?.slice(0, 7) || execSync('git rev-parse --short HEAD').toString().trim();
+  } catch {
+    return 'dev';
+  }
+};
 
 const config = defineConfig({
   build: {
     rollupOptions: {
       external: ['@sparticuz/chromium', '@resvg/resvg-js'],
     },
+  },
+  define: {
+    __APP_VERSION__: JSON.stringify(packageJson.version),
+    __BUILD_NUMBER__: JSON.stringify(getBuildNumber()),
   },
   envPrefix: ['PUBLIC_'],
   optimizeDeps: {
