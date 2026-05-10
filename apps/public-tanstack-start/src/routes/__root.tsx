@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react';
 import { CircleNotchIcon } from '@phosphor-icons/react';
+import ApplicationError from '@portfolio/common/errors/application-error';
 import ThemeProvider from '@portfolio/design-system/application-theme-provider';
 import Button from '@portfolio/design-system/button';
 import CardComponent from '@portfolio/design-system/card';
@@ -13,6 +13,7 @@ import { defineOpenGraph, resolveOpenGraph } from '@portfolio/seo/opengraph';
 import { defineTwitter, resolveTwitter } from '@portfolio/seo/twitter';
 import { defineViewport, resolveViewport } from '@portfolio/seo/viewport';
 import { tryit } from '@portfolio/utils';
+import { captureException } from '@sentry/tanstackstart-react';
 import { TanStackDevtools } from '@tanstack/react-devtools';
 import { type QueryClient, useSuspenseQuery } from '@tanstack/react-query';
 import { ReactQueryDevtoolsPanel } from '@tanstack/react-query-devtools';
@@ -26,6 +27,7 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 import { getOrigin } from '@tanstack/react-router/ssr/server';
 import { createIsomorphicFn } from '@tanstack/react-start';
 import { getRequest } from '@tanstack/react-start/server';
+import { type ReactNode, useMemo } from 'react';
 import NavBar from '../components/molecules/nav-bar.molecule';
 import getEnv from '../configs/env/env.config';
 import getApplicationThemeQuery from '../lib/common/queries/get-application-theme.query';
@@ -198,12 +200,28 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
  * @param root0.reset
  */
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+  const eventId = useMemo(() => captureException(error, {
+    event_id: error instanceof ApplicationError ? error.payload['requestId'] as string : undefined,
+  }), [error]);
+
   return (
     <div className={tw`flex min-h-screen items-center justify-center p-8`}>
       <CardComponent className={tw`max-w-md w-full`}>
         <CardContentComponent className={tw`flex flex-col gap-y-4 pt-6`}>
           <CardTitleComponent>Something went wrong</CardTitleComponent>
           <p className={tw`text-sm text-muted-foreground`}>{error.message}</p>
+          {eventId && (
+            <p className={tw`text-xs text-muted-foreground font-mono`}>
+              Request ID:
+              {' '}
+              {eventId}
+            </p>
+          )}
+          <p className={tw`text-xs text-muted-foreground font-mono`}>
+            Build:
+            {' '}
+            {__BUILD_NUMBER__}
+          </p>
           <Button onClick={reset} variant="outline">
             Try again
           </Button>
@@ -273,6 +291,17 @@ function RootDocument({ children }: { children: ReactNode }) {
           <NavBar />
           <Toaster position="bottom-right" />
           {children}
+          <footer className={tw`p-4 text-center`}>
+            <p className={tw`text-xs text-muted-foreground`}>
+              v
+              {__APP_VERSION__}
+              {' '}
+              (
+              {__BUILD_NUMBER__}
+              )
+              {' '}
+            </p>
+          </footer>
         </ThemeProvider>
         <TanStackDevtools
           config={{

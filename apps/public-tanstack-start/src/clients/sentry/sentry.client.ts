@@ -9,6 +9,7 @@ const sentryClient = init({
   dsn: serverEnv.sentryDsn,
   // Enable logs to be sent to Sentry
   enableLogs: true,
+  enableMetrics: true,
   environment: serverEnv.sentryEnvironment,
   integrations: [
     // send console.log, console.warn, and console.error calls as logs to Sentry

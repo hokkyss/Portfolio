@@ -99,13 +99,14 @@ const functionLoggerMiddleware = createMiddleware({ type: 'function' })
             }),
           );
           span.end();
-          throw err;
+          throw new ApplicationError(500, err.message)
+            .addPayload('requestId', ctx.context.requestId);
         }
 
         span.end();
-        throw new Error(
+        throw new ApplicationError(500,
           'A non error object is found. This is probably a bug in the application',
-        );
+        ).addPayload('requestId', ctx.context.requestId);
       }
     });
   });
