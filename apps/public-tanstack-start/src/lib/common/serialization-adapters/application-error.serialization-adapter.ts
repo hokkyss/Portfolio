@@ -1,4 +1,4 @@
-import ApplicationError from '@portfolio/common/errors/application-error';
+import ApplicationError, { ErrorPayloadValue } from '@portfolio/common/errors/application-error';
 import { createSerializationAdapter } from '@tanstack/react-router';
 
 const applicationErrorSerializationAdapter = createSerializationAdapter({
@@ -6,9 +6,20 @@ const applicationErrorSerializationAdapter = createSerializationAdapter({
   test: (value) => value instanceof ApplicationError,
   toSerializable: (value) => ({
     message: value.message,
+    payload: JSON.stringify(value.payload),
     status: value.status,
   }),
-  fromSerializable: (value) => new ApplicationError(value.status, value.message),
+  fromSerializable: (value) => {
+    const payload = JSON.parse(value.payload) as Record<string, ErrorPayloadValue>;
+
+    const applicationError = new ApplicationError(value.status, value.message);
+
+    Object.entries(payload).forEach(([key, value]) => {
+      applicationError.addPayload(key, value);
+    });
+
+    return applicationError;
+  },
 });
 
 export default applicationErrorSerializationAdapter;
