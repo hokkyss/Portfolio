@@ -3,102 +3,141 @@
  * @see {@link https://ui.shadcn.com/docs/components/radix/table}
  */
 
-import * as React from "react"
+import type { ComponentProps } from 'react';
+import { cn, tw } from '@/lib/utils';
 
-import { cn } from "@/lib/utils"
-
-function Table({ className, ...props }: React.ComponentProps<"table">) {
+/**
+ *
+ * @param root0
+ * @param root0.className
+ */
+function Table({ className, ...props }: ComponentProps<'table'>) {
   return (
-    <div data-slot="table-container" className="relative w-full overflow-x-auto">
+    <div className={tw`relative w-full overflow-x-auto`} data-slot="table-container">
       <table
+        className={cn(tw`w-full caption-bottom text-sm`, className)}
         data-slot="table"
-        className={cn("w-full caption-bottom text-sm", className)}
         {...props}
       />
     </div>
-  )
+  );
 }
 
-function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
-  return (
-    <thead
-      data-slot="table-header"
-      className={cn("[&_tr]:border-b", className)}
-      {...props}
-    />
-  )
-}
-
-function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
+/**
+ *
+ * @param root0
+ * @param root0.className
+ */
+function TableBody({ className, ...props }: ComponentProps<'tbody'>) {
   return (
     <tbody
+      className={cn(tw`[&_tr:last-child]:border-0`, className)}
       data-slot="table-body"
-      className={cn("[&_tr:last-child]:border-0", className)}
       {...props}
     />
-  )
+  );
 }
 
-function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
-  return (
-    <tfoot
-      data-slot="table-footer"
-      className={cn("bg-muted/50 border-t font-medium [&>tr]:last:border-b-0", className)}
-      {...props}
-    />
-  )
-}
-
-function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
-  return (
-    <tr
-      data-slot="table-row"
-      className={cn("hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors", className)}
-      {...props}
-    />
-  )
-}
-
-function TableHead({ className, ...props }: React.ComponentProps<"th">) {
-  return (
-    <th
-      data-slot="table-head"
-      className={cn("text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0", className)}
-      {...props}
-    />
-  )
-}
-
-function TableCell({ className, ...props }: React.ComponentProps<"td">) {
-  return (
-    <td
-      data-slot="table-cell"
-      className={cn("p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0", className)}
-      {...props}
-    />
-  )
-}
-
+/**
+ *
+ * @param root0
+ * @param root0.className
+ */
 function TableCaption({
   className,
   ...props
-}: React.ComponentProps<"caption">) {
+}: ComponentProps<'caption'>) {
   return (
     <caption
+      className={cn(tw`text-muted-foreground mt-4 text-sm`, className)}
       data-slot="table-caption"
-      className={cn("text-muted-foreground mt-4 text-sm", className)}
       {...props}
     />
-  )
+  );
+}
+
+/**
+ *
+ * @param root0
+ * @param root0.className
+ */
+function TableCell({ className, ...props }: ComponentProps<'td'>) {
+  return (
+    <td
+      className={cn(tw`p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0`, className)}
+      data-slot="table-cell"
+      {...props}
+    />
+  );
+}
+
+/**
+ *
+ * @param root0
+ * @param root0.className
+ */
+function TableFooter({ className, ...props }: ComponentProps<'tfoot'>) {
+  return (
+    <tfoot
+      className={cn(tw`bg-muted/50 border-t font-medium [&>tr]:last:border-b-0`, className)}
+      data-slot="table-footer"
+      {...props}
+    />
+  );
+}
+
+/**
+ *
+ * @param root0
+ * @param root0.className
+ */
+function TableHead({ className, ...props }: ComponentProps<'th'>) {
+  return (
+    <th
+      className={cn(tw`text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0`, className)}
+      data-slot="table-head"
+      {...props}
+    />
+  );
+}
+
+/**
+ *
+ * @param root0
+ * @param root0.className
+ */
+function TableHeader({ className, ...props }: ComponentProps<'thead'>) {
+  return (
+    <thead
+      className={cn(tw`[&_tr]:border-b`, className)}
+      data-slot="table-header"
+      {...props}
+    />
+  );
+}
+
+/**
+ *
+ * @param root0
+ * @param root0.className
+ */
+function TableRow({ className, ...props }: ComponentProps<'tr'>) {
+  return (
+    <tr
+      className={cn(tw`hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors`, className)}
+      data-slot="table-row"
+      {...props}
+    />
+  );
 }
 
 export {
   Table,
-  TableHeader,
   TableBody,
+  TableCaption,
+  TableCell,
   TableFooter,
   TableHead,
+  TableHeader,
   TableRow,
-  TableCell,
-  TableCaption,
-}
+};
