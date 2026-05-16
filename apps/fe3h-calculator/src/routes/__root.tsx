@@ -137,23 +137,6 @@ function RootDocument({ children }: { children: ReactNode }) {
           <main className={tw`pt-16`}>
             {children}
           </main>
-          <footer className={tw`border-t mt-auto p-6 text-center`}>
-            <p className={tw`text-xs text-muted-foreground font-mono`}>
-              FE3H Calc — Fire Emblem: Three Houses
-            </p>
-            <p className={tw`text-xs text-muted-foreground mt-1`}>
-              Data sourced from
-              {' '}
-              <a
-                className={tw`underline hover:text-foreground transition-colors`}
-                href="https://serenesforest.net/three-houses/"
-                rel="noreferrer"
-                target="_blank"
-              >
-                Serenes Forest
-              </a>
-            </p>
-          </footer>
           <TanStackDevtools
             config={{ position: 'bottom-right' }}
             plugins={[

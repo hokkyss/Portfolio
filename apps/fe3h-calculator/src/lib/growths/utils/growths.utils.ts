@@ -9,6 +9,9 @@ const STAT_KEYS: StatKey[] = ['hp', 'str', 'mag', 'dex', 'spd', 'lck', 'def', 'r
 
 /**
  * Effective growth rate = character base + class modifier + personal ability modifier.
+ * @param character
+ * @param cls
+ * @param personalAbility
  */
 export function calculateEffectiveGrowths(
   character: Character,
@@ -22,19 +25,6 @@ export function calculateEffectiveGrowths(
     const classMod = cls.growthModifiers[key] ?? 0;
     const abilityMod = personalAbility?.modifiers.growths?.[key] ?? 0;
     result[key] = base + classMod + abilityMod;
-  }
-
-  return result;
-}
-
-/**
- * Effective stat cap = min(character max stat, class stat cap).
- */
-export function calculateEffectiveStatCaps(character: Character, cls: ClassData): Stats {
-  const result = {} as Stats;
-
-  for (const key of STAT_KEYS) {
-    result[key] = Math.min(character.maxStats[key], cls.statCaps[key]);
   }
 
   return result;
