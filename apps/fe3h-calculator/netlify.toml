@@ -1,7 +1,7 @@
 [build]
-  command = "pnpm --filter @portfolio/public-tanstack-start... run build"
-  publish = "apps/public-tanstack-start/dist/client"
+  command = "pnpm --filter @portfolio/fe3h-calculator... run build"
+  publish = "apps/fe3h-calculator/dist/client"
   base = "/"
 
 [functions]
-  directory = "apps/public-tanstack-start/.netlify/v1/functions"
+  directory = "apps/fe3h-calculator/.netlify/v1/functions"

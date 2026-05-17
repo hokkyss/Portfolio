@@ -40,8 +40,8 @@ export default function NavBar() {
           id="nav-brand"
           to="/"
         >
-          <span className={tw`text-primary`}>fe3h</span>
-          <span className={tw`text-muted-foreground`}>.calc</span>
+          <span className={tw`text-primary`}>three-houses-calc</span>
+          <span className={tw`text-muted-foreground`}>.hokkyss.com</span>
         </Link>
 
         {/* Nav links */}

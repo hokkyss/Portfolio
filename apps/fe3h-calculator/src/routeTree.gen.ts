@@ -9,13 +9,25 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as GrowthsAndStatsRouteImport } from './routes/growths-and-stats'
+import { Route as FaviconDoticoRouteImport } from './routes/favicon[.]ico'
 import { Route as DamageRouteImport } from './routes/damage'
 import { Route as IndexRouteImport } from './routes/index'
 
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GrowthsAndStatsRoute = GrowthsAndStatsRouteImport.update({
   id: '/growths-and-stats',
   path: '/growths-and-stats',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaviconDoticoRoute = FaviconDoticoRouteImport.update({
+  id: '/favicon.ico',
+  path: '/favicon.ico',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DamageRoute = DamageRouteImport.update({
@@ -32,40 +44,73 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/damage': typeof DamageRoute
+  '/favicon.ico': typeof FaviconDoticoRoute
   '/growths-and-stats': typeof GrowthsAndStatsRoute
+  '/robots.txt': typeof RobotsDottxtRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/damage': typeof DamageRoute
+  '/favicon.ico': typeof FaviconDoticoRoute
   '/growths-and-stats': typeof GrowthsAndStatsRoute
+  '/robots.txt': typeof RobotsDottxtRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/damage': typeof DamageRoute
+  '/favicon.ico': typeof FaviconDoticoRoute
   '/growths-and-stats': typeof GrowthsAndStatsRoute
+  '/robots.txt': typeof RobotsDottxtRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/damage' | '/growths-and-stats'
+  fullPaths:
+    | '/'
+    | '/damage'
+    | '/favicon.ico'
+    | '/growths-and-stats'
+    | '/robots.txt'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/damage' | '/growths-and-stats'
-  id: '__root__' | '/' | '/damage' | '/growths-and-stats'
+  to: '/' | '/damage' | '/favicon.ico' | '/growths-and-stats' | '/robots.txt'
+  id:
+    | '__root__'
+    | '/'
+    | '/damage'
+    | '/favicon.ico'
+    | '/growths-and-stats'
+    | '/robots.txt'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DamageRoute: typeof DamageRoute
+  FaviconDoticoRoute: typeof FaviconDoticoRoute
   GrowthsAndStatsRoute: typeof GrowthsAndStatsRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/growths-and-stats': {
       id: '/growths-and-stats'
       path: '/growths-and-stats'
       fullPath: '/growths-and-stats'
       preLoaderRoute: typeof GrowthsAndStatsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/favicon.ico': {
+      id: '/favicon.ico'
+      path: '/favicon.ico'
+      fullPath: '/favicon.ico'
+      preLoaderRoute: typeof FaviconDoticoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/damage': {
@@ -88,7 +133,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DamageRoute: DamageRoute,
+  FaviconDoticoRoute: FaviconDoticoRoute,
   GrowthsAndStatsRoute: GrowthsAndStatsRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

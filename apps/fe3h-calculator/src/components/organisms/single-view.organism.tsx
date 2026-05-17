@@ -7,11 +7,11 @@ import TableHead from '@portfolio/design-system/table-head';
 import TableHeader from '@portfolio/design-system/table-header';
 import TableRow from '@portfolio/design-system/table-row';
 import tw from '@portfolio/design-system/tw';
-import type { Ability } from '../../lib/abilities/models/ability.model';
-import type { Character } from '../../lib/characters/models/character.model';
-import type { ClassData } from '../../lib/classes/models/class.model';
 import type { Stats } from '../../lib/common/models/stats.model';
-import { STAT_KEYS } from '../../lib/growths/utils/growths.utils';
+import type { Ability } from '../../lib/game/models/ability.model';
+import type { Character } from '../../lib/game/models/character.model';
+import type { ClassData } from '../../lib/game/models/class.model';
+import { STAT_KEYS } from '../../lib/game/utils/growths.utils';
 import { growthColor, STAT_LABELS, tierBadgeVariant } from './growths-and-stats.helpers';
 
 /**

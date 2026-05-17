@@ -5,6 +5,7 @@ import CardComponent from '@portfolio/design-system/card';
 import CardContentComponent from '@portfolio/design-system/card-content';
 import CardTitleComponent from '@portfolio/design-system/card-title';
 import tw from '@portfolio/design-system/tw';
+import { defineIcons, resolveIcons } from '@portfolio/seo/icons';
 import { defineMetadata, resolveMetadata } from '@portfolio/seo/metadata';
 import { defineViewport, resolveViewport } from '@portfolio/seo/viewport';
 import { tryit } from '@portfolio/utils';
@@ -18,10 +19,17 @@ import {
   Scripts,
 } from '@tanstack/react-router';
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
+import { getOrigin } from '@tanstack/react-router/ssr/server';
+import { createIsomorphicFn } from '@tanstack/react-start';
+import { getRequest } from '@tanstack/react-start/server';
 import { type ReactNode } from 'react';
 import NavBar from '../components/molecules/nav-bar.molecule';
 import getApplicationThemeQuery from '../lib/common/queries/get-application-theme.query';
 import appCss from '../styles.css?url';
+
+const getApplicationUrl = createIsomorphicFn()
+  .server(() => getOrigin(getRequest()))
+  .client(() => location.origin);
 
 interface MyRouterContext {
   queryClient: QueryClient;
@@ -48,8 +56,18 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       applicationName: 'FE3H Calculator',
       authors: [{ name: 'Hokki Suwanda', url: 'https://github.com/hokkyss' }],
       description: 'Fire Emblem: Three Houses growth rate and max stat calculator. Analyze character stats across all classes.',
-      keywords: ['fire emblem', 'three houses', 'fe3h', 'growth rate', 'max stats', 'calculator', 'edelgard', 'dimitri', 'claude'],
-      title: 'FE3H Calc — Growth & Stats Calculator',
+      keywords: ['fire emblem', 'three houses', 'fe3h', 'fe16', 'growth rate', 'max stats', 'calculator', 'edelgard', 'dimitri', 'claude'],
+      title: 'Fire Emblem: Three Houses Calculator',
+    }));
+
+    const icons = resolveIcons(defineIcons({
+      icon: [
+        {
+          sizes: '16x16',
+          type: 'image/png',
+          url: new URL('/favicon.ico', getApplicationUrl()),
+        },
+      ],
     }));
 
     return {
@@ -57,11 +75,13 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         { fetchPriority: 'high', href: appCss, rel: 'stylesheet' },
         ...viewportMetadata.links,
         ...metadata.links,
+        ...icons.links,
       ],
       meta: [
         { charSet: 'utf-8' },
         ...viewportMetadata.metas,
         ...metadata.metas,
+        ...icons.metas,
       ],
     };
   },

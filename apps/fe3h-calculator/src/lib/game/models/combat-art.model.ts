@@ -1,4 +1,4 @@
-import type { WeaponType } from '../../weapons/models/weapon.model';
+import type { WeaponType } from './weapon.model';
 
 export interface CombatArt {
   consecutiveHits?: number; // E.g., Swift Strikes hits twice

@@ -12,15 +12,15 @@ import SelectValue from '@portfolio/design-system/select-value';
 import tw from '@portfolio/design-system/tw';
 import { createFileRoute } from '@tanstack/react-router';
 import { useMemo, useState } from 'react';
-import type { Character } from '../lib/characters/models/character.model';
-import type { ClassData } from '../lib/classes/models/class.model';
+import type { Character } from '../lib/game/models/character.model';
+import type { ClassData } from '../lib/game/models/class.model';
 import { CompareTable } from '../components/organisms/compare-table.organism';
 import { SingleView } from '../components/organisms/single-view.organism';
-import { ABILITIES } from '../lib/abilities/data/abilities.data';
-import { CHARACTERS, CHARACTERS_BY_ID } from '../lib/characters/data/characters.data';
-import { CLASSES, CLASSES_BY_ID, ClassId } from '../lib/classes/data/classes.data';
-import { getEligibleClasses } from '../lib/classes/utils/class-eligibility.utils';
-import { calculateEffectiveGrowths, type StatKey } from '../lib/growths/utils/growths.utils';
+import { ABILITIES } from '../lib/game/data/abilities.data';
+import { CHARACTERS, CHARACTERS_BY_ID } from '../lib/game/data/characters.data';
+import { CLASSES, CLASSES_BY_ID, ClassId } from '../lib/game/data/classes.data';
+import { getEligibleClasses } from '../lib/game/utils/class-eligibility.utils';
+import { calculateEffectiveGrowths, type StatKey } from '../lib/game/utils/growths.utils';
 
 export const Route = createFileRoute('/growths-and-stats')({
   component: GrowthsAndStatsPage,

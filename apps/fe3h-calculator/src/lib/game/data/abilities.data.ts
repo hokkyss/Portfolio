@@ -5,10 +5,9 @@ import type { Ability } from '../models/ability.model';
  * Gives +20% to ALL growth rates.
  */
 export const APTITUDE: Ability = {
-  id: 'aptitude',
-  name: 'Aptitude',
   condition: 'Always',
   description: '+20% to all growth rates.',
+  id: 'aptitude',
   modifiers: {
     growths: {
       cha: 20,
@@ -22,6 +21,7 @@ export const APTITUDE: Ability = {
       str: 20,
     },
   },
+  name: 'Aptitude',
 };
 
 /**

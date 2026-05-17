@@ -1,7 +1,7 @@
-import type { Ability } from '../../abilities/models/ability.model';
-import type { Character } from '../../characters/models/character.model';
-import type { ClassData } from '../../classes/models/class.model';
 import type { Stats } from '../../common/models/stats.model';
+import type { Ability } from '../models/ability.model';
+import type { Character } from '../models/character.model';
+import type { ClassData } from '../models/class.model';
 
 type StatKey = keyof Stats;
 
