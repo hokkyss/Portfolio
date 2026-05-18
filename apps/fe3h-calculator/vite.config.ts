@@ -1,4 +1,4 @@
-import createNetlifyTanstackStartPlugin from '@netlify/vite-plugin-tanstack-start';
+import createNetlifyPlugin from '@netlify/vite-plugin';
 import tailwindcss from '@tailwindcss/vite';
 import { devtools } from '@tanstack/devtools-vite';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
@@ -82,7 +82,13 @@ const config = defineConfig({
         plugins: [['babel-plugin-react-compiler']],
       },
     }),
-    createNetlifyTanstackStartPlugin(),
+    createNetlifyPlugin({
+      build: {
+        displayName: '@portfolio/fe3h-calculator-function',
+        edgeSSR: true,
+        enabled: true,
+      },
+    }),
   ],
 });
 

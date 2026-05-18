@@ -1,4 +1,4 @@
-import createNetlifyTanstackStartPlugin from '@netlify/vite-plugin-tanstack-start';
+import createNetlifyPlugin from '@netlify/vite-plugin';
 import { sentryTanstackStart } from '@sentry/tanstackstart-react/vite';
 import tailwindcss from '@tailwindcss/vite';
 import { devtools } from '@tanstack/devtools-vite';
@@ -87,7 +87,13 @@ const config = defineConfig({
         plugins: [['babel-plugin-react-compiler']],
       },
     }),
-    createNetlifyTanstackStartPlugin(),
+    createNetlifyPlugin({
+      build: {
+        displayName: '@portfolio/public-tanstack-start-function',
+        edgeSSR: true,
+        enabled: true,
+      },
+    }),
   ],
 });
 
