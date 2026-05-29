@@ -1,3 +1,4 @@
+import { cloudflare } from '@cloudflare/vite-plugin';
 import createNetlifyPlugin from '@netlify/vite-plugin';
 import { sentryTanstackStart } from '@sentry/tanstackstart-react/vite';
 import tailwindcss from '@tailwindcss/vite';
@@ -43,6 +44,18 @@ const config = defineConfig({
         minify: true,
       },
     }),
+    !!process.env.CLOUDFLARE_ENV && cloudflare({
+      viteEnvironment: { childEnvironments: ['rsc'], name: 'ssr' },
+    }),
+    !!process.env.CLOUDFLARE_ENV && {
+      configResolved(config) {
+        config.resolve.alias.push({
+          find: 'node:process',
+          replacement: 'cloudflare:workers',
+        });
+      },
+      name: 'portfolio:public-tanstack-start:env-compat',
+    },
     tanstackStart({
       client: {
         entry: 'client.tsx',
@@ -87,10 +100,9 @@ const config = defineConfig({
         plugins: [['babel-plugin-react-compiler']],
       },
     }),
-    createNetlifyPlugin({
+    !!process.env.NETLIFY && createNetlifyPlugin({
       build: {
         displayName: '@portfolio/public-tanstack-start-function',
-        edgeSSR: true,
         enabled: true,
       },
     }),

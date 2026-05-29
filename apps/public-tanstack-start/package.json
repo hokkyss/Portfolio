@@ -5,8 +5,13 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "build:netlify": "NETLIFY=true vite build",
+    "build:cloudflare": "CLOUDFLARE=true vite build",
+    "typegen:cloudflare": "wrangler types",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "deploy:cloudflare:dev": "wrangler deploy --env development",
+    "deploy:cloudflare:prod": "wrangler deploy --env production"
   },
   "dependencies": {
     "@date-fns/tz": "^1.4.1",
@@ -40,6 +45,7 @@
     "zustand": "^5.0.11"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.39.0",
     "@netlify/vite-plugin": "^2.12.5",
     "@portfolio/eslint": "workspace:^",
     "@sparticuz/chromium": "^148.0.0",
@@ -63,7 +69,8 @@
     "typescript": "catalog:ts5",
     "vite": "^7.1.7",
     "vitest": "^3.0.5",
-    "web-vitals": "^5.1.0"
+    "web-vitals": "^5.1.0",
+    "wrangler": "^4.95.0"
   },
   "version": "2.0.0"
 }

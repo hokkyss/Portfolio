@@ -1,5 +1,6 @@
 import ApplicationError from '@portfolio/common/errors/application-error';
 import { createIsomorphicFn } from '@tanstack/react-start';
+import { env } from 'node:process';
 import { z } from 'zod/v4';
 
 export const getClientEnv = createIsomorphicFn()
@@ -72,11 +73,11 @@ export const getServerEnv = createIsomorphicFn()
       .brand('ServerEnv');
 
     const envConfig = serverEnvSchema.parse({
-      cmsApiVersion: process.env.CMS_API_VERSION,
-      cmsDataset: process.env.CMS_DATASET,
-      cmsProjectId: process.env.CMS_PROJECT_ID,
-      cmsToken: process.env.CMS_TOKEN,
-      enableRobots: process.env.ENABLE_ROBOTS,
+      cmsApiVersion: env.CMS_API_VERSION,
+      cmsDataset: env.CMS_DATASET,
+      cmsProjectId: env.CMS_PROJECT_ID,
+      cmsToken: env.CMS_TOKEN,
+      enableRobots: env.ENABLE_ROBOTS,
       firebaseApiKey: import.meta.env.PUBLIC_FIREBASE_API_KEY as never,
       firebaseAppId: import.meta.env.PUBLIC_FIREBASE_APP_ID as never,
       firebaseAuthDomain: import.meta.env.PUBLIC_FIREBASE_AUTH_DOMAIN as never,
@@ -86,8 +87,8 @@ export const getServerEnv = createIsomorphicFn()
       firebaseProjectId: import.meta.env.PUBLIC_FIREBASE_PROJECT_ID as never,
       firebaseStorageBucket: import.meta.env.PUBLIC_FIREBASE_STORAGE_BUCKET as never,
       gtmId: import.meta.env.PUBLIC_GTM_ID as never,
-      sentryDsn: process.env.SENTRY_DSN,
-      sentryEnvironment: process.env.SENTRY_ENVIRONMENT,
+      sentryDsn: env.SENTRY_DSN,
+      sentryEnvironment: env.SENTRY_ENVIRONMENT,
     });
 
     return envConfig;
