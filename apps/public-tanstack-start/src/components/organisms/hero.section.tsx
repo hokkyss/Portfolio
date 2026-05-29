@@ -68,6 +68,7 @@ export default function HeroSection() {
         <div className={tw`flex flex-wrap items-center justify-center gap-3`}>
           <Button
             className={tw`px-5 py-2.5 text-sm h-auto font-medium`}
+            nativeButton={false}
             render={(
               <a
                 aria-label="View GitHub profile"
@@ -84,6 +85,7 @@ export default function HeroSection() {
           </Button>
           <Button
             className={tw`px-5 py-2.5 text-sm h-auto font-medium`}
+            nativeButton={false}
             render={(
               <a
                 aria-label="View LinkedIn profile"

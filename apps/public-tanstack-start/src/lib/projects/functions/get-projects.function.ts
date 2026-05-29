@@ -2,17 +2,17 @@ import ApplicationError from '@portfolio/common/errors/application-error';
 import { createServerFn } from '@tanstack/react-start';
 import { getRequest } from '@tanstack/react-start/server';
 import dedent from 'dedent';
-import sanityClient from '../../../clients/sanity/sanity.client';
+import z from 'zod';
 import { getProjectRequestDto, getProjectResponseDto } from '../dto/get-project.dto';
 
 const getProjectsFunction = createServerFn({
   method: 'GET',
 })
   .inputValidator(getProjectRequestDto)
-  .handler(async () => {
+  .handler(async (ctx) => {
     const request = getRequest();
 
-    const result = await sanityClient.fetch<unknown>(
+    const result = await ctx.context.sanityClient.fetch<unknown>(
       dedent`
 * [_type == 'project'] | order(orderRank) {
   "id": _id,
@@ -47,7 +47,7 @@ const getProjectsFunction = createServerFn({
 
     if (!parseResult.success) {
       throw new ApplicationError(500, `CMS Response did not match expected shape`)
-        .addPayload('zodError', parseResult.error);
+        .addPayload('zodError', z.treeifyError(parseResult.error));
     }
 
     return parseResult.data;

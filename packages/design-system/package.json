@@ -306,6 +306,46 @@
       "types": "./dist/scroll-bar.d.ts",
       "default": "./dist/scroll-bar.js"
     },
+    "./select-content": {
+      "types": "./dist/select-content.d.ts",
+      "default": "./dist/select-content.js"
+    },
+    "./select-group": {
+      "types": "./dist/select-group.d.ts",
+      "default": "./dist/select-group.js"
+    },
+    "./select-item": {
+      "types": "./dist/select-item.d.ts",
+      "default": "./dist/select-item.js"
+    },
+    "./select-label": {
+      "types": "./dist/select-label.d.ts",
+      "default": "./dist/select-label.js"
+    },
+    "./select-scroll-down-button": {
+      "types": "./dist/select-scroll-down-button.d.ts",
+      "default": "./dist/select-scroll-down-button.js"
+    },
+    "./select-scroll-up-button": {
+      "types": "./dist/select-scroll-up-button.d.ts",
+      "default": "./dist/select-scroll-up-button.js"
+    },
+    "./select-separator": {
+      "types": "./dist/select-separator.d.ts",
+      "default": "./dist/select-separator.js"
+    },
+    "./select-trigger": {
+      "types": "./dist/select-trigger.d.ts",
+      "default": "./dist/select-trigger.js"
+    },
+    "./select-value": {
+      "types": "./dist/select-value.d.ts",
+      "default": "./dist/select-value.js"
+    },
+    "./select": {
+      "types": "./dist/select.d.ts",
+      "default": "./dist/select.js"
+    },
     "./separator": {
       "types": "./dist/separator.d.ts",
       "default": "./dist/separator.js"
@@ -409,6 +449,38 @@
     "./switch": {
       "types": "./dist/switch.d.ts",
       "default": "./dist/switch.js"
+    },
+    "./table-body": {
+      "types": "./dist/table-body.d.ts",
+      "default": "./dist/table-body.js"
+    },
+    "./table-caption": {
+      "types": "./dist/table-caption.d.ts",
+      "default": "./dist/table-caption.js"
+    },
+    "./table-cell": {
+      "types": "./dist/table-cell.d.ts",
+      "default": "./dist/table-cell.js"
+    },
+    "./table-footer": {
+      "types": "./dist/table-footer.d.ts",
+      "default": "./dist/table-footer.js"
+    },
+    "./table-head": {
+      "types": "./dist/table-head.d.ts",
+      "default": "./dist/table-head.js"
+    },
+    "./table-header": {
+      "types": "./dist/table-header.d.ts",
+      "default": "./dist/table-header.js"
+    },
+    "./table-row": {
+      "types": "./dist/table-row.d.ts",
+      "default": "./dist/table-row.js"
+    },
+    "./table": {
+      "types": "./dist/table.d.ts",
+      "default": "./dist/table.js"
     },
     "./textarea": {
       "types": "./dist/textarea.d.ts",

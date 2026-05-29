@@ -3,6 +3,8 @@ import functionLoggerMiddleware from './clients/logger/middlewares/function-logg
 import loggerInstanceMiddleware from './clients/logger/middlewares/logger-instance.middleware';
 import requestIdMiddleware from './clients/logger/middlewares/request-id.middleware';
 import queryClientMiddleware from './clients/query/middlewares/query.middleware';
+import sanityClientMiddleware from './clients/sanity/middlewares/sanity-client.middleware';
+import sentryMiddleware from './clients/sentry/middlewares/sentry.middleware';
 import nonceMiddleware from './lib/common/middlewares/nonce.middleware';
 import applicationErrorSerializationAdapter from './lib/common/serialization-adapters/application-error.serialization-adapter';
 
@@ -22,10 +24,12 @@ export const startInstance = createStart(() => ({
     isFunctionCalledFromClient,
   ],
   requestMiddleware: [
+    sentryMiddleware,
     queryClientMiddleware,
     nonceMiddleware,
     loggerInstanceMiddleware,
     requestIdMiddleware,
+    sanityClientMiddleware,
   ],
   serializationAdapters: [applicationErrorSerializationAdapter],
 }));

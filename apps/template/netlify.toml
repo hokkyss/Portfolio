@@ -1,0 +1,7 @@
+[build]
+  command = "pnpm --filter @portfolio/template... run build"
+  publish = "apps/template/dist/client"
+  base = "/"
+
+[functions]
+  directory = "apps/template/.netlify/v1/functions"

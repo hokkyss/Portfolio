@@ -1,0 +1,285 @@
+import type { Stats } from '../../common/models/stats.model';
+import type { Character } from '../models/character.model';
+
+// Data sourced from https://serenesforest.net/three-houses/characters/
+
+const S: (hp: number, str: number, mag: number, dex: number, spd: number, lck: number, def: number, res: number, cha: number) => Stats
+  = (hp, str, mag, dex, spd, lck, def, res, cha) => ({ cha, def, dex, hp, lck, mag, res, spd, str });
+
+export const CHARACTERS: Character[] = [
+  // ── Black Eagles ─────────────────────────────────────────────────────────
+  {
+    baseStats: S(29, 13, 6, 5, 8, 5, 6, 4, 10), crests: [{ description: 'Occasionally raises Mt when using combat arts.', name: 'Seiros', type: 'Minor' }, { description: 'Occasionally restores HP and raises Mt.', name: 'Flames', type: 'Minor' }], faction: 'Black Eagles', gender: 'female', growthRates: S(40, 55, 45, 45, 40, 30, 35, 35, 60),
+    id: 'edelgard',
+    maxStats: S(92, 89, 76, 78, 73, 58, 66, 63, 99),
+    name: 'Edelgard',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(26, 7, 12, 8, 9, 6, 4, 10, 7), crests: [], faction: 'Black Eagles', gender: 'male', growthRates: S(30, 25, 55, 45, 40, 25, 25, 40, 35),
+    id: 'hubert',
+    maxStats: S(77, 57, 88, 78, 73, 53, 53, 73, 68),
+    name: 'Hubert',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(28, 8, 11, 9, 9, 8, 4, 8, 11), crests: [], faction: 'Black Eagles', gender: 'female', growthRates: S(40, 30, 50, 45, 50, 45, 25, 30, 55),
+    id: 'dorothea',
+    maxStats: S(87, 63, 83, 78, 83, 78, 53, 63, 88),
+    name: 'Dorothea',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(30, 13, 6, 9, 10, 7, 7, 6, 9), crests: [], faction: 'Black Eagles', gender: 'male', growthRates: S(45, 50, 30, 50, 45, 35, 35, 30, 45),
+    id: 'ferdinand',
+    maxStats: S(92, 83, 63, 83, 78, 68, 68, 63, 78),
+    name: 'Ferdinand',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(25, 5, 12, 6, 6, 9, 4, 11, 7), crests: [{ description: 'Occasionally restores HP when using white magic.', name: 'Cethleann', type: 'Minor' }], faction: 'Black Eagles', gender: 'male', growthRates: S(35, 25, 55, 35, 30, 35, 25, 55, 30),
+    id: 'linhardt',
+    maxStats: S(82, 57, 88, 68, 63, 68, 53, 88, 63),
+    name: 'Linhardt',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(31, 13, 5, 8, 10, 6, 6, 4, 6), crests: [], faction: 'Black Eagles', gender: 'male', growthRates: S(50, 55, 20, 45, 50, 30, 40, 20, 30),
+    id: 'caspar',
+    maxStats: S(97, 88, 53, 78, 83, 63, 73, 53, 63),
+    name: 'Caspar',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(29, 9, 7, 11, 8, 9, 5, 7, 5), crests: [], faction: 'Black Eagles', gender: 'female', growthRates: S(40, 40, 25, 55, 45, 50, 35, 30, 25),
+    id: 'bernadetta',
+    maxStats: S(87, 73, 58, 88, 78, 83, 68, 63, 58),
+    name: 'Bernadetta',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(30, 11, 5, 10, 13, 9, 6, 5, 7), crests: [], faction: 'Black Eagles', gender: 'female', growthRates: S(45, 50, 20, 55, 60, 45, 35, 25, 35),
+    id: 'petra',
+    maxStats: S(92, 83, 53, 88, 93, 78, 68, 58, 68),
+    name: 'Petra',
+    personalAbilityId: null,
+  },
+  // ── Blue Lions ────────────────────────────────────────────────────────────
+  {
+    baseStats: S(30, 14, 6, 9, 9, 8, 7, 5, 10), crests: [{ description: 'Occasionally raises Mt and stops counterattacks when using combat arts.', name: 'Blaiddyd', type: 'Major' }], faction: 'Blue Lions', gender: 'male', growthRates: S(45, 60, 35, 45, 45, 35, 40, 30, 55),
+    id: 'dimitri',
+    maxStats: S(92, 94, 68, 78, 78, 68, 73, 63, 88),
+    name: 'Dimitri',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(34, 16, 4, 5, 5, 5, 9, 4, 7), crests: [], faction: 'Blue Lions', gender: 'male', growthRates: S(55, 60, 20, 30, 25, 25, 55, 25, 25),
+    id: 'dedue',
+    maxStats: S(102, 94, 53, 63, 58, 58, 88, 58, 58),
+    name: 'Dedue',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(27, 13, 5, 11, 12, 8, 5, 4, 6), crests: [{ description: 'Occasionally raises Mt and stops counterattacks when using combat arts.', name: 'Fraldarius', type: 'Minor' }], faction: 'Blue Lions', gender: 'male', growthRates: S(35, 60, 25, 55, 60, 40, 30, 20, 30),
+    id: 'felix',
+    maxStats: S(82, 94, 58, 88, 93, 73, 63, 53, 63),
+    name: 'Felix',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(28, 9, 6, 12, 9, 9, 5, 6, 8), crests: [], faction: 'Blue Lions', gender: 'male', growthRates: S(45, 40, 25, 60, 45, 45, 35, 30, 40),
+    id: 'ashe',
+    maxStats: S(92, 73, 58, 93, 78, 78, 68, 63, 73),
+    name: 'Ashe',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(30, 12, 8, 10, 10, 9, 6, 6, 10), crests: [{ description: 'Occasionally raises Mt when using combat arts. Negates effective damage.', name: 'Gautier', type: 'Minor' }], faction: 'Blue Lions', gender: 'male', growthRates: S(45, 50, 35, 50, 45, 45, 35, 35, 50),
+    id: 'sylvain',
+    maxStats: S(92, 83, 68, 83, 78, 78, 68, 68, 83),
+    name: 'Sylvain',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(27, 6, 13, 7, 7, 11, 4, 13, 10), crests: [{ description: 'Occasionally restores HP when using white magic.', name: 'Lamine', type: 'Minor' }], faction: 'Blue Lions', gender: 'female', growthRates: S(40, 25, 60, 40, 35, 55, 25, 60, 50),
+    id: 'mercedes',
+    maxStats: S(87, 58, 93, 73, 68, 88, 58, 93, 83),
+    name: 'Mercedes',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(28, 7, 11, 8, 9, 10, 4, 9, 10), crests: [{ description: 'Occasionally raises Mt of white magic.', name: 'Dominic', type: 'Minor' }], faction: 'Blue Lions', gender: 'female', growthRates: S(45, 35, 55, 45, 45, 50, 30, 45, 50),
+    id: 'annette',
+    maxStats: S(92, 68, 88, 78, 78, 83, 63, 78, 83),
+    name: 'Annette',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(27, 9, 8, 11, 12, 9, 6, 8, 9), crests: [{ description: 'Occasionally raises Mt when using combat arts.', name: 'Daphnel', type: 'Minor' }], faction: 'Blue Lions', gender: 'female', growthRates: S(35, 40, 35, 55, 60, 45, 30, 35, 45),
+    id: 'ingrid',
+    maxStats: S(82, 73, 68, 88, 93, 78, 63, 68, 78),
+    name: 'Ingrid',
+    personalAbilityId: null,
+  },
+  // ── Golden Deer ───────────────────────────────────────────────────────────
+  {
+    baseStats: S(30, 11, 8, 12, 11, 9, 6, 6, 12), crests: [{ description: 'Occasionally restores HP equal to 30% of damage dealt.', name: 'Riegan', type: 'Major' }], faction: 'Golden Deer', gender: 'male', growthRates: S(45, 40, 40, 60, 45, 45, 30, 35, 60),
+    id: 'claude',
+    maxStats: S(92, 73, 73, 93, 78, 78, 63, 68, 93),
+    name: 'Claude',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(29, 10, 9, 9, 10, 8, 7, 8, 10), crests: [{ description: 'Occasionally raises Mt of combat arts. Negates effective damage.', name: 'Gloucester', type: 'Minor' }], faction: 'Golden Deer', gender: 'male', growthRates: S(40, 40, 45, 45, 35, 40, 40, 45, 50),
+    id: 'lorenz',
+    maxStats: S(87, 73, 78, 78, 68, 73, 73, 78, 83),
+    name: 'Lorenz',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(35, 16, 4, 6, 7, 6, 9, 4, 6), crests: [], faction: 'Golden Deer', gender: 'male', growthRates: S(55, 65, 15, 35, 30, 25, 55, 20, 25),
+    id: 'raphael',
+    maxStats: S(102, 98, 48, 68, 63, 58, 88, 53, 58),
+    name: 'Raphael',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(27, 7, 7, 14, 10, 12, 5, 7, 9), crests: [], faction: 'Golden Deer', gender: 'male', growthRates: S(35, 30, 30, 65, 45, 60, 25, 30, 45),
+    id: 'ignatz',
+    maxStats: S(82, 63, 63, 98, 78, 93, 58, 63, 78),
+    name: 'Ignatz',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(24, 6, 14, 8, 10, 10, 3, 11, 8), crests: [{ description: 'Occasionally raises Mt when using combat arts.', name: 'Charon', type: 'Minor' }, { description: 'Occasionally raises Mt of combat arts.', name: 'Gloucester', type: 'Minor' }], faction: 'Golden Deer', gender: 'female', growthRates: S(25, 25, 70, 45, 50, 50, 20, 40, 40),
+    id: 'lysithea',
+    maxStats: S(72, 58, 103, 78, 83, 83, 48, 73, 73),
+    name: 'Lysithea',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(27, 7, 12, 9, 9, 10, 5, 12, 7), crests: [{ description: 'Occasionally restores HP when using combat arts.', name: 'the Beast', type: 'Minor' }], faction: 'Golden Deer', gender: 'female', growthRates: S(35, 30, 55, 50, 50, 45, 30, 55, 35),
+    id: 'marianne',
+    maxStats: S(82, 63, 88, 83, 83, 78, 63, 88, 68),
+    name: 'Marianne',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(30, 13, 7, 8, 11, 9, 5, 6, 9), crests: [{ description: 'Occasionally raises Mt when using combat arts.', name: 'Goneril', type: 'Minor' }], faction: 'Golden Deer', gender: 'female', growthRates: S(45, 55, 30, 40, 50, 45, 30, 30, 45),
+    id: 'hilda',
+    maxStats: S(92, 88, 63, 73, 83, 78, 63, 63, 78),
+    name: 'Hilda',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(30, 13, 5, 11, 11, 8, 7, 5, 7), crests: [], faction: 'Golden Deer', gender: 'female', growthRates: S(45, 55, 20, 55, 50, 40, 35, 25, 35),
+    id: 'leonie',
+    maxStats: S(92, 88, 53, 88, 83, 73, 68, 58, 68),
+    name: 'Leonie',
+    personalAbilityId: null,
+  },
+  // ── Church of Seiros ──────────────────────────────────────────────────────
+  {
+    baseStats: S(27, 13, 6, 9, 8, 8, 6, 6, 7), crests: [{ description: 'Occasionally restores HP and raises Mt. Stops counterattacks.', name: 'Flames', type: 'Major' }], faction: 'Church of Seiros', gender: 'male', growthRates: S(45, 45, 35, 45, 45, 45, 35, 30, 45),
+    id: 'byleth_m',
+    maxStats: S(99, 88, 68, 87, 87, 87, 68, 59, 88),
+    name: 'Byleth (M)',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(27, 13, 6, 9, 8, 8, 6, 6, 7), crests: [{ description: 'Occasionally restores HP and raises Mt. Stops counterattacks.', name: 'Flames', type: 'Major' }], faction: 'Church of Seiros', gender: 'female', growthRates: S(45, 45, 35, 45, 45, 45, 35, 30, 45),
+    id: 'byleth_f',
+    maxStats: S(99, 88, 68, 87, 87, 87, 68, 59, 88),
+    name: 'Byleth (F)',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(26, 6, 11, 8, 9, 12, 4, 13, 10), crests: [{ description: 'Occasionally restores HP when using white magic.', name: 'Cethleann', type: 'Major' }], faction: 'Church of Seiros', gender: 'female', growthRates: S(40, 25, 55, 45, 40, 55, 25, 65, 50),
+    id: 'flayn',
+    maxStats: S(87, 58, 88, 78, 73, 88, 58, 98, 83),
+    name: 'Flayn',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(33, 14, 7, 9, 10, 8, 9, 7, 9), crests: [], faction: 'Church of Seiros', gender: 'male', growthRates: S(45, 50, 30, 40, 35, 30, 45, 30, 40),
+    id: 'seteth',
+    maxStats: S(92, 83, 63, 73, 68, 63, 78, 63, 73),
+    name: 'Seteth',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(25, 6, 14, 8, 6, 8, 4, 10, 7), crests: [], faction: 'Church of Seiros', gender: 'male', growthRates: S(30, 25, 60, 40, 25, 35, 25, 40, 30),
+    id: 'hanneman',
+    maxStats: S(77, 58, 93, 73, 58, 68, 58, 73, 63),
+    name: 'Hanneman',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(28, 9, 12, 10, 10, 11, 4, 11, 9), crests: [], faction: 'Church of Seiros', gender: 'female', growthRates: S(40, 35, 50, 50, 45, 55, 25, 50, 45),
+    id: 'manuela',
+    maxStats: S(87, 68, 83, 83, 78, 88, 58, 83, 78),
+    name: 'Manuela',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(37, 17, 6, 9, 10, 10, 11, 5, 9), crests: [], faction: 'Church of Seiros', gender: 'male', growthRates: S(60, 60, 20, 40, 35, 45, 55, 20, 35),
+    id: 'alois',
+    maxStats: S(107, 93, 53, 73, 68, 78, 88, 53, 68),
+    name: 'Alois',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(36, 18, 6, 9, 10, 8, 13, 5, 8), crests: [], faction: 'Church of Seiros', gender: 'male', growthRates: S(55, 60, 20, 35, 25, 30, 60, 20, 25),
+    id: 'gilbert',
+    maxStats: S(102, 93, 53, 68, 58, 63, 93, 53, 58),
+    name: 'Gilbert',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(28, 13, 5, 13, 12, 8, 6, 5, 7), crests: [], faction: 'Church of Seiros', gender: 'female', growthRates: S(40, 50, 20, 60, 50, 35, 30, 20, 30),
+    id: 'shamir',
+    maxStats: S(87, 83, 53, 93, 83, 68, 63, 53, 63),
+    name: 'Shamir',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(27, 11, 6, 10, 11, 8, 5, 5, 6), crests: [], faction: 'Church of Seiros', gender: 'male', growthRates: S(40, 50, 30, 50, 50, 40, 35, 25, 30),
+    id: 'cyril',
+    maxStats: S(87, 83, 63, 83, 83, 73, 68, 58, 63),
+    name: 'Cyril',
+    personalAbilityId: 'aptitude',
+  },
+  // ── Ashen Wolves (DLC) ────────────────────────────────────────────────────
+  {
+    baseStats: S(27, 9, 10, 13, 13, 9, 5, 8, 8), crests: [{ description: 'Occasionally grants magic attacks.', name: 'Aubin', type: 'Minor' }], faction: 'Ashen Wolves', gender: 'male', growthRates: S(35, 40, 45, 55, 60, 45, 25, 40, 45),
+    id: 'yuri',
+    maxStats: S(82, 73, 78, 88, 93, 78, 58, 73, 78),
+    name: 'Yuri',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(34, 16, 5, 7, 8, 7, 10, 4, 7), crests: [{ description: 'Occasionally reduces damage taken.', name: 'Chevalier', type: 'Major' }], faction: 'Ashen Wolves', gender: 'male', growthRates: S(60, 65, 20, 35, 30, 30, 55, 20, 25),
+    id: 'balthus',
+    maxStats: S(107, 98, 53, 68, 63, 63, 88, 53, 58),
+    name: 'Balthus',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(24, 5, 15, 8, 8, 9, 3, 11, 9), crests: [{ description: 'Occasionally grants magic to pierce Res.', name: 'Noa', type: 'Minor' }], faction: 'Ashen Wolves', gender: 'female', growthRates: S(30, 20, 70, 45, 45, 40, 20, 45, 45),
+    id: 'constance',
+    maxStats: S(77, 53, 103, 78, 78, 73, 48, 78, 78),
+    name: 'Constance',
+    personalAbilityId: null,
+  },
+  {
+    baseStats: S(29, 8, 12, 10, 11, 10, 5, 12, 8), crests: [{ description: 'Occasionally grants black magic attacks that pierce Res.', name: 'Indech', type: 'Minor' }], faction: 'Ashen Wolves', gender: 'female', growthRates: S(45, 35, 50, 50, 50, 45, 30, 55, 40),
+    id: 'hapi',
+    maxStats: S(92, 68, 83, 83, 83, 78, 63, 88, 73),
+    name: 'Hapi',
+    personalAbilityId: null,
+  },
+];
+
+export const CHARACTERS_BY_ID: Record<string, Character> = Object.fromEntries(
+  CHARACTERS.map((c) => [c.id, c]),
+);

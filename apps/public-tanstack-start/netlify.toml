@@ -5,3 +5,7 @@
 
 [functions]
   directory = "apps/public-tanstack-start/.netlify/v1/functions"
+
+[[edge_functions]]
+  path = "/*"
+  function = "@portfolio/public-tanstack-start-function"
