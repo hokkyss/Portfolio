@@ -44,10 +44,10 @@ const config = defineConfig({
         minify: true,
       },
     }),
-    !!process.env.CLOUDFLARE_ENV && cloudflare({
+    !!process.env.CLOUDFLARE && cloudflare({
       viteEnvironment: { childEnvironments: ['rsc'], name: 'ssr' },
     }),
-    !!process.env.CLOUDFLARE_ENV && {
+    !!process.env.CLOUDFLARE && {
       configResolved(config) {
         config.resolve.alias.push({
           find: 'node:process',
