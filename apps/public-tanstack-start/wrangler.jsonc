@@ -10,8 +10,20 @@
       "invocation_logs": true
     }
   },
-  "browser": {
-    "binding": "BROWSER",
-    "remote": true
+  "env": {
+    "production": {
+      "name": "hokkyss-portfolio-tanstack-start-production",
+      "browser": {
+        "binding": "BROWSER",
+        "remote": true
+      }
+    },
+    "development": {
+      "name": "hokkyss-portfolio-tanstack-start-development",
+      "browser": {
+        "binding": "BROWSER",
+        "remote": true
+      }
+    }
   }
 }

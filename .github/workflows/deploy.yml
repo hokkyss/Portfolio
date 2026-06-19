@@ -43,17 +43,13 @@ jobs:
         env:
           CLOUDFLARE: true
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          CLOUDFLARE_ENV: ${{ github.ref_name == 'main' && 'production' || 'development' }}
         run: |
           pnpm --filter @portfolio/public-tanstack-start... run build
 
       - name: Deploy
         working-directory: apps/public-tanstack-start
-        run: |
-          if [ "${{ github.ref_name }}" = "main" ]; then
-            pnpm run deploy:cloudflare:prod
-          else
-            pnpm run deploy:cloudflare:dev
-          fi
+        run: pnpm run deploy:cloudflare
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

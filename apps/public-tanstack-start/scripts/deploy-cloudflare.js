@@ -23,9 +23,6 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// The environment to deploy to (passed from package.json, e.g. "production")
-const targetEnv = process.argv[2] || 'development';
-
 // Define which keys we want to inject into Cloudflare
 const CLOUDFLARE_KEYS = [
   'CMS_API_VERSION',
@@ -47,9 +44,9 @@ CLOUDFLARE_KEYS.forEach((envName) => {
 vars.push(`--var CLOUDFLARE:"true"`);
 
 // Construct and run the wrangler command
-const wranglerCmd = `pnpm exec wrangler deploy --env ${targetEnv} ${vars.join(' ')}`;
+const wranglerCmd = `pnpm exec wrangler deploy ${vars.join(' ')}`;
 
-console.log(`🚀 Deploying to Cloudflare (${targetEnv})`);
+console.log(`🚀 Deploying to Cloudflare`);
 try {
   execSync(wranglerCmd, { cwd: path.resolve(__dirname, '..'), stdio: 'inherit' });
 } catch (error) {

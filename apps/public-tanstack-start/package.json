@@ -6,12 +6,12 @@
     "dev": "vite dev",
     "build": "vite build",
     "build:netlify": "NETLIFY=true vite build",
-    "build:cloudflare": "CLOUDFLARE=true vite build",
+    "build:cloudflare:dev": "CLOUDFLARE=true CLOUDFLARE_ENV=development vite build",
+    "build:cloudflare:prod": "CLOUDFLARE=true CLOUDFLARE_ENV=production vite build",
     "typegen:cloudflare": "wrangler types",
     "preview": "vite preview",
     "test": "vitest run",
-    "deploy:cloudflare:dev": "node --env-file .env ./scripts/deploy-cloudflare.js development",
-    "deploy:cloudflare:prod": "node --env-file .env ./scripts/deploy-cloudflare.js production"
+    "deploy:cloudflare": "node --env-file .env ./scripts/deploy-cloudflare.js"
   },
   "dependencies": {
     "@date-fns/tz": "^1.4.1",
