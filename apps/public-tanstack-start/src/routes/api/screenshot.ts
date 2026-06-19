@@ -64,7 +64,7 @@ export const Route = createFileRoute('/api/screenshot')({
 
             return new Response(new Blob([screenshot as unknown as BlobPart], { type: 'image/png' }), {
               headers: {
-                'cache-control': 'public, max-age=604800, s-max-age=604800',
+                'cache-control': 'public, max-age=604800, s-maxage=604800',
                 'content-type': 'image/png',
               },
             });
