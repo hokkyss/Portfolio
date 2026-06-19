@@ -10,8 +10,8 @@
     "typegen:cloudflare": "wrangler types",
     "preview": "vite preview",
     "test": "vitest run",
-    "deploy:cloudflare:dev": "wrangler deploy --env development",
-    "deploy:cloudflare:prod": "wrangler deploy --env production"
+    "deploy:cloudflare:dev": "pnpm run build:cloudflare && node --env-file .env ./scripts/deploy-cloudflare.js development",
+    "deploy:cloudflare:prod": "pnpm run build:cloudflare && node --env-file .env ./scripts/deploy-cloudflare.js production"
   },
   "dependencies": {
     "@date-fns/tz": "^1.4.1",
@@ -23,6 +23,7 @@
     "@portfolio/utils": "workspace:^",
     "@resvg/resvg-js": "^2.6.2",
     "@sanity/client": "^7.22.0",
+    "@sentry/cloudflare": "^10.58.0",
     "@sentry/tanstackstart-react": "^10.51.0",
     "@tanstack/react-form": "^1.29.1",
     "@tanstack/react-query": "catalog:tanstackQuery",
@@ -46,6 +47,7 @@
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.39.0",
+    "@cloudflare/workers-types": "^4.20260619.1",
     "@netlify/vite-plugin": "^2.12.5",
     "@portfolio/eslint": "workspace:^",
     "@sparticuz/chromium": "^148.0.0",

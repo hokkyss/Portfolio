@@ -1,4 +1,6 @@
+import type { BrowserRun } from '@cloudflare/workers-types';
 import { createFileRoute } from '@tanstack/react-router';
+import { env } from 'cloudflare:workers';
 
 /** Allowed origin hostnames for screenshot requests (URL allowlist). */
 const ALLOWED_ORIGINS = [
@@ -36,11 +38,15 @@ export const Route = createFileRoute('/api/screenshot')({
             });
           }
 
-          // Lazy-load heavy deps so they don't affect cold start for other routes
+          if (__CLOUDFLARE__) {
+            const browser = env.BROWSER as unknown as BrowserRun;
+            return browser.quickAction('screenshot', {
+              url: urlParam,
+            }) as unknown as Response;
+          }
+
           const [{ default: chromium }, { default: puppeteerCore }] = await Promise.all([
-            // @sparticuz/chromium installed at deploy time
             import('@sparticuz/chromium'),
-            // puppeteer-core installed at deploy time
             import('puppeteer-core'),
           ]);
 
@@ -56,11 +62,18 @@ export const Route = createFileRoute('/api/screenshot')({
             await page.goto(urlParam, { timeout: 15_000, waitUntil: 'networkidle2' });
             const screenshot = await page.screenshot({ type: 'png' });
 
-            return new Response(new Blob([screenshot], { type: 'image/png' }), {
+            return new Response(new Blob([screenshot as unknown as BlobPart], { type: 'image/png' }), {
               headers: {
-                'cache-control': 'public, max-age=604800, stale-while-revalidate=86400',
+                'cache-control': 'public, max-age=604800, s-max-age=604800',
                 'content-type': 'image/png',
               },
+            });
+          } catch (e) {
+            const error = e as Error;
+            ctx.context.logger.error(error);
+            return Response.json({
+              message: error.message,
+              stack: error.stack,
             });
           } finally {
             await browser.close();

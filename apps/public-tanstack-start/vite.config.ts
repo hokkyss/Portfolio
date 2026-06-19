@@ -18,20 +18,22 @@ const getBuildNumber = () => {
   }
 };
 
-const config = defineConfig({
+export default defineConfig({
   build: {
     rollupOptions: {
-      external: ['@sparticuz/chromium', '@resvg/resvg-js'],
+      external: [
+        // Netlify functions works like this
+        ...(!process.env.CLOUDFLARE ? ['@sparticuz/chromium'] : []),
+        '@resvg/resvg-js',
+      ],
     },
   },
   define: {
     __APP_VERSION__: JSON.stringify(packageJson.version),
     __BUILD_NUMBER__: JSON.stringify(getBuildNumber()),
+    __CLOUDFLARE__: process.env.CLOUDFLARE ? true : false,
   },
   envPrefix: ['PUBLIC_'],
-  optimizeDeps: {
-    exclude: ['@resvg/resvg-js'],
-  },
   plugins: [
     devtools({
       consolePiping: {
@@ -77,7 +79,7 @@ const config = defineConfig({
         entry: 'router.tsx',
       },
       server: {
-        entry: 'server.ts',
+        entry: process.env.CLOUDFLARE ? 'server.cloudflare.ts' : 'server.ts',
       },
       serverFns: {
         generateFunctionId: ({ filename, functionName }) => {
@@ -108,5 +110,3 @@ const config = defineConfig({
     }),
   ],
 });
-
-export default config;
