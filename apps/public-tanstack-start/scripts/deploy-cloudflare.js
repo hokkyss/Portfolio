@@ -49,7 +49,7 @@ vars.push(`--var CLOUDFLARE:"true"`);
 // Construct and run the wrangler command
 const wranglerCmd = `pnpm exec wrangler deploy --env ${targetEnv} ${vars.join(' ')}`;
 
-console.log(`🚀 Deploying to Cloudflare (${targetEnv}) with .env variables...`);
+console.log(`🚀 Deploying to Cloudflare (${targetEnv})`);
 try {
   execSync(wranglerCmd, { cwd: path.resolve(__dirname, '..'), stdio: 'inherit' });
 } catch (error) {
