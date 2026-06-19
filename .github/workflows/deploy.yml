@@ -37,6 +37,13 @@ jobs:
           ENV_FILE: ${{ secrets.ENV_FILE }}
         run: |
           echo "$ENV_FILE" > .env
+      
+      - name: Build
+        working-directory: apps/public-tanstack-start
+        env:
+          CLOUDFLARE: true
+        run: |
+          pnpm --filter @portfolio/public-tanstack-start... run build
 
       - name: Deploy
         working-directory: apps/public-tanstack-start
