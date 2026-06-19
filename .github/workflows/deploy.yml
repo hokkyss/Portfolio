@@ -42,6 +42,7 @@ jobs:
         working-directory: apps/public-tanstack-start
         env:
           CLOUDFLARE: true
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
         run: |
           pnpm --filter @portfolio/public-tanstack-start... run build
 
