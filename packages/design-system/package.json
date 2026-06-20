@@ -29,18 +29,16 @@
   "devDependencies": {
     "@portfolio/eslint": "workspace:^",
     "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "^4.1.18",
+    "@tailwindcss/vite": "catalog:tailwindcss",
     "@types/node": "^24.10.1",
     "@types/react": "catalog:react19",
     "@types/react-dom": "catalog:react19",
-    "@vitejs/plugin-react": "^5.1.1",
     "eslint": "catalog:eslint",
     "shadcn": "^4.6.0",
-    "tailwindcss": "^4.1.18",
+    "tailwindcss": "catalog:tailwindcss",
     "typescript": "catalog:ts5",
-    "vite": "^7.2.4",
-    "vite-plugin-dts": "^4.5.4",
-    "vite-tsconfig-paths": "^6.0.3"
+    "vite": "catalog:vite",
+    "vite-plugin-dts": "catalog:vite"
   },
   "author": {
     "email": "hokkyss2@gmail.com",

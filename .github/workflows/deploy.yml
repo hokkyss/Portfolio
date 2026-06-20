@@ -1,4 +1,4 @@
-name: Deploy Cloudflare
+name: Deploy @apps/public-tanstack-start to Cloudflare
 
 on:
   push:

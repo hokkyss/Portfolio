@@ -1,12 +1,12 @@
 import createNetlifyPlugin from '@netlify/vite-plugin';
-import { sentryTanstackStart } from '@sentry/tanstackstart-react/vite';
+import babel from '@rolldown/plugin-babel';
 import tailwindcss from '@tailwindcss/vite';
 import { devtools } from '@tanstack/devtools-vite';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
-import viteReact from '@vitejs/plugin-react';
+import viteReact, { reactCompilerPreset } from '@vitejs/plugin-react';
 import { execSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { defineConfig } from 'vite';
+import { defineConfig, esmExternalRequirePlugin } from 'vite';
 import packageJson from './package.json' with { type: 'json' };
 
 const getBuildNumber = () => {
@@ -18,20 +18,15 @@ const getBuildNumber = () => {
 };
 
 const config = defineConfig({
-  build: {
-    rollupOptions: {
-      external: ['@resvg/resvg-js'],
-    },
-  },
   define: {
     __APP_VERSION__: JSON.stringify(packageJson.version),
     __BUILD_NUMBER__: JSON.stringify(getBuildNumber()),
   },
   envPrefix: ['PUBLIC_'],
-  optimizeDeps: {
-    exclude: ['@resvg/resvg-js'],
-  },
   plugins: [
+    esmExternalRequirePlugin({
+      external: ['@resvg/resvg-js'],
+    }),
     devtools({
       consolePiping: {
         enabled: false,
@@ -77,10 +72,9 @@ const config = defineConfig({
         entry: 'start.ts',
       },
     }),
-    viteReact({
-      babel: {
-        plugins: [['babel-plugin-react-compiler']],
-      },
+    viteReact(),
+    babel({
+      presets: [reactCompilerPreset()],
     }),
     createNetlifyPlugin({
       build: {

@@ -1,0 +1,56 @@
+name: CI (@apps/public-tanstack-start)
+
+on:
+  push:
+    branches:
+  pull_request:
+    branches:
+      - main
+      - dev
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build (${{ matrix.environment }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [none, netlify, cloudflare]
+    
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 11
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: "pnpm"
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Build (None)
+        if: matrix.environment == 'none'
+        run: pnpm --filter @portfolio/public-tanstack-start... run build
+
+      - name: Build (Netlify)
+        if: matrix.environment == 'netlify'
+        env:
+          NETLIFY: true
+        run: pnpm --filter @portfolio/public-tanstack-start... run build
+
+      - name: Build (Cloudflare)
+        if: matrix.environment == 'cloudflare'
+        env:
+          CLOUDFLARE: true
+          CLOUDFLARE_ENV: ${{ github.ref_name == 'main' && 'production' || 'development' }}
+        run: pnpm --filter @portfolio/public-tanstack-start... run build
