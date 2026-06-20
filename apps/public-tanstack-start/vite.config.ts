@@ -21,11 +21,7 @@ const getBuildNumber = () => {
 export default defineConfig({
   build: {
     rollupOptions: {
-      external: [
-        // Netlify functions works like this
-        ...(!process.env.CLOUDFLARE ? ['@sparticuz/chromium'] : []),
-        '@resvg/resvg-js',
-      ],
+      external: ['@sparticuz/chromium', '@resvg/resvg-js'],
     },
   },
   define: {
