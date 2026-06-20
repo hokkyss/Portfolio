@@ -1,4 +1,5 @@
 import type { BrowserRun } from '@cloudflare/workers-types';
+import ApplicationError from '@portfolio/common/errors/application-error';
 import { createFileRoute } from '@tanstack/react-router';
 import { env } from 'cloudflare:workers';
 
@@ -40,9 +41,13 @@ export const Route = createFileRoute('/api/screenshot')({
 
           if (__CLOUDFLARE__) {
             const browser = env.BROWSER as unknown as BrowserRun;
-            return browser.quickAction('screenshot', {
+            const response = await browser.quickAction('screenshot', {
               url: urlParam,
-            }) as unknown as Response;
+            });
+            response.headers.set('Cache-Control', 'public, no-cache');
+            response.headers.set('CDN-Cache-Control', 'max-age=604800, stale-while-revalidate=86400');
+
+            return response as unknown as Response;
           }
 
           const [{ default: chromium }, { default: puppeteerCore }] = await Promise.all([
@@ -64,8 +69,9 @@ export const Route = createFileRoute('/api/screenshot')({
 
             return new Response(new Blob([screenshot as unknown as BlobPart], { type: 'image/png' }), {
               headers: {
-                'cache-control': 'public, max-age=604800, s-maxage=604800',
-                'content-type': 'image/png',
+                'Cache-Control': 'public, no-cache',
+                'CDN-Cache-Control': 'max-age=604800, stale-while-revalidate=86400',
+                'Content-Type': 'image/png',
               },
             });
           } catch (e) {
@@ -74,6 +80,8 @@ export const Route = createFileRoute('/api/screenshot')({
             return Response.json({
               message: error.message,
               stack: error.stack,
+            }, {
+              status: e instanceof ApplicationError ? e.status : 500,
             });
           } finally {
             await browser.close();
