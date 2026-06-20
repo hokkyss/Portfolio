@@ -21,7 +21,7 @@ export const Route = createFileRoute('/')({
   shouldReload: false,
   headers() {
     return {
-      'Cache-Control': 'public, no-cache',
+      'Cache-Control': 'public, max-age=86400',
       'CDN-Cache-Control': 'max-age=604800, stale-while-revalidate=86400',
     };
   },

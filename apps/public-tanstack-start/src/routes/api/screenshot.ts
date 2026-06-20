@@ -44,7 +44,7 @@ export const Route = createFileRoute('/api/screenshot')({
             const response = await browser.quickAction('screenshot', {
               url: urlParam,
             });
-            response.headers.set('Cache-Control', 'public, no-cache');
+            response.headers.set('Cache-Control', 'public, max-age=86400');
             response.headers.set('CDN-Cache-Control', 'max-age=604800, stale-while-revalidate=86400');
 
             return response as unknown as Response;
@@ -69,7 +69,7 @@ export const Route = createFileRoute('/api/screenshot')({
 
             return new Response(new Blob([screenshot as unknown as BlobPart], { type: 'image/png' }), {
               headers: {
-                'Cache-Control': 'public, no-cache',
+                'Cache-Control': 'public, max-age=86400',
                 'CDN-Cache-Control': 'max-age=604800, stale-while-revalidate=86400',
                 'Content-Type': 'image/png',
               },
