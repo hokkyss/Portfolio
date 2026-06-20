@@ -12,14 +12,17 @@ const cacheMiddleware = createMiddleware({
 
     const cachedResponse = await cache.match(cacheKey);
     if (cachedResponse) {
-      return cachedResponse as unknown as Response;
+      const clonedCachedResponse = new Response(cachedResponse.body as never, cachedResponse as never);
+      clonedCachedResponse.headers.set('X-Cache-Status', 'HIT');
+      clonedCachedResponse.headers.delete('X-Cache-Maxage');
+      clonedCachedResponse.headers.delete('X-Stale-After');
+      return clonedCachedResponse;
     }
 
     // Cache MISS, execute handler
     const middlewareResult = await ctx.next();
 
     const response = processCacheHeaders(middlewareResult.response);
-
     const executionContext = getExecutionContext();
 
     // Cache only for GET requests
@@ -40,8 +43,10 @@ const cacheMiddleware = createMiddleware({
  * @param response
  */
 function processCacheHeaders(response: Response) {
+  const clonedResponse = new Response(response.body, response);
+
   // Try to use ctx.response.headers if available
-  const clonedResponse = response.clone();
+  const headers = new Headers(clonedResponse.headers);
 
   const xCacheMaxage = clonedResponse.headers.get('X-Cache-Maxage');
   const xStaleAfter = clonedResponse.headers.get('X-Stale-After');
@@ -55,16 +60,16 @@ function processCacheHeaders(response: Response) {
     // Cache-Control is browser cache, CDN-Cache-Control is cloudflare cache
     // We want to go to cloudflare cache only if browser cache has expired.
     // in this case, stale time is on the browser, while max cache time is on cloudflare.
-    clonedResponse.headers.set('Cache-Control', `public, max-age=${xStaleAfter}`);
-    clonedResponse.headers.set('CDN-Cache-Control', `max-age=${xCacheMaxage}`);
+    headers.set('Cache-Control', `public, max-age=${xStaleAfter}`);
+    headers.set('CDN-Cache-Control', `max-age=${xCacheMaxage}`);
   } else if (__NETLIFY__) {
-    clonedResponse.headers.set('Netlify-CDN-Cache-Control', `public, maxage=${xCacheMaxage}, s-maxage=${xCacheMaxage}, stale-while-revalidate=${xStaleAfter}`);
+    headers.set('Netlify-CDN-Cache-Control', `public, maxage=${xCacheMaxage}, s-maxage=${xCacheMaxage}, stale-while-revalidate=${xStaleAfter}`);
   } else {
-    clonedResponse.headers.set('Cache-Control', `public, max-age=${xCacheMaxage}, s-maxage=${xCacheMaxage}, stale-while-revalidate=${xStaleAfter}`);
+    headers.set('Cache-Control', `public, max-age=${xCacheMaxage}, s-maxage=${xCacheMaxage}, stale-while-revalidate=${xStaleAfter}`);
   }
 
-  clonedResponse.headers.delete('X-Cache-Maxage');
-  clonedResponse.headers.delete('X-Stale-After');
+  headers.delete('X-Cache-Maxage');
+  headers.delete('X-Stale-After');
 
   return clonedResponse;
 }

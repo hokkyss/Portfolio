@@ -20,9 +20,6 @@
       "browser": {
         "binding": "BROWSER",
         "remote": true
-      },
-      "cache": {
-        "enabled": true
       }
     },
     "development": {
@@ -30,9 +27,6 @@
       "browser": {
         "binding": "BROWSER",
         "remote": true
-      },
-      "cache": {
-        "enabled": true
       }
     }
   }
