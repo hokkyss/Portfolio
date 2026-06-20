@@ -27,7 +27,7 @@ const cacheMiddleware = createMiddleware({
 
     // Cache only for GET requests
     if (ctx.request.method === 'GET') {
-      executionContext.waitUntil(cache.put(cacheKey, middlewareResult.response as unknown as CfResponse));
+      executionContext.waitUntil(cache.put(cacheKey, response.clone() as unknown as CfResponse));
     }
 
     return response;
