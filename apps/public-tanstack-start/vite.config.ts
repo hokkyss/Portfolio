@@ -32,6 +32,7 @@ export default defineConfig({
     __APP_VERSION__: JSON.stringify(packageJson.version),
     __BUILD_NUMBER__: JSON.stringify(getBuildNumber()),
     __CLOUDFLARE__: process.env.CLOUDFLARE ? true : false,
+    __NETLIFY__: process.env.NETLIFY ? true : false,
   },
   envPrefix: ['PUBLIC_'],
   plugins: [
