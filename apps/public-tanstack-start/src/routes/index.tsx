@@ -22,7 +22,9 @@ export const Route = createFileRoute('/')({
   headers() {
     return {
       'Cache-Control': 'public, max-age=86400',
-      'CDN-Cache-Control': 'max-age=604800, stale-while-revalidate=86400',
+      'CDN-Cache-Control': 'max-age=604800',
+      'Netlify-CDN-Cache-Control': 'public, maxage=604800, s-maxage=604800, stale-while-revalidate',
+      'Netlify-Vary': 'cookie=th',
     };
   },
 });

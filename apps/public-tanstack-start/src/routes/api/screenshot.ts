@@ -70,7 +70,7 @@ export const Route = createFileRoute('/api/screenshot')({
             return new Response(new Blob([screenshot as unknown as BlobPart], { type: 'image/png' }), {
               headers: {
                 'Cache-Control': 'public, max-age=86400',
-                'CDN-Cache-Control': 'max-age=604800, stale-while-revalidate=86400',
+                'CDN-Cache-Control': 'max-age=604800',
                 'Content-Type': 'image/png',
               },
             });

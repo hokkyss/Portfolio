@@ -5,6 +5,7 @@ import requestIdMiddleware from './clients/logger/middlewares/request-id.middlew
 import queryClientMiddleware from './clients/query/middlewares/query.middleware';
 import sanityClientMiddleware from './clients/sanity/middlewares/sanity-client.middleware';
 import sentryMiddleware from './clients/sentry/middlewares/sentry.middleware';
+import cloudflareCacheMiddleware from './lib/common/middlewares/cloudflare-cache.middleware';
 import nonceMiddleware from './lib/common/middlewares/nonce.middleware';
 import applicationErrorSerializationAdapter from './lib/common/serialization-adapters/application-error.serialization-adapter';
 
@@ -25,6 +26,7 @@ export const startInstance = createStart(() => ({
   ],
   requestMiddleware: [
     sentryMiddleware,
+    cloudflareCacheMiddleware,
     queryClientMiddleware,
     nonceMiddleware,
     loggerInstanceMiddleware,
