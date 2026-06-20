@@ -1,10 +1,29 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "hokkyss-portfolio-tanstack-start",
-  "compatibility_date": "2025-09-02",
+  "compatibility_date": "2026-06-19",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "src/server.ts",
-  "build": {
-    "command": "pnpm --filter @portfolio/public-tanstack-start... run build",
+  "main": "src/server.cloudflare.ts",
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true
+    }
+  },
+  "env": {
+    "production": {
+      "name": "hokkyss-portfolio-tanstack-start-production",
+      "browser": {
+        "binding": "BROWSER",
+        "remote": true
+      }
+    },
+    "development": {
+      "name": "hokkyss-portfolio-tanstack-start-development",
+      "browser": {
+        "binding": "BROWSER",
+        "remote": true
+      }
+    }
   }
 }

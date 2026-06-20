@@ -1,4 +1,5 @@
 import ApplicationError from '@portfolio/common/errors/application-error';
+import { getClient } from '@sentry/cloudflare';
 import { consoleLoggingIntegration, init } from '@sentry/tanstackstart-react';
 import { createIsomorphicFn } from '@tanstack/react-start';
 import { getServerEnv } from '../../configs/env/env.config';
@@ -8,6 +9,12 @@ const getSentryClient = createIsomorphicFn()
     throw new ApplicationError(500, 'getSentryClient cannot be called from the client');
   })
   .server(() => {
+    // If we are on Cloudflare, the Sentry client is already initialized by `withSentry`
+    // in server.cloudflare.ts. We can retrieve the active client using getClient()
+    if (__CLOUDFLARE__) {
+      return getClient();
+    }
+
     const serverEnv = getServerEnv();
     const sentryClient = init({
       dsn: serverEnv.sentryDsn,

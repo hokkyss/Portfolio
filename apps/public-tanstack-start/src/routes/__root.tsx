@@ -43,9 +43,9 @@ import appCss from '../styles.css?url';
  */
 function gtm(w: typeof window, d: typeof document, s: 'script', l: 'dataLayer', i: string) {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  w[l] = w[l] || [];
+  (w as any)[l] = (w as any)[l] || [];
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-  w[l].push({ event: 'gtm.js', 'gtm.start': new Date().getTime() });
+  (w as any)[l].push({ event: 'gtm.js', 'gtm.start': new Date().getTime() });
   const dl = l != 'dataLayer' ? '&l=' + l : '',
     f = d.getElementsByTagName(s)[0], j = d.createElement(s);
   j.async = true;
