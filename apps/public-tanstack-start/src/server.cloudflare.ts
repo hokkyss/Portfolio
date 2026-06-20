@@ -3,6 +3,7 @@ import {
   createStartHandler,
   defaultStreamHandler,
 } from '@tanstack/react-start/server';
+import { runWithExecutionContext } from './lib/common/async-storages/cloudflare-execution-context.storage';
 
 const startHandler = createStartHandler({
   handler: defaultStreamHandler,
@@ -23,7 +24,7 @@ export default withSentry((env) => ({
   sendDefaultPii: true,
   skipOpenTelemetrySetup: false,
 }), {
-  fetch: (req) => {
-    return startHandler(req);
+  fetch: (req, _env, ctx) => {
+    return runWithExecutionContext(() => startHandler(req), ctx);
   },
 });
