@@ -7,6 +7,10 @@ on:
       - dev
       - hokki/feat/cloudflare
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   deploy:
     name: Deploy to Cloudflare
