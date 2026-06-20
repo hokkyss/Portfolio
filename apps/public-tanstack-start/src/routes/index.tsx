@@ -21,8 +21,9 @@ export const Route = createFileRoute('/')({
   shouldReload: false,
   headers() {
     return {
-      'Netlify-CDN-Cache-Control': 'public, maxage=604800, s-maxage=604800, stale-while-revalidate',
       'Netlify-Vary': 'cookie=th',
+      'X-Cache-Maxage': '604800',
+      'X-Stale-After': '86400',
     };
   },
 });

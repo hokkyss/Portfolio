@@ -1,3 +1,5 @@
+import type { BrowserRun } from '@cloudflare/workers-types';
+import ApplicationError from '@portfolio/common/errors/application-error';
 import { createFileRoute } from '@tanstack/react-router';
 
 /** Allowed origin hostnames for screenshot requests (URL allowlist). */
@@ -36,11 +38,20 @@ export const Route = createFileRoute('/api/screenshot')({
             });
           }
 
-          // Lazy-load heavy deps so they don't affect cold start for other routes
+          if (__CLOUDFLARE__) {
+            const env = (await import('cloudflare:workers')).env;
+            const browser = env.BROWSER as unknown as BrowserRun;
+            const response = await browser.quickAction('screenshot', {
+              url: urlParam,
+            });
+            response.headers.set('X-Cache-Maxage', '604800');
+            response.headers.set('X-Stale-After', '86400');
+
+            return response as unknown as Response;
+          }
+
           const [{ default: chromium }, { default: puppeteerCore }] = await Promise.all([
-            // @sparticuz/chromium installed at deploy time
             import('@sparticuz/chromium'),
-            // puppeteer-core installed at deploy time
             import('puppeteer-core'),
           ]);
 
@@ -56,11 +67,21 @@ export const Route = createFileRoute('/api/screenshot')({
             await page.goto(urlParam, { timeout: 15_000, waitUntil: 'networkidle2' });
             const screenshot = await page.screenshot({ type: 'png' });
 
-            return new Response(new Blob([screenshot], { type: 'image/png' }), {
+            return new Response(new Blob([screenshot as unknown as BlobPart], { type: 'image/png' }), {
               headers: {
-                'cache-control': 'public, max-age=604800, stale-while-revalidate=86400',
-                'content-type': 'image/png',
+                'Content-Type': 'image/png',
+                'X-Cache-Maxage': '604800',
+                'X-Stale-After': '86400',
               },
+            });
+          } catch (e) {
+            const error = e as Error;
+            ctx.context.logger.error(error);
+            return Response.json({
+              message: error.message,
+              stack: error.stack,
+            }, {
+              status: e instanceof ApplicationError ? e.status : 500,
             });
           } finally {
             await browser.close();
