@@ -29,7 +29,7 @@
     "eslint": "catalog:eslint",
     "@portfolio/eslint": "workspace:^",
     "typescript": "catalog:ts5",
-    "vite": "^7.0.5"
+    "vite": "catalog:vite"
   },
   "dependencies": {
     "es-toolkit": "^1.43.0"

@@ -79,8 +79,8 @@
     "@types/node": "^24.0.14",
     "eslint": "catalog:eslint",
     "typescript": "catalog:ts5",
-    "vite": "^7.0.5",
-    "vite-plugin-dts": "^4.5.4",
+    "vite": "catalog:vite",
+    "vite-plugin-dts": "catalog:vite",
     "zod": "catalog:zod4"
   },
   "dependencies": {

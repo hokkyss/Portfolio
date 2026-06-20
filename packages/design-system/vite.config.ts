@@ -1,11 +1,8 @@
-import react from '@vitejs/plugin-react';
-import { defineConfig, type Plugin } from 'vite';
-import dts from 'vite-plugin-dts';
-import tsconfigPaths from 'vite-tsconfig-paths';
-
 import { readdirSync } from 'node:fs';
 import { appendFile, readFile, writeFile } from 'node:fs/promises';
 import { basename, dirname, extname, join, relative } from 'node:path';
+import { defineConfig, esmExternalRequirePlugin, type Plugin } from 'vite';
+import dts from 'vite-plugin-dts';
 
 export default defineConfig((ctx) => {
   const srcFolder = join(import.meta.dirname, 'src');
@@ -84,24 +81,20 @@ export default defineConfig((ctx) => {
       emptyOutDir: true,
       minify: ctx.mode === 'production',
       outDir: 'dist',
-      rollupOptions: {
-        external: ['react', 'react-dom'],
-      },
       sourcemap: ctx.mode === 'development',
     },
     plugins: [
-      tsconfigPaths({
-        projects: [join(import.meta.dirname, 'tsconfig.json')],
+      esmExternalRequirePlugin({
+        external: ['react', 'react-dom', 'react/jsx-runtime'],
       }),
       dts({
         exclude: ['./*'],
-        insertTypesEntry: true,
-        rollupTypes: ctx.mode === 'production',
-        strictOutput: true,
       }),
-      react(),
       watchSrcFolderPlugin(),
       packageJsonExportsPlugin(),
     ],
+    resolve: {
+      tsconfigPaths: true,
+    },
   });
 });
