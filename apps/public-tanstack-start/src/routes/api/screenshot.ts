@@ -1,7 +1,6 @@
 import type { BrowserRun } from '@cloudflare/workers-types';
 import ApplicationError from '@portfolio/common/errors/application-error';
 import { createFileRoute } from '@tanstack/react-router';
-import { env } from 'cloudflare:workers';
 
 /** Allowed origin hostnames for screenshot requests (URL allowlist). */
 const ALLOWED_ORIGINS = [
@@ -40,12 +39,13 @@ export const Route = createFileRoute('/api/screenshot')({
           }
 
           if (__CLOUDFLARE__) {
+            const env = (await import('cloudflare:workers')).env;
             const browser = env.BROWSER as unknown as BrowserRun;
             const response = await browser.quickAction('screenshot', {
               url: urlParam,
             });
-            response.headers.set('Cache-Control', 'public, max-age=86400');
-            response.headers.set('CDN-Cache-Control', 'max-age=604800, stale-while-revalidate=86400');
+            response.headers.set('X-Cache-Maxage', '604800');
+            response.headers.set('X-Stale-After', '86400');
 
             return response as unknown as Response;
           }
@@ -69,9 +69,9 @@ export const Route = createFileRoute('/api/screenshot')({
 
             return new Response(new Blob([screenshot as unknown as BlobPart], { type: 'image/png' }), {
               headers: {
-                'Cache-Control': 'public, max-age=86400',
-                'CDN-Cache-Control': 'max-age=604800',
                 'Content-Type': 'image/png',
+                'X-Cache-Maxage': '604800',
+                'X-Stale-After': '86400',
               },
             });
           } catch (e) {
