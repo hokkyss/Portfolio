@@ -43,6 +43,9 @@ export const Route = createFileRoute('/api/screenshot')({
             const browser = env.BROWSER as unknown as BrowserRun;
             const response = await browser.quickAction('screenshot', {
               url: urlParam,
+              waitForSelector: {
+                selector: '[id=hero]',
+              },
             });
             response.headers.set('Cache-Control', 'public, max-age=86400');
             response.headers.set('CDN-Cache-Control', 'max-age=604800, stale-while-revalidate=86400');
