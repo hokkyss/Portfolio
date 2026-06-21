@@ -1,11 +1,21 @@
 import type { CacheStorage, Request as CfRequest, Response as CfResponse } from '@cloudflare/workers-types';
 import { createMiddleware } from '@tanstack/react-start';
+import requestIdMiddleware from '../../../clients/logger/middlewares/request-id.middleware';
 import { getExecutionContext } from '../async-storages/cloudflare-execution-context.storage';
 
 const cacheMiddleware = createMiddleware({
   type: 'request',
 })
+  // despite requests being cached, we want the request id to be updated.
+  // NOTE: Is that possible? It's worth trying.
+  .middleware([requestIdMiddleware])
   .server(async (ctx) => {
+    // bail out early
+    // Cache only for GET requests
+    if (ctx.request.method !== 'GET' && ctx.request.method !== 'HEAD') {
+      return ctx.next();
+    }
+
     // if we are running in cloudflare, use cloudflare cache features
     if (__CLOUDFLARE__) {
       const cacheKey = new Request(ctx.request.url, ctx.request) as unknown as CfRequest;
@@ -23,8 +33,8 @@ const cacheMiddleware = createMiddleware({
       // Cache MISS, execute handler
       const middlewareResult = await ctx.next();
 
-      // Cache only for GET requests
-      if (ctx.request.method === 'GET' && middlewareResult.response.ok) {
+      // cache only if the response is 200 OK
+      if (middlewareResult.response.ok) {
         const response = processCacheHeaders(middlewareResult.response);
         const executionContext = getExecutionContext();
 
@@ -38,7 +48,8 @@ const cacheMiddleware = createMiddleware({
     // Non-Cloudflare environment
     const middlewareResult = await ctx.next();
 
-    if (ctx.request.method === 'GET' && middlewareResult.response.ok) {
+    // cache only if the response is 200 OK
+    if (middlewareResult.response.ok) {
       return processCacheHeaders(middlewareResult.response);
     }
 
