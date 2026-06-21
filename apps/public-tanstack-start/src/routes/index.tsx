@@ -22,8 +22,13 @@ export const Route = createFileRoute('/')({
   headers() {
     return {
       'Netlify-Vary': 'cookie=th',
-      'X-Cache-Maxage': '604800',
-      'X-Stale-After': '86400',
+      // NOTE: Cloudflare does not have `Vary` variation, so we disable the cache on cloudflare
+      ...(__NETLIFY__
+        ? {
+            'X-Cache-Maxage': '604800',
+            'X-Stale-After': '86400',
+          }
+        : {}),
     };
   },
 });
