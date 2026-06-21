@@ -8,7 +8,7 @@ import { getTechStacksRequestDto, getTechStacksResponseDto } from '../dto/get-te
 const getTechStacksFunction = createServerFn({
   method: 'GET',
 })
-  .validator(getTechStacksRequestDto)
+  .inputValidator(getTechStacksRequestDto)
   .handler(async (ctx) => {
     const request = getRequest();
 
