@@ -43,6 +43,13 @@ CLOUDFLARE_KEYS.forEach((envName) => {
 
 vars.push(`--var CLOUDFLARE:"true"`);
 
+const args = process.argv.slice(2);
+const commitHash = args[0];
+
+if (commitHash) {
+  vars.push(`--message "${commitHash}"`);
+}
+
 // Construct and run the wrangler command
 const wranglerCmd = `pnpm exec wrangler deploy ${vars.join(' ')}`;
 
