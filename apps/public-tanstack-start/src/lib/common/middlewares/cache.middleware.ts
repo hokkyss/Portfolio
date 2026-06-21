@@ -1,43 +1,60 @@
 import type { CacheStorage, Request as CfRequest, Response as CfResponse } from '@cloudflare/workers-types';
 import { createMiddleware } from '@tanstack/react-start';
+import requestIdMiddleware from '../../../clients/logger/middlewares/request-id.middleware';
 import { getExecutionContext } from '../async-storages/cloudflare-execution-context.storage';
 
 const cacheMiddleware = createMiddleware({
   type: 'request',
-}).server(async (ctx) => {
-  // if we are running in cloudflare, use cloudflare cache features
-  if (__CLOUDFLARE__) {
-    const cacheKey = new Request(ctx.request.url, ctx.request) as unknown as CfRequest;
-    const cache = (caches as unknown as CacheStorage).default;
-
-    const cachedResponse = await cache.match(cacheKey);
-    if (cachedResponse) {
-      const clonedCachedResponse = new Response(cachedResponse.body as never, cachedResponse as never);
-      clonedCachedResponse.headers.set('X-Cache-Status', 'HIT');
-      clonedCachedResponse.headers.delete('X-Cache-Maxage');
-      clonedCachedResponse.headers.delete('X-Stale-After');
-      return clonedCachedResponse;
+})
+  // despite requests being cached, we want the request id to be updated.
+  // NOTE: Is that possible? It's worth trying.
+  .middleware([requestIdMiddleware])
+  .server(async (ctx) => {
+    // bail out early
+    // Cache only for GET requests
+    if (ctx.request.method !== 'GET' && ctx.request.method !== 'HEAD') {
+      return ctx.next();
     }
 
-    // Cache MISS, execute handler
+    // if we are running in cloudflare, use cloudflare cache features
+    if (__CLOUDFLARE__) {
+      const cacheKey = new Request(ctx.request.url, ctx.request) as unknown as CfRequest;
+      const cache = (caches as unknown as CacheStorage).default;
+
+      const cachedResponse = await cache.match(cacheKey);
+      if (cachedResponse) {
+        const clonedCachedResponse = new Response(cachedResponse.body as never, cachedResponse as never);
+        clonedCachedResponse.headers.set('X-Cache-Status', 'HIT');
+        clonedCachedResponse.headers.delete('X-Cache-Maxage');
+        clonedCachedResponse.headers.delete('X-Stale-After');
+        return clonedCachedResponse;
+      }
+
+      // Cache MISS, execute handler
+      const middlewareResult = await ctx.next();
+
+      // cache only if the response is 200 OK
+      if (middlewareResult.response.ok) {
+        const response = processCacheHeaders(middlewareResult.response);
+        const executionContext = getExecutionContext();
+
+        executionContext.waitUntil(cache.put(cacheKey, response.clone() as unknown as CfResponse));
+        return response;
+      }
+
+      return middlewareResult;
+    }
+
+    // Non-Cloudflare environment
     const middlewareResult = await ctx.next();
 
-    const response = processCacheHeaders(middlewareResult.response);
-    const executionContext = getExecutionContext();
-
-    // Cache only for GET requests
-    if (ctx.request.method === 'GET') {
-      executionContext.waitUntil(cache.put(cacheKey, response.clone() as unknown as CfResponse));
+    // cache only if the response is 200 OK
+    if (middlewareResult.response.ok) {
+      return processCacheHeaders(middlewareResult.response);
     }
 
-    return response;
-  }
-
-  // Non-Cloudflare environment
-  const middlewareResult = await ctx.next();
-
-  return processCacheHeaders(middlewareResult.response);
-});
+    return middlewareResult;
+  });
 
 /**
  * @param response
