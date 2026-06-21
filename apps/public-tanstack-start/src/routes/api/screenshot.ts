@@ -48,7 +48,6 @@ export const Route = createFileRoute('/api/screenshot')({
             const clonedResponse = new Response(response.body as never, response as never);
             clonedResponse.headers.set('X-Cache-Maxage', '604800');
             clonedResponse.headers.set('X-Stale-After', '86400');
-            clonedResponse.headers.set('Cache-Control', 'public, s-maxage=604800, max-age=604800');
 
             return clonedResponse as unknown as Response;
           }

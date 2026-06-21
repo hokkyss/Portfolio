@@ -46,9 +46,35 @@ catalogs:
   ts5:
     typescript: ^5.8.3
     typescript-eslint: ^8.37.0
+  viteReact:
+    '@vitejs/plugin-react': ^6.0.2
+    '@rolldown/plugin-babel': ^0.2.3
+  vite:
+    vite: ^8.0.16
+    vite-plugin-dts: ^4.5.4
+    vitest: ^3.2.4
+  tailwindcss:
+    tailwindcss: ^4.3.1
+    '@tailwindcss/vite': ^4.3.1
   zod4:
     zod: ^4.1.12
 
 linkWorkspacePackages: true
 
 preferWorkspacePackages: true
+
+# 5760 minutes = 4 days
+# 4 days * 1440 minutes/day
+# https://pnpm.io/settings#minimumreleaseage
+# This is to possibly reduce the chances of receiving supply chain attack
+minimumReleaseAge: 0
+
+allowBuilds:
+  '@firebase/util': false
+  '@parcel/watcher': false
+  '@sentry/cli': false
+  esbuild: false
+  msw: false
+  protobufjs: false
+  sharp: false
+  workerd: false

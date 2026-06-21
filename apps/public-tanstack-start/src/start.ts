@@ -7,6 +7,7 @@ import sanityClientMiddleware from './clients/sanity/middlewares/sanity-client.m
 import sentryMiddleware from './clients/sentry/middlewares/sentry.middleware';
 import cacheMiddleware from './lib/common/middlewares/cache.middleware';
 import clientInjectedMiddleware from './lib/common/middlewares/client-injected.middleware';
+import errorResponseMiddleware from './lib/common/middlewares/error-response.middleware';
 import nonceMiddleware from './lib/common/middlewares/nonce.middleware';
 import applicationErrorSerializationAdapter from './lib/common/serialization-adapters/application-error.serialization-adapter';
 
@@ -17,12 +18,15 @@ export const startInstance = createStart(() => ({
     clientInjectedMiddleware,
   ],
   requestMiddleware: [
-    sentryMiddleware,
-    cacheMiddleware,
-    queryClientMiddleware,
-    nonceMiddleware,
+    // There is no particular order on these middlewares
+    // If there is a need for specific order, middlewares has `.middleware()`. Maybe try doing that.
     loggerInstanceMiddleware,
     requestIdMiddleware,
+    sentryMiddleware,
+    errorResponseMiddleware,
+    queryClientMiddleware,
+    cacheMiddleware,
+    nonceMiddleware,
     sanityClientMiddleware,
   ],
   serializationAdapters: [applicationErrorSerializationAdapter],

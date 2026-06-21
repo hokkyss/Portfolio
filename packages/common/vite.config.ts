@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig, esmExternalRequirePlugin } from 'vite';
 import dts from 'vite-plugin-dts';
 import pkg from './package.json' with { type: 'json' };
 
@@ -9,17 +9,18 @@ export default defineConfig({
       entry: {
         'errors/application-error': './lib/errors/application.error',
         logger: './lib/logger/index',
+        types: './lib/types',
       },
       formats: ['es'],
     },
-    rollupOptions: {
-      // match @tanstack/react-query and @tanstack/react-query/anything, but not @tanstack/react-query-devtools
-      external: Object.keys(pkg.peerDependencies)
-        .map<RegExp | string>((key) => new RegExp(`^${key}(/.+)*`))
-        .concat('node:console'),
-    },
   },
   plugins: [
+    esmExternalRequirePlugin({
+      external: Object.keys(pkg.peerDependencies)
+      // match @tanstack/react-query and @tanstack/react-query/anything, but not @tanstack/react-query-devtools
+        .map<RegExp | string>((key) => new RegExp(`^${key}(/.+)*`))
+        .concat('node:console'),
+    }),
     dts({
       entryRoot: './lib',
     }),

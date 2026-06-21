@@ -1,13 +1,14 @@
 import { cloudflare } from '@cloudflare/vite-plugin';
 import createNetlifyPlugin from '@netlify/vite-plugin';
+import babel from '@rolldown/plugin-babel';
 import { sentryTanstackStart } from '@sentry/tanstackstart-react/vite';
 import tailwindcss from '@tailwindcss/vite';
 import { devtools } from '@tanstack/devtools-vite';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
-import viteReact from '@vitejs/plugin-react';
+import viteReact, { reactCompilerPreset } from '@vitejs/plugin-react';
 import { execSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { defineConfig } from 'vite';
+import { defineConfig, esmExternalRequirePlugin } from 'vite';
 import packageJson from './package.json' with { type: 'json' };
 
 const getBuildNumber = () => {
@@ -19,11 +20,6 @@ const getBuildNumber = () => {
 };
 
 export default defineConfig({
-  build: {
-    rollupOptions: {
-      external: ['@sparticuz/chromium', '@resvg/resvg-js'],
-    },
-  },
   define: {
     __APP_VERSION__: JSON.stringify(packageJson.version),
     __BUILD_NUMBER__: JSON.stringify(getBuildNumber()),
@@ -32,6 +28,9 @@ export default defineConfig({
   },
   envPrefix: ['PUBLIC_'],
   plugins: [
+    esmExternalRequirePlugin({
+      external: ['@sparticuz/chromium', '@resvg/resvg-js'],
+    }),
     devtools({
       consolePiping: {
         enabled: false,
@@ -94,10 +93,9 @@ export default defineConfig({
       org: process.env.SENTRY_ORGANIZATION,
       project: process.env.SENTRY_PROJECT,
     }),
-    viteReact({
-      babel: {
-        plugins: [['babel-plugin-react-compiler']],
-      },
+    viteReact(),
+    babel({
+      presets: [reactCompilerPreset({})],
     }),
     !!process.env.NETLIFY && createNetlifyPlugin({
       build: {
