@@ -1,4 +1,4 @@
-import { createCsrfMiddleware, createStart } from '@tanstack/react-start';
+import { createStart } from '@tanstack/react-start';
 import functionLoggerMiddleware from './clients/logger/middlewares/function-logger.middleware';
 import loggerInstanceMiddleware from './clients/logger/middlewares/logger-instance.middleware';
 import requestIdMiddleware from './clients/logger/middlewares/request-id.middleware';
@@ -7,12 +7,9 @@ import sanityClientMiddleware from './clients/sanity/middlewares/sanity-client.m
 import sentryMiddleware from './clients/sentry/middlewares/sentry.middleware';
 import cacheMiddleware from './lib/common/middlewares/cache.middleware';
 import clientInjectedMiddleware from './lib/common/middlewares/client-injected.middleware';
+import errorResponseMiddleware from './lib/common/middlewares/error-response.middleware';
 import nonceMiddleware from './lib/common/middlewares/nonce.middleware';
 import applicationErrorSerializationAdapter from './lib/common/serialization-adapters/application-error.serialization-adapter';
-
-const csrfMiddleware = createCsrfMiddleware({
-  filter: (ctx) => ctx.handlerType === 'serverFn',
-});
 
 export const startInstance = createStart(() => ({
   defaultSsr: true,
@@ -21,14 +18,12 @@ export const startInstance = createStart(() => ({
     clientInjectedMiddleware,
   ],
   requestMiddleware: [
-    // these middlewares should be first
-    csrfMiddleware,
-
     // There is no particular order on these middlewares
     // If there is a need for specific order, middlewares has `.middleware()`. Maybe try doing that.
     loggerInstanceMiddleware,
     requestIdMiddleware,
     sentryMiddleware,
+    errorResponseMiddleware,
     queryClientMiddleware,
     cacheMiddleware,
     nonceMiddleware,

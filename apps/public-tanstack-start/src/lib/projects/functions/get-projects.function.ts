@@ -8,7 +8,7 @@ import { getProjectRequestDto, getProjectResponseDto } from '../dto/get-project.
 const getProjectsFunction = createServerFn({
   method: 'GET',
 })
-  .validator(getProjectRequestDto)
+  .inputValidator(getProjectRequestDto)
   .handler(async (ctx) => {
     const request = getRequest();
 
