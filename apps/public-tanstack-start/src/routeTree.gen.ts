@@ -17,6 +17,7 @@ import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiScreenshotRouteImport } from './routes/api/screenshot'
 import { Route as ApiHealthRouteImport } from './routes/api/health'
+import { Route as DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRouteImport } from './routes/[.]well-known/appspecific/com[.]chrome[.]devtools[.]json'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -58,6 +59,12 @@ const ApiHealthRoute = ApiHealthRouteImport.update({
   path: '/api/health',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRoute =
+  DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRouteImport.update({
+    id: '/.well-known/appspecific/com.chrome.devtools.json',
+    path: '/.well-known/appspecific/com.chrome.devtools.json',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -68,6 +75,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/health': typeof ApiHealthRoute
   '/api/screenshot': typeof ApiScreenshotRoute
+  '/.well-known/appspecific/com.chrome.devtools.json': typeof DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +86,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/health': typeof ApiHealthRoute
   '/api/screenshot': typeof ApiScreenshotRoute
+  '/.well-known/appspecific/com.chrome.devtools.json': typeof DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +98,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/health': typeof ApiHealthRoute
   '/api/screenshot': typeof ApiScreenshotRoute
+  '/.well-known/appspecific/com.chrome.devtools.json': typeof DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +111,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/api/health'
     | '/api/screenshot'
+    | '/.well-known/appspecific/com.chrome.devtools.json'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +122,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/api/health'
     | '/api/screenshot'
+    | '/.well-known/appspecific/com.chrome.devtools.json'
   id:
     | '__root__'
     | '/'
@@ -121,6 +133,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/api/health'
     | '/api/screenshot'
+    | '/.well-known/appspecific/com.chrome.devtools.json'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -132,6 +145,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ApiHealthRoute: typeof ApiHealthRoute
   ApiScreenshotRoute: typeof ApiScreenshotRoute
+  DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRoute: typeof DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -192,6 +206,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiHealthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/.well-known/appspecific/com.chrome.devtools.json': {
+      id: '/.well-known/appspecific/com.chrome.devtools.json'
+      path: '/.well-known/appspecific/com.chrome.devtools.json'
+      fullPath: '/.well-known/appspecific/com.chrome.devtools.json'
+      preLoaderRoute: typeof DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -204,6 +225,8 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ApiHealthRoute: ApiHealthRoute,
   ApiScreenshotRoute: ApiScreenshotRoute,
+  DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRoute:
+    DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -27,6 +27,7 @@ const cacheMiddleware = createMiddleware({
         clonedCachedResponse.headers.set('X-Cache-Status', 'HIT');
         clonedCachedResponse.headers.delete('X-Cache-Maxage');
         clonedCachedResponse.headers.delete('X-Stale-After');
+        // we hope requestId middleware can set it successfully.
         return clonedCachedResponse;
       }
 
@@ -73,6 +74,10 @@ function processCacheHeaders(response: Response) {
   }
 
   if (__CLOUDFLARE__) {
+    // if headers exist, delete them first.
+    headers.delete('Cache-Control');
+    headers.delete('CDN-Cache-Control');
+
     // this might seem weird, but this is intentional.
     // Cache-Control is browser cache, CDN-Cache-Control is cloudflare cache
     // We want to go to cloudflare cache only if browser cache has expired.
@@ -80,8 +85,14 @@ function processCacheHeaders(response: Response) {
     headers.set('Cache-Control', `public, max-age=${xStaleAfter}`);
     headers.set('CDN-Cache-Control', `max-age=${xCacheMaxage}`);
   } else if (__NETLIFY__) {
+    // if headers exist, delete them first.
+    headers.delete('Netlify-CDN-Cache-Control');
+
     headers.set('Netlify-CDN-Cache-Control', `public, maxage=${xCacheMaxage}, s-maxage=${xCacheMaxage}, stale-while-revalidate=${xStaleAfter}`);
   } else {
+    // if headers exist, delete them first.
+    headers.delete('Cache-Control');
+
     headers.set('Cache-Control', `public, max-age=${xCacheMaxage}, s-maxage=${xCacheMaxage}, stale-while-revalidate=${xStaleAfter}`);
   }
 
