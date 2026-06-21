@@ -8,7 +8,7 @@ import { getExperienceRequestDto, getExperienceResponseDto } from '../dto/get-ex
 const getExperiencesFunction = createServerFn({
   method: 'GET',
 })
-  .inputValidator(getExperienceRequestDto)
+  .validator(getExperienceRequestDto)
   .handler(async (ctx) => {
     const request = getRequest();
 

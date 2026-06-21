@@ -9,7 +9,7 @@ import { z } from 'zod/v4';
 const setApplicationThemeFunction = createServerFn({
   method: 'POST',
 })
-  .inputValidator(z.object({ theme: z.string() }))
+  .validator(z.object({ theme: z.string() }))
   .handler(({ data }) => {
     const { theme } = data;
 
