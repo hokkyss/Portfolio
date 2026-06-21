@@ -62,3 +62,9 @@ catalogs:
 linkWorkspacePackages: true
 
 preferWorkspacePackages: true
+
+# 5760 minutes = 4 days
+# 4 days * 1440 minutes/day
+# https://pnpm.io/settings#minimumreleaseage
+# This is to possibly reduce the chances of receiving supply chain attack
+minimumReleaseAge: 5760
