@@ -21,13 +21,17 @@ export const startInstance = createStart(() => ({
     clientInjectedMiddleware,
   ],
   requestMiddleware: [
+    // these middlewares should be first
     csrfMiddleware,
-    sentryMiddleware,
-    cacheMiddleware,
-    queryClientMiddleware,
-    nonceMiddleware,
+
+    // There is no particular order on these middlewares
+    // If there is a need for specific order, middlewares has `.middleware()`. Maybe try doing that.
     loggerInstanceMiddleware,
     requestIdMiddleware,
+    sentryMiddleware,
+    queryClientMiddleware,
+    cacheMiddleware,
+    nonceMiddleware,
     sanityClientMiddleware,
   ],
   serializationAdapters: [applicationErrorSerializationAdapter],

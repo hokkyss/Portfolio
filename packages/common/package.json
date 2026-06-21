@@ -11,47 +11,11 @@
       },
       "default": "./lib/logger/index.ts"
     },
-    "./robots": {
+    "./types": {
       "production": {
-        "types": "./dist/robots/index.d.ts",
-        "default": "./dist/robots.js"
+        "types": "./dist/types.d.ts"
       },
-      "default": "./lib/robots/index.ts"
-    },
-    "./sitemap": {
-      "production": {
-        "types": "./dist/sitemap/index.d.ts",
-        "default": "./dist/sitemap.js"
-      },
-      "default": "./lib/sitemap/index.ts"
-    },
-    "./opengraph": {
-      "production": {
-        "types": "./dist/opengraph/index.d.ts",
-        "default": "./dist/opengraph.js"
-      },
-      "default": "./lib/opengraph/index.ts"
-    },
-    "./twitter": {
-      "production": {
-        "types": "./dist/twitter/index.d.ts",
-        "default": "./dist/twitter.js"
-      },
-      "default": "./lib/twitter/index.ts"
-    },
-    "./manifest": {
-      "production": {
-        "types": "./dist/manifest/index.d.ts",
-        "default": "./dist/manifest.js"
-      },
-      "default": "./lib/manifest/index.ts"
-    },
-    "./viewport": {
-      "production": {
-        "types": "./dist/viewport/index.d.ts",
-        "default": "./dist/viewport.js"
-      },
-      "default": "./lib/viewport/index.ts"
+      "default": "./lib/types.ts"
     },
     "./errors/application-error": {
       "production": {

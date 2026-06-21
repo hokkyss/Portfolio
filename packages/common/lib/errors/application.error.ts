@@ -1,13 +1,11 @@
-export type ErrorPayloadValue = {
-  [key: string]: ErrorPayloadValue;
-} | boolean | ErrorPayloadValue[] | null | number | string | undefined;
+import { Primitive } from '../types';
 
 class ApplicationError extends Error {
   public get payload() {
     return this.internalPayload;
   }
 
-  private readonly internalPayload: Record<string, ErrorPayloadValue>;
+  private readonly internalPayload: Record<string, Primitive>;
 
   constructor(public readonly status: number, public readonly message: string) {
     super(message);
@@ -16,8 +14,8 @@ class ApplicationError extends Error {
     this.internalPayload = {};
   }
 
-  public addPayload<T extends ErrorPayloadValue>(key: string, value: T): this;
-  public addPayload(key: string, value: ErrorPayloadValue) {
+  public addPayload<T extends Primitive>(key: string, value: T): this;
+  public addPayload(key: string, value: Primitive) {
     this.internalPayload[key] = value;
 
     return this;

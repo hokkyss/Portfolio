@@ -9,6 +9,7 @@ export default defineConfig({
       entry: {
         'errors/application-error': './lib/errors/application.error',
         logger: './lib/logger/index',
+        types: './lib/types',
       },
       formats: ['es'],
     },

@@ -67,4 +67,14 @@ preferWorkspacePackages: true
 # 4 days * 1440 minutes/day
 # https://pnpm.io/settings#minimumreleaseage
 # This is to possibly reduce the chances of receiving supply chain attack
-minimumReleaseAge: 5760
+minimumReleaseAge: 0
+
+allowBuilds:
+  '@firebase/util': false
+  '@parcel/watcher': false
+  '@sentry/cli': false
+  esbuild: false
+  msw: false
+  protobufjs: false
+  sharp: false
+  workerd: false
