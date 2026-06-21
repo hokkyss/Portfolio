@@ -1,4 +1,4 @@
-import { createStart } from '@tanstack/react-start';
+import { createCsrfMiddleware, createStart } from '@tanstack/react-start';
 import functionLoggerMiddleware from './clients/logger/middlewares/function-logger.middleware';
 import loggerInstanceMiddleware from './clients/logger/middlewares/logger-instance.middleware';
 import requestIdMiddleware from './clients/logger/middlewares/request-id.middleware';
@@ -10,6 +10,10 @@ import clientInjectedMiddleware from './lib/common/middlewares/client-injected.m
 import nonceMiddleware from './lib/common/middlewares/nonce.middleware';
 import applicationErrorSerializationAdapter from './lib/common/serialization-adapters/application-error.serialization-adapter';
 
+const csrfMiddleware = createCsrfMiddleware({
+  filter: (ctx) => ctx.handlerType === 'serverFn',
+});
+
 export const startInstance = createStart(() => ({
   defaultSsr: true,
   functionMiddleware: [
@@ -17,6 +21,7 @@ export const startInstance = createStart(() => ({
     clientInjectedMiddleware,
   ],
   requestMiddleware: [
+    csrfMiddleware,
     sentryMiddleware,
     cacheMiddleware,
     queryClientMiddleware,
