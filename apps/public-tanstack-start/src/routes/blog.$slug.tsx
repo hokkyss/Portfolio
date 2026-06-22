@@ -34,7 +34,7 @@ function BlogPostComponent() {
   }
 
   return (
-    <main className={tw`mx-auto max-w-4xl px-6 py-24`}>
+    <main className={tw`mx-auto max-w-4xl px-6 py-24 w-full`}>
       <div className={tw`mb-8`}>
         <Button
           className={tw`-ml-4 mb-4`}
@@ -55,7 +55,10 @@ function BlogPostComponent() {
           className={tw`mb-3 font-mono text-xs uppercase tracking-widest`}
           variant="secondary"
         >
-          $ cat {slug}.md
+          $ cat
+          {' '}
+          {slug}
+          .md
         </Badge>
         <h1 className={tw`mb-4 text-4xl font-bold tracking-tight md:text-5xl`}>{post.title}</h1>
         <div className={tw`flex flex-wrap items-center gap-4 text-muted-foreground`}>
