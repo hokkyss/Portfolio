@@ -34,7 +34,7 @@ function BlogPostComponent() {
   }
 
   return (
-    <main className={tw`container mx-auto max-w-3xl px-6 py-12`}>
+    <main className={tw`mx-auto max-w-4xl px-6 py-24`}>
       <div className={tw`mb-8`}>
         <Button
           className={tw`-ml-4 mb-4`}
@@ -50,19 +50,28 @@ function BlogPostComponent() {
 
       </div>
 
-      <header className={tw`mb-8`}>
-        <div className={tw`mb-4 flex flex-wrap gap-2`}>
-          {post.categories.map((category) => (
-            <Badge key={category} variant="secondary">
-              {category}
-            </Badge>
-          ))}
-        </div>
+      <header className={tw`mb-12`}>
+        <Badge
+          className={tw`mb-3 font-mono text-xs uppercase tracking-widest`}
+          variant="secondary"
+        >
+          $ cat {slug}.md
+        </Badge>
         <h1 className={tw`mb-4 text-4xl font-bold tracking-tight md:text-5xl`}>{post.title}</h1>
-        <div className={tw`text-muted-foreground`}>
-          Last updated on
-          {' '}
-          {new Date(post.updatedAt).toLocaleDateString()}
+        <div className={tw`flex flex-wrap items-center gap-4 text-muted-foreground`}>
+          <div className={tw`flex flex-wrap gap-2`}>
+            {post.categories.map((category) => (
+              <Badge key={category} variant="secondary">
+                {category}
+              </Badge>
+            ))}
+          </div>
+          <span>&bull;</span>
+          <div>
+            Last updated on
+            {' '}
+            {new Date(post.updatedAt).toLocaleDateString()}
+          </div>
         </div>
       </header>
 

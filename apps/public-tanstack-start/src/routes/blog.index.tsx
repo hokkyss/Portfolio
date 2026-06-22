@@ -23,15 +23,22 @@ export const Route = createFileRoute('/blog/')({
  *
  */
 function BlogListingComponent() {
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useSuspenseInfiniteQuery(
-    listBlogsQuery(),
+  const { data: posts, fetchNextPage, hasNextPage, isFetchingNextPage } = useSuspenseInfiniteQuery(
+    {
+      ...listBlogsQuery(),
+      select: (d) => d.pages.flatMap((page) => page.items),
+    },
   );
 
-  const posts = data.pages.flatMap((page) => page.items);
-
   return (
-    <main className={tw`container mx-auto px-6 py-12`}>
-      <h1 className={tw`mb-8 text-5xl font-bold tracking-tight`}>Blog</h1>
+    <main className={tw`mx-auto max-w-6xl px-6 py-24`}>
+      <Badge
+        className={tw`mb-3 font-mono text-xs uppercase tracking-widest`}
+        variant="secondary"
+      >
+        $ ls -la /blogs
+      </Badge>
+      <h1 className={tw`mb-12 text-4xl font-bold tracking-tight`}>Blog</h1>
 
       <div className={tw`grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3`}>
         {posts.map((post) => (
