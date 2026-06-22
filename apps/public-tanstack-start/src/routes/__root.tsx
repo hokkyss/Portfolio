@@ -289,7 +289,7 @@ function RootDocument({ children }: { children: ReactNode }) {
         <ThemeProvider theme={theme}>
           <NavBar className={tw`peer`} />
           {children}
-          <footer className={tw`p-4 text-center [.peer+template+&]:hidden`}>
+          <footer className={tw`p-4 text-center hidden [.peer~:not([style*="display:_none"]):not(template)~&]:block`}>
             <p className={tw`text-xs text-muted-foreground`}>
               v
               {__APP_VERSION__}
