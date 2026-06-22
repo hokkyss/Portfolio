@@ -62,7 +62,7 @@ export default defineConfig((ctx) => {
       /* eslint-disable perfectionist/sort-objects */
       entries.forEach(({ entryName, path }) => {
         exports[`./${entryName}`] = {
-          types: ctx.mode === 'production' ? `./dist/${entryName}.d.ts` : `./dist/${join(dirname(path), basename(path, extname(path)))}.d.ts`,
+          types: `./dist/${join(dirname(path), basename(path, extname(path)))}.d.ts`,
           default: `./dist/${entryName}.js`,
         };
       });

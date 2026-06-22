@@ -13,8 +13,9 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ManifestDotwebmanifestRouteImport } from './routes/manifest[.]webmanifest'
-import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as ApiScreenshotRouteImport } from './routes/api/screenshot'
 import { Route as ApiHealthRouteImport } from './routes/api/health'
 import { Route as DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRouteImport } from './routes/[.]well-known/appspecific/com[.]chrome[.]devtools[.]json'
@@ -39,14 +40,19 @@ const ManifestDotwebmanifestRoute = ManifestDotwebmanifestRouteImport.update({
   path: '/manifest.webmanifest',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlogRoute = BlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiScreenshotRoute = ApiScreenshotRouteImport.update({
@@ -68,83 +74,90 @@ const DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
   '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/projects': typeof ProjectsRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/health': typeof ApiHealthRoute
   '/api/screenshot': typeof ApiScreenshotRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/.well-known/appspecific/com.chrome.devtools.json': typeof DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
   '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/projects': typeof ProjectsRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/health': typeof ApiHealthRoute
   '/api/screenshot': typeof ApiScreenshotRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog': typeof BlogIndexRoute
   '/.well-known/appspecific/com.chrome.devtools.json': typeof DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
   '/manifest.webmanifest': typeof ManifestDotwebmanifestRoute
   '/projects': typeof ProjectsRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/api/health': typeof ApiHealthRoute
   '/api/screenshot': typeof ApiScreenshotRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/.well-known/appspecific/com.chrome.devtools.json': typeof DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/blog'
     | '/manifest.webmanifest'
     | '/projects'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/api/health'
     | '/api/screenshot'
+    | '/blog/$slug'
+    | '/blog/'
     | '/.well-known/appspecific/com.chrome.devtools.json'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/blog'
     | '/manifest.webmanifest'
     | '/projects'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/api/health'
     | '/api/screenshot'
+    | '/blog/$slug'
+    | '/blog'
     | '/.well-known/appspecific/com.chrome.devtools.json'
   id:
     | '__root__'
     | '/'
-    | '/blog'
     | '/manifest.webmanifest'
     | '/projects'
     | '/robots.txt'
     | '/sitemap.xml'
     | '/api/health'
     | '/api/screenshot'
+    | '/blog/$slug'
+    | '/blog/'
     | '/.well-known/appspecific/com.chrome.devtools.json'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BlogRoute: typeof BlogRoute
   ManifestDotwebmanifestRoute: typeof ManifestDotwebmanifestRoute
   ProjectsRoute: typeof ProjectsRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ApiHealthRoute: typeof ApiHealthRoute
   ApiScreenshotRoute: typeof ApiScreenshotRoute
+  BlogSlugRoute: typeof BlogSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRoute: typeof DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRoute
 }
 
@@ -178,18 +191,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ManifestDotwebmanifestRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/screenshot': {
@@ -218,13 +238,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BlogRoute: BlogRoute,
   ManifestDotwebmanifestRoute: ManifestDotwebmanifestRoute,
   ProjectsRoute: ProjectsRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ApiHealthRoute: ApiHealthRoute,
   ApiScreenshotRoute: ApiScreenshotRoute,
+  BlogSlugRoute: BlogSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
   DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRoute:
     DotwellKnownAppspecificComDotchromeDotdevtoolsDotjsonRoute,
 }
