@@ -42,10 +42,11 @@ import appCss from '../styles.css?url';
  * @param i
  */
 function gtm(w: typeof window, d: typeof document, s: 'script', l: 'dataLayer', i: string) {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
   (w as any)[l] = (w as any)[l] || [];
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
   (w as any)[l].push({ event: 'gtm.js', 'gtm.start': new Date().getTime() });
+  // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
   const dl = l != 'dataLayer' ? '&l=' + l : '',
     f = d.getElementsByTagName(s)[0], j = d.createElement(s);
   j.async = true;
@@ -286,10 +287,9 @@ function RootDocument({ children }: { children: ReactNode }) {
           </noscript>
         )}
         <ThemeProvider theme={theme}>
-          <NavBar />
-          <Toaster position="bottom-right" />
+          <NavBar className={tw`peer`} />
           {children}
-          <footer className={tw`p-4 text-center`}>
+          <footer className={tw`p-4 text-center [.peer+template+&]:hidden`}>
             <p className={tw`text-xs text-muted-foreground`}>
               v
               {__APP_VERSION__}
@@ -300,6 +300,7 @@ function RootDocument({ children }: { children: ReactNode }) {
               {' '}
             </p>
           </footer>
+          <Toaster position="bottom-right" />
         </ThemeProvider>
         <TanStackDevtools
           config={{
