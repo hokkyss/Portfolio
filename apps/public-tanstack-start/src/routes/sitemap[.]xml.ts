@@ -1,6 +1,6 @@
 import { defineSitemap, resolveSitemap } from '@portfolio/seo/sitemap';
 import { createFileRoute } from '@tanstack/react-router';
-import { getOrigin } from '@tanstack/react-router/ssr/server';
+import { getOrigin } from '../utils/get-origin';
 
 export const Route = createFileRoute('/sitemap.xml')({
   server: {

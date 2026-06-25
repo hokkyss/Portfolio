@@ -63,7 +63,9 @@ export default defineConfig((ctx) => {
       entries.forEach(({ entryName, path }) => {
         exports[`./${entryName}`] = {
           types: `./dist/${join(dirname(path), basename(path, extname(path)))}.d.ts`,
-          default: `./dist/${entryName}.js`,
+          'react-server': `./dist/rsc/${entryName}.js`,
+          browser: `./dist/client/${entryName}.js`,
+          default: `./dist/ssr/${entryName}.js`,
         };
       });
       /* eslint-enable perfectionist/sort-objects */
@@ -76,12 +78,48 @@ export default defineConfig((ctx) => {
     name: 'design-system:package-json:exports',
   });
 
-  return ({
-    build: {
-      emptyOutDir: true,
-      minify: ctx.mode === 'production',
-      outDir: 'dist',
-      sourcemap: ctx.mode === 'development',
+  return {
+    builder: {
+      async buildApp(builder) {
+        await builder.build(builder.environments.ssr);
+        await builder.build(builder.environments.rsc);
+        await builder.build(builder.environments.client);
+      },
+    },
+    environments: {
+      client: {
+        build: {
+          emptyOutDir: true,
+          minify: 'oxc',
+          outDir: 'dist/client',
+          sourcemap: ctx.mode === 'development',
+        },
+        consumer: 'client',
+      },
+      rsc: {
+        build: {
+          emptyOutDir: true,
+          minify: 'oxc',
+          outDir: 'dist/rsc',
+          sourcemap: ctx.mode === 'development',
+        },
+        consumer: 'server',
+        resolve: {
+          noExternal: true,
+        },
+      },
+      ssr: {
+        build: {
+          emptyOutDir: true,
+          minify: 'oxc',
+          outDir: 'dist/ssr',
+          sourcemap: ctx.mode === 'development',
+        },
+        consumer: 'server',
+        resolve: {
+          noExternal: true,
+        },
+      },
     },
     plugins: [
       esmExternalRequirePlugin({
@@ -96,5 +134,5 @@ export default defineConfig((ctx) => {
     resolve: {
       tsconfigPaths: true,
     },
-  });
+  };
 });

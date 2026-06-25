@@ -5,7 +5,9 @@ import { sentryTanstackStart } from '@sentry/tanstackstart-react/vite';
 import tailwindcss from '@tailwindcss/vite';
 import { devtools } from '@tanstack/devtools-vite';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
+import { DevTools } from '@vitejs/devtools';
 import viteReact, { reactCompilerPreset } from '@vitejs/plugin-react';
+import rsc from '@vitejs/plugin-rsc';
 import { execSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { defineConfig, esmExternalRequirePlugin } from 'vite';
@@ -27,9 +29,17 @@ export default defineConfig({
     __NETLIFY__: process.env.NETLIFY ? true : false,
   },
   envPrefix: ['PUBLIC_'],
+  optimizeDeps: {
+    exclude: ['cloudflare:workers'],
+  },
   plugins: [
+    DevTools({
+      build: {
+      },
+      builtinDevTools: true,
+    }),
     esmExternalRequirePlugin({
-      external: ['@sparticuz/chromium', '@resvg/resvg-js'],
+      external: ['@sparticuz/chromium', '@resvg/resvg-js', 'cloudflare:workers'],
     }),
     devtools({
       consolePiping: {
@@ -37,11 +47,7 @@ export default defineConfig({
       },
       removeDevtoolsOnBuild: true,
     }),
-    tailwindcss({
-      optimize: {
-        minify: true,
-      },
-    }),
+    tailwindcss(),
     !!process.env.CLOUDFLARE && cloudflare({
       viteEnvironment: { childEnvironments: ['rsc'], name: 'ssr' },
     }),
@@ -74,6 +80,9 @@ export default defineConfig({
       router: {
         entry: 'router.tsx',
       },
+      rsc: {
+        enabled: true,
+      },
       server: {
         entry: process.env.CLOUDFLARE ? 'server.cloudflare.ts' : 'server.ts',
       },
@@ -88,11 +97,7 @@ export default defineConfig({
         entry: 'start.ts',
       },
     }),
-    sentryTanstackStart({
-      authToken: process.env.SENTRY_AUTH_TOKEN,
-      org: process.env.SENTRY_ORGANIZATION,
-      project: process.env.SENTRY_PROJECT,
-    }),
+    rsc(),
     viteReact(),
     babel({
       presets: [reactCompilerPreset({})],
@@ -102,6 +107,11 @@ export default defineConfig({
         displayName: '@portfolio/public-tanstack-start-function',
         enabled: true,
       },
+    }),
+    sentryTanstackStart({
+      authToken: process.env.SENTRY_AUTH_TOKEN,
+      org: process.env.SENTRY_ORGANIZATION,
+      project: process.env.SENTRY_PROJECT,
     }),
   ],
 });

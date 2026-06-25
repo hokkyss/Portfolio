@@ -1,24 +1,47 @@
-import 'highlight.js/styles/github-dark.css';
 import { CaretLeftIcon } from '@phosphor-icons/react';
 import Badge from '@portfolio/design-system/badge';
 import Button from '@portfolio/design-system/button';
 import Separator from '@portfolio/design-system/separator';
 import tw from '@portfolio/design-system/tw';
+import { tryit } from '@portfolio/utils';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { createFileRoute, Link, notFound } from '@tanstack/react-router';
-import ReactMarkdown from 'react-markdown';
-import rehypeHighlight from 'rehype-highlight';
-import remarkGfm from 'remark-gfm';
+import codeHighlighterCss from 'highlight.js/styles/github-dark.css?url';
 import getBlogQuery from '../lib/blogs/queries/get-blog.query';
+import renderMarkdownFunction from '../lib/common/functions/render-markdown.function';
+import renderMarkdownQuery from '../lib/common/queries/render-markdown.query';
 
 export const Route = createFileRoute('/blog/$slug')({
   component: BlogPostComponent,
   loader: async ({ context, params }) => {
-    const data = await context.queryClient.ensureQueryData(getBlogQuery(params.slug));
+    const [data] = await tryit(context.queryClient.ensureQueryData(getBlogQuery(params.slug)));
 
     if (!data) {
       throw notFound();
     }
+
+    // Prefetch the markdown to be rendered on the server
+    await context.queryClient.ensureQueryData(renderMarkdownQuery(data.content));
+    const renderedMarkdown = await renderMarkdownFunction({
+      data: {
+        content: data.content,
+      },
+    });
+
+    return {
+      renderedMarkdown,
+    };
+  },
+  head() {
+    return {
+      links: [
+        {
+          fetchPriority: 'high',
+          href: codeHighlighterCss,
+          rel: 'stylesheet',
+        },
+      ],
+    };
   },
 });
 
@@ -28,10 +51,7 @@ export const Route = createFileRoute('/blog/$slug')({
 function BlogPostComponent() {
   const { slug } = Route.useParams();
   const { data: post } = useSuspenseQuery(getBlogQuery(slug));
-
-  if (!post) {
-    return null;
-  }
+  const { data: renderedMarkdown } = useSuspenseQuery(renderMarkdownQuery(post.content));
 
   return (
     <main className={tw`mx-auto max-w-4xl px-6 py-24 w-full`}>
@@ -81,9 +101,7 @@ function BlogPostComponent() {
       <Separator className={tw`my-8`} />
 
       <article className={tw`prose prose-neutral dark:prose-invert max-w-none`}>
-        <ReactMarkdown rehypePlugins={[rehypeHighlight]} remarkPlugins={[remarkGfm]}>
-          {post.content}
-        </ReactMarkdown>
+        {renderedMarkdown}
       </article>
     </main>
   );

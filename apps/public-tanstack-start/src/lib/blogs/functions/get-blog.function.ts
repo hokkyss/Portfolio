@@ -32,7 +32,7 @@ const getBlogFunction = createServerFn({
     );
 
     if (!result) {
-      return null;
+      throw new ApplicationError(404, `Blog ${ctx.data.slug} not found`);
     }
 
     const parseResult = getBlogResponseDto.safeParse(result);

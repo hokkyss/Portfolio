@@ -1,6 +1,6 @@
 import { defineRobots, resolveRobots } from '@portfolio/seo/robots';
 import { createFileRoute } from '@tanstack/react-router';
-import { getOrigin } from '@tanstack/react-router/ssr/server';
+import { getOrigin } from '../utils/get-origin';
 import { getServerEnv } from '../configs/env/env.config';
 
 export const Route = createFileRoute('/robots.txt')({

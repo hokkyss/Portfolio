@@ -24,7 +24,7 @@ import {
   Scripts,
 } from '@tanstack/react-router';
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
-import { getOrigin } from '@tanstack/react-router/ssr/server';
+import { getOrigin } from '../utils/get-origin';
 import { createIsomorphicFn } from '@tanstack/react-start';
 import { getRequest } from '@tanstack/react-start/server';
 import { type ReactNode, useMemo } from 'react';
