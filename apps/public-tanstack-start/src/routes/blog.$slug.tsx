@@ -4,11 +4,12 @@ import Button from '@portfolio/design-system/button';
 import Separator from '@portfolio/design-system/separator';
 import tw from '@portfolio/design-system/tw';
 import { tryit } from '@portfolio/utils';
-import { useSuspenseQuery } from '@tanstack/react-query';
-import { createFileRoute, Link, notFound } from '@tanstack/react-router';
+import { QueryErrorResetBoundary, useSuspenseQuery } from '@tanstack/react-query';
+import { Await, createFileRoute, Link, notFound, useLoaderData, useParams } from '@tanstack/react-router';
 import codeHighlighterCss from 'highlight.js/styles/github-dark.css?url';
+import { Suspense } from 'react';
+import { GetBlogResponseDto } from '../lib/blogs/dto/get-blog.dto';
 import getBlogQuery from '../lib/blogs/queries/get-blog.query';
-import renderMarkdownFunction from '../lib/common/functions/render-markdown.function';
 import renderMarkdownQuery from '../lib/common/queries/render-markdown.query';
 
 export const Route = createFileRoute('/blog/$slug')({
@@ -21,15 +22,8 @@ export const Route = createFileRoute('/blog/$slug')({
     }
 
     // Prefetch the markdown to be rendered on the server
-    await context.queryClient.ensureQueryData(renderMarkdownQuery(data.content));
-    const renderedMarkdown = await renderMarkdownFunction({
-      data: {
-        content: data.content,
-      },
-    });
-
     return {
-      renderedMarkdown,
+      renderedMarkdown: context.queryClient.ensureQueryData(renderMarkdownQuery(data.content)),
     };
   },
   head() {
@@ -43,15 +37,24 @@ export const Route = createFileRoute('/blog/$slug')({
       ],
     };
   },
+  shouldReload: false,
 });
 
 /**
  *
  */
 function BlogPostComponent() {
-  const { slug } = Route.useParams();
-  const { data: post } = useSuspenseQuery(getBlogQuery(slug));
-  const { data: renderedMarkdown } = useSuspenseQuery(renderMarkdownQuery(post.content));
+  const slug = useParams({
+    from: '/blog/$slug',
+    select: (d) => d.slug,
+  });
+  const { data: post } = useSuspenseQuery({
+    ...getBlogQuery(slug),
+  });
+  const renderMarkdownPromise = useLoaderData({
+    from: '/blog/$slug',
+    select: (d) => d.renderedMarkdown,
+  });
 
   return (
     <main className={tw`mx-auto max-w-4xl px-6 py-24 w-full`}>
@@ -100,9 +103,24 @@ function BlogPostComponent() {
 
       <Separator className={tw`my-8`} />
 
-      <article className={tw`prose prose-neutral dark:prose-invert max-w-none`}>
-        {renderedMarkdown}
-      </article>
+      <QueryErrorResetBoundary>
+        <Suspense>
+          <Await promise={renderMarkdownPromise}>
+            {() => <Wrapped post={post} />}
+          </Await>
+        </Suspense>
+      </QueryErrorResetBoundary>
     </main>
   );
+}
+
+/**
+ *
+ * @param root0
+ * @param root0.post
+ */
+function Wrapped({ post }: { post: GetBlogResponseDto }) {
+  const { data: renderedMarkdown } = useSuspenseQuery(renderMarkdownQuery(post.content));
+
+  return renderedMarkdown;
 }

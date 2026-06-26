@@ -62,7 +62,7 @@ export default defineConfig((ctx) => {
       /* eslint-disable perfectionist/sort-objects */
       entries.forEach(({ entryName, path }) => {
         exports[`./${entryName}`] = {
-          types: `./dist/${join(dirname(path), basename(path, extname(path)))}.d.ts`,
+          types: `./dist/types/${join(dirname(path), basename(path, extname(path)))}.d.ts`,
           'react-server': `./dist/rsc/${entryName}.js`,
           browser: `./dist/client/${entryName}.js`,
           default: `./dist/ssr/${entryName}.js`,
@@ -92,6 +92,14 @@ export default defineConfig((ctx) => {
           emptyOutDir: true,
           minify: 'oxc',
           outDir: 'dist/client',
+          rolldownOptions: {
+            plugins: [
+              dts({
+                exclude: ['./*'],
+                outDir: './dist/types',
+              }),
+            ],
+          },
           sourcemap: ctx.mode === 'development',
         },
         consumer: 'client',
@@ -124,9 +132,6 @@ export default defineConfig((ctx) => {
     plugins: [
       esmExternalRequirePlugin({
         external: ['react', 'react-dom', 'react/jsx-runtime'],
-      }),
-      dts({
-        exclude: ['./*'],
       }),
       watchSrcFolderPlugin(),
       packageJsonExportsPlugin(),

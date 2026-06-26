@@ -381,6 +381,9 @@ importers:
       rehype-highlight:
         specifier: ^7.0.2
         version: 7.0.2
+      remark-gemoji:
+        specifier: ^8.0.0
+        version: 8.0.0
       remark-gfm:
         specifier: ^4.0.1
         version: 4.0.1
@@ -6355,6 +6358,9 @@ packages:
     resolution: {integrity: sha512-a4tiq7E0/5fTjxPAaH4jpjkSv/uCaU2p5KC6HVGrvl0cDjA8iBZv4vv1gyzlmK0ZUKqwpOyQMKzZQe3lTit77A==}
     engines: {node: '>=14'}
 
+  gemoji@8.1.0:
+    resolution: {integrity: sha512-HA4Gx59dw2+tn+UAa7XEV4ufUKI4fH1KgcbenVA9YKSj1QJTT0xh5Mwv5HMFNN3l2OtUe3ZIfuRwSyZS5pLIWw==}
+
   generator-function@2.0.1:
     resolution: {integrity: sha512-SFdFmIJi+ybC0vjlHN0ZGVGHc3lgE0DxPAT0djjVg+kjOnSqclqmj0KQ7ykTOLP6YxoqOvuAODGdcHJn+43q3g==}
     engines: {node: '>= 0.4'}
@@ -8282,6 +8288,9 @@ packages:
 
   rehype-highlight@7.0.2:
     resolution: {integrity: sha512-k158pK7wdC2qL3M5NcZROZ2tR/l7zOzjxXd5VGdcfIyoijjQqpHd3JKtYSBDpDZ38UI2WJWuFAtkMDxmx5kstA==}
+
+  remark-gemoji@8.0.0:
+    resolution: {integrity: sha512-/fL9rc72FYwFGtOKcT+QeQdx9Q9t5v4N6KLXSDOTEgaedzK85I9judBqB2eqz+g4b0ERMejlwSOuPK+wket6aA==}
 
   remark-gfm@4.0.1:
     resolution: {integrity: sha512-1quofZ2RQ9EWdeN34S79+KExV1764+wCUGop5CPL1WGdD0ocPpu91lzPGbwWMECpEpd42kJGQwzRfyov9j4yNg==}
@@ -16041,6 +16050,8 @@ snapshots:
       - encoding
       - supports-color
 
+  gemoji@8.1.0: {}
+
   generator-function@2.0.1: {}
 
   gensync@1.0.0-beta.2: {}
@@ -18363,6 +18374,12 @@ snapshots:
       lowlight: 3.3.0
       unist-util-visit: 5.1.0
       vfile: 6.0.3
+
+  remark-gemoji@8.0.0:
+    dependencies:
+      '@types/mdast': 4.0.4
+      gemoji: 8.1.0
+      mdast-util-find-and-replace: 3.0.2
 
   remark-gfm@4.0.1:
     dependencies:

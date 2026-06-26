@@ -8,7 +8,7 @@ export type GetBlogRequestDto = z.input<typeof getBlogRequestDto>;
 
 export const getBlogResponseDto = z.object({
   categories: z.union([
-    z.null().transform(() => []),
+    z.null().transform(() => <string[]>[]),
     z.array(z.string()),
   ]),
   content: z.string().default(''),

@@ -21,12 +21,28 @@ const getBuildNumber = () => {
   }
 };
 
-export default defineConfig({
+export default defineConfig((ctx) => ({
   define: {
     __APP_VERSION__: JSON.stringify(packageJson.version),
     __BUILD_NUMBER__: JSON.stringify(getBuildNumber()),
     __CLOUDFLARE__: process.env.CLOUDFLARE ? true : false,
     __NETLIFY__: process.env.NETLIFY ? true : false,
+  },
+  environments: {
+    rsc: { resolve: {
+      external: [
+        'readable-stream',
+        '@sentry/tanstackstart-react',
+      ],
+    } },
+    ssr: {
+      resolve: {
+        external: [
+          'readable-stream',
+          '@sentry/tanstackstart-react',
+        ],
+      },
+    },
   },
   envPrefix: ['PUBLIC_'],
   optimizeDeps: {
@@ -108,10 +124,10 @@ export default defineConfig({
         enabled: true,
       },
     }),
-    sentryTanstackStart({
+    ctx.command === 'build' && sentryTanstackStart({
       authToken: process.env.SENTRY_AUTH_TOKEN,
       org: process.env.SENTRY_ORGANIZATION,
       project: process.env.SENTRY_PROJECT,
     }),
   ],
-});
+}));
