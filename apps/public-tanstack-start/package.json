@@ -19,6 +19,7 @@
     "@phosphor-icons/react": "^2.1.10",
     "@portfolio/common": "workspace:^",
     "@portfolio/design-system": "workspace:^",
+    "@portfolio/markdown": "workspace:*",
     "@portfolio/seo": "workspace:^",
     "@portfolio/utils": "workspace:^",
     "@resvg/resvg-js": "^2.6.2",

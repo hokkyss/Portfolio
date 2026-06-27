@@ -72,6 +72,30 @@
       "browser": "./dist/client/accordion.js",
       "default": "./dist/ssr/accordion.js"
     },
+    "./alert-action": {
+      "types": "./dist/types/src/alert/alert-action.d.ts",
+      "react-server": "./dist/rsc/alert-action.js",
+      "browser": "./dist/client/alert-action.js",
+      "default": "./dist/ssr/alert-action.js"
+    },
+    "./alert-description": {
+      "types": "./dist/types/src/alert/alert-description.d.ts",
+      "react-server": "./dist/rsc/alert-description.js",
+      "browser": "./dist/client/alert-description.js",
+      "default": "./dist/ssr/alert-description.js"
+    },
+    "./alert-title": {
+      "types": "./dist/types/src/alert/alert-title.d.ts",
+      "react-server": "./dist/rsc/alert-title.js",
+      "browser": "./dist/client/alert-title.js",
+      "default": "./dist/ssr/alert-title.js"
+    },
+    "./alert": {
+      "types": "./dist/types/src/alert/alert.d.ts",
+      "react-server": "./dist/rsc/alert.js",
+      "browser": "./dist/client/alert.js",
+      "default": "./dist/ssr/alert.js"
+    },
     "./application-theme-provider": {
       "types": "./dist/types/src/application-theme/application-theme-provider.d.ts",
       "react-server": "./dist/rsc/application-theme-provider.js",

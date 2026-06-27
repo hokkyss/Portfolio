@@ -116,7 +116,7 @@ export default defineConfig((ctx) => ({
     rsc(),
     viteReact(),
     babel({
-      presets: [reactCompilerPreset({})],
+      presets: [reactCompilerPreset()],
     }),
     !!process.env.NETLIFY && createNetlifyPlugin({
       build: {
