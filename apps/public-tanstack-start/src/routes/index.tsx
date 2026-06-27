@@ -1,6 +1,5 @@
 import { Await, createFileRoute, useLoaderData } from '@tanstack/react-router';
 import AboutSection from '../components/organisms/about.section';
-import ContactSection from '../components/organisms/contact.section';
 import ExperienceSection from '../components/organisms/experience.section';
 import HeroSection from '../components/organisms/hero.section';
 import ProjectsSection from '../components/organisms/projects.section';
@@ -59,7 +58,6 @@ function RouteComponent() {
         {() => <ProjectsSection />}
       </Await>
       <Await promise={techGroupsPromise}>{() => <TechStackSection />}</Await>
-      <ContactSection />
     </>
   );
 }

@@ -62,8 +62,10 @@ export default defineConfig((ctx) => {
       /* eslint-disable perfectionist/sort-objects */
       entries.forEach(({ entryName, path }) => {
         exports[`./${entryName}`] = {
-          types: ctx.mode === 'production' ? `./dist/${entryName}.d.ts` : `./dist/${join(dirname(path), basename(path, extname(path)))}.d.ts`,
-          default: `./dist/${entryName}.js`,
+          types: `./dist/types/${join(dirname(path), basename(path, extname(path)))}.d.ts`,
+          'react-server': `./dist/rsc/${entryName}.js`,
+          browser: `./dist/client/${entryName}.js`,
+          default: `./dist/ssr/${entryName}.js`,
         };
       });
       /* eslint-enable perfectionist/sort-objects */
@@ -76,19 +78,60 @@ export default defineConfig((ctx) => {
     name: 'design-system:package-json:exports',
   });
 
-  return ({
-    build: {
-      emptyOutDir: true,
-      minify: ctx.mode === 'production',
-      outDir: 'dist',
-      sourcemap: ctx.mode === 'development',
+  return {
+    builder: {
+      async buildApp(builder) {
+        await builder.build(builder.environments.ssr);
+        await builder.build(builder.environments.rsc);
+        await builder.build(builder.environments.client);
+      },
+    },
+    environments: {
+      client: {
+        build: {
+          emptyOutDir: true,
+          minify: 'oxc',
+          outDir: 'dist/client',
+          rolldownOptions: {
+            plugins: [
+              dts({
+                exclude: ['./*'],
+                outDir: './dist/types',
+              }),
+            ],
+          },
+          sourcemap: ctx.mode === 'development',
+        },
+        consumer: 'client',
+      },
+      rsc: {
+        build: {
+          emptyOutDir: true,
+          minify: 'oxc',
+          outDir: 'dist/rsc',
+          sourcemap: ctx.mode === 'development',
+        },
+        consumer: 'server',
+        resolve: {
+          noExternal: true,
+        },
+      },
+      ssr: {
+        build: {
+          emptyOutDir: true,
+          minify: 'oxc',
+          outDir: 'dist/ssr',
+          sourcemap: ctx.mode === 'development',
+        },
+        consumer: 'server',
+        resolve: {
+          noExternal: true,
+        },
+      },
     },
     plugins: [
       esmExternalRequirePlugin({
         external: ['react', 'react-dom', 'react/jsx-runtime'],
-      }),
-      dts({
-        exclude: ['./*'],
       }),
       watchSrcFolderPlugin(),
       packageJsonExportsPlugin(),
@@ -96,5 +139,5 @@ export default defineConfig((ctx) => {
     resolve: {
       tsconfigPaths: true,
     },
-  });
+  };
 });
