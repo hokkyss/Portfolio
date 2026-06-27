@@ -22,7 +22,7 @@ const renderMarkdownFunction = createServerFn({
     setResponseHeader('X-Stale-After', '604800');
 
     return renderServerComponent(
-      <article className={tw`prose prose-neutral dark:prose-invert black-eagles:prose-rose black-eagles:prose-invert blue-lions:prose-blue blue-lions:prose-invert golden-deer:prose-amber`}>
+      <article className={tw`prose prose-neutral dark:prose-invert black-eagles:prose-rose black-eagles:prose-invert blue-lions:prose-blue blue-lions:prose-invert golden-deer:prose-amber max-w-none`}>
         <ReactMarkdown
           components={{
             a: (props) => (
