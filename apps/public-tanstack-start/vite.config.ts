@@ -29,18 +29,24 @@ export default defineConfig((ctx) => ({
     __NETLIFY__: process.env.NETLIFY ? true : false,
   },
   environments: {
-    rsc: { resolve: {
-      external: [
-        'readable-stream',
-        '@sentry/tanstackstart-react',
-      ],
-    } },
+    rsc: {
+      resolve: {
+        external: process.env.CLOUDFLARE
+          ? []
+          : [
+              'readable-stream',
+              '@sentry/tanstackstart-react',
+            ],
+      },
+    },
     ssr: {
       resolve: {
-        external: [
-          'readable-stream',
-          '@sentry/tanstackstart-react',
-        ],
+        external: process.env.CLOUDFLARE
+          ? []
+          : [
+              'readable-stream',
+              '@sentry/tanstackstart-react',
+            ],
       },
     },
   },
