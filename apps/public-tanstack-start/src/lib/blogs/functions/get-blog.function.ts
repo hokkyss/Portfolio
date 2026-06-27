@@ -19,6 +19,7 @@ const getBlogFunction = createServerFn({
           "slug": slug.current,
           title,
           "updatedAt": _updatedAt,
+          "createdAt": _createdAt,
           categories,
           content
         }

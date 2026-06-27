@@ -24,14 +24,15 @@ import {
   Scripts,
 } from '@tanstack/react-router';
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
-import { getOrigin } from '../utils/get-origin';
 import { createIsomorphicFn } from '@tanstack/react-start';
 import { getRequest } from '@tanstack/react-start/server';
 import { type ReactNode, useMemo } from 'react';
 import NavBar from '../components/molecules/nav-bar.molecule';
+import ContactSection from '../components/organisms/contact.section';
 import getEnv from '../configs/env/env.config';
 import getApplicationThemeQuery from '../lib/common/queries/get-application-theme.query';
 import appCss from '../styles.css?url';
+import { getOrigin } from '../utils/get-origin';
 
 /**
  *
@@ -289,6 +290,7 @@ function RootDocument({ children }: { children: ReactNode }) {
         <ThemeProvider theme={theme}>
           <NavBar className={tw`peer`} />
           {children}
+          <ContactSection />
           <footer className={tw`p-4 text-center hidden [.peer~:not([style*="display:_none"]):not(template)~&]:block`}>
             <p className={tw`text-xs text-muted-foreground`}>
               v

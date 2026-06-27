@@ -12,6 +12,7 @@ export const getBlogResponseDto = z.object({
     z.array(z.string()),
   ]),
   content: z.string().default(''),
+  createdAt: z.iso.datetime().pipe(z.coerce.date()),
   id: z.string(),
   slug: z.string(),
   title: z.string(),

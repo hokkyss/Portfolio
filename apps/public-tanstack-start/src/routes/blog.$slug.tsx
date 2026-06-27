@@ -65,7 +65,7 @@ function BlogPostComponent() {
           render={(
             <Link to="/blog">
               <CaretLeftIcon className={tw`mr-2`} size={16} />
-              Back to blogs
+              Back
             </Link>
           )}
           variant="ghost"

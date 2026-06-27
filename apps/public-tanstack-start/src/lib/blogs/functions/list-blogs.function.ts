@@ -14,20 +14,22 @@ const listBlogsFunction = createServerFn({
 
     const query = ctx.data.cursor
       ? dedent`
-        * [_type == 'blog' && _id <= $cursor] | order(updatedAt desc, _id desc) [0...$limit] {
+        * [_type == 'blog' && _id <= $cursor] | order(_createdAt desc, _id desc) [0...$limit] {
           "id": _id,
           "slug": slug.current,
           title,
           "updatedAt": _updatedAt,
+          "createdAt": _createdAt,
           categories,
           content
         }`
       : dedent`
-        * [_type == 'blog'] | order(updatedAt desc, _id desc) [0...$limit] {
+        * [_type == 'blog'] | order(_createdAt desc, _id desc) [0...$limit] {
           "id": _id,
           "slug": slug.current,
           title,
           "updatedAt": _updatedAt,
+          "createdAt": _createdAt,
           categories,
           content
         }`;
