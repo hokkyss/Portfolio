@@ -19,6 +19,7 @@
     "@phosphor-icons/react": "^2.1.10",
     "@portfolio/common": "workspace:^",
     "@portfolio/design-system": "workspace:^",
+    "@portfolio/markdown": "workspace:*",
     "@portfolio/seo": "workspace:^",
     "@portfolio/utils": "workspace:^",
     "@resvg/resvg-js": "^2.6.2",
@@ -40,6 +41,7 @@
     "react-dom": "catalog:react19",
     "react-markdown": "^10.1.0",
     "rehype-highlight": "^7.0.2",
+    "remark-gemoji": "^8.0.0",
     "remark-gfm": "^4.0.1",
     "satori": "^0.26.0",
     "ts-pattern": "^5.9.0",
@@ -63,7 +65,9 @@
     "@types/node": "^22.10.2",
     "@types/react": "catalog:react19",
     "@types/react-dom": "catalog:react19",
+    "@vitejs/devtools": "^0.3.3",
     "@vitejs/plugin-react": "catalog:viteReact",
+    "@vitejs/plugin-rsc": "^0.5.27",
     "babel-plugin-react-compiler": "catalog:react19",
     "eslint": "catalog:eslint",
     "highlight.js": "^11.11.1",
@@ -75,5 +79,5 @@
     "web-vitals": "^5.1.0",
     "wrangler": "^4.95.0"
   },
-  "version": "2.0.3"
+  "version": "2.1.0"
 }

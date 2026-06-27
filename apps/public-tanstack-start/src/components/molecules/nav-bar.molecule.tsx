@@ -13,10 +13,16 @@ const NAV_LINKS: { label: string; to: LinkOptions }[] = [
   { label: 'Contact', to: { hash: 'contact', to: '/' } },
 ];
 
+interface NavBarProps {
+  className?: string;
+}
+
 /**
  * Fixed top navigation bar with brand, anchor links, and theme switcher.
+ * @param root0
+ * @param root0.className
  */
-export default function NavBar() {
+export default function NavBar({ className }: NavBarProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -30,6 +36,7 @@ export default function NavBar() {
       className={cn(
         tw`fixed inset-x-0 top-0 z-40 transition-all duration-300`,
         scrolled && tw`border-b border-border bg-background/80 backdrop-blur-md`,
+        className,
       )}
       id="navbar"
     >

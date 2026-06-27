@@ -1,0 +1,37 @@
+{
+  "name": "@portfolio/markdown",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./callout": {
+      "types": "./dist/types/callout.d.ts",
+      "react-server": "./dist/rsc/callout.js",
+      "browser": "./dist/client/callout.js",
+      "default": "./dist/ssr/callout.js"
+    }
+  },
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "lint": "eslint",
+    "build": "tsc && vite build"
+  },
+  "devDependencies": {
+    "@portfolio/eslint": "workspace:^",
+    "@types/mdast": "^4.0.4",
+    "@types/unist": "^3.0.3",
+    "eslint": "catalog:eslint",
+    "mdast": "^3.0.0",
+    "typescript": "catalog:ts5",
+    "unified": "^11.0.4",
+    "vite": "catalog:vite",
+    "vite-plugin-dts": "catalog:vite"
+  },
+  "dependencies": {
+    "unist-util-visit": "^5.1.0"
+  }
+}

@@ -14,6 +14,11 @@ export default defineConfig({
       formats: ['es'],
     },
   },
+  environments: {
+    client: {},
+    rsc: {},
+    ssr: {},
+  },
   plugins: [
     esmExternalRequirePlugin({
       external: Object.keys(pkg.peerDependencies)
