@@ -6,6 +6,7 @@ import CardDescription from '@portfolio/design-system/card-description';
 import CardHeader from '@portfolio/design-system/card-header';
 import CardTitle from '@portfolio/design-system/card-title';
 import tw from '@portfolio/design-system/tw';
+import { getReadingTime } from '@portfolio/utils';
 import { useSuspenseInfiniteQuery } from '@tanstack/react-query';
 import { createFileRoute, Link } from '@tanstack/react-router';
 import listBlogsQuery from '../lib/blogs/queries/list-blogs.query';
@@ -31,7 +32,7 @@ function BlogListingComponent() {
   );
 
   return (
-    <main className={tw`mx-auto max-w-6xl px-6 py-24`}>
+    <main className={tw`mx-auto max-w-6xl px-6 py-24 w-full`}>
       <Badge
         className={tw`mb-3 font-mono text-xs uppercase tracking-widest`}
         variant="secondary"
@@ -45,21 +46,26 @@ function BlogListingComponent() {
           <Link className={tw`block`} key={post.id} params={{ slug: post.slug }} to="/blog/$slug">
             <Card className={tw`h-full transition-all hover:border-primary/50 hover:bg-primary/5`}>
               <CardHeader>
-                <div className={tw`mb-2 flex flex-wrap gap-2`}>
+                <CardTitle>{post.title}</CardTitle>
+                <CardDescription>
+                  {new Date(post.updatedAt).toLocaleDateString()}
+                  {' '}
+                  &bull;
+                  {' '}
+                  {getReadingTime(post.content)}
+                  {' '}
+                  min read
+                </CardDescription>
+              </CardHeader>
+              {post.categories.length > 0 && (
+                <CardContent className={tw`flex flex-wrap gap-2`}>
                   {post.categories.map((category) => (
                     <Badge key={category} variant="secondary">
                       {category}
                     </Badge>
                   ))}
-                </div>
-                <CardTitle>{post.title}</CardTitle>
-                <CardDescription>{new Date(post.updatedAt).toLocaleDateString()}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className={tw`line-clamp-3 text-muted-foreground`}>
-                  {post.content ? post.content.replace(/[#*`_[\]]/g, '').slice(0, 150) + '...' : ''}
-                </p>
-              </CardContent>
+                </CardContent>
+              )}
             </Card>
           </Link>
         ))}

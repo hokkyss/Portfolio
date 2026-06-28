@@ -65,7 +65,7 @@ const listBlogsFunction = createServerFn({
     const parseResult = listBlogsResponseDto.safeParse(payload);
 
     if (!parseResult.success) {
-      throw new ApplicationError(500, 'CMS Response did not match expected shape. This is a bug in the application')
+      throw new ApplicationError(500, 'CMS Response did not match listBlogsResponseDto')
         .addPayload('zodError', z.treeifyError(parseResult.error));
     }
 

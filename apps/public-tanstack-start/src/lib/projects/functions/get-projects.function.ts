@@ -46,7 +46,7 @@ const getProjectsFunction = createServerFn({
     const parseResult = getProjectResponseDto.safeParse(result);
 
     if (!parseResult.success) {
-      throw new ApplicationError(500, `CMS Response did not match expected shape`)
+      throw new ApplicationError(500, `CMS Response did not match getProjectResponseDto`)
         .addPayload('zodError', z.treeifyError(parseResult.error));
     }
 
