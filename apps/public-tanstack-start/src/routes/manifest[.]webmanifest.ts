@@ -1,6 +1,6 @@
 import { defineManifest, resolveManifest } from '@portfolio/seo/manifest';
 import { createFileRoute } from '@tanstack/react-router';
-import { getOrigin } from '../utils/get-origin';
+import getOrigin from '../utils/get-origin';
 
 export const Route = createFileRoute('/manifest.webmanifest')({
   server: {

@@ -39,7 +39,7 @@ const getBlogFunction = createServerFn({
     const parseResult = getBlogResponseDto.safeParse(result);
 
     if (!parseResult.success) {
-      throw new ApplicationError(500, 'CMS Response did not match expected shape')
+      throw new ApplicationError(500, 'CMS Response did not match getBlogResponseDto')
         .addPayload('zodError', z.treeifyError(parseResult.error));
     }
 

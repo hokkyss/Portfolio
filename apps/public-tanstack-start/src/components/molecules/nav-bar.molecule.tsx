@@ -1,17 +1,13 @@
 'use client';
 
 import cn from '@portfolio/design-system/cn';
+import NavigationMenu from '@portfolio/design-system/navigation-menu';
+import NavigationMenuItem from '@portfolio/design-system/navigation-menu-item';
+import NavigationMenuList from '@portfolio/design-system/navigation-menu-list';
 import tw from '@portfolio/design-system/tw';
-import { Link, LinkOptions } from '@tanstack/react-router';
+import { Link } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 import ThemeSwitcher from './theme-switcher.molecule';
-
-const NAV_LINKS: { label: string; to: LinkOptions }[] = [
-  { label: 'About', to: { hash: 'about', to: '/' } },
-  { label: 'Experience', to: { hash: 'experience', to: '/' } },
-  { label: 'Projects', to: { hash: 'projects', to: '/' } },
-  { label: 'Contact', to: { hash: 'contact', to: '/' } },
-];
 
 interface NavBarProps {
   className?: string;
@@ -40,7 +36,7 @@ export default function NavBar({ className }: NavBarProps) {
       )}
       id="navbar"
     >
-      <nav
+      <NavigationMenu
         className={tw`mx-auto flex max-w-6xl items-center justify-between px-6 py-4`}
         role="navigation"
       >
@@ -55,32 +51,56 @@ export default function NavBar({ className }: NavBarProps) {
         </Link>
 
         {/* Nav links — hidden on mobile */}
-        <ul className={tw`hidden items-center gap-6 md:flex`} role="list">
-          {NAV_LINKS.map((link) => (
-            <li key={link.label}>
-              <Link
-                className={tw`text-sm font-medium text-muted-foreground transition-colors hover:text-foreground`}
-                id={`nav-link-${link.label.toLowerCase()}`}
-                {...link.to}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-          <li>
+        <NavigationMenuList className={tw`hidden md:flex gap-6`}>
+          <NavigationMenuItem>
             <Link
-              className={tw`text-sm font-medium text-muted-foreground transition-colors hover:text-foreground`}
-              id="nav-link-blogs"
+              className={tw`text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-transparent`}
+              hash="about"
+              to="/"
+            >
+              About
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link
+              className={tw`text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-transparent`}
+              hash="experience"
+              to="/"
+            >
+              Experience
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link
+              className={tw`text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-transparent`}
+              hash="projects"
+              to="/"
+            >
+              Projects
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link
+              className={tw`text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-transparent`}
+              hash="contact"
+              to="/"
+            >
+              Contact
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link
+              className={tw`text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-transparent`}
               to="/blog"
             >
               Blogs
             </Link>
-          </li>
-        </ul>
+          </NavigationMenuItem>
+        </NavigationMenuList>
 
         {/* Theme switcher */}
         <ThemeSwitcher />
-      </nav>
+      </NavigationMenu>
     </header>
   );
 }

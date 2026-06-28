@@ -43,7 +43,7 @@ const getExperiencesFunction = createServerFn({
     const parseResult = getExperienceResponseDto.safeParse(result);
 
     if (!parseResult.success) {
-      throw new ApplicationError(500, `CMS Response did not match expected shape`)
+      throw new ApplicationError(500, `CMS Response did not match getExperienceResponseDto`)
         .addPayload('zodError', z.treeifyError(parseResult.error));
     }
 

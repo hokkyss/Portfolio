@@ -23,7 +23,7 @@ export default function ExperienceCard({ experience, isLast }: ExperienceCardPro
   const bullets = description.split('\n').filter(Boolean);
 
   return (
-    <div className={tw`relative flex gap-6`}>
+    <div className={tw`relative grid grid-cols-[auto_1fr] gap-6`}>
       {/* Timeline line */}
       <div className={tw`flex flex-col items-center`}>
         <div className={tw`mt-1.5 h-3 w-3 shrink-0 rounded-full border-2 border-primary bg-background`} />
