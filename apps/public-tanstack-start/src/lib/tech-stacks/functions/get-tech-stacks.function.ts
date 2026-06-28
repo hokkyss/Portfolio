@@ -35,7 +35,7 @@ const getTechStacksFunction = createServerFn({
     const parseResult = getTechStacksResponseDto.safeParse(result);
 
     if (!parseResult.success) {
-      throw new ApplicationError(500, `CMS Response did not match expected shape`)
+      throw new ApplicationError(500, `CMS Response did not match getTechStacksResponseDto`)
         .addPayload('zodError', z.treeifyError(parseResult.error));
     }
 
