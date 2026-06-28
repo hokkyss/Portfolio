@@ -1,7 +1,6 @@
 import Badge from '@portfolio/design-system/badge';
 import Button from '@portfolio/design-system/button';
 import Card from '@portfolio/design-system/card';
-import CardContent from '@portfolio/design-system/card-content';
 import CardDescription from '@portfolio/design-system/card-description';
 import CardHeader from '@portfolio/design-system/card-header';
 import CardTitle from '@portfolio/design-system/card-title';
@@ -55,11 +54,6 @@ function BlogListingComponent() {
                 <CardTitle>{post.title}</CardTitle>
                 <CardDescription>{new Date(post.updatedAt).toLocaleDateString()}</CardDescription>
               </CardHeader>
-              <CardContent>
-                <p className={tw`line-clamp-3 text-muted-foreground`}>
-                  {post.content ? post.content.replace(/[#*`_[\]]/g, '').slice(0, 150) + '...' : ''}
-                </p>
-              </CardContent>
             </Card>
           </Link>
         ))}
