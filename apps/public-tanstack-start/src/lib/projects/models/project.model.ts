@@ -3,7 +3,10 @@ import { techStackModel } from '../../tech-stacks/models/tech-stack.model';
 
 export const projectModel = z
   .object({
-    description: z.string(),
+    description: z.union([
+      z.null().transform(() => ''),
+      z.string(),
+    ]),
     id: z.string(),
     links: z.object({
       appStore: z.string().url().optional(),

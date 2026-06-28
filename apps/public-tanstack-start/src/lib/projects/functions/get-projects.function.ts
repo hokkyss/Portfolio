@@ -3,7 +3,7 @@ import { createServerFn } from '@tanstack/react-start';
 import { getRequest } from '@tanstack/react-start/server';
 import dedent from 'dedent';
 import z from 'zod';
-import { getProjectRequestDto, getProjectResponseDto } from '../dto/get-project.dto';
+import { getProjectRequestDto, getProjectResponseDto } from '../dto/get-projects.dto';
 
 const getProjectsFunction = createServerFn({
   method: 'GET',
