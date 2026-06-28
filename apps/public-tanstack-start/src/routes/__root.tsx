@@ -27,12 +27,13 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 import { createIsomorphicFn } from '@tanstack/react-start';
 import { getRequest } from '@tanstack/react-start/server';
 import { type ReactNode, useMemo } from 'react';
+import MobileTabBar from '../components/molecules/mobile-tab-bar.molecule';
 import NavBar from '../components/molecules/nav-bar.molecule';
 import ContactSection from '../components/organisms/contact.section';
 import getEnv from '../configs/env/env.config';
 import getApplicationThemeQuery from '../lib/common/queries/get-application-theme.query';
 import appCss from '../styles.css?url';
-import { getOrigin } from '../utils/get-origin';
+import getOrigin from '../utils/get-origin';
 
 /**
  *
@@ -291,7 +292,7 @@ function RootDocument({ children }: { children: ReactNode }) {
           <NavBar className={tw`peer`} />
           {children}
           <ContactSection />
-          <footer className={tw`p-4 text-center hidden [.peer~:not([style*="display:_none"]):not(template)~&]:block`}>
+          <footer className={tw`p-4 pb-20 text-center hidden md:pb-4 [.peer~:not([style*="display:_none"]):not(template)~&]:block`}>
             <p className={tw`text-xs text-muted-foreground`}>
               v
               {__APP_VERSION__}
@@ -303,6 +304,7 @@ function RootDocument({ children }: { children: ReactNode }) {
             </p>
           </footer>
           <Toaster position="bottom-right" />
+          <MobileTabBar />
         </ThemeProvider>
         <TanStackDevtools
           config={{
