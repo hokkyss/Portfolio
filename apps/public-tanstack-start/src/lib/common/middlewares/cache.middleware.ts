@@ -29,15 +29,17 @@ const cacheMiddleware = createMiddleware({
         return new Response(cachedResponse.body as never, cachedResponse as never);
       }
 
+      setResponseHeader('X-Cache-Status', 'MISS');
       // Cache MISS, execute handler
       const middlewareResult = await ctx.next();
 
       // cache only if the response is 200 OK
       if (middlewareResult.response.ok) {
-        const response = processCacheHeaders(middlewareResult.response);
-        const executionContext = getExecutionContext();
-
-        executionContext.waitUntil(cache.put(cacheKey, response.clone() as unknown as CfResponse));
+        const [response, shouldCache] = processCacheHeaders(middlewareResult.response);
+        if (shouldCache) {
+          const executionContext = getExecutionContext();
+          executionContext.waitUntil(cache.put(cacheKey, response.clone() as unknown as CfResponse));
+        }
         return response;
       }
 
@@ -49,7 +51,9 @@ const cacheMiddleware = createMiddleware({
 
     // cache only if the response is 200 OK
     if (middlewareResult.response.ok) {
-      return processCacheHeaders(middlewareResult.response);
+      const [response] = processCacheHeaders(middlewareResult.response);
+
+      return response;
     }
 
     return middlewareResult;
@@ -58,16 +62,15 @@ const cacheMiddleware = createMiddleware({
 /**
  * @param response
  */
-function processCacheHeaders(response: Response) {
-  const clonedResponse = new Response(response.body, response);
-
-  const xCacheMaxage = clonedResponse.headers.get('X-Cache-Maxage');
-  const xStaleAfter = clonedResponse.headers.get('X-Stale-After');
+function processCacheHeaders(response: Response): [Response, shouldCache: boolean] {
+  const xCacheMaxage = response.headers.get('X-Cache-Maxage');
+  const xStaleAfter = response.headers.get('X-Stale-After');
 
   if (!xCacheMaxage || !xStaleAfter) {
-    return clonedResponse;
+    return [response, false];
   }
 
+  const clonedResponse = new Response(response.body, response);
   if (__CLOUDFLARE__) {
     // this might seem weird, but this is intentional.
     // Cache-Control is browser cache, CDN-Cache-Control is cloudflare cache
@@ -84,7 +87,7 @@ function processCacheHeaders(response: Response) {
   clonedResponse.headers.delete('X-Cache-Maxage');
   clonedResponse.headers.delete('X-Stale-After');
 
-  return clonedResponse;
+  return [clonedResponse, true];
 }
 
 export default cacheMiddleware;
