@@ -52,7 +52,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </CardDescription>
       </CardHeader>
 
-      <CardContent className={tw`mt-auto flex flex-col gap-3 pb-3`}>
+      <CardContent className={tw`flex flex-col gap-3 pb-3`}>
         {/* Tech stacks */}
         <div className={tw`flex flex-wrap gap-1.5`}>
           {techStacks.map((stack) => (
@@ -63,8 +63,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </CardContent>
 
-      <CardFooter className={tw`flex items-center gap-3 border-t border-border pt-3 pb-3`}>
-        {links.github && (
+      {links.github && (
+        <CardFooter className={tw`flex items-center gap-3 border-t border-border pt-3 pb-3`}>
           <Button
             className={tw`gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground h-auto p-0`}
             nativeButton={false}
@@ -82,8 +82,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             variant="ghost"
           >
           </Button>
-        )}
-      </CardFooter>
+        </CardFooter>
+      )}
     </Card>
   );
 }
