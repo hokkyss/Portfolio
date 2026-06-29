@@ -9,7 +9,6 @@ import { DevTools } from '@vitejs/devtools';
 import viteReact, { reactCompilerPreset } from '@vitejs/plugin-react';
 import rsc from '@vitejs/plugin-rsc';
 import { execSync } from 'node:child_process';
-import { createHash } from 'node:crypto';
 import { defineConfig, esmExternalRequirePlugin } from 'vite';
 import packageJson from './package.json' with { type: 'json' };
 
@@ -109,10 +108,9 @@ export default defineConfig((ctx) => ({
         entry: process.env.CLOUDFLARE ? 'server.cloudflare.ts' : 'server.ts',
       },
       serverFns: {
-        generateFunctionId: ({ filename, functionName }) => {
-          return createHash('sha256')
-            .update(`${filename}:${functionName}`)
-            .digest('base64url');
+        base: '/app:callServerFunctions/',
+        generateFunctionId: (meta) => {
+          return `serverFunction:${meta.functionName}`;
         },
       },
       start: {
