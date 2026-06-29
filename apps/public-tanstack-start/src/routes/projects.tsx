@@ -1,11 +1,14 @@
 import tw from '@portfolio/design-system/tw';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, notFound } from '@tanstack/react-router';
 import ProjectCard from '../components/molecules/project-card.molecule';
 import getProjectsQuery from '../lib/projects/queries/get-projects.query';
 
 export const Route = createFileRoute('/projects')({
   component: RouteComponent,
+  beforeLoad() {
+    throw notFound();
+  },
   loader: async (ctx) => {
     await ctx.context.queryClient.prefetchQuery(getProjectsQuery());
   },

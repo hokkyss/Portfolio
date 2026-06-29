@@ -1,4 +1,5 @@
 import { Await, createFileRoute, useLoaderData } from '@tanstack/react-router';
+import { Suspense } from 'react';
 import AboutSection from '../components/organisms/about.section';
 import ExperienceSection from '../components/organisms/experience.section';
 import HeroSection from '../components/organisms/hero.section';
@@ -53,11 +54,24 @@ function RouteComponent() {
     <>
       <HeroSection />
       <AboutSection />
-      <Await promise={experiencesPromise}>{() => <ExperienceSection />}</Await>
-      <Await promise={projectsPromise}>
-        {() => <ProjectsSection />}
-      </Await>
-      <Await promise={techGroupsPromise}>{() => <TechStackSection />}</Await>
+
+      <Suspense fallback={null}>
+        <Await promise={experiencesPromise}>
+          {() => <ExperienceSection />}
+        </Await>
+      </Suspense>
+
+      <Suspense fallback={null}>
+        <Await promise={projectsPromise}>
+          {() => <ProjectsSection />}
+        </Await>
+      </Suspense>
+
+      <Suspense fallback={null}>
+        <Await promise={techGroupsPromise}>
+          {() => <TechStackSection />}
+        </Await>
+      </Suspense>
     </>
   );
 }
