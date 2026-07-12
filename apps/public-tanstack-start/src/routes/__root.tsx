@@ -37,23 +37,29 @@ import getOrigin from '../utils/get-origin';
 
 /**
  *
- * @param w
- * @param d
- * @param s
- * @param l
- * @param i
+ * @param window
+ * @param document
+ * @param scriptTagName
+ * @param layerName
+ * @param gtmId
  */
-function gtm(w: typeof window, d: typeof document, s: 'script', l: 'dataLayer', i: string) {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
-  (w as any)[l] = (w as any)[l] || [];
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-explicit-any
-  (w as any)[l].push({ event: 'gtm.js', 'gtm.start': new Date().getTime() });
+function gtm(window: Window, document: Document, scriptTagName: 'script', layerName: 'dataLayer', gtmId: string) {
+  window[layerName] = window[layerName] || [];
+  window[layerName].push({
+    event: 'gtm.js',
+    'gtm.start': new Date().getTime(),
+  });
+
+  const firstScriptElement = document.getElementsByTagName(scriptTagName)[0];
+  const gtmScript = document.createElement(scriptTagName);
+
+  // minified from gtm script
   // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-  const dl = l != 'dataLayer' ? '&l=' + l : '',
-    f = d.getElementsByTagName(s)[0], j = d.createElement(s);
-  j.async = true;
-  j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-  f.parentNode!.insertBefore(j, f);
+  const dataLayerParam = layerName != 'dataLayer' ? '&l=' + layerName : '';
+
+  gtmScript.async = true;
+  gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=' + gtmId + dataLayerParam;
+  firstScriptElement.parentNode!.insertBefore(gtmScript, firstScriptElement);
 }
 
 const getApplicationUrl = createIsomorphicFn()
