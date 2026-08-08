@@ -5,19 +5,16 @@
   "private": true,
   "exports": {
     ".": {
-      "production": {
-        "types": "./index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "default": "./lib/index.ts"
-    }
+      "types": "./dist/types/index.d.ts",
+      "react-server": "./dist/rsc/index.js",
+      "browser": "./dist/client/utils.js",
+      "default": "./dist/ssr/index.js"
+    },
+    "./package.json": "./package.json"
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./index.d.ts",
   "files": [
     "dist",
-    "types"
+    "package.json"
   ],
   "scripts": {
     "dev": "vite",
@@ -29,7 +26,8 @@
     "eslint": "catalog:eslint",
     "@portfolio/eslint": "workspace:^",
     "typescript": "catalog:ts5",
-    "vite": "catalog:vite"
+    "vite": "catalog:vite",
+    "vite-plugin-dts": "catalog:vite"
   },
   "dependencies": {
     "es-toolkit": "^1.43.0"
