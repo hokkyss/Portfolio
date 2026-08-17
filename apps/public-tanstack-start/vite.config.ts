@@ -55,8 +55,6 @@ export default defineConfig((ctx) => ({
   },
   plugins: [
     DevTools({
-      build: {
-      },
       builtinDevTools: true,
     }),
     esmExternalRequirePlugin({
