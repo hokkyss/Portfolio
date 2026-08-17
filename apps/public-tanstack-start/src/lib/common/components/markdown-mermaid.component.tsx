@@ -7,7 +7,9 @@ import AlertTitle from '@portfolio/design-system/alert-title';
 import cn from '@portfolio/design-system/cn';
 import tw from '@portfolio/design-system/tw';
 import useApplicationTheme from '@portfolio/design-system/use-application-theme';
-import { useEffect, useId, useState } from 'react';
+import { tryit } from '@portfolio/utils';
+import mermaid from 'mermaid';
+import { useEffect, useId, useState, useTransition } from 'react';
 
 interface MarkdownMermaidProps {
   chart: string;
@@ -22,73 +24,51 @@ interface MarkdownMermaidProps {
  */
 export default function MarkdownMermaid({ chart, className }: MarkdownMermaidProps) {
   const theme = useApplicationTheme();
-  const rawId = useId();
-  const cleanId = rawId.replace(/[^a-zA-Z0-9_-]/g, '');
-
-  const [svg, setSvg] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const id = useId();
+  const [svg, setSvg] = useState<null | string>(null);
+  const [error, setError] = useState<null | string>(null);
+  const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
-    let isMounted = true;
     const isDark = theme !== 'light';
 
-    async function renderDiagram() {
-      setIsLoading(true);
+    startTransition(async () => {
       setError(null);
 
-      try {
-        const mermaid = (await import('mermaid')).default;
-
-        mermaid.initialize({
+      mermaid.initialize({
+        fontFamily: 'inherit',
+        securityLevel: 'loose',
+        startOnLoad: false,
+        theme: isDark ? 'dark' : 'default',
+        themeVariables: {
           fontFamily: 'inherit',
-          securityLevel: 'loose',
-          startOnLoad: false,
-          theme: isDark ? 'dark' : 'default',
-          themeVariables: {
-            fontFamily: 'inherit',
-          },
-        });
+        },
+      });
 
-        const elementId = `mermaid-${cleanId}`;
+      const [result, err] = await tryit(mermaid.render(id, chart.trim()));
 
-        // Remove any stale mermaid temporary element if left by previous render
-        const existing = document.getElementById(elementId) || document.getElementById(`d${elementId}`);
-        if (existing) {
-          existing.remove();
-        }
-
-        const { svg: renderedSvg } = await mermaid.render(elementId, chart.trim());
-
-        if (isMounted) {
-          setSvg(renderedSvg);
-          setError(null);
-          setIsLoading(false);
-        }
-      } catch (err) {
-        if (isMounted) {
-          setError(err instanceof Error ? err.message : 'Failed to render Mermaid diagram');
-          setSvg(null);
-          setIsLoading(false);
-        }
+      if (err) {
+        setError(err instanceof Error ? err.message : 'Failed to render Mermaid diagram');
+        setSvg(null);
+      } else {
+        setSvg(result.svg);
+        setError(null);
       }
-    }
-
-    void renderDiagram();
+    });
 
     return () => {
-      isMounted = false;
-      const elementId = `mermaid-${cleanId}`;
-      const tempElement = document.getElementById(elementId) || document.getElementById(`d${elementId}`);
-      if (tempElement) {
-        tempElement.remove();
-      }
+      setError(null);
+      setSvg(null);
     };
-  }, [chart, cleanId, theme]);
+  }, [chart, id, theme]);
 
   if (error) {
     return (
-      <div className={cn(tw`my-6 flex flex-col gap-2`, className)}>
+      <div className={cn(
+        tw`my-6 flex flex-col gap-2`,
+        className,
+      )}
+      >
         <Alert className={tw`border-danger/20 bg-danger/10 text-danger [&>svg]:text-danger`}>
           <WarningCircleIcon className="size-4" />
           <AlertTitle>Mermaid Diagram Error</AlertTitle>
@@ -101,13 +81,12 @@ export default function MarkdownMermaid({ chart, className }: MarkdownMermaidPro
     );
   }
 
-  if (isLoading || !svg) {
+  if (isPending) {
     return (
-      <div
-        className={cn(
-          tw`my-6 flex min-h-[140px] w-full items-center justify-center rounded-lg border border-border/50 bg-card/50 p-6 text-muted-foreground`,
-          className,
-        )}
+      <div className={cn(
+        tw`my-6 flex min-h-35 w-full items-center justify-center rounded-lg border border-border/50 bg-card/50 p-6 text-muted-foreground`,
+        className,
+      )}
       >
         <CircleNotchIcon className={tw`size-6 animate-spin text-primary`} />
       </div>
@@ -117,10 +96,12 @@ export default function MarkdownMermaid({ chart, className }: MarkdownMermaidPro
   return (
     <div
       className={cn(
-        tw`mermaid-container my-6 flex w-full items-center justify-center overflow-x-auto rounded-lg border border-border/50 bg-card/50 p-6 [&>svg]:max-w-full [&>svg]:h-auto`,
+        tw`my-6 flex mermaid-container w-full items-center justify-center overflow-x-auto rounded-lg border border-border/50 bg-card/50 p-6 [&>svg]:max-w-full [&>svg]:h-auto`,
         className,
       )}
-      dangerouslySetInnerHTML={{ __html: svg }}
+      // we trust mermaid's strings
+      // eslint-disable-next-line @eslint-react/dom/no-dangerously-set-innerhtml
+      dangerouslySetInnerHTML={{ __html: svg ?? '' }}
     />
   );
 }
