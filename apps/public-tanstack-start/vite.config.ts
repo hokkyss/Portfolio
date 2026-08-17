@@ -34,11 +34,8 @@ export default defineConfig((ctx) => ({
       },
       resolve: {
         external: process.env.CLOUDFLARE
-          ? [
-              'mermaid',
-            ]
+          ? []
           : [
-              'mermaid',
               'readable-stream',
               '@sentry/tanstackstart-react',
             ],
@@ -50,11 +47,8 @@ export default defineConfig((ctx) => ({
       },
       resolve: {
         external: process.env.CLOUDFLARE
-          ? [
-              'mermaid',
-            ]
+          ? []
           : [
-              'mermaid',
               'readable-stream',
               '@sentry/tanstackstart-react',
             ],
