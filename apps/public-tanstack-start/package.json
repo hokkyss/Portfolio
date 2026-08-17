@@ -84,5 +84,5 @@
     "web-vitals": "^5.1.0",
     "wrangler": "^4.95.0"
   },
-  "version": "2.2.1"
+  "version": "2.3.0"
 }
