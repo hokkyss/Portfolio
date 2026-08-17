@@ -7,6 +7,7 @@ export default defineConfig({
     lib: {
       entry: {
         callout: './lib/callout.ts',
+        mermaid: './lib/mermaid.ts',
       },
       formats: ['es'],
     },
