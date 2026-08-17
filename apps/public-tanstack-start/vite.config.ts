@@ -34,8 +34,11 @@ export default defineConfig((ctx) => ({
       },
       resolve: {
         external: process.env.CLOUDFLARE
-          ? []
+          ? [
+              'mermaid',
+            ]
           : [
+              'mermaid',
               'readable-stream',
               '@sentry/tanstackstart-react',
             ],
@@ -47,8 +50,11 @@ export default defineConfig((ctx) => ({
       },
       resolve: {
         external: process.env.CLOUDFLARE
-          ? []
+          ? [
+              'mermaid',
+            ]
           : [
+              'mermaid',
               'readable-stream',
               '@sentry/tanstackstart-react',
             ],
@@ -69,7 +75,6 @@ export default defineConfig((ctx) => ({
       external: [
         '@sparticuz/chromium',
         'puppeteer-core',
-        'mermaid',
         '@resvg/resvg-js',
         'cloudflare:workers',
       ],
