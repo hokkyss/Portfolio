@@ -29,6 +29,9 @@ export default defineConfig((ctx) => ({
   },
   environments: {
     rsc: {
+      build: {
+        minify: true,
+      },
       resolve: {
         external: process.env.CLOUDFLARE
           ? []
@@ -39,6 +42,9 @@ export default defineConfig((ctx) => ({
       },
     },
     ssr: {
+      build: {
+        minify: true,
+      },
       resolve: {
         external: process.env.CLOUDFLARE
           ? []
@@ -60,7 +66,13 @@ export default defineConfig((ctx) => ({
       builtinDevTools: true,
     }),
     esmExternalRequirePlugin({
-      external: ['@sparticuz/chromium', '@resvg/resvg-js', 'cloudflare:workers'],
+      external: [
+        '@sparticuz/chromium',
+        'puppeteer-core',
+        'mermaid',
+        '@resvg/resvg-js',
+        'cloudflare:workers',
+      ],
     }),
     devtools({
       consolePiping: {
