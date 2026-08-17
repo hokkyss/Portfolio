@@ -9,6 +9,12 @@
       "react-server": "./dist/rsc/callout.js",
       "browser": "./dist/client/callout.js",
       "default": "./dist/ssr/callout.js"
+    },
+    "./mermaid": {
+      "types": "./dist/types/mermaid.d.ts",
+      "react-server": "./dist/rsc/mermaid.js",
+      "browser": "./dist/client/mermaid.js",
+      "default": "./dist/ssr/mermaid.js"
     }
   },
   "files": [
