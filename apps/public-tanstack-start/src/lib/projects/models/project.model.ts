@@ -9,22 +9,14 @@ export const projectModel = z
     ]),
     id: z.string(),
     links: z.object({
-      appStore: z.string().url().optional(),
-      github: z.string().url().optional(),
-      playStore: z.string().url().optional(),
-      website: z.string().url().optional(),
+      appStore: z.url().optional(),
+      github: z.url().optional(),
+      playStore: z.url().optional(),
+      website: z.url().optional(),
     }),
     name: z.string(),
     summary: z.string(),
     techStacks: z.array(techStackModel).min(1),
-    thumbnail: z.object({
-      aspectRatio: z.number(),
-      blurDataURL: z.string().startsWith('data:image'),
-      filename: z.string(),
-      height: z.number(),
-      url: z.string(),
-      width: z.number(),
-    }).optional().nullable(),
   })
   .brand('ProjectModel');
 

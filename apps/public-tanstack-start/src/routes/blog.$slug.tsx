@@ -7,6 +7,7 @@ import { tryit } from '@portfolio/utils';
 import { QueryErrorResetBoundary, useSuspenseQuery } from '@tanstack/react-query';
 import { Await, createFileRoute, Link, notFound, useLoaderData, useParams } from '@tanstack/react-router';
 import codeHighlighterCss from 'highlight.js/styles/github-dark.css?url';
+import katexCss from 'katex/dist/katex.min.css?url';
 import { Suspense } from 'react';
 import { GetBlogResponseDto } from '../lib/blogs/dto/get-blog.dto';
 import getBlogQuery from '../lib/blogs/queries/get-blog.query';
@@ -32,6 +33,11 @@ export const Route = createFileRoute('/blog/$slug')({
         {
           fetchPriority: 'high',
           href: codeHighlighterCss,
+          rel: 'stylesheet',
+        },
+        {
+          fetchPriority: 'high',
+          href: katexCss,
           rel: 'stylesheet',
         },
       ],

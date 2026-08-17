@@ -666,6 +666,12 @@
       "browser": "./dist/client/use-sidebar.js",
       "default": "./dist/ssr/use-sidebar.js"
     },
+    "./skeleton": {
+      "types": "./dist/types/src/skeleton/skeleton.d.ts",
+      "react-server": "./dist/rsc/skeleton.js",
+      "browser": "./dist/client/skeleton.js",
+      "default": "./dist/ssr/skeleton.js"
+    },
     "./switch": {
       "types": "./dist/types/src/switch/switch.d.ts",
       "react-server": "./dist/rsc/switch.js",

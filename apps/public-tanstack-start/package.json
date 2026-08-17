@@ -22,7 +22,6 @@
     "@portfolio/markdown": "workspace:*",
     "@portfolio/seo": "workspace:^",
     "@portfolio/utils": "workspace:^",
-    "@resvg/resvg-js": "^2.6.2",
     "@rolldown/plugin-babel": "catalog:viteReact",
     "@sanity/client": "^7.22.0",
     "@sentry/cloudflare": "^10.58.0",
@@ -36,14 +35,16 @@
     "dedent": "^1.7.2",
     "es-toolkit": "^1.43.0",
     "firebase": "^12.12.1",
-    "firebase-admin": "^13.6.1",
+    "katex": "^0.16.21",
+    "mermaid": "^11.4.1",
     "react": "catalog:react19",
     "react-dom": "catalog:react19",
     "react-markdown": "^10.1.0",
     "rehype-highlight": "^7.0.2",
+    "rehype-katex": "^7.0.1",
     "remark-gemoji": "^8.0.0",
     "remark-gfm": "^4.0.1",
-    "satori": "^0.26.0",
+    "remark-math": "^6.0.0",
     "ts-pattern": "^5.9.0",
     "zod": "catalog:zod4",
     "zustand": "^5.0.11"
@@ -58,6 +59,7 @@
     "@tanstack/devtools-event-client": "^0.4.4",
     "@tanstack/devtools-vite": "^0.6.1",
     "@tanstack/react-devtools": "^0.10.7",
+    "@types/katex": "^0.16.7",
     "@tanstack/react-form-devtools": "^0.2.29",
     "@tanstack/react-query-devtools": "catalog:tanstackQuery",
     "@tanstack/react-router-devtools": "catalog:tanstackStart",
@@ -79,5 +81,5 @@
     "web-vitals": "^5.1.0",
     "wrangler": "^4.95.0"
   },
-  "version": "2.2.1"
+  "version": "2.3.0"
 }
