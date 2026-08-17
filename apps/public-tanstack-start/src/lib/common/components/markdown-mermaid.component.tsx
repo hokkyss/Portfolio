@@ -25,7 +25,8 @@ export default function MarkdownMermaid({ chart, className }: MarkdownMermaidPro
   'use no memo';
 
   const theme = useApplicationTheme();
-  const id = useId();
+  const rawId = useId();
+  const id = `mermaid-${rawId.replace(/:/g, '')}`;
   const [svg, setSvg] = useState<null | string>(null);
   const [error, setError] = useState<null | string>(null);
   const [isPending, startTransition] = useTransition();
