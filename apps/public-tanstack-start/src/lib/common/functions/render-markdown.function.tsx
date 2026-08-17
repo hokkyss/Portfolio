@@ -34,7 +34,7 @@ const renderMarkdownFunction = createServerFn({
             ),
             div: (props) => {
               if (props.className === 'markdown-mermaid') {
-                const chart = (props['data-chart'] as string | undefined) || (typeof props.children === 'string' ? props.children : '');
+                const chart = ((props as Record<string, unknown>)['data-chart'] as string | undefined) || (typeof props.children === 'string' ? props.children : '');
                 return <MarkdownMermaid chart={chart} />;
               }
               return <MarkdownCallout {...props} />;

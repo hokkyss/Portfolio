@@ -8,7 +8,6 @@ import cn from '@portfolio/design-system/cn';
 import tw from '@portfolio/design-system/tw';
 import useApplicationTheme from '@portfolio/design-system/use-application-theme';
 import { tryit } from '@portfolio/utils';
-import mermaid from 'mermaid';
 import { useEffect, useId, useState, useTransition } from 'react';
 
 interface MarkdownMermaidProps {
@@ -23,6 +22,8 @@ interface MarkdownMermaidProps {
  * @param root0.className
  */
 export default function MarkdownMermaid({ chart, className }: MarkdownMermaidProps) {
+  'use no memo';
+
   const theme = useApplicationTheme();
   const id = useId();
   const [svg, setSvg] = useState<null | string>(null);
@@ -30,10 +31,22 @@ export default function MarkdownMermaid({ chart, className }: MarkdownMermaidPro
   const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
+    let isCancelled = false;
     const isDark = theme !== 'light';
 
     startTransition(async () => {
       setError(null);
+
+      const [mermaidModule, importErr] = await tryit(import('mermaid'));
+      if (isCancelled) return;
+
+      if (importErr || !mermaidModule?.default) {
+        setError(importErr instanceof Error ? importErr.message : 'Failed to load Mermaid');
+        setSvg(null);
+        return;
+      }
+
+      const mermaid = mermaidModule.default;
 
       mermaid.initialize({
         fontFamily: 'inherit',
@@ -46,6 +59,7 @@ export default function MarkdownMermaid({ chart, className }: MarkdownMermaidPro
       });
 
       const [result, err] = await tryit(mermaid.render(id, chart.trim()));
+      if (isCancelled) return;
 
       if (err) {
         setError(err instanceof Error ? err.message : 'Failed to render Mermaid diagram');
@@ -57,6 +71,7 @@ export default function MarkdownMermaid({ chart, className }: MarkdownMermaidPro
     });
 
     return () => {
+      isCancelled = true;
       setError(null);
       setSvg(null);
     };
