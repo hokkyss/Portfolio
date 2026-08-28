@@ -7,6 +7,7 @@ const ALLOWED_ORIGINS = [
   'i-am.hokkyss.com',
   'hokkyss.com',
   'link.hokkyss.com',
+  'pptx.hokkyss.com',
   // add more project domains here as needed
 ];
 
